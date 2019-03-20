@@ -19,3 +19,25 @@ header {
     position: absolute;
     width: 230px;
 }
+
+#message-input-parent {
+    position: fixed;
+    bottom: 10px;
+    margin-left: 25px;
+    width: 100%;
+}
+
+#message-input {
+    width: 70%;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 7px;
+}
+
+#message-bar-send {
+    color: #fff;
+    font-weight: 600;
+    background-color: #e43d3d;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
