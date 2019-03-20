@@ -1,0 +1,21 @@
+header {
+    display: block;
+    height: 35px;
+    border-bottom: 2px solid #f6f6f6;
+    font-size: x-large;
+}
+
+#PA {
+    font-size: 15px;
+}
+
+#inner-component-header {
+    margin: 0px 25px 0px 25px;
+}
+
+#sidebar {
+    height: 1000px;
+    border-right: 2px solid #6d5e5e;
+    position: absolute;
+    width: 230px;
+}
