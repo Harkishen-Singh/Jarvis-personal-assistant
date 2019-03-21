@@ -9,5 +9,5 @@ func main() {
 	utils.LoggerWarn("starting Jarvis service ...")
 
 	// initiate service
-	Server("3000")
+	utils.Server("3000")
 }

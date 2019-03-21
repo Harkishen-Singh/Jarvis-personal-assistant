@@ -1,8 +1,8 @@
-package main
+package utils
 
 import (
 	"net/http"
-	"./controllers"
+	"../controllers"
 )
 
 func routes() {

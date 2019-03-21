@@ -3,7 +3,6 @@ package controllers
 import (
 	"net/http"
 	"fmt"
-	"encoding/json"
 )
 
 type response struct {
@@ -26,8 +25,6 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 		message: r.FormValue("message"),
 	}
 	fmt.Println(contentReceived)
-	reponseToReq := &statusCode{status: "success"}
-	rep, _ := json.Marshal(reponseToReq)
-	fmt.Println(string(rep))
 	w.Write([]byte(`{"status": "success"}`))
+
 }
