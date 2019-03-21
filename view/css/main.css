@@ -14,7 +14,8 @@ header {
 }
 
 #sidebar {
-    height: 1000px;
+    height: 100vh;
+    max-height: 100vh;
     border-right: 2px solid #6d5e5e;
     position: absolute;
     width: 230px;
@@ -32,6 +33,11 @@ header {
     border-radius: 10px;
     background-color: #fff;
     padding: 7px;
+}
+
+#stackArea-parent {
+    height: 75vh;
+    overflow-y: scroll;
 }
 
 #message-bar-send {
@@ -53,4 +59,8 @@ header {
 #chat-screen {
     text-align: center;
     display: list-item;
+}
+
+#show-user-creds {
+    padding: 5px;
 }
