@@ -26,7 +26,7 @@ before-install:
   - go get github.com/op/go-logging
   - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
   - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
-  - npm install -g http-server selenium-webdriver mocha mochawesome
+  - npm install -g http-server selenium-webdriver mocha mochawesome http-server
   - cd tests/
   - cd npm install
 
