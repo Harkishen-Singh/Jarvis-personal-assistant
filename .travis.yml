@@ -10,8 +10,15 @@ language: go
 go:
   - 1.11.x
 
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
 notifications:
-  email: false
+  email: true
 
 cache:
   - tests/node_modules/
@@ -25,11 +32,6 @@ before-install:
   - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
   - cd tests/
   - cd npm install
-  - set -xe
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-  - apt-get update -yqqq
-  - apt-get install -y google-chrome-stable
 
 
 script:
