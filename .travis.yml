@@ -17,7 +17,7 @@ notifications:
   email: false
 
 cache:
-  - tests/node_modules
+  - tests/node_modules/
 
 before-install:
   - . $HOME/.nvm/nvm.sh
@@ -31,9 +31,10 @@ before-install:
 
 script:
   - go run service/maintut.go &
-  - npm install -g http-server selenium-webdriver mocha mochawesome
+  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver
   - cd view/ && npm start && cd ..
   - go test -v ./...
   - cd tests/
+  - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
 
