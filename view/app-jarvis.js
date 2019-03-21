@@ -1,4 +1,4 @@
-const app = angular.module('jarvis', ['ngRoute']);
+var app = angular.module('jarvis', ['ngRoute']);
 
 app.config(function($routeProvider,$locationProvider) {
     $routeProvider
@@ -10,5 +10,16 @@ app.config(function($routeProvider,$locationProvider) {
 });
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
-    console.warn('main controller called');
+    var messageStack = [];
+
+    $scope.addMessagesToStack = function() {
+        let message = $scope.message;
+        messageStack.push(message);
+        console.warn(messageStack);
+    }
+
+    $scope.initStack = () => {
+        $scope.message = "Type a message ...";
+    }
+
 });

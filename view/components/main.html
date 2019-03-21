@@ -1,5 +1,12 @@
-<div>
+<div data-ng-init="initStack()">
     This is the main part of jarvis
     <!-- message field -->
-    <div data-ng-include="'components/message-field.html'"></div>
+    <div id="message-bar">
+        <span id="message-input-parent">
+            <input type="text" name="" id="message-input" data-ng-model="message">
+            <button id="message-bar-send" data-ng-click="addMessagesToStack()">
+                Send
+            </button>
+        </span>
+    </div>
 </div>
