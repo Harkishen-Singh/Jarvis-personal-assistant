@@ -24,12 +24,16 @@ before-install:
   - nvm install stable
   - nvm use stable
   - go get github.com/op/go-logging
-  - go 
+  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
+  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
   - npm install -g http-server selenium-webdriver mocha mochawesome
   - cd tests/
   - cd npm install
 
 script:
+  - go run service/*.go
+  - cd view/ && npm start
+  - cd ..
   - go test -v ./...
   - cd tests/
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests.js
