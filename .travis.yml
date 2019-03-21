@@ -13,12 +13,6 @@ language: go
 go:
   - 1.11.x
 
-install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
-  - npm install
-
 notifications:
   email: false
 
