@@ -15,4 +15,4 @@ The prerequisites for installing the project :
 3.  Execute the command `npm start` in the view folder
 4.  Execute the command `go run *.go` in the service folder
 ### for executing tests
-5. `cd tests && mocha tests.js`
+5. `cd tests && npm install && mocha tests.js`
