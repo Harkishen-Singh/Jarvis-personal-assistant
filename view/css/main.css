@@ -41,3 +41,16 @@ header {
     padding: 5px 10px 5px 10px;
     border-radius: 5px;
 }
+
+.chat-screen-messages-you {
+    border: 1px solid black;
+    display: inline-flex;
+    padding: 4px;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+#chat-screen {
+    text-align: center;
+    display: list-item;
+}

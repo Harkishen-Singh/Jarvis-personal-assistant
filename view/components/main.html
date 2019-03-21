@@ -1,5 +1,31 @@
-<div>
-    This is the main part of jarvis
+<div data-ng-init="initStack()">
+    <span id="chat-screen">
+        Chat Screen
+        <hr>
+    </span>
     <!-- message field -->
-    <div data-ng-include="'components/message-field.html'"></div>
+    <div id="message-bar">
+        <span id="message-input-parent">
+            <input type="text" name="" id="message-input" data-ng-model="message">
+            <button id="message-bar-send" data-ng-click="addMessagesToStack()">
+                Send
+            </button>
+        </span>
+    </div>
+
+    <!-- chat screen -->
+
+    <div data-ng-show="messageStack.length !== 0">
+        <div data-ng-repeat="message in messageStack">
+            <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you">
+                {{message.message}}
+                <span>
+                    <sub>
+                        {{message.sender}}
+                        {{message.time}}
+                    </sub>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>

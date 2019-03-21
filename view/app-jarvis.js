@@ -1,4 +1,4 @@
-const app = angular.module('jarvis', ['ngRoute']);
+var app = angular.module('jarvis', ['ngRoute']);
 
 app.config(function($routeProvider,$locationProvider) {
     $routeProvider
@@ -10,5 +10,33 @@ app.config(function($routeProvider,$locationProvider) {
 });
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
-    console.warn('main controller called');
+    // var messageStack = [];
+    const date = new Date();
+
+    $scope.messageStack = [];
+    $scope.addMessagesToStack = function() {
+        let message = $scope.message,
+            hrs = date.getHours(),
+            mins = date.getMinutes(),
+            messageObj = {
+                message: '',
+                sender:'',
+                time:'',
+                length: null
+            };
+
+        messageObj.message = message;
+        messageObj.length = message.length;
+        messageObj.time = String(hrs + ':' + mins);
+        messageObj.sender = 'you';
+
+        $scope.messageStack.push(messageObj);
+
+        console.warn($scope.messageStack);
+    }
+
+    $scope.initStack = function() {
+        $scope.message = "Type a message ...";
+    }
+
 });
