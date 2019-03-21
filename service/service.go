@@ -7,6 +7,7 @@ import (
 
 func routes() {
 	http.HandleFunc("/", controllers.HomeController)
+	http.HandleFunc("/message", controllers.MessagesController)
 }
 
 // Server service server for Jarvis
