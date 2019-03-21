@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./utils"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
 )
 
 

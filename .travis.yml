@@ -24,6 +24,7 @@ before-install:
   - nvm install stable
   - nvm use stable
   - go get github.com/op/go-logging
+  - go 
   - npm install -g http-server selenium-webdriver mocha mochawesome
   - cd tests/
   - cd npm install

@@ -2,7 +2,7 @@ package utils
 
 import (
 	"net/http"
-	"../controllers"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers"
 )
 
 func routes() {
