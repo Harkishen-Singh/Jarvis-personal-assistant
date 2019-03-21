@@ -61,6 +61,6 @@ header {
     display: list-item;
 }
 
-#show-user-creds {
+.show-user-creds {
     padding: 5px;
 }
