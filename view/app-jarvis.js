@@ -32,9 +32,17 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
         $scope.messageStack.push(messageObj);
 
+        $scope.message = "Type a message ...";
+
         console.warn($scope.messageStack);
         } else {
             alert('Please enter a message');
+        }
+    }
+
+    $scope.removeMessage = function(){
+        if($scope.message.startsWith('Type a message ...')){
+            $scope.message = "";
         }
     }
 
