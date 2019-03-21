@@ -32,7 +32,7 @@ before-install:
 
 script:
   - go run service/maintut.go &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver
+  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver
   - cd view/ && npm start && cd ..
   - go test -v ./...
   - cd tests/
