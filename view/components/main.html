@@ -15,12 +15,12 @@
 
     <!-- chat screen -->
 
-    <div data-ng-show="messageStack.length !== 0">
-        <div data-ng-repeat="message in messageStack">
+    <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
+        <div data-ng-repeat="message in messageStack" id="stackArea">
             <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you">
                 {{message.message}}
                 <span>
-                    <sub>
+                    <sub class="show-user-creds">
                         {{message.sender}}
                         {{message.time}}
                     </sub>

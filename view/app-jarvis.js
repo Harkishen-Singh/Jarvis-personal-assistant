@@ -10,12 +10,12 @@ app.config(function($routeProvider,$locationProvider) {
 });
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
-    // var messageStack = [];
-    const date = new Date();
 
     $scope.messageStack = [];
     $scope.addMessagesToStack = function() {
-        let message = $scope.message,
+        if (!$scope.message.startsWith('Type a message')) {
+            let message = $scope.message,
+            date = new Date(),
             hrs = date.getHours(),
             mins = date.getMinutes(),
             messageObj = {
@@ -33,6 +33,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
         $scope.messageStack.push(messageObj);
 
         console.warn($scope.messageStack);
+        } else {
+            alert('Please enter a message');
+        }
     }
 
     $scope.initStack = function() {
