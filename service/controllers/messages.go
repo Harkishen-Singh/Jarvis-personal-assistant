@@ -12,7 +12,7 @@ type response struct {
 }
 
 type statusCode struct {
-	status string `json:"status"`
+	status string
 }
 
 // MessagesController controls messages handling
@@ -27,7 +27,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(contentReceived)
 	reponseToReq := &statusCode{status: "success"}
-	resp, _ := json.Marshal(reponseToReq)
-	fmt.Println(resp)
-	w.Write(resp)
+	rep, _ := json.Marshal(reponseToReq)
+	fmt.Println(string(rep))
+	w.Write([]byte(`{"status": "success"}`))
 }
