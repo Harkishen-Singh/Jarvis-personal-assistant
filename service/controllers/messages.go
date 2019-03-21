@@ -24,7 +24,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 		username: r.FormValue("username"),
 		message: r.FormValue("message"),
 	}
-	fmt.Println(contentReceived)
+	// fmt.Println(contentReceived)
 	w.Write([]byte(`{"status": "success"}`))
 
 }

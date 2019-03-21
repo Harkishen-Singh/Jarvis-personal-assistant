@@ -31,8 +31,9 @@ before-install:
   - cd npm install
 
 script:
-  - go run service/*.go
-  - cd view/ && npm start
+  - go run service/maintut.go &
+  - cd view/
+  - npm start
   - cd ..
   - go test -v ./...
   - cd tests/
