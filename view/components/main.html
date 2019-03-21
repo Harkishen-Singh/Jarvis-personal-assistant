@@ -9,4 +9,20 @@
             </button>
         </span>
     </div>
+
+    <!-- chat screen -->
+
+    <div data-ng-show="messageStack.length !== 0">
+        <div data-ng-repeat="message in messageStack">
+            <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you">
+                {{message.message}}
+                <span>
+                    <sub>
+                        {{message.sender}}
+                        {{message.time}}
+                    </sub>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>
