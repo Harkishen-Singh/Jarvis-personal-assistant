@@ -25,12 +25,12 @@ before-install:
   - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
   - cd tests/
   - cd npm install
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.
+  - set -xe
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+  - apt-get update -yqqq
+  - apt-get install -y google-chrome-stable
+
 
 script:
   - go run service/maintut.go &
