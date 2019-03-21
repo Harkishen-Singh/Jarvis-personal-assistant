@@ -10,7 +10,9 @@ The prerequisites for installing the project :
 
 
 ## Installation
-1. `sudo npm install -g http-server`
+1. `sudo npm install -g http-server selenium-webdriver mocha mochawesome`
 2. `go get github.com/op/go-logging`
 3.  Execute the command `npm start` in the view folder
 4.  Execute the command `go run *.go` in the service folder
+### for executing tests
+5. `cd tests && mocha tests.js`
