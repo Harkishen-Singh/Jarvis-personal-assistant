@@ -14,7 +14,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
     $scope.messageStack = [];
     $scope.addMessagesToStack = function() {
         if (!$scope.message.startsWith('Type a message')) {
-            console.log('thiss')
             let message = $scope.message,
             date = new Date(),
             hrs = date.getHours(),
