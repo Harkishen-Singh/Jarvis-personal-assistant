@@ -49,3 +49,8 @@ header {
     border-radius: 4px;
     margin: 4px;
 }
+
+#chat-screen {
+    text-align: center;
+    display: list-item;
+}
