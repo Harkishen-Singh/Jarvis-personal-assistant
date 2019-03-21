@@ -35,5 +35,5 @@ script:
   - cd view/ && npm start && cd ..
   - go test -v ./...
   - cd tests/
-  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests.js
+  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
 
