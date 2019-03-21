@@ -1,0 +1,41 @@
+os:
+  -linux
+
+addons:
+  - chrome:stable
+
+services:
+  - xvfb
+  - docker
+
+language: go
+
+go:
+  - 1.11.x
+
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install
+
+notifications:
+  email: false
+
+cache:
+  - tests/node_modules
+
+before-install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - go get github.com/op/go-logging
+  - npm install -g http-server selenium-webdriver mocha mochawesome
+  - cd tests/
+  - cd npm install
+
+script:
+  - go test -v ./...
+  - cd tests/
+  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests.js
+
