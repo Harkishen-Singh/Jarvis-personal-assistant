@@ -31,10 +31,8 @@ before-install:
 
 script:
   - go run service/maintut.go &
-  - cd view/
   - npm install -g http-server selenium-webdriver mocha mochawesome
-  - npm start
-  - cd ..
+  - cd view/ && npm start
   - go test -v ./...
   - cd tests/
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests.js
