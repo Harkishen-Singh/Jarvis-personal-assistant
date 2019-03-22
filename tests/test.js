@@ -1,25 +1,26 @@
 const webdriver = require('selenium-webdriver'),
-    chrome = require('selenium-webdriver/chrome'),
+    firefox = require('selenium-webdriver/firefox'),
     By = webdriver.By;
 
 { describe, it, after, before } require('selenium-webdriver/testing')
 
 require('chromedriver');
+require('geckodriver');
 
 var driver;
 
-var options = new chrome.Options();
+var options = new firefox.Options();
 options.addArguments("--no-sandbox");
 options.addArguments("--disable-dev-shm-usage");
 options.addArguments("--disable-gpu");
 
-describe("Chrome Environments", function() {
+describe("Firefox Environments", function() {
     this.timeout(60000);
 
     it("Creating virtual browser instances", done => {
         driver = new webdriver.Builder()
-                    .setChromeOptions(options)
-                    .forBrowser('chrome')
+                    .setFirefoxOptions(options)
+                    .forBrowser('firefox')
                     .build();
         driver.then(() => {
             done();
