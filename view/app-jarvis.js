@@ -75,6 +75,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 
 var recognizing;
+// eslint-disable-next-line no-undef
 var recognition = new webkitSpeechRecognition();
 recognition.continuous = true;
 reset();
@@ -90,9 +91,11 @@ recognition.onresult = function (event) {
 
 function reset() {
 	recognizing = false;
+	// eslint-disable-next-line no-undef
 	button.innerHTML = 'Click to Speak';
 }
 
+// eslint-disable-next-line no-unused-vars
 function toggleStartStop() {
 	if (recognizing) {
 		recognition.stop();
@@ -100,6 +103,7 @@ function toggleStartStop() {
 	} else {
 		recognition.start();
 		recognizing = true;
+		// eslint-disable-next-line no-undef
 		button.innerHTML = 'Click to Stop';
 	}
 }
