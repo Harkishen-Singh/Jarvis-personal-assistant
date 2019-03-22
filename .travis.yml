@@ -32,7 +32,8 @@ before-install:
 
 script:
   - go run service/maintut.go &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver
+  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
+  - eslint view/app-jarvis.js
   - cd view/ && npm start && cd ..
   - go test -v ./...
   - cd tests/

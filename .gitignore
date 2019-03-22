@@ -1,4 +1,5 @@
 view/node_modules
+view/package-lock.json
 tests/node_modules
 tests/package-lock.json
 tests/mochawesome-report

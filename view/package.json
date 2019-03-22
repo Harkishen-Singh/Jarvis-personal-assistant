@@ -14,5 +14,8 @@
     "cet"
   ],
   "author": "code zero",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^5.15.3"
+  }
 }

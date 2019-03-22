@@ -10,9 +10,10 @@ The prerequisites for installing the project :
 
 
 ## Installation
-1. `sudo npm install -g http-server selenium-webdriver mocha mochawesome`
+1. `sudo npm install -g http-server selenium-webdriver mocha mochawesome eslint`
 2. `go get github.com/op/go-logging`
 3.  Execute the command `npm start` in the view folder
 4.  Execute the command `go run *.go` in the service folder
 ### for executing tests
+4. `eslint view/app-jarvis.js` # for linting checks
 5. `cd tests && npm install && mocha tests.js`
