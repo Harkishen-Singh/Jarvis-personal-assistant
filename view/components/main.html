@@ -6,10 +6,14 @@
     <!-- message field -->
     <div id="message-bar">
         <span id="message-input-parent">
-            <input type="text" name="" id="message-input" data-ng-model="message" data-ng-click="removeMessage()">
-            <button id="message-bar-send" data-ng-click="addMessagesToStack()">
+            <div class="inputWithIcon">
+                <input type="text" name="" id="message-input" data-ng-model="message" data-ng-click="removeMessage()">
+                <fa-icon [icon]="famicrophone"></fa-icon>
+                <!-- <i class="fas fa-microphone"></i> -->
+                <button id="message-bar-send" data-ng-click="addMessagesToStack()">
                 Send
-            </button>
+                </button>
+            </div>
         </span>
     </div>
 

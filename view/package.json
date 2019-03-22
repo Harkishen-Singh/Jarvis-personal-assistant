@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -s &"
+    "start": "http-server"
   },
   "keywords": [
     "jarvis",
@@ -14,5 +14,12 @@
     "cet"
   ],
   "author": "code zero",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/angular-fontawesome": "^0.3.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "add": "^2.0.6",
+    "npm": "^6.9.0"
+  }
 }
