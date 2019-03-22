@@ -1,5 +1,7 @@
 os:
-  -linux
+  - linux
+  - osx
+  - windows
 
 services:
   - xvfb
@@ -14,7 +16,7 @@ addons:
   firefox: "65.0.2"
 
 notifications:
-  email: true
+  email: truemac
 
 cache:
   - tests/node_modules/
