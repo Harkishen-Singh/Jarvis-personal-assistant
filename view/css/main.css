@@ -64,36 +64,3 @@ header {
 .show-user-creds {
     padding: 5px;
 }
-
-.inputWithIcon input[type="text"] {
-  padding-left: 40px;
-}
-
-.inputWithIcon {
-  position: relative;
-}
-
-.inputWithIcon i {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  padding: 9px 8px;
-  color: #aaa;
-  transition: 0.3s;
-}
-
-.inputWithIcon input[type="text"]:focus + i {
-  color: dodgerBlue;
-}
-
-.inputWithIcon.inputIconBg i {
-  background-color: #aaa;
-  color: #fff;
-  padding: 9px 4px;
-  border-radius: 4px 0 0 4px;
-}
-
-.inputWithIcon.inputIconBg input[type="text"]:focus + i {
-  color: #fff;
-  background-color: dodgerBlue;
-}
