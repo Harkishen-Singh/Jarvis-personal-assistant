@@ -86,14 +86,11 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		recognition.onresult = function (event) {
 			var final = "";
 			var interim = "";
-			console.log("result")
 			// console.log($scope.message)
 			for (var i = 0; i < event.results.length; ++i) {
 				if (event.results[i].isFinal) {
-					console.log("Bye")
 					$scope.message = event.results[i][0].transcript;
 				}else{
-					console.log("hii")
 					$scope.message += event.results[i][0].transcript;
 				}
 			}
