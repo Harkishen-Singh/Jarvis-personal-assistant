@@ -75,26 +75,33 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	};
 
 	$scope.startSpeak = function() {
-		// eslint-disable-next-line no-undef
-		// var recognition = new webkitSpeechRecognition();
 		recognition.continuous = true;
+		recognition.interimResults = true;
 		setTimeout(() => {
 			reset();
-		}, 1000);
+		}, 100);
 		// reset();
 		recognition.onend = reset;
 
 		recognition.onresult = function (event) {
-			for (var i = event.resultIndex; i < event.results.length; ++i) {
+			var final = "";
+			var interim = "";
+			console.log("result")
+			// console.log($scope.message)
+			for (var i = 0; i < event.results.length; ++i) {
 				if (event.results[i].isFinal) {
-					$scope.message = event.results[0][0].transcript;
+					console.log("Bye")
+					$scope.message = event.results[i][0].transcript;
+				}else{
+					console.log("hii")
+					$scope.message += event.results[i][0].transcript;
 				}
 			}
 		};
 
 		function reset() {
 			recognizing = false;
-			var button = document.getElementById('message-input');
+			var button = document.getElementById('button');
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Speak';
 		}
@@ -107,15 +114,16 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		} else {
 			recognition.start();
 			recognizing = true;
-			var button = document.getElementById('message-input');
+			var button = document.getElementById('button');
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Stop';
+			$scope.message = "";
 		}
 	};
 
 	$scope.reset = function() {
 		recognizing = false;
-		var button = document.getElementById('message-input');
+		var button = document.getElementById('button');
 		// eslint-disable-next-line no-undef
 		button.innerHTML = 'Click to Speak';
 	};
