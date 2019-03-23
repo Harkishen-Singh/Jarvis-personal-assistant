@@ -16,6 +16,8 @@
   "author": "code zero",
   "license": "ISC",
   "dependencies": {
+    "add": "^2.0.6",
+    "npm": "^6.9.0",
     "eslint": "^5.15.3"
   }
 }

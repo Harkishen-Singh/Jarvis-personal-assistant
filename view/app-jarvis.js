@@ -72,3 +72,39 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	};
 
 });
+
+
+var recognizing;
+// eslint-disable-next-line no-undef
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+reset();
+recognition.onend = reset;
+
+recognition.onresult = function (event) {
+	for (var i = event.resultIndex; i < event.results.length; ++i) {
+		if (event.results[i].isFinal) {
+			document.getElementById('message-input').innerHTML += event.results[i][0].transcript;
+		}
+	}
+};
+
+function reset() {
+	recognizing = false;
+	// eslint-disable-next-line no-undef
+	button.innerHTML = 'Click to Speak';
+}
+
+// eslint-disable-next-line no-unused-vars
+function toggleStartStop() {
+	if (recognizing) {
+		recognition.stop();
+		reset();
+	} else {
+		recognition.start();
+		recognizing = true;
+		// eslint-disable-next-line no-undef
+		button.innerHTML = 'Click to Stop';
+	}
+}
+

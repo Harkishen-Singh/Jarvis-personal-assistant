@@ -14,7 +14,7 @@ header {
 }
 
 #sidebar {
-    height: 100vh;
+    height: 94vh;
     max-height: 100vh;
     border-right: 2px solid #6d5e5e;
     position: absolute;
@@ -29,7 +29,7 @@ header {
 }
 
 #message-input {
-    width: 70%;
+    width: 65%;
     border-radius: 10px;
     background-color: #fff;
     padding: 7px;
