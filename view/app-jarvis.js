@@ -3,6 +3,9 @@
 const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
+// eslint-disable-next-line no-undef
+var recognition = new webkitSpeechRecognition();
+var recognizing;
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -71,40 +74,53 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.message = 'Type a message ...';
 	};
 
+	$scope.startSpeak = function() {
+		// eslint-disable-next-line no-undef
+		// var recognition = new webkitSpeechRecognition();
+		recognition.continuous = true;
+		setTimeout(() => {
+			reset();
+		}, 1000);
+		// reset();
+		recognition.onend = reset;
+
+		recognition.onresult = function (event) {
+			for (var i = event.resultIndex; i < event.results.length; ++i) {
+				if (event.results[i].isFinal) {
+					$scope.message = event.results[0][0].transcript;
+				}
+			}
+		};
+
+		function reset() {
+			recognizing = false;
+			var button = document.getElementById('message-input');
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Speak';
+		}
+	};
+
+	$scope.toggleStartStop = function() {
+		if (recognizing) {
+			recognition.stop();
+			this.reset();
+		} else {
+			recognition.start();
+			recognizing = true;
+			var button = document.getElementById('message-input');
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Stop';
+		}
+	};
+
+	$scope.reset = function() {
+		recognizing = false;
+		var button = document.getElementById('message-input');
+		// eslint-disable-next-line no-undef
+		button.innerHTML = 'Click to Speak';
+	};
 });
 
 
-var recognizing;
-// eslint-disable-next-line no-undef
-var recognition = new webkitSpeechRecognition();
-recognition.continuous = true;
-reset();
-recognition.onend = reset;
 
-recognition.onresult = function (event) {
-	for (var i = event.resultIndex; i < event.results.length; ++i) {
-		if (event.results[i].isFinal) {
-			document.getElementById('message-input').innerHTML += event.results[i][0].transcript;
-		}
-	}
-};
-
-function reset() {
-	recognizing = false;
-	// eslint-disable-next-line no-undef
-	button.innerHTML = 'Click to Speak';
-}
-
-// eslint-disable-next-line no-unused-vars
-function toggleStartStop() {
-	if (recognizing) {
-		recognition.stop();
-		reset();
-	} else {
-		recognition.start();
-		recognizing = true;
-		// eslint-disable-next-line no-undef
-		button.innerHTML = 'Click to Stop';
-	}
-}
 

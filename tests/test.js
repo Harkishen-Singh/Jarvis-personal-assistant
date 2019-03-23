@@ -2,7 +2,8 @@ const webdriver = require('selenium-webdriver'),
     firefox = require('selenium-webdriver/firefox'),
     By = webdriver.By;
 
-{ describe, it, after, before } require('selenium-webdriver/testing')
+// eslint-disable-next-line no-undef
+{ describe, it, after, before } require('selenium-webdriver/testing');
 
 require('chromedriver');
 require('geckodriver');
