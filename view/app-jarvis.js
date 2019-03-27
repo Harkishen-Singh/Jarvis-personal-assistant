@@ -96,10 +96,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			// console.log($scope.message)
 			for (var i = 0; i < event.results.length; ++i) {
 				if (event.results[i].isFinal) {
-					console.log(mess)
+					console.log(mess);
 					mess.value += event.results[i][0].transcript;
 				}else{
-					console.log(mess)
+					console.log(mess);
 					mess.value += event.results[i][0].transcript;
 				}
 			}
@@ -118,7 +118,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.start();
 			$scope.showLoaderListening = true;
 			recognizing = true;
-			$scope.message = "";
+			$scope.message = '';
 		}
 	};
 
