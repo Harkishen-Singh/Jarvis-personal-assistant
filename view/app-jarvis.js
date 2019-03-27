@@ -83,22 +83,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 		recognition.onresult = function (event) {
 			var mess = document.getElementById('message-input');
-			// for (var i = 0; i < event.results.length; ++i) {
-			// 	if ((i < event.results.length - 2) && i > 0) {
-			// 		event.results[i][0].transcript = event.results[i-1][0].transcript + event.results[i][0].transcript;
-			// 	} else if (i == event.results.length -1 && i > 0) {
-			// 		console.log(event.results[i][0].transcript);
-			// 		event.results[i][0].transcript = event.results[i-1][0].transcript + event.results[i][0].transcript;
-			// 		mess.value = event.results[i][0].transcript;
-			// 	} else {
-			// 		mess.value = event.results[i][0].transcript;
-			// 	}
-			// console.log($scope.message)
-			for (var i = 0; i < event.results.length; ++i) {
+			mess.value = '';
+			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
 					console.log(mess);
 					mess.value += event.results[i][0].transcript;
-				}else{
+					$scope.message = mess.value;
+				} else {
 					console.log(mess);
 					mess.value += event.results[i][0].transcript;
 				}
@@ -109,11 +100,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			console.warn('came');
 		}
 
+		var button = document.getElementById('button');
 		if (recognizing) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
 			// this.reset();
 			recognizing = false;
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Speak';
 		} else {
 			recognition.start();
 			$scope.showLoaderListening = true;
