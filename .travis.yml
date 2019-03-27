@@ -10,8 +10,14 @@ language: go
 go:
   - 1.11.x
 
+# addons:
+#   firefox: "65.0.2"
+
 addons:
-  firefox: "65.0.2"
+  chrome: stable
+  apt:
+    packages:
+      - chromium-chromedriver
 
 notifications:
   email: truemac

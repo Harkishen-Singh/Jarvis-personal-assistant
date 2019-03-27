@@ -3,9 +3,6 @@
 const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-// eslint-disable-next-line no-undef
-var recognition = new webkitSpeechRecognition();
-var recognizing;
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -74,56 +71,53 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.message = 'Type a message ...';
 	};
 
-	$scope.startSpeak = function() {
+	// eslint-disable-next-line no-undef
+	var recognition = new webkitSpeechRecognition();
+	var recognizing;
+
+	$scope.toggleStartStop = function() {
 		recognition.continuous = true;
-		recognition.interimResults = true;
-		setTimeout(() => {
-			reset();
-		}, 100);
-		// reset();
+		reset();
 		recognition.onend = reset;
 
 		recognition.onresult = function (event) {
-			var final = "";
-			var interim = "";
-			// console.log($scope.message)
+			var mess = document.getElementById('message-input');
 			for (var i = 0; i < event.results.length; ++i) {
-				if (event.results[i].isFinal) {
-					$scope.message = event.results[i][0].transcript;
-				}else{
-					$scope.message += event.results[i][0].transcript;
+				if ((i < event.results.length - 2) && i > 0) {
+					event.results[i][0].transcript = event.results[i-1][0].transcript + event.results[i][0].transcript;
+				} else if (i == event.results.length -1 && i > 0) {
+					console.log(event.results[i][0].transcript);
+					event.results[i][0].transcript = event.results[i-1][0].transcript + event.results[i][0].transcript;
+					mess.value = event.results[i][0].transcript;
+				} else {
+					mess.value = event.results[i][0].transcript;
 				}
 			}
 		};
 
 		function reset() {
-			recognizing = false;
+			console.warn('came');
 			var button = document.getElementById('button');
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Speak';
 		}
-	};
 
-	$scope.toggleStartStop = function() {
 		if (recognizing) {
 			recognition.stop();
-			this.reset();
+			// this.reset();
+			recognizing = false;
+			var button = document.getElementById('button');
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Speak';
 		} else {
 			recognition.start();
 			recognizing = true;
-			var button = document.getElementById('button');
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Stop';
 			$scope.message = "";
 		}
 	};
 
-	$scope.reset = function() {
-		recognizing = false;
-		var button = document.getElementById('button');
-		// eslint-disable-next-line no-undef
-		button.innerHTML = 'Click to Speak';
-	};
 });
 
 
