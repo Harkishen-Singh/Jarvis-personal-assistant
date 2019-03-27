@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
 			title:'Jarvis - personal assistant',
 		});
 });
-console.log('ccccc')
+
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.messageStack = [];
