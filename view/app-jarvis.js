@@ -16,6 +16,7 @@ app.config(function($routeProvider) {
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.messageStack = [];
+	$scope.showLoaderListening = false;
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
 			let message = $scope.message,
@@ -110,10 +111,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 		if (recognizing) {
 			recognition.stop();
+			$scope.showLoaderListening = false;
 			// this.reset();
 			recognizing = false;
 		} else {
 			recognition.start();
+			$scope.showLoaderListening = true;
 			recognizing = true;
 			$scope.message = "";
 		}

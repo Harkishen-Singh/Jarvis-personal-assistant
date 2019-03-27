@@ -5,13 +5,18 @@
     </span>
     <!-- message field -->
     <div id="message-bar">
-        <span id="message-input-parent">
+        <div id="message-input-parent">
             <input type="text" name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
             <button id="message-bar-send" data-ng-click="addMessagesToStack()">
                 Send
             </button>
-                <img src="../assest/icons/mic.png" alt="" id="button" style="height: 40px;margin-left: 15px;" data-ng-click="toggleStartStop()" />
-        </span>
+            <!-- banner -->
+            <div id="banner-listen" data-ng-show="showLoaderListening">
+                <span>Listening ... </span>
+                <img src="../assest/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
+            </div>
+            <img src="../assest/icons/mic.png" alt="Click to Start/Stop speaking" id="button" style="height: 40px;margin-left: 15px;" data-ng-click="toggleStartStop()" />
+        </div>
     </div>
 
     <!-- chat screen -->
