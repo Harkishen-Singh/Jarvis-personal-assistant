@@ -7,11 +7,12 @@
     <div id="message-bar">
         <span id="message-input-parent">
             <input type="text" name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
-            <button id="button" id="button"  data-ng-click="toggleStartStop()" data-ng-init="startSpeak()" >Click to speak</button>
-            <!-- <input type="button" id ="button" value="" onclick="toggleStartStop()"> -->
+
             <button id="message-bar-send" data-ng-click="addMessagesToStack()">
                 Send
             </button>
+            <button id="button" id="button"  data-ng-click="toggleStartStop()" data-ng-init="startSpeak()" >Click to speak</button>
+            <!-- <input type="button" id ="button" value="" onclick="toggleStartStop()"> -->
         </span>
     </div>
 

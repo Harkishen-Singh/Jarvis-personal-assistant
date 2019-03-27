@@ -103,22 +103,20 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	$scope.toggleStartStop = function() {
 		if (recognizing) {
 			recognition.stop();
-			this.reset();
+			// this.reset();
+			recognizing = false;
+			var button = document.getElementById('message-input');
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Speak';
 		} else {
 			recognition.start();
 			recognizing = true;
-			var button = document.getElementById('message-input');
+			// var button = document.getElementById('message-input');
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Stop';
 		}
 	};
 
-	$scope.reset = function() {
-		recognizing = false;
-		var button = document.getElementById('message-input');
-		// eslint-disable-next-line no-undef
-		button.innerHTML = 'Click to Speak';
-	};
 });
 
 

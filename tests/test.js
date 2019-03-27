@@ -1,5 +1,5 @@
 const webdriver = require('selenium-webdriver'),
-    firefox = require('selenium-webdriver/firefox'),
+    chrome = require('selenium-webdriver/chrome'),
     By = webdriver.By;
 
 // eslint-disable-next-line no-undef
@@ -10,18 +10,18 @@ require('geckodriver');
 
 var driver;
 
-var options = new firefox.Options();
+var options = new chrome.Options();
 options.addArguments("--no-sandbox");
 options.addArguments("--disable-dev-shm-usage");
 options.addArguments("--disable-gpu");
 
-describe("Firefox Environments", function() {
+describe("Chrome Environments", function() {
     this.timeout(60000);
 
     it("Creating virtual browser instances", done => {
         driver = new webdriver.Builder()
-                    .setFirefoxOptions(options)
-                    .forBrowser('firefox')
+                    .setChromeOptions(options)
+                    .forBrowser('chrome')
                     .build();
         driver.then(() => {
             done();
@@ -29,7 +29,7 @@ describe("Firefox Environments", function() {
     });
 
     it("Opening Jarvis assistant", done => {
-        driver.get('http://127.0.0.1:8080').then(() => {
+        driver.get('http://localhost:8080').then(() => {
             done();
         });
     });
@@ -46,7 +46,7 @@ describe("Firefox Environments", function() {
         it("Insert message", done => {
             driver.findElement(By.xpath('//*[@id="message-input"]')).click();
             driver.findElement(By.xpath('//*[@id="message-input"]')).then(vals => {
-                vals.sendKeys('Hi! This is selenium Bot.');
+                vals.sendKeys('_Hi! This is selenium Bot.');
                 driver.findElement(By.xpath('//*[@id="message-bar-send"]')).click().then( rr => {
                     done();
                 });
