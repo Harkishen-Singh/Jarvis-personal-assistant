@@ -16,6 +16,7 @@ app.config(function($routeProvider) {
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.messageStack = [];
+	$scope.showLoaderListening = false;
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
 			let message = $scope.message,
@@ -104,6 +105,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 		if (recognizing) {
 			recognition.stop();
+			$scope.showLoaderListening = false;
 			// this.reset();
 			recognizing = false;
 			var button = document.getElementById('button');
@@ -111,6 +113,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			button.innerHTML = 'Click to Speak';
 		} else {
 			recognition.start();
+			$scope.showLoaderListening = true;
 			recognizing = true;
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Stop';

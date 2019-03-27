@@ -64,3 +64,17 @@ header {
 .show-user-creds {
     padding: 5px;
 }
+
+#banner-listen {
+    position: fixed;
+    text-align: center;
+    /* display: inline-block; */
+    top: 20%;
+    left: 56%;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#loader {
+    height: 30px;
+}
