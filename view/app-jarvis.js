@@ -12,7 +12,7 @@ app.config(function($routeProvider) {
 			title:'Jarvis - personal assistant',
 		});
 });
-
+console.log('ccccc')
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.messageStack = [];
@@ -88,6 +88,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				if (event.results[i].isFinal) {
 					console.log(mess);
 					mess.value += event.results[i][0].transcript;
+					$scope.message = mess.value;
 				} else {
 					console.log(mess);
 					mess.value += event.results[i][0].transcript;
