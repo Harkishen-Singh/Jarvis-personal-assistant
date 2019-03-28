@@ -2,5 +2,6 @@ view/node_modules
 view/package-lock.json
 tests/node_modules
 tests/package-lock.json
+service/audio/
 tests/mochawesome-report
 package-lock.json
