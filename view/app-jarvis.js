@@ -91,9 +91,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
 					mess.value += event.results[i][0].transcript;
-					console.log(mess.value)
-					if (mess.value.endsWith('send')){
-						var n = mess.value.lastIndexOf("send");
+					if (mess.value.endsWith('send')) {
+						var n = mess.value.lastIndexOf('send');
 						var submessage =  mess.value.substring(0,n);
 						$scope.message = submessage;
 						$scope.addMessagesToStack();
@@ -103,7 +102,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				} else {
 					mess.value += event.results[i][0].transcript;
 					$scope.message = mess.value;
-					console.log(mess.value)
 				}
 			}
 		};
