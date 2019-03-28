@@ -15,10 +15,22 @@ app.config(function($routeProvider) {
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
+	// eslint-disable-next-line no-undef
+	var recognition = new webkitSpeechRecognition();
+	var recognizing;
+
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
+
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
+
+			if ($scope.showLoaderListening) {
+				$scope.showLoaderListening = false;
+				recognition.stop();
+				recognizing = false;
+			}
+
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -48,15 +60,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				data:data
 			}).then(resp => {
 				let res = resp.data;
-				console.warn('response from service');
-				console.warn(res);
+				console.log(res);
 			}).catch(e => {
 				throw e;
 			});
 
 			$scope.message = 'Type a message ...';
-
-			console.warn($scope.messageStack);
 		} else {
 			alert('Please enter a message');
 		}
@@ -72,42 +81,28 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.message = 'Type a message ...';
 	};
 
-	// eslint-disable-next-line no-undef
-	var recognition = new webkitSpeechRecognition();
-	var recognizing;
-
 	$scope.toggleStartStop = function() {
 		recognition.continuous = true;
-		reset();
-		recognition.onend = reset;
+		// recognition.onend = reset;
 
 		recognition.onresult = function (event) {
 			var mess = document.getElementById('message-input');
 			mess.value = '';
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
-					console.log(mess);
 					mess.value += event.results[i][0].transcript;
 					$scope.message = mess.value;
 				} else {
-					console.log(mess);
 					mess.value += event.results[i][0].transcript;
+					$scope.message = mess.value;
 				}
 			}
 		};
-
-		function reset() {
-			console.warn('came');
-			var button = document.getElementById('button');
-			// eslint-disable-next-line no-undef
-			button.innerHTML = 'Click to Speak';
-		}
 
 		var button = document.getElementById('button');
 		if (recognizing) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
-			// this.reset();
 			recognizing = false;
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Speak';
@@ -115,8 +110,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.start();
 			$scope.showLoaderListening = true;
 			recognizing = true;
-			// eslint-disable-next-line no-undef
-			button.innerHTML = 'Click to Stop';
+			$scope.message = '';
 		}
 	};
 
