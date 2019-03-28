@@ -26,6 +26,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		if (!$scope.message.startsWith('Type a message')) {
 
 			if ($scope.showLoaderListening) {
+				console.log(recognizing);
 				$scope.showLoaderListening = false;
 				recognition.stop();
 				recognizing = false;
@@ -66,6 +67,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			});
 
 			$scope.message = 'Type a message ...';
+			if (!recognizing) {
+				console.log('adfa');
+				setTimeout(function()
+				{ 
+					$scope.toggleStartStop();
+				}, 
+				2000);
+			}
+
 		} else {
 			alert('Please enter a message');
 		}
@@ -79,45 +89,61 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.initStack = function() {
 		$scope.message = 'Type a message ...';
+		$scope.toggleStartStop();
 	};
 
 	$scope.toggleStartStop = function() {
 		recognition.continuous = true;
-		// recognition.onend = reset;
 
 		recognition.onresult = function (event) {
+			var n, submessage;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
 					mess.value += event.results[i][0].transcript;
 					if (mess.value.endsWith('send')) {
-						var n = mess.value.lastIndexOf('send');
-						var submessage =  mess.value.substring(0,n);
+						n = mess.value.lastIndexOf('send');
+						submessage =  mess.value.substring(0,n);
 						$scope.message = submessage;
 						$scope.addMessagesToStack();
-					} else {
+					} 
+					else if (mess.value.includes('start jarvis')) {
+						n = mess.value.lastIndexOf('start jarvis');
+						submessage = mess.value.substring(n+12);
+						mess.value = submessage;
+						$scope.message = submessage; 
+					}
+					else {
 						$scope.message = mess.value;
 					}
+					
 				} else {
 					mess.value += event.results[i][0].transcript;
+					if (mess.value.includes('start jarvis')) {
+						n = mess.value.lastIndexOf('start jarvis');
+						submessage = mess.value.substring(n+12);
+						mess.value = submessage;
+					}
 					$scope.message = mess.value;
 				}
 			}
 		};
 
-		var button = document.getElementById('button');
 		if (recognizing) {
 			recognition.stop();
+			console.log(recognition);
 			$scope.showLoaderListening = false;
 			recognizing = false;
-			// eslint-disable-next-line no-undef
-			button.innerHTML = 'Click to Speak';
 		} else {
 			recognition.start();
+			console.log(recognition);
+			console.log(recognizing);
 			$scope.showLoaderListening = true;
+			console.log($scope.showLoaderListening);
 			recognizing = true;
 			$scope.message = '';
+			console.log(recognizing);
 		}
 	};
 
