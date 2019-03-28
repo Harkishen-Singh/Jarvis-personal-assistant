@@ -15,22 +15,10 @@ app.config(function($routeProvider) {
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
-	// eslint-disable-next-line no-undef
-	var recognition = new webkitSpeechRecognition();
-	var recognizing;
-
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
-
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
-
-			if ($scope.showLoaderListening) {
-				$scope.showLoaderListening = false;
-				recognition.stop();
-				recognizing = false;
-			}
-
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -59,36 +47,16 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				},
 				data:data
 			}).then(resp => {
-				let res = (resp.data),
-					message = res['message'],
-					status = res['status'],
-					hrs2 = new Date().getHours(),
-					mins2 = new Date().getMinutes();
-				messageObj = {
-					message: '',
-					sender: '',
-					time: '',
-					length: null
-				};
-
-				console.log(res);
-				if (status === 'success' || status) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
-					messageObj.length = message.length;
-					messageObj.message = message;
-					$scope.messageStack.push(messageObj);
-				} else {
-					console.error('[JARVIS] error fetching from service.');
-				}
-
-				// output view
-
+				let res = resp.data;
+				console.warn('response from service');
+				console.warn(res);
 			}).catch(e => {
 				throw e;
 			});
 
 			$scope.message = 'Type a message ...';
+
+			console.warn($scope.messageStack);
 		} else {
 			alert('Please enter a message');
 		}
@@ -104,35 +72,42 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.message = 'Type a message ...';
 	};
 
+	// eslint-disable-next-line no-undef
+	var recognition = new webkitSpeechRecognition();
+	var recognizing;
+
 	$scope.toggleStartStop = function() {
 		recognition.continuous = true;
-		// recognition.onend = reset;
+		reset();
+		recognition.onend = reset;
 
 		recognition.onresult = function (event) {
 			var mess = document.getElementById('message-input');
 			mess.value = '';
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
-					mess.value += event.results[i][0].transcript;
-					if (mess.value.endsWith('send')) {
-						var n = mess.value.lastIndexOf('send');
-						var submessage =  mess.value.substring(0,n);
-						$scope.message = submessage;
-						$scope.addMessagesToStack();
-					} else {
-						$scope.message = mess.value;
-					}
-				} else {
+					console.log(mess);
 					mess.value += event.results[i][0].transcript;
 					$scope.message = mess.value;
+				} else {
+					console.log(mess);
+					mess.value += event.results[i][0].transcript;
 				}
 			}
 		};
+
+		function reset() {
+			console.warn('came');
+			var button = document.getElementById('button');
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Speak';
+		}
 
 		var button = document.getElementById('button');
 		if (recognizing) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
+			// this.reset();
 			recognizing = false;
 			// eslint-disable-next-line no-undef
 			button.innerHTML = 'Click to Speak';
@@ -140,7 +115,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.start();
 			$scope.showLoaderListening = true;
 			recognizing = true;
-			$scope.message = '';
+			// eslint-disable-next-line no-undef
+			button.innerHTML = 'Click to Stop';
 		}
 	};
 
