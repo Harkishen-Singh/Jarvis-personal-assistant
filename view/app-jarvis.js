@@ -32,6 +32,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				recognizing = false;
 			}
 
+			var mess = document.getElementById('message-input');
+			mess.value = 'Type a message ...';
+			console.log('Reached');
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -68,7 +71,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 			$scope.message = 'Type a message ...';
 			if (!recognizing) {
-				console.log('adfa');
 				setTimeout(function()
 				{ 
 					$scope.toggleStartStop();
@@ -96,36 +98,42 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		recognition.continuous = true;
 
 		recognition.onresult = function (event) {
-			var n, submessage;
+			var n, m, submessage;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
+			text = '';
+			console.log("Hello")
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
-					mess.value += event.results[i][0].transcript;
-					if (mess.value.endsWith('send')) {
-						n = mess.value.lastIndexOf('send');
-						submessage =  mess.value.substring(0,n);
-						$scope.message = submessage;
-						$scope.addMessagesToStack();
-					} 
-					else if (mess.value.includes('start jarvis')) {
-						n = mess.value.lastIndexOf('start jarvis');
-						submessage = mess.value.substring(n+12);
+					text += event.results[i][0].transcript;
+					console.log(text)
+					if (text.includes('start Jarvis')) {
+						console.log("hii")
+						console.log(mess.value)
+						m = text.lastIndexOf('start Jarvis');
+						console.log(m)
+						submessage = text.substring(m+12);
+						console.log(submessage)
 						mess.value = submessage;
 						$scope.message = submessage; 
 					}
-					else {
-						$scope.message = mess.value;
-					}
-					
+
+					if (text.endsWith('send')) {
+						mess.value = text;
+						n = mess.value.lastIndexOf('send');
+						submessage =  mess.value.substring(m+12,n);
+						$scope.message = submessage;
+						$scope.addMessagesToStack();
+					} 
 				} else {
-					mess.value += event.results[i][0].transcript;
+					messa += event.results[i][0].transcript;
+					console.log(messa)
 					if (mess.value.includes('start jarvis')) {
+						mess.value += event.results[i][0].transcript;
 						n = mess.value.lastIndexOf('start jarvis');
 						submessage = mess.value.substring(n+12);
-						mess.value = submessage;
+						$scope.message = submessage;
 					}
-					$scope.message = mess.value;
 				}
 			}
 		};
@@ -143,6 +151,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			console.log($scope.showLoaderListening);
 			recognizing = true;
 			$scope.message = '';
+			console.log(recognizing);
 			console.log(recognizing);
 		}
 	};
