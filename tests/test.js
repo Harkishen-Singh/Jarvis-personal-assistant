@@ -70,7 +70,6 @@ describe("Chrome Environments", function() {
                 // })
                 driver.findElement(By.tagName('body')).then(a => {
                     a.getAttribute("innerHTML").then(cc => {
-                        console.log(cc)
                         done();
                     })
                 })

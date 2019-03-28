@@ -26,19 +26,25 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 		username: r.FormValue("username"),
 		message: r.FormValue("message"),
 	}
+	fmt.Println(request)
 
 	routes(request, w)
 
-	// w.Write([]byte(`{"status": "success", "message": "Hi from reply bot"}`))
+	w.Write([]byte(`{"status": "success", "message": "Hi from reply bot"}`))
 
 }
 
 func routes(routeObject response, w http.ResponseWriter) {
-	fmt.Println("inside routes")
 
 	message := routeObject.message
+	fmt.Println(message)
 	// messageTemp := message
-	firstPars := message[:strings.Index(message, " ")]
+	var firstPars string
+	if strings.Contains(message, " ") {
+		firstPars = message[:strings.Index(message, " ")]
+	} else {
+		firstPars = message
+	}
 
 	strArr := strings.Split(firstPars, " ")
 	strArrDiff := strings.Split(message, " ")
