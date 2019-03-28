@@ -63,8 +63,31 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				},
 				data:data
 			}).then(resp => {
-				let res = resp.data;
+				let res = (resp.data),
+					message = res['message'],
+					status = res['status'],
+					hrs2 = new Date().getHours(),
+					mins2 = new Date().getMinutes();
+				messageObj = {
+					message: '',
+					sender: '',
+					time: '',
+					length: null
+				};
+
 				console.log(res);
+				if (status === 'success' || status) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
+					$scope.messageStack.push(messageObj);
+				} else {
+					console.error('[JARVIS] error fetching from service.');
+				}
+
+				// output view
+
 			}).catch(e => {
 				throw e;
 			});

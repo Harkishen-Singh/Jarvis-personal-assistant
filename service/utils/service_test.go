@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"fmt"
+	"strings"
 )
 
 func Test_message_1_Service(t *testing.T) {
@@ -22,7 +23,7 @@ func Test_message_1_Service(t *testing.T) {
 	client := &http.Client{}
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
-	if !(string(body) == "{\"status\": \"success\"}") {
+	if !(strings.Contains(string(body), "{\"status\": \"success\"") || strings.Contains(string(body), "{\"status\": true")) {
 		t.Errorf("Response didnt match as required")
 	}
 }
@@ -40,7 +41,7 @@ func Test_message_2_Service(t *testing.T) {
 	client := &http.Client{}
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
-	if !(string(body) == "{\"status\": \"success\"}") {
+	if !(strings.Contains(string(body), "{\"status\": \"success\"") || strings.Contains(string(body), "{\"status\": true")) {
 		t.Errorf("Response didnt match as required")
 	} else {
 		fmt.Println("Got response as => ", string(body))

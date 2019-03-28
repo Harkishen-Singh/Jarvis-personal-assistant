@@ -32,6 +32,15 @@
                     </sub>
                 </span>
             </div>
+            <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-you">
+                {{message.message}}
+                <span>
+                    <sub class="show-user-creds">
+                        {{message.sender}}
+                        {{message.time}}
+                    </sub>
+                </span>
+            </div>
         </div>
     </div>
 </div>
