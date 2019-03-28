@@ -59,11 +59,30 @@ describe("Chrome Environments", function() {
             });
         });
 
+        it("Google website", (done) => {
+            driver.get("https://www.google.co.in/search?q=github+harkishen+singh").then(()=>{
+                // driver.findElements(By.className('LC20lb')).then(r => {
+                //     r.forEach(rr => {
+                //         rr.getAttribute("innerHTML").then(cc => {
+                //             console.log(cc)
+                //         })
+                //     })
+                // })
+                driver.findElement(By.tagName('body')).then(a => {
+                    a.getAttribute("innerHTML").then(cc => {
+                        done();
+                    })
+                })
+            });
+        });
+
+        // always keep this in last
         it("Preventing messages for empty mesages, using alert warning check", done => {
+            driver.get('http://localhost:8080');
             driver.findElement(By.xpath('//*[@id="message-bar-send"]')).click().then( rr => {
-                driver.switchTo().alert().then(() => {
+                // driver.switchTo().alert().then(() => {
                     done();
-                });
+                // });
             });
         });
 

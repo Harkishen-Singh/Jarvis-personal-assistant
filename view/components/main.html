@@ -4,7 +4,7 @@
         <hr>
     </span>
     <!-- message field -->
-    <div id="message-bar">
+    <div id="message-bar" data-ng-init="toggleStartStop">
         <div id="message-input-parent">
             <input type="text" name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
             <button id="message-bar-send" data-ng-click="addMessagesToStack()">
