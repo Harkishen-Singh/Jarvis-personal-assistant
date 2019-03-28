@@ -25,7 +25,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
 
-			if($scope.addMessagesToStack){
+			if ($scope.showLoaderListening) {
 				$scope.showLoaderListening = false;
 				recognition.stop();
 				recognizing = false;
