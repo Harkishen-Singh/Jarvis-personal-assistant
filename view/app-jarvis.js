@@ -114,7 +114,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
 					mess.value += event.results[i][0].transcript;
-					$scope.message = mess.value;
+					if (mess.value.endsWith('send')) {
+						var n = mess.value.lastIndexOf('send');
+						var submessage =  mess.value.substring(0,n);
+						$scope.message = submessage;
+						$scope.addMessagesToStack();
+					} else {
+						$scope.message = mess.value;
+					}
 				} else {
 					mess.value += event.results[i][0].transcript;
 					$scope.message = mess.value;
