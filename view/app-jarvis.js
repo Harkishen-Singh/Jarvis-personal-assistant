@@ -121,28 +121,22 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		recognition.continuous = true;
 
 		recognition.onresult = function (event) {
-			var n, m, submessage;
+			var n, m, submessage, messa;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
-			text = '';
-			console.log("Hello")
+			messa = '';
 			for (var i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
-					text += event.results[i][0].transcript;
-					console.log(text)
-					if (text.includes('start Jarvis')) {
-						console.log("hii")
-						console.log(mess.value)
-						m = text.lastIndexOf('start Jarvis');
-						console.log(m)
-						submessage = text.substring(m+12);
-						console.log(submessage)
+					messa += event.results[i][0].transcript;
+					if (messa.includes('start Jarvis')) {
+						m = messa.lastIndexOf('start Jarvis');
+						submessage = messa.substring(m+12);
 						mess.value = submessage;
 						$scope.message = submessage; 
 					}
 
-					if (text.endsWith('send')) {
-						mess.value = text;
+					if (messa.endsWith('send')) {
+						mess.value = messa;
 						n = mess.value.lastIndexOf('send');
 						submessage =  mess.value.substring(m+12,n);
 						$scope.message = submessage;
@@ -150,7 +144,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					} 
 				} else {
 					messa += event.results[i][0].transcript;
-					console.log(messa)
 					if (mess.value.includes('start jarvis')) {
 						mess.value += event.results[i][0].transcript;
 						n = mess.value.lastIndexOf('start jarvis');
