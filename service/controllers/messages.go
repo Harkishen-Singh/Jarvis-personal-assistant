@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"fmt"
 )
 
 type response struct {
@@ -16,10 +17,10 @@ type statusCode struct {
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
 
-    w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	fmt.Println("thisss")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	r.ParseForm()
-	// fmt.Println(contentReceived)
-	w.Write([]byte(`{"status": "success"}`))
+	w.Write([]byte(`{"status": "succe222ss", "message": "Hi from reply bot"}`))
 
 }
