@@ -59,7 +59,24 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
 		result := HandlerGoogle("GET", query)
-		fmt.Println(result)
+
+		// processing
+
+		subsl := "<h3 class=\"LC20lb\">"
+		subsl2 := "</h3>"
+		for i := 0; i < len(result) - len(subsl); i++ {
+			mess := ""
+			if result[i : i + len(subsl)] == subsl {
+				length := i + len(subsl)
+				for j:=1; ; j++ {
+					if result[length + j: length + j + len(subsl2)] == subsl2 {
+						mess = result[length: length + j]
+						fmt.Println(mess)
+						break
+					}
+				}
+			}
+		}
 
 	}
 
@@ -92,4 +109,9 @@ func stringDifference(slice1 []string, slice2 []string) []string {
     }
 
     return diff
+}
+
+func processGoogleResponses(response string) {
+
+
 }
