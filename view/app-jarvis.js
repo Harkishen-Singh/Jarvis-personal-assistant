@@ -31,6 +31,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				recognizing = false;
 			}
 
+			var mess = document.getElementById('message-input');
+			mess.value = 'Type a message ...';
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -92,6 +94,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			});
 
 			$scope.message = 'Type a message ...';
+			if (!recognizing) {
+				setTimeout(function()
+				{ 
+					$scope.toggleStartStop(0);
+				}, 
+				2000);
+			}
+
 		} else {
 			alert('Please enter a message');
 		}
@@ -105,40 +115,74 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.initStack = function() {
 		$scope.message = 'Type a message ...';
+		$scope.toggleStartStop(0);
 	};
 
-	$scope.toggleStartStop = function() {
+	$scope.toggleStartStop = function (check) {
 		recognition.continuous = true;
-		// recognition.onend = reset;
 
 		recognition.onresult = function (event) {
+			var i, n, m, submessage, text;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
-			for (var i = 0; i < event.results.length; i++) {
-				if (event.results[i].isFinal) {
-					mess.value += event.results[i][0].transcript;
-					if (mess.value.endsWith('send')) {
-						var n = mess.value.lastIndexOf('send');
-						var submessage =  mess.value.substring(0,n);
-						$scope.message = submessage;
-						$scope.addMessagesToStack();
+			text = '';
+			if (check === 0) {
+				for (i = 0; i < event.results.length; i++) {
+					if (event.results[i].isFinal) {
+						text += event.results[i][0].transcript;
+						console.log(text);
+						if (text.includes('start Jarvis')) {
+							m = text.lastIndexOf('start Jarvis');
+							submessage = text.substring(m+12);
+							mess.value = submessage;
+							$scope.message = submessage; 
+						}
+	
+						if (text.endsWith('send')) {
+							mess.value = text;
+							n = mess.value.lastIndexOf('send');
+							submessage =  mess.value.substring(m+12,n);
+							$scope.message = submessage;
+							$scope.addMessagesToStack();
+						} 
 					} else {
+						text += event.results[i][0].transcript;
+						if (mess.value.includes('start jarvis')) {
+							mess.value += event.results[i][0].transcript;
+							n = mess.value.lastIndexOf('start jarvis');
+							submessage = mess.value.substring(n+12);
+							$scope.message = submessage;
+						}
+					}
+				}
+			} else {
+				for (i = 0; i < event.results.length; i++) {
+					if (event.results[i].isFinal) {
+						mess.value += event.results[i][0].transcript;
+						if (mess.value.endsWith('send')) {
+							n = mess.value.lastIndexOf('send');
+							submessage =  mess.value.substring(0,n);
+							$scope.message = submessage;
+							$scope.addMessagesToStack();
+						} else {
+							$scope.message = mess.value;
+						}
+					} else {
+						mess.value += event.results[i][0].transcript;
 						$scope.message = mess.value;
 					}
-				} else {
-					mess.value += event.results[i][0].transcript;
-					$scope.message = mess.value;
 				}
 			}
+			
 		};
 
-		var button = document.getElementById('button');
 		if (recognizing) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
 			recognizing = false;
-			// eslint-disable-next-line no-undef
-			button.innerHTML = 'Click to Speak';
+			if ($scope.message === '') {
+				$scope.message = 'Type a message ...';
+			}
 		} else {
 			recognition.start();
 			$scope.showLoaderListening = true;
