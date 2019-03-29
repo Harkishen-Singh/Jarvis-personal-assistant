@@ -145,7 +145,3 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	};
 
 });
-
-
-
-
