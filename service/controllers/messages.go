@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 	"strings"
+	"encoding/json"
 	"fmt"
 )
 
@@ -13,6 +14,11 @@ type response struct {
 
 type statusCode struct {
 	status string
+}
+
+type messageQueryBody struct {
+	head string
+	link string
 }
 
 // MessagesController controls messages handling
@@ -64,19 +70,54 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		subsl := "<h3 class=\"LC20lb\">"
 		subsl2 := "</h3>"
+		subsl3 := "<cite class=\"iUh30\">"
+		lensubsl3 := len(subsl3)
+		subsl4 := "</cite>"
+		lensubsl4 := len(subsl4)
+		var queryResult messageQueryBody
+		var queryResultArray []string
 		for i := 0; i < len(result) - len(subsl); i++ {
 			mess := ""
 			if result[i : i + len(subsl)] == subsl {
 				length := i + len(subsl)
+				var last int
 				for j:=1; ; j++ {
 					if result[length + j: length + j + len(subsl2)] == subsl2 {
 						mess = result[length: length + j]
-						fmt.Println(mess)
+						queryResult.head = mess
+						last = length + j + len(subsl2)
+						i = last
+						break
+					}
+				}
+
+				found := false
+				for j:= 1; ; j++ {
+					if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
+						for k:= 1; ; k++ {
+							if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+								link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
+								i = last + j + lensubsl3 + k + lensubsl4
+								found = true
+								queryResult.link = link
+								break
+							}
+						}
+					}
+					if found {
+						marshalled, err := json.Marshal(&queryResult)
+						if err != nil {
+							panic(err)
+						}
+						fmt.Println(string(marshalled))
+						marshalledString := string(marshalled)
+						queryResultArray = append(queryResultArray, marshalledString)
 						break
 					}
 				}
 			}
 		}
+		fmt.Println((queryResultArray))
 
 	}
 
