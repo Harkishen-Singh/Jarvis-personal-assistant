@@ -117,7 +117,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.removeMessage = function(){
 		if($scope.message.startsWith('Type a message ...')){
-			$scope.message = '';
+			var mess_string = $scope.message;
+			var initial = mess_string.substring(mess_string.length - 1);
+			$scope.message = initial;
 		}
 	};
 
