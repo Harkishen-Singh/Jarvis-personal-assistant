@@ -61,6 +61,16 @@ header {
     margin-left: 10px !important;
 }
 
+.chat-screen-messages-jarvis-bot {
+    border: 1px solid black;
+    display: inline-flex;
+    padding: 4px;
+    background-color:#FFF9C4;
+    border-radius: 4px;
+    margin: 4px;
+    margin-left: 40px !important;
+}
+
 #chat-screen {
     text-align: center;
     display: list-item;
