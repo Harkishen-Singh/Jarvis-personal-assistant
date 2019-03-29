@@ -81,6 +81,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 		jData, _ := json.Marshal(responseJSON)
 		w.Write(jData)
 
+	} else if strings.ToLower(firstPars) == "yahoo" {
+		query:= "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+		HandlerYahoo("GET", query)
+
+	} else if strings.ToLower(firstPars) == "bing" {
+		query:= "https://www.bing.com/search?q=" + messageExceptFirstPars
+		HandlerBing("GET", query)
 	} else {
 		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}
