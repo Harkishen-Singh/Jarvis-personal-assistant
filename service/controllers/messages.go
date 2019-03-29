@@ -65,7 +65,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	// single word operations
 
-	if firstPars == "google" { // for google search
+	if strings.ToLower(firstPars) == "google" { // for google search
 
 		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
 		result := HandlerGoogle("GET", query)
