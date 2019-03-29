@@ -39,6 +39,7 @@ describe("Chrome Environments", function() {
 
         it("Search for message bar", done => {
             driver.findElement(By.xpath('//*[@id="message-input"]')).then(() => {
+                driver.manage().window().maximize();
                 done();
             });
         });
