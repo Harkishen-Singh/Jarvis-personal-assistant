@@ -26,7 +26,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		if (!$scope.message.startsWith('Type a message')) {
 
 			if ($scope.showLoaderListening) {
-				console.log(recognizing);
 				$scope.showLoaderListening = false;
 				recognition.stop();
 				recognizing = false;
@@ -34,7 +33,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 			var mess = document.getElementById('message-input');
 			mess.value = 'Type a message ...';
-			console.log('Reached');
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -96,7 +94,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			if (!recognizing) {
 				setTimeout(function()
 				{ 
-					$scope.toggleStartStop();
+					$scope.toggleStartStop(0);
 				}, 
 				2000);
 			}
@@ -114,61 +112,79 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.initStack = function() {
 		$scope.message = 'Type a message ...';
-		$scope.toggleStartStop();
+		$scope.toggleStartStop(0);
 	};
 
-	$scope.toggleStartStop = function() {
+	$scope.toggleStartStop = function (check) {
 		recognition.continuous = true;
 
 		recognition.onresult = function (event) {
-			var n, m, submessage, messa;
+			var i, n, m, submessage, text;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
-			messa = '';
-			for (var i = 0; i < event.results.length; i++) {
-				if (event.results[i].isFinal) {
-					messa += event.results[i][0].transcript;
-					if (messa.includes('start Jarvis')) {
-						m = messa.lastIndexOf('start Jarvis');
-						submessage = messa.substring(m+12);
-						mess.value = submessage;
-						$scope.message = submessage; 
+			text = '';
+			if (check === 0) {
+				for (i = 0; i < event.results.length; i++) {
+					if (event.results[i].isFinal) {
+						text += event.results[i][0].transcript;
+						console.log(text);
+						if (text.includes('start Jarvis')) {
+							m = text.lastIndexOf('start Jarvis');
+							submessage = text.substring(m+12);
+							mess.value = submessage;
+							$scope.message = submessage; 
+						}
+	
+						if (text.endsWith('send')) {
+							mess.value = text;
+							n = mess.value.lastIndexOf('send');
+							submessage =  mess.value.substring(m+12,n);
+							$scope.message = submessage;
+							$scope.addMessagesToStack();
+						} 
+					} else {
+						text += event.results[i][0].transcript;
+						if (mess.value.includes('start jarvis')) {
+							mess.value += event.results[i][0].transcript;
+							n = mess.value.lastIndexOf('start jarvis');
+							submessage = mess.value.substring(n+12);
+							$scope.message = submessage;
+						}
 					}
-
-					if (messa.endsWith('send')) {
-						mess.value = messa;
-						n = mess.value.lastIndexOf('send');
-						submessage =  mess.value.substring(m+12,n);
-						$scope.message = submessage;
-						$scope.addMessagesToStack();
-					} 
-				} else {
-					messa += event.results[i][0].transcript;
-					if (mess.value.includes('start jarvis')) {
+				}
+			} else {
+				for (i = 0; i < event.results.length; i++) {
+					if (event.results[i].isFinal) {
 						mess.value += event.results[i][0].transcript;
-						n = mess.value.lastIndexOf('start jarvis');
-						submessage = mess.value.substring(n+12);
-						$scope.message = submessage;
+						if (mess.value.endsWith('send')) {
+							n = mess.value.lastIndexOf('send');
+							submessage =  mess.value.substring(0,n);
+							$scope.message = submessage;
+							$scope.addMessagesToStack();
+						} else {
+							$scope.message = mess.value;
+						}
+					} else {
+						mess.value += event.results[i][0].transcript;
+						$scope.message = mess.value;
 					}
 				}
 			}
+			
 		};
 
 		if (recognizing) {
 			recognition.stop();
-			console.log(recognition);
 			$scope.showLoaderListening = false;
 			recognizing = false;
+			if ($scope.message === '') {
+				$scope.message = 'Type a message ...';
+			}
 		} else {
 			recognition.start();
-			console.log(recognition);
-			console.log(recognizing);
 			$scope.showLoaderListening = true;
-			console.log($scope.showLoaderListening);
 			recognizing = true;
 			$scope.message = '';
-			console.log(recognizing);
-			console.log(recognizing);
 		}
 	};
 
