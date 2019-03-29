@@ -119,15 +119,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		recognition.continuous = true;
 
 		recognition.onresult = function (event) {
-			var n, m, submessage, text;
+			var i, n, m, submessage, text;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
 			text = '';
 			if (check == 0){
-				for (var i = 0; i < event.results.length; i++) {
+				for (i = 0; i < event.results.length; i++) {
 					if (event.results[i].isFinal) {
 						text += event.results[i][0].transcript;
-						console.log(text)
+						console.log(text);
 						if (text.includes('start Jarvis')) {
 							m = text.lastIndexOf('start Jarvis');
 							submessage = text.substring(m+12);
@@ -153,12 +153,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					}
 				}
 			} else {
-				for (var i = 0; i < event.results.length; i++) {
+				for (i = 0; i < event.results.length; i++) {
 					if (event.results[i].isFinal) {
 						mess.value += event.results[i][0].transcript;
 						if (mess.value.endsWith('send')) {
-							var n = mess.value.lastIndexOf('send');
-							var submessage =  mess.value.substring(0,n);
+							n = mess.value.lastIndexOf('send');
+							submessage =  mess.value.substring(0,n);
 							$scope.message = submessage;
 							$scope.addMessagesToStack();
 						} else {
