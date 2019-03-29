@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 	"strings"
+	"encoding/json"
 	"fmt"
 )
 
@@ -13,6 +14,17 @@ type response struct {
 
 type statusCode struct {
 	status string
+}
+
+type messageQueryBody struct {
+	Head string `json:"head"`
+	Link string `json:"link"`
+}
+
+type jsonResponse struct {
+	Status bool	`json:"status"`
+	Message string `json:"message"`
+	Result []messageQueryBody `json:"result"`
 }
 
 // MessagesController controls messages handling
@@ -29,8 +41,6 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(request)
 
 	routes(request, w)
-
-	w.Write([]byte(`{"status": "success", "message": "Hi from reply bot"}`))
 
 }
 
@@ -55,29 +65,24 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	// single word operations
 
-	if firstPars == "google" { // for google search
+	if strings.ToLower(firstPars) == "google" { // for google search
 
 		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
 		result := HandlerGoogle("GET", query)
 
 		// processing
 
-		subsl := "<h3 class=\"LC20lb\">"
-		subsl2 := "</h3>"
-		for i := 0; i < len(result) - len(subsl); i++ {
-			mess := ""
-			if result[i : i + len(subsl)] == subsl {
-				length := i + len(subsl)
-				for j:=1; ; j++ {
-					if result[length + j: length + j + len(subsl2)] == subsl2 {
-						mess = result[length: length + j]
-						fmt.Println(mess)
-						break
-					}
-				}
-			}
+		response := processGoogleResponses(result)
+		responseJSON := jsonResponse{
+			Status: true,
+			Message: "query-result",
+			Result: response,
 		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
 
+	} else {
+		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}
 
 }
@@ -111,7 +116,52 @@ func stringDifference(slice1 []string, slice2 []string) []string {
     return diff
 }
 
-func processGoogleResponses(response string) {
+// processes google query result, scraps the required data and returns it
+func processGoogleResponses(result string) []messageQueryBody {
 
+	subsl := "<h3 class=\"LC20lb\">"
+	subsl2 := "</h3>"
+	subsl3 := "<cite"
+	lensubsl3 := len(subsl3)
+	subsl4 := "</cite>"
+	lensubsl4 := len(subsl4)
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl)
+			var last int
+			for j:=1; ; j++ {
+				if result[length + j: length + j + len(subsl2)] == subsl2 {
+					mess = result[length: length + j]
+					queryResult.Head = mess
+					last = length + j + len(subsl2)
+					i = last
+					break
+				}
+			}
 
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
+					for k:= 1; ; k++ {
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
+							i = last + j + lensubsl3 + k + lensubsl4
+							found = true
+							queryResult.Link = link
+							break
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
+	}
+
+	return queryResultArray
 }

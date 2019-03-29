@@ -62,12 +62,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				let res = (resp.data),
 					message = res['message'],
 					status = res['status'],
+					result = res['result'],
 					hrs2 = new Date().getHours(),
 					mins2 = new Date().getMinutes();
 				messageObj = {
 					message: '',
 					sender: '',
 					time: '',
+					result: '',
 					length: null
 				};
 
@@ -77,6 +79,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.time = String(hrs2 + ':' + mins2);
 					messageObj.length = message.length;
 					messageObj.message = message;
+					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 				} else {
 					console.error('[JARVIS] error fetching from service.');
