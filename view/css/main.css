@@ -83,11 +83,10 @@ header {
 
 #banner-listen {
     position: fixed;
-    top: 91.5%;
-    left: 80%;
+    bottom: 4%;
+    right: 10%;
     font-size: 20px;
     font-weight: 900;
-    
 }
 
 #loader {
