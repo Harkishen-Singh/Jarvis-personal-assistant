@@ -41,7 +41,7 @@ process.argv.forEach((val, index, array) => {
                             .forBrowser('chrome')
                             .build();
 
-        driver.get("https://www.google.co.in/search?q=github+harkishen+singh").then(() => {
+        driver.get(url).then(() => {
             driver.findElement(By.tagName('body')).then(cc => {
                 cc.getAttribute('innerHTML').then(result => {
                     console.log(result);

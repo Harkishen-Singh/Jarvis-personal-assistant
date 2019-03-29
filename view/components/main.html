@@ -1,29 +1,29 @@
 <div data-ng-init="initStack()">
-    <span id="chat-screen">
-        -- Chat Screen --
+    <span id="chat-screen" style="color:black;">
+         Chat Screen 
         <hr>
     </span>
     <!-- message field -->
     <div id="message-bar">
         <div id="message-input-parent">
-            <input type="text" name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
-            <button id="message-bar-send" data-ng-click="addMessagesToStack()">
+            <input type="text"  name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
+            <button id="message-bar-send"  data-ng-click="addMessagesToStack()" nowrap>
                 Send
             </button>
             <!-- banner -->
             <div id="banner-listen" data-ng-show="showLoaderListening">
                 <span>Listening ... </span>
-                <img src="../assest/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
+                <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
             </div>
-            <img src="../assest/icons/mic.png" alt="Click to Start/Stop speaking" id="button" style="height: 40px;margin-left: 15px;" data-ng-click="toggleStartStop(1)" />
+            <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button" style="height: 40px;margin-left: 15px;" data-ng-click="toggleStartStop()" />
         </div>
     </div>
 
     <!-- chat screen -->
 
-    <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
-        <div data-ng-repeat="message in messageStack" id="stackArea">
-            <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you">
+    <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
+        <div data-ng-repeat="message in messageStack" id="stackArea" style="padding:0;margin:0;">
+            <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
                 {{message.message}}
                 <span>
                     <sub class="show-user-creds">
@@ -32,7 +32,7 @@
                     </sub>
                 </span>
             </div>
-            <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-you">
+            <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
                 {{message.message}}
                 <span>
                     <sub class="show-user-creds">
@@ -40,7 +40,16 @@
                         {{message.time}}
                     </sub>
                 </span>
+                <div id="queried-data" data-ng-if="message.result.length !== 0">
+                    <br>
+                    <hr>
+                    <div data-ng-repeat="objectQuery in message.result">
+                        <h4 class="head-query-data">{{objectQuery.head}}</h4>
+                        <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                    </div>
+                </div>
             </div>
+            <br>
         </div>
     </div>
 </div>
