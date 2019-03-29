@@ -19,14 +19,14 @@ header {
     max-height: 100vh;
     border-right: 2px solid #6d5e5e;
     position: absolute;
-    width: 230px;
+    width: 380px;
     background-color: rgb(132, 197, 175);
 }
 
 #message-input-parent {
-    position: fixed;
+    position:fixed;
     bottom: 10px;
-    width: 100%;
+    width: 150%;
     padding: 1%;
 }
 
@@ -104,8 +104,12 @@ header {
     color:floralwhite;
     margin-left: 1%;
     padding: 0;
+    height:20px;
 }
 
 #PA {
     font-family:cursive;
+}
+#inner-component-header{
+    height: 30px;
 }
