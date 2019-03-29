@@ -22,6 +22,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
 
+	var input = document.getElementById('message-input');
+	input.addEventListener('keyup', function(event){
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById('message-bar-send').click();
+		}
+	});
+
 	$scope.addMessagesToStack = function() {
 		if (!$scope.message.startsWith('Type a message')) {
 
