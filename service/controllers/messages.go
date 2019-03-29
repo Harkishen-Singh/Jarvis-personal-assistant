@@ -81,6 +81,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		jData, _ := json.Marshal(responseJSON)
 		w.Write(jData)
 
+	} else {
+		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}
 
 }
