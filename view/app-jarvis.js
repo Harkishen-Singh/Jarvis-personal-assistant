@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 // eslint-disable-next-line no-undef
 const app = angular.module('jarvis', ['ngRoute']),
@@ -146,14 +147,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 							submessage = text.substring(m+12);
 							mess.value = submessage;
 							$scope.message = submessage; 
-						}
-	
-						if (text.endsWith('send')) {
-							mess.value = text;
-							n = mess.value.lastIndexOf('send');
-							submessage =  mess.value.substring(m+12,n);
-							$scope.message = submessage;
-							$scope.addMessagesToStack();
+							if (text.endsWith('send')) {
+								mess.value = text;
+								n = mess.value.lastIndexOf('send');
+								submessage =  mess.value.substring(m+12,n);
+								$scope.message = submessage;
+								$scope.addMessagesToStack();
+							}
 						} 
 					} else {
 						text += event.results[i][0].transcript;
@@ -165,7 +165,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 						}
 					}
 				}
-			} else {
+			} else if (check === 1) {
 				for (i = 0; i < event.results.length; i++) {
 					if (event.results[i].isFinal) {
 						mess.value += event.results[i][0].transcript;
