@@ -123,7 +123,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			var mess = document.getElementById('message-input');
 			mess.value = '';
 			text = '';
-			if (check == 0){
+			if (check === 0) {
 				for (i = 0; i < event.results.length; i++) {
 					if (event.results[i].isFinal) {
 						text += event.results[i][0].transcript;
@@ -177,10 +177,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
 			recognizing = false;
-			if ($scope.message == ''){
+			if ($scope.message === '') {
 				$scope.message = 'Type a message ...';
 			}
-			
 		} else {
 			recognition.start();
 			$scope.showLoaderListening = true;
