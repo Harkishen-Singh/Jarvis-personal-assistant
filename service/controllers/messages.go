@@ -119,7 +119,7 @@ func processGoogleResponses(result string) []messageQueryBody {
 
 	subsl := "<h3 class=\"LC20lb\">"
 	subsl2 := "</h3>"
-	subsl3 := "<cite class=\"iUh30\">"
+	subsl3 := "<cite"
 	lensubsl3 := len(subsl3)
 	subsl4 := "</cite>"
 	lensubsl4 := len(subsl4)
@@ -145,7 +145,7 @@ func processGoogleResponses(result string) []messageQueryBody {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
 					for k:= 1; ; k++ {
 						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
-							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
+							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
 							queryResult.Link = link

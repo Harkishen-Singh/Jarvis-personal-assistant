@@ -109,3 +109,14 @@ header {
 #PA {
     font-family:cursive;
 }
+
+#queried-data {
+    color: black;
+    font-size: 10px;
+}
+
+.head-query-data {
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+}

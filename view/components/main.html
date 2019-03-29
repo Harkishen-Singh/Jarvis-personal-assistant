@@ -40,6 +40,14 @@
                         {{message.time}}
                     </sub>
                 </span>
+                <div id="queried-data" data-ng-if="message.result.length !== 0">
+                    <br>
+                    <hr>
+                    <div data-ng-repeat="objectQuery in message.result">
+                        <h4 class="head-query-data">{{objectQuery.head}}</h4>
+                        <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                    </div>
+                </div>
             </div>
             <br>
         </div>
