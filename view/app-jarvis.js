@@ -24,7 +24,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	$scope.showLoaderListening = false;
 
 	var input = document.getElementById('message-input');
-	input.addEventListener('keyup', function(event){
+	input.addEventListener('keyup', function(event) {
 		if (event.keyCode === 13) {
 			event.preventDefault();
 			document.getElementById('message-bar-send').click();
@@ -122,8 +122,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		}
 	};
 
-	$scope.removeMessage = function(){
-		if($scope.message.startsWith('Type a message ...')){
+	$scope.removeMessage = function() {
+		if ($scope.message.startsWith('Type a message ...')) {
 			var mess_string = $scope.message;
 			var initial = mess_string.substring(mess_string.length - 1);
 			$scope.message = initial;
