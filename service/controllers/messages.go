@@ -21,10 +21,16 @@ type messageQueryBody struct {
 	Link string `json:"link"`
 }
 
-type jsonResponse struct {
+type jsonResponseQuery struct {
 	Status bool	`json:"status"`
 	Message string `json:"message"`
 	Result []messageQueryBody `json:"result"`
+}
+
+type jsonResponseWeather struct {
+	Status bool	`json:"status"`
+	Message string `json:"message"`
+	Result string `json:"result"`
 }
 
 type weatherStr struct {
@@ -33,7 +39,7 @@ type weatherStr struct {
 	Temperature string `json:"temperature"`
 	DewPoint string `json:"dew_point"`
 	Humidity string `json:"humidity"`
-	Visibiliy string `json:"visibiliy"`
+	Visibility string `json:"visibility"`
 	FeelsLike string `json:"feels_like"`
 }
 
@@ -84,7 +90,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processGoogleResponses(result)
-		responseJSON := jsonResponse{
+		responseJSON := jsonResponseQuery{
 			Status: true,
 			Message: "query-result",
 			Result: response,
@@ -100,10 +106,19 @@ func routes(routeObject response, w http.ResponseWriter) {
 		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
 		HandlerBing("GET", query)
 	} else if strings.ToLower(firstPars) == "weather" {
+
 		city := messageArr[1]
 		state := messageArr[2]
 		result := HandlerWeather(city, state)
-		processWeather(result)
+		stringified, _ := json.Marshal(processWeather(result))
+		response := jsonResponseWeather{
+			Status: true,
+			Message: "here is the current weather condition",
+			Result: string(stringified),
+		}
+		jData, _ := json.Marshal(response)
+		w.Write(jData)
+
 	} else {
 		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}

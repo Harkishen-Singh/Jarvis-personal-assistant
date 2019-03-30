@@ -4,7 +4,7 @@
 const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-
+console.log('aaaaaaaaaa')
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
@@ -85,7 +85,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				};
 
 				console.log(res);
-				if (status === 'success' || status) {
+				if (status && message === 'here is the current weather condition') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = JSON.parse(result);
+					$scope.messageStack.push(messageObj);
+					console.log(messageObj);
+				} else if (status === 'success' || status) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
 					messageObj.length = message.length;
@@ -104,11 +112,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 			$scope.message = 'Type a message ...';
 			if (!recognizing) {
-				setTimeout(function()
-				{ 
+				setTimeout(() => {
 					$scope.toggleStartStop(0);
-				}, 
-				2000);
+				}, 2000);
 			}
 
 		} else {
@@ -146,7 +152,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 							m = text.lastIndexOf('start Jarvis');
 							submessage = text.substring(m+12);
 							mess.value = submessage;
-							$scope.message = submessage; 
+							$scope.message = submessage;
 							if (text.endsWith('send')) {
 								mess.value = text;
 								n = mess.value.lastIndexOf('send');
@@ -154,7 +160,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 								$scope.message = submessage;
 								$scope.addMessagesToStack();
 							}
-						} 
+						}
 					} else {
 						text += event.results[i][0].transcript;
 						if (mess.value.includes('start jarvis')) {
@@ -183,7 +189,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					}
 				}
 			}
-			
 		};
 
 		if (recognizing) {

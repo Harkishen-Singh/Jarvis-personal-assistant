@@ -32,7 +32,7 @@
                     </sub>
                 </span>
             </div>
-            <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'query-result'" class="chat-screen-messages-jarvis-bot" class="clearfix">
                 {{message.message}}
                 <span>
                     <sub class="show-user-creds">
@@ -46,6 +46,28 @@
                     <div data-ng-repeat="objectQuery in message.result">
                         <h4 class="head-query-data">{{objectQuery.head}}</h4>
                         <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here is the current weather condition'"
+                class="chat-screen-messages-jarvis-bot" class="clearfix">
+                {{message.message}}
+                <span>
+                    <sub class="show-user-creds">
+                        {{message.sender}}
+                        {{message.time}}
+                    </sub>
+                </span>
+                <div id="queried-data" data-ng-if="message.result.length !== 0">
+                    <br>
+                    <hr>
+                    <div>
+                        <span class="head-query-data">Currently {{message.result.temperature}} C</span><br>
+                        <span class="head-query-data">Feels like {{message.result.feels_like}}</span><br>
+                        <span class="head-query-data">Humidity being {{message.result.humidity}}</span><br>
+                        <span class="head-query-data">Visibility {{message.result.visibility}}</span><br>
+                        <span class="head-query-data">Dew Point {{message.result.dew_point}}</span><br>
+                        <span class="head-query-data">At time {{message.result.time}}</span>
                     </div>
                 </div>
             </div>
