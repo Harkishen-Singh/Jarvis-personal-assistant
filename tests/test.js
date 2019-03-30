@@ -1,5 +1,6 @@
 const webdriver = require('selenium-webdriver'),
     chrome = require('selenium-webdriver/chrome'),
+    PATH = require('chromedriver')
     By = webdriver.By;
 
 // eslint-disable-next-line no-undef
@@ -7,6 +8,10 @@ const webdriver = require('selenium-webdriver'),
 
 require('chromedriver');
 require('geckodriver');
+var path = require('chromedriver').path;
+
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
 
 var driver;
 

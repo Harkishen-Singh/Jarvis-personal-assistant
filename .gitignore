@@ -5,3 +5,4 @@ tests/package-lock.json
 service/audio/
 tests/mochawesome-report
 package-lock.json
+service/subprocesses/node_modules/

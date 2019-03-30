@@ -27,6 +27,16 @@ type jsonResponse struct {
 	Result []messageQueryBody `json:"result"`
 }
 
+type weatherStr struct {
+	Time string `json:"time"`
+	City string `json:"city"`
+	Temperature string `json:"temperature"`
+	DewPoint string `json:"dew_point"`
+	Humidity string `json:"humidity"`
+	Visibiliy string `json:"visibiliy"`
+	FeelsLike string `json:"feels_like"`
+}
+
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
 
@@ -47,6 +57,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 func routes(routeObject response, w http.ResponseWriter) {
 
 	message := routeObject.message
+	messageArr := strings.Split(message, " ")
 	fmt.Println(message)
 	// messageTemp := message
 	var firstPars string
@@ -82,12 +93,17 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 
 	} else if strings.ToLower(firstPars) == "yahoo" {
-		query:= "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+		query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
 		HandlerYahoo("GET", query)
 
 	} else if strings.ToLower(firstPars) == "bing" {
-		query:= "https://www.bing.com/search?q=" + messageExceptFirstPars
+		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
 		HandlerBing("GET", query)
+	} else if strings.ToLower(firstPars) == "weather" {
+		city := messageArr[1]
+		state := messageArr[2]
+		result := HandlerWeather(city, state)
+		processWeather(result)
 	} else {
 		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}
@@ -171,4 +187,40 @@ func processGoogleResponses(result string) []messageQueryBody {
 	}
 
 	return queryResultArray
+}
+
+func processWeather(response string) weatherStr  {
+
+	fmt.Println("this is the response")
+	fmt.Println(response)
+	subl := "in json format"
+	sublLen := len(subl)
+	found := false
+	var weather []byte
+	var weatherInJSON weatherStr
+	for i:=0; i< len(response) - sublLen; i++ {
+		if response[i: i + sublLen] == subl {
+			for j:=1; ; j++ {
+				if response[i+sublLen+j: i+sublLen+j + 1] == "}" {
+					weather = []byte(response[i+sublLen+2: i+sublLen+j+1])
+					found = true
+					break
+				}
+			}
+			if found {
+				break
+			}
+		}
+	}
+	if !found {
+		fmt.Println("corrupted logging!")
+	}
+	fmt.Println(string(weather))
+	err := json.Unmarshal(weather, &weatherInJSON)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(weatherInJSON)
+	return weatherInJSON
+
 }

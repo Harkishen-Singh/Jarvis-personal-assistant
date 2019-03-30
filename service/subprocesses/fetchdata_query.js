@@ -23,6 +23,10 @@ require('geckodriver');
 let method = null,
     url = null;
 process.argv.forEach((val, index, array) => {
+    var path = require('chromedriver').path;
+
+    var service = new chrome.ServiceBuilder(path).build();
+    chrome.setDefaultService(service);
     if (index === 2) { // corresponds to the search method
         method = val;
     } else if(index == 3) { // corresponds to search url
