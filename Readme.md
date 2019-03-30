@@ -1,4 +1,4 @@
-# Jarvis-Personal-Assistant
+# Jarvis-Personal-Linux-Assistant
 
 ## Introduction
 
