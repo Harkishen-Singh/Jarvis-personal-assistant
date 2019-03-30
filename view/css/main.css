@@ -59,13 +59,14 @@ header {
 
 .chat-screen-messages-jarvis-bot {
     border: 1px solid black;
-    display: inline-flex;
     padding: 4px;
-    background-color:#FFF9C4;
+    background-color: #FFF9C4;
     border-radius: 4px;
     margin: 4px;
+    width: fit-content;
     margin-left: 40px !important;
 }
+
 
 
 .show-user-creds {
@@ -128,4 +129,9 @@ header {
     color: black;
     font-weight: 500;
     text-decoration: underline;
+}
+
+.message-style{
+    border-bottom: 1px solid #b1d6b1;
+    padding-bottom: inherit;
 }

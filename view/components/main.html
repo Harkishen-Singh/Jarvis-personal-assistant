@@ -32,17 +32,30 @@
                     </sub>
                 </span>
             </div>
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'Hi from reply bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+                <!-- for simple conversation messages -->
+                <div>
+                    {{message.message}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
+            </div>
             <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'query-result'" class="chat-screen-messages-jarvis-bot" class="clearfix">
-                {{message.message}}
-                <span>
-                    <sub class="show-user-creds">
-                        {{message.sender}}
-                        {{message.time}}
-                    </sub>
-                </span>
+                <div class="message-style">
+                    {{message.message}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
                 <div id="queried-data" data-ng-if="message.result.length !== 0">
                     <br>
-                    <hr>
                     <div data-ng-repeat="objectQuery in message.result">
                         <h4 class="head-query-data">{{objectQuery.head}}</h4>
                         <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
@@ -51,16 +64,17 @@
             </div>
             <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here is the current weather condition'"
                 class="chat-screen-messages-jarvis-bot" class="clearfix">
-                {{message.message}}
-                <span>
-                    <sub class="show-user-creds">
-                        {{message.sender}}
-                        {{message.time}}
-                    </sub>
-                </span>
+                <div class="message-style">
+                    {{message.message}} at {{message.result.city}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
                 <div id="queried-data" data-ng-if="message.result.length !== 0">
                     <br>
-                    <hr>
                     <div>
                         <span class="head-query-data">Currently {{message.result.temperature}} C</span><br>
                         <span class="head-query-data">Feels like {{message.result.feels_like}}</span><br>

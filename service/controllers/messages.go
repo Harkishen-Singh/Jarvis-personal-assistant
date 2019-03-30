@@ -107,8 +107,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		HandlerBing("GET", query)
 	} else if strings.ToLower(firstPars) == "weather" {
 
-		city := messageArr[1]
-		state := messageArr[2]
+		city := messageArr[len(messageArr)-2]
+		state := messageArr[len(messageArr)-1]
 		result := HandlerWeather(city, state)
 		stringified, _ := json.Marshal(processWeather(result))
 		response := jsonResponseWeather{
