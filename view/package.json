@@ -1,0 +1,23 @@
+{
+  "name": "jarvis-personal-assistant-view",
+  "version": "1.0.0",
+  "description": "personal assistant for linux pcs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -s &"
+  },
+  "keywords": [
+    "jarvis",
+    "personal-assistant",
+    "linux",
+    "cet"
+  ],
+  "author": "code zero",
+  "license": "ISC",
+  "dependencies": {
+    "add": "^2.0.6",
+    "npm": "^6.9.0",
+    "eslint": "^5.15.3"
+  }
+}

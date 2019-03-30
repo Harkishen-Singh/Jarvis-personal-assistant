@@ -1,0 +1,48 @@
+os:
+  - linux
+
+services:
+  - xvfb
+  - docker
+
+language: go
+
+go:
+  - 1.11.x
+
+# addons:
+#   firefox: "65.0.2"
+
+addons:
+  chrome: stable
+  apt:
+    packages:
+      - chromium-chromedriver
+
+notifications:
+  email: truemac
+
+cache:
+  - tests/node_modules/
+
+before-install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - go get github.com/op/go-logging
+  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
+  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
+  - cd tests/
+  - cd npm install
+
+
+script:
+  - go run service/maintut.go &
+  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
+  - eslint view/app-jarvis.js
+  - cd view/ && npm start && cd ..
+  - go test -v ./...
+  - cd tests/
+  - npm install
+  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
+

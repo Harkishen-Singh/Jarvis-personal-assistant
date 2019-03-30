@@ -1,0 +1,20 @@
+{
+  "name": "jarvis-personal-assistant",
+  "version": "1.0.0",
+  "description": "for lints",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "codeZero",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^2.46.0",
+    "geckodriver": "^1.16.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
