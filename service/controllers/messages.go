@@ -100,7 +100,18 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	} else if strings.ToLower(firstPars) == "yahoo" {
 		query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
-		HandlerYahoo("GET", query)
+		result := HandlerYahoo("GET", query)
+
+		// processing
+
+		response := processYahooResponses(result)
+		responseJSON := jsonResponseQuery{
+			Status: true,
+			Message: "query-result",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
 
 	} else if strings.ToLower(firstPars) == "bing" {
 		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
@@ -237,5 +248,66 @@ func processWeather(response string) weatherStr  {
 	}
 	fmt.Println(weatherInJSON)
 	return weatherInJSON
-
 }
+
+// processes yahoo query result, scraps the required data and returns it
+func processYahooResponses(result string) []messageQueryBody {
+
+	subsl := "<a class=\" ac-algo fz-l ac-21th lh-24\"";
+	subsl2 := "</a>"
+	subsl3 := "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
+	lensubsl3 := len(subsl3)
+	subsl4 := "</span>"
+	lensubsl4 := len(subsl4)
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl)
+			var last int
+			var start int
+
+			for k := 1; ; k++ {
+				if result[length + k: length+k+1 ] == ">" {
+					start =  length + k + 1;
+					break;
+				}
+			}
+
+			for j:=1; ; j++ {
+				if result[start + j: start + j + len(subsl2)] == subsl2 {
+					mess = result[start: start + j]
+					queryResult.Head = mess
+					last = start + j + len(subsl2)
+					i = last
+					break
+				}
+			}
+
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
+					for k:= 1; ; k++ {
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
+							i = last + j + lensubsl3 + k + lensubsl4
+							found = true
+							flink := strings.Replace(link, "<b>", "", -1)
+							finallink := strings.Replace(flink, "</b>", "", -1)
+							queryResult.Link = finallink
+							break
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
+	}
+	return queryResultArray
+}
+
