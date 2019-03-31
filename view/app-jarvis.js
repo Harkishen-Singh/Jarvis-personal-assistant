@@ -135,7 +135,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		// $scope.toggleStartStop(0);
 	};
 
-	$scope.toggleStartStop = function (check) {
+	$scope.toggleStartStop = function () {
 		recognition.continuous = true;
 
 		recognition.onresult = function (event) {
@@ -173,24 +173,24 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			// 		}
 			// 	}
 			// } else if (check === 1) {
-			if (check === 0) {
-				for (i = 0; i < event.results.length; i++) {
-					if (event.results[i].isFinal) {
-						mess.value += event.results[i][0].transcript;
-						if (mess.value.endsWith('send')) {
-							n = mess.value.lastIndexOf('send');
-							submessage =  mess.value.substring(0,n);
-							$scope.message = submessage;
-							$scope.addMessagesToStack();
-						} else {
-							$scope.message = mess.value;
-						}
+			// if (check === 0) {
+			for (i = 0; i < event.results.length; i++) {
+				if (event.results[i].isFinal) {
+					mess.value += event.results[i][0].transcript;
+					if (mess.value.endsWith('send')) {
+						n = mess.value.lastIndexOf('send');
+						submessage =  mess.value.substring(0,n);
+						$scope.message = submessage;
+						$scope.addMessagesToStack();
 					} else {
-						mess.value += event.results[i][0].transcript;
 						$scope.message = mess.value;
 					}
+				} else {
+					mess.value += event.results[i][0].transcript;
+					$scope.message = mess.value;
 				}
 			}
+			// }
 			// }
 		};
 
@@ -208,5 +208,4 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			$scope.message = '';
 		}
 	};
-
 });
