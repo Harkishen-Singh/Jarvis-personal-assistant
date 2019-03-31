@@ -89,7 +89,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processGoogleResponses(result)
-		responseJSON := jsonResponseQuery{
+		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the top search results",
 			Result: response,
@@ -105,7 +105,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processYahooResponses(result)
-		responseJSON := jsonResponseQuery{
+		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the top search results",
 			Result: response,
@@ -121,13 +121,14 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processBingResponses(result)
-		responseJSON := jsonResponseQuery{
+		responseJSON := jsonResponseQuery {
 			Status: true,
-			Message: "query-result",
+			Message: "here are the top search results",
 			Result: response,
 		}
 		jData, _ := json.Marshal(responseJSON)
 		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
 
 	} else if strings.ToLower(firstPars) == "weather" {
 
