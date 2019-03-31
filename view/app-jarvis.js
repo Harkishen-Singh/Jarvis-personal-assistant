@@ -4,7 +4,7 @@
 const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-
+console.log('aaaaaaaaa')
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
@@ -100,6 +100,11 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+				} else if(status === 'success' || status) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
 				} else {
 					console.error('[JARVIS] error fetching from service.');
 				}
