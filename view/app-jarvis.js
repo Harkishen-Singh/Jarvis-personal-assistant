@@ -5,8 +5,6 @@ const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
 
-	console.warn('dddddddddddd')
-
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
