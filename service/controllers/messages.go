@@ -89,7 +89,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processGoogleResponses(result)
-		responseJSON := jsonResponseQuery{
+		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the top search results",
 			Result: response,
@@ -105,7 +105,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		// processing
 
 		response := processYahooResponses(result)
-		responseJSON := jsonResponseQuery{
+		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the top search results",
 			Result: response,
@@ -116,7 +116,20 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	} else if strings.ToLower(firstPars) == "bing" {
 		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
-		HandlerBing("GET", query)
+		result := HandlerBing("GET", query)
+
+		// processing
+
+		response := processBingResponses(result)
+		responseJSON := jsonResponseQuery {
+			Status: true,
+			Message: "here are the top search results",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
+
 	} else if strings.ToLower(firstPars) == "weather" {
 
 		city := messageArr[len(messageArr)-2]
@@ -292,13 +305,86 @@ func processYahooResponses(result string) []messageQueryBody {
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
 					for k:= 1; ; k++ {
-						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</span>"
 							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							flink := strings.Replace(link, "<b>", "", -1)
-							finallink := strings.Replace(flink, "</b>", "", -1)
-							queryResult.Link = finallink
+							fLink := strings.Replace(link, "<b>", "", -1)
+							finalLink := strings.Replace(fLink, "</b>", "", -1)
+							queryResult.Link = finalLink
+							break
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
+	}
+	return queryResultArray
+}
+
+// processes bing query result, scraps the required data and returns it
+func processBingResponses(result string) []messageQueryBody {
+
+	subsl := "<li class=\"b_algo\""
+	subsl2 := "<a"
+	subsl3 := "<cite"
+	lensubsl3 := len(subsl3)
+	subsl4 := "</cite>"
+	lensubsl4 := len(subsl4)
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl) 
+			var last int
+			var aStart int
+			var start int
+
+			for k := 1; ; k++ {
+				if result[length + k: length + k + 2 ] == subsl2 {
+					aStart = length + k
+					for l := 1; ; l++ {
+						if result[aStart + l: aStart + l + 1 ] == ">" {
+							start = aStart + l + 1;
+							break;
+						}
+					}
+					break;
+				}
+			}
+
+			for j:=1; ; j++ {
+				if result[start + j: start + j + 4] == "</a>" {
+					mess = result[start: start + j]
+					fMess := strings.Replace(mess, "<strong>", "", -1)
+					finalMess := strings.Replace(fMess, "</strong>", "", -1)
+					queryResult.Head = finalMess
+					last = start + j + 4
+					i = last
+					break
+				}
+			}
+
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
+					for k:= 1; ; k++ {
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+							link := result[last + j + lensubsl3 + 1 : last + j + lensubsl3 + k]
+
+							fmt.Println(link)
+							i = last + j + lensubsl3 + k + lensubsl4
+							found = true
+							fLink := strings.Replace(link, "<strong>", "", -1)
+							finalLink := strings.Replace(fLink, "</strong>", "", -1)
+							queryResult.Link = finalLink
 							break
 						}
 					}
