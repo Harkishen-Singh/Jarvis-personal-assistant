@@ -11,4 +11,4 @@ query-string==1.0.2
 request==1.0.2
 requests==2.21.0
 urllib3==1.24.1
-yandex-translater==1.0
+yandex-translater==6.0
