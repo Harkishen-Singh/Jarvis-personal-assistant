@@ -306,9 +306,9 @@ func processYahooResponses(result string) []messageQueryBody {
 							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							flink := strings.Replace(link, "<b>", "", -1)
-							finallink := strings.Replace(flink, "</b>", "", -1)
-							queryResult.Link = finallink
+							fLink := strings.Replace(link, "<b>", "", -1)
+							finalLink := strings.Replace(fLink, "</b>", "", -1)
+							queryResult.Link = finalLink
 							break
 						}
 					}
@@ -348,8 +348,8 @@ func processBingResponses(result string) []messageQueryBody {
 				if result[length + k: length + k + 2 ] == subsl2 {
 					aStart = length + k
 					for l := 1; ; l++ {
-						if result[aStart + l: aStart + l + 4 ] == ">" {
-							start = aStart + l;
+						if result[aStart + l: aStart + l + 1 ] == ">" {
+							start = aStart + l + 1;
 							break;
 						}
 					}
@@ -360,7 +360,9 @@ func processBingResponses(result string) []messageQueryBody {
 			for j:=1; ; j++ {
 				if result[start + j: start + j + 4] == "</a>" {
 					mess = result[start: start + j]
-					queryResult.Head = mess
+					fMess := strings.Replace(mess, "<strong>", "", -1)
+					finalMess := strings.Replace(fMess, "</strong>", "", -1)
+					queryResult.Head = finalMess
 					last = start + j + 4
 					i = last
 					break
@@ -372,11 +374,14 @@ func processBingResponses(result string) []messageQueryBody {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
 					for k:= 1; ; k++ {
 						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
-							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
+							link := result[last + j + lensubsl3 + 1 : last + j + lensubsl3 + k]
+
 							fmt.Println(link)
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							queryResult.Link = link
+							fLink := strings.Replace(link, "<strong>", "", -1)
+							finalLink := strings.Replace(fLink, "</strong>", "", -1)
+							queryResult.Link = finalLink
 							break
 						}
 					}
