@@ -1,17 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"os/exec"
+	"github.com/hegedustibor/htgo-tts"
 )
 
 
 func main() {
 
-	out, err := exec.Command("mocha").Output()
-	if err != nil {
-		panic (err)
-	}
-	fmt.Println(string(out))
-	fmt.Println(len(out))
+	speech := htgotts.Speech{Folder: "audio", Language: "en"}
+	speech.Speak("Muskan is the best girl")
 }
