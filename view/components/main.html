@@ -22,7 +22,7 @@
     <!-- chat screen -->
 
     <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
-        <div data-ng-repeat="message in messageStack" id="stackArea" style="padding:0;margin:0;">
+        <div data-ng-repeat="message in messageStack" id="stackArea">
             <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
                 {{message.message}}
                 <span>
