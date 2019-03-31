@@ -44,7 +44,7 @@
                     </span>
                 </div>
             </div>
-            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'query-result'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the top search results'" class="chat-screen-messages-jarvis-bot" class="clearfix">
                 <div class="message-style">
                     {{message.message}}
                     <span>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here is the current weather condition'"
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here is the current weather conditions'"
                 class="chat-screen-messages-jarvis-bot" class="clearfix">
                 <div class="message-style">
                     {{message.message}} at {{message.result.city}}
