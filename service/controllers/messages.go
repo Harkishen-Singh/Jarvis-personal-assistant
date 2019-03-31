@@ -64,7 +64,6 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	message := routeObject.message
 	messageArr := strings.Split(message, " ")
-	fmt.Println(message)
 	// messageTemp := message
 	var firstPars string
 	if strings.Contains(message, " ") {
@@ -126,7 +125,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		stringified, _ := json.Marshal(processWeather(result))
 		response := jsonResponseWeather{
 			Status: true,
-			Message: "here is the current weather conditions",
+			Message: "here are the current weather conditions",
 			Result: string(stringified),
 		}
 		jData, _ := json.Marshal(response)

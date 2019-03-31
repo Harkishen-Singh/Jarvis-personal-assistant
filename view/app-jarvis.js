@@ -5,6 +5,8 @@ const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
 
+	console.warn('dddddddddddd')
+
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
@@ -85,7 +87,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				};
 
 				console.log(res);
-				if (status && message === 'here is the current weather condition') {
+				if (status && message === 'here are the current weather conditions') {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
 					messageObj.length = message.length;
@@ -93,7 +95,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.result = JSON.parse(result);
 					$scope.messageStack.push(messageObj);
 					console.log(messageObj);
-				} else if (status === 'success' || status) {
+				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
 					messageObj.length = message.length;
