@@ -46,8 +46,8 @@ header {
 #stackArea {
     padding: 0;
     margin: 0;
-    max-height: 2000px;
-    margin-bottom: 20px;
+    max-height: 200%;
+    margin-bottom: 2%;
 }
 
 #message-bar-send {
@@ -73,7 +73,7 @@ header {
     margin: 4px;
     width: fit-content;
     margin-left: 40px !important;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 
 
