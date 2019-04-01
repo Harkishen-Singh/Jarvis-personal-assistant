@@ -76,6 +76,7 @@ header {
     width: fit-content;
     margin-left: 40px !important;
     margin-top: 2%;
+    box-shadow:0 10px 8px 0 rgba(0,0,0,0.2);
 }
 
 
@@ -146,3 +147,10 @@ header {
     border-bottom: 1px solid #b1d6b1;
     padding-bottom: inherit;
 }
+#queried-info{
+    border:1px ridge white;
+    
+    margin-bottom:6px;
+    border-radius:5px;
+    background-color:floralwhite;
+    }
