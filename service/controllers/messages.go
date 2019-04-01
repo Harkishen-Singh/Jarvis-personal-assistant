@@ -130,6 +130,22 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
+	} else if strings.ToLower(firstPars) == "youtube" {
+		query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+		result := HandlerYoutube("GET", query)
+
+		// processing
+
+		response := processYoutubeResponses(result)
+		responseJSON := jsonResponseQuery {
+			Status: true,
+			Message: "here are the top search results",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
+
 	} else if strings.ToLower(firstPars) == "weather" {
 
 		city := messageArr[len(messageArr)-2]
@@ -399,3 +415,59 @@ func processBingResponses(result string) []messageQueryBody {
 	return queryResultArray
 }
 
+// processes youtube query result, scraps the required data and returns it
+func processYoutubeResponses(result string) []messageQueryBody {
+
+	subsl := "<a id=\"video-title\""
+	subsl2 := "href=\""
+	subsl3 := "</a>"
+	lensubsl3 := len(subsl3)
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+	var mid int
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			fmt.Println("reached1")
+			length := i + len(subsl)
+			var last int
+			for j:=1; ; j++ {
+				if result[length + j: length + j + len(subsl2)] == subsl2 {
+					fmt.Println("reached2")
+					mid = length + j + len(subsl2)
+					fmt.Println(mid)
+					for k := 1; ; k++ {
+						if result[mid + k: mid + k + 2] == "\">" {
+							fmt.Println("reached3")
+							link := result[mid: mid + k]
+							fmt.Println(link)
+							queryResult.Link = link
+							last = mid + k + 2
+							i = last
+							break
+						}
+					}
+					break
+				}
+			}
+
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
+						fmt.Println("reached4")
+						mess = result[last: last + j]
+						i = last + j + lensubsl3
+						found = true
+						queryResult.Head = mess
+					}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
+	}
+	return queryResultArray
+}

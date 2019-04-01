@@ -74,3 +74,19 @@ func HandlerWeather(city string, state string) string {
 	return string(result)
 
 }
+
+// HandlerBing handles the subprocesses related to fetchdata_query.js
+// returns the http body as string
+func HandlerYoutube(method string, url string) string {
+
+	directory, _ := os.Getwd()
+	fmt.Println("youtube-query request")
+	fmt.Println("method -> " + method + " url -> " + url + " direc -> " + directory)
+	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
+	// result, err := exec.Command("pwd").Output()
+	if err != nil {
+		panic(err)
+	}
+	return string(result)
+
+}
