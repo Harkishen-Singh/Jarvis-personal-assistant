@@ -22,7 +22,7 @@
     <!-- chat screen -->
 
     <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
-        <div data-ng-repeat="message in messageStack" id="stackArea" style="padding:0;margin:0;">
+        <div data-ng-repeat="message in messageStack" id="stackArea">
             <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
                 {{message.message}}
                 <span>
@@ -57,7 +57,7 @@
                 <div id="queried-data" data-ng-if="message.result.length !== 0">
                     <br>
                     <div data-ng-repeat="objectQuery in message.result" id="queried-info">
-                        <h4 class="head-query-data">{{objectQuery.head}}</h4>
+                        <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
                         <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
                     </div>
                 </div>
