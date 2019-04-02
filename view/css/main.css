@@ -39,14 +39,14 @@ header {
 }
 
 #stackArea-parent {
-    height: 75vh;
+    height: 65vh;
     overflow-y: scroll;
 }
 
 #stackArea {
     padding: 0;
     margin: 0;
-    max-height: 200%;
+    max-height: 2000%;
     margin-bottom: 3%;
 }
 
@@ -64,6 +64,7 @@ header {
     margin: 4px;
     margin-left: 10px !important;
     float: right;
+    max-width: 50%;
 }
 
 .chat-screen-messages-jarvis-bot {
@@ -77,6 +78,7 @@ header {
     margin-left: 40px !important;
     margin-top: 2%;
     box-shadow:0 10px 8px 0 rgba(0,0,0,0.2);
+    max-width: 50%;
 }
 
 .show-user-creds {
