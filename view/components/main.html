@@ -62,6 +62,27 @@
                     </div>
                 </div>
             </div>
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the searched images'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+                <div class="message-style">
+                    {{message.message}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
+                <div id="queried-data" data-ng-if="message.result.length !== 0">
+                    <br>
+                    <div data-ng-repeat="objectQuery in message.result" id="queried-image">
+                        <!-- <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                        <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a> -->
+                        <a>
+                            <img src = "{{objectQuery.link}}">
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the current weather conditions'"
                 class="chat-screen-messages-jarvis-bot" class="clearfix">
                 <div class="message-style">

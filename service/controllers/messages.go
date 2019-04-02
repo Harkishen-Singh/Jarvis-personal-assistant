@@ -21,11 +21,21 @@ type messageQueryBody struct {
 	Link string `json:"link"`
 }
 
+// type imageQueryBody struct{
+// 	Link string `json:"link"`
+// }
+
 type jsonResponseQuery struct {
 	Status bool	`json:"status"`
 	Message string `json:"message"`
 	Result []messageQueryBody `json:"result"`
 }
+
+// type jsonResponseImage struct {
+// 	Status bool	`json:"status"`
+// 	Message string `json:"message"`
+// 	Result []imageQueryBody `json:"result"`
+// }
 
 type jsonResponseWeather struct {
 	Status bool	`json:"status"`
@@ -140,6 +150,23 @@ func routes(routeObject response, w http.ResponseWriter) {
 		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the top search results",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
+
+	} else if strings.ToLower(firstPars) == "image" {
+		query := "https://www.google.com/search?hl=EN&tbm=isch&source=hp&biw=1517&bih=717&ei=02mjXMm7BIS2gwe-66roDQ&q=" + messageExceptFirstPars
+		result := HandlerImage("GET", query)
+		// fmt.Println(result)
+		// processing
+
+		response := processImageResponses(result)
+		fmt.Println(response)
+		responseJSON := jsonResponseQuery {
+			Status: true,
+			Message: "here are the searched images",
 			Result: response,
 		}
 		jData, _ := json.Marshal(responseJSON)
@@ -469,6 +496,52 @@ func processYoutubeResponses(result string) []messageQueryBody {
 					break
 				}
 			}
+		}
+	}
+	return queryResultArray
+
+}
+
+// processes image query result, scraps the required data and returns it
+func processImageResponses(result string) []messageQueryBody {
+
+	subsl := "<div class=\"rg_meta notranslate\">"
+	subsl2 := "\"ou\":\""
+	lensubsl2 := len(subsl2)
+	count := 0
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		link := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl)
+			fmt.Println(length)
+			var mid int
+			for j := 1; ; j++ {
+				found := false
+				if result[length + j: length + j + lensubsl2] == subsl2 {
+					mid = length + j + lensubsl2
+					for k := 1; ; k++ {
+						if result[mid + k: mid + k + 1] == "\"" {
+							link = result[mid: mid + k]
+							queryResult.Link = link
+							found = true
+							i = mid + k + 1;
+							break;
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					count ++
+					break;
+				}
+			}
+		}
+		if count == 10 {
+			break;
 		}
 	}
 	return queryResultArray

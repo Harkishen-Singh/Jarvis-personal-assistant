@@ -75,7 +75,7 @@ func HandlerWeather(city string, state string) string {
 
 }
 
-// HandlerBing handles the subprocesses related to fetchdata_query.js
+// HandlerYoutube handles the subprocesses related to fetchdata_query.js
 // returns the http body as string
 func HandlerYoutube(method string, url string) string {
 
@@ -84,6 +84,21 @@ func HandlerYoutube(method string, url string) string {
 	fmt.Println("method -> " + method + " url -> " + url + " direc -> " + directory)
 	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
 	// result, err := exec.Command("pwd").Output()
+	if err != nil {
+		panic(err)
+	}
+	return string(result)
+
+}
+
+// HandlerImage handles the subprocesses related to fetchdata_query.js
+// returns the http body as string
+func HandlerImage(method string, url string) string {
+
+	directory, _ := os.Getwd()
+	fmt.Println("google-image-query request")
+	fmt.Println("method -> " + method + " url -> " + url + " direc -> " + directory)
+	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
 	if err != nil {
 		panic(err)
 	}

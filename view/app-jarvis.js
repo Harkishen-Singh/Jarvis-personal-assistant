@@ -105,6 +105,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
 				} else if (status === 'success' || status) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
