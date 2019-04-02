@@ -325,9 +325,12 @@ func processYahooResponses(result string) []messageQueryBody {
 							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							fLink := strings.Replace(link, "<b>", "", -1)
-							finalLink := strings.Replace(fLink, "</b>", "", -1)
-							queryResult.Link = finalLink
+							link = strings.Replace(link, "<b>", "", -1)
+							link = strings.Replace(link, "</b>", "", -1)
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+								link = "http://" + link
+							}
+							queryResult.Link = link
 							break
 						}
 					}
@@ -398,9 +401,12 @@ func processBingResponses(result string) []messageQueryBody {
 							fmt.Println(link)
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							fLink := strings.Replace(link, "<strong>", "", -1)
-							finalLink := strings.Replace(fLink, "</strong>", "", -1)
-							queryResult.Link = finalLink
+							link = strings.Replace(link, "<strong>", "", -1)
+							link = strings.Replace(link, "</strong>", "", -1)
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+								link = "http://" + link
+							}
+							queryResult.Link = link
 							break
 						}
 					}
@@ -442,8 +448,9 @@ func processYoutubeResponses(result string) []messageQueryBody {
 						if result[mid + k: mid + k + 2] == "\">" {
 							fmt.Println("reached3")
 							link := result[mid: mid + k]
-							fmt.Println(link)
-							queryResult.Link = link
+							flink := "https://www.youtube.com" + link
+							fmt.Println(flink)
+							queryResult.Link = flink
 							last = mid + k + 2
 							i = last
 							break
