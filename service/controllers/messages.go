@@ -130,6 +130,22 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
+	} else if strings.ToLower(firstPars) == "youtube" {
+		query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+		result := HandlerYoutube("GET", query)
+
+		// processing
+
+		response := processYoutubeResponses(result)
+		responseJSON := jsonResponseQuery {
+			Status: true,
+			Message: "here are the top search results",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
+
 	} else if strings.ToLower(firstPars) == "weather" {
 
 		city := messageArr[len(messageArr)-2]
@@ -230,8 +246,8 @@ func processGoogleResponses(result string) []messageQueryBody {
 			}
 		}
 	}
-
 	return queryResultArray
+
 }
 
 func processWeather(response string) weatherStr  {
@@ -267,6 +283,7 @@ func processWeather(response string) weatherStr  {
 	}
 	fmt.Println(weatherInJSON)
 	return weatherInJSON
+
 }
 
 // processes yahoo query result, scraps the required data and returns it
@@ -313,9 +330,12 @@ func processYahooResponses(result string) []messageQueryBody {
 							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							fLink := strings.Replace(link, "<b>", "", -1)
-							finalLink := strings.Replace(fLink, "</b>", "", -1)
-							queryResult.Link = finalLink
+							link = strings.Replace(link, "<b>", "", -1)
+							link = strings.Replace(link, "</b>", "", -1)
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+								link = "http://" + link
+							}
+							queryResult.Link = link
 							break
 						}
 					}
@@ -328,6 +348,7 @@ func processYahooResponses(result string) []messageQueryBody {
 		}
 	}
 	return queryResultArray
+
 }
 
 // processes bing query result, scraps the required data and returns it
@@ -383,12 +404,14 @@ func processBingResponses(result string) []messageQueryBody {
 						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
 							link := result[last + j + lensubsl3 + 1 : last + j + lensubsl3 + k]
 
-							fmt.Println(link)
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
-							fLink := strings.Replace(link, "<strong>", "", -1)
-							finalLink := strings.Replace(fLink, "</strong>", "", -1)
-							queryResult.Link = finalLink
+							link = strings.Replace(link, "<strong>", "", -1)
+							link = strings.Replace(link, "</strong>", "", -1)
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+								link = "http://" + link
+							}
+							queryResult.Link = link
 							break
 						}
 					}
@@ -403,3 +426,55 @@ func processBingResponses(result string) []messageQueryBody {
 	return queryResultArray
 }
 
+// processes youtube query result, scraps the required data and returns it
+func processYoutubeResponses(result string) []messageQueryBody {
+
+	subsl := "<a id=\"video-title\""
+	subsl2 := "href=\""
+	subsl3 := "</a>"
+	lensubsl3 := len(subsl3)
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+	var mid int
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl)
+			var last int
+			for j:=1; ; j++ {
+				if result[length + j: length + j + len(subsl2)] == subsl2 {
+					mid = length + j + len(subsl2)
+					for k := 1; ; k++ {
+						if result[mid + k: mid + k + 2] == "\">" {
+							link := result[mid: mid + k]
+							flink := "https://www.youtube.com" + link
+							queryResult.Link = flink
+							last = mid + k + 2
+							i = last
+							break
+						}
+					}
+					break
+				}
+			}
+
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
+						mess = result[last: last + j]
+						i = last + j + lensubsl3
+						found = true
+						queryResult.Head = mess
+					}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
+	}
+	return queryResultArray
+
+}
