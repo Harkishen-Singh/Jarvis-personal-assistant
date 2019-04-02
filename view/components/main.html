@@ -72,25 +72,14 @@
                         </sub>
                     </span>
                 </div>
-
-
-                <!-- <div id="queried-data" data-ng-if="message.result.length !== 0">
-                    <br>
-                    <div data-ng-repeat="objectQuery in message.result" id="queried-image">
-                        <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
-                        <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
-                        <a>
-                            <img src = "{{objectQuery.link}}">
-                        </a>
-                    </div>
-                </div> -->
                 <div id="queried-data" data-ng-if="message.result.length !== 0">
                     <div class="images-searched">
                         <div data-ng-repeat="objectQuery in message.result" id="queried-image">
                             <div class="item">
-                                <img src="{{objectQuery.link}}"
-                                    style="display:block;margin-left: 20px;
+                                <a href="{{objectQuery.link}}" target="_blank">
+                                    <img src="{{objectQuery.link}}" style="display:block;margin-left: 20px;
                                     margin-right:20px;padding-right: 10px;width:424.66px;height: 318.48px;" />
+                                </a>
                             </div>
                         </div>
                     </div>

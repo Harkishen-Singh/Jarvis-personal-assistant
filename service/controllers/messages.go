@@ -255,6 +255,9 @@ func processGoogleResponses(result string) []messageQueryBody {
 							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." && link[0: 8] != "https://" {
+								link = "http://" + link
+							}
 							queryResult.Link = link
 							break
 						}
