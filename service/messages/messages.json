@@ -1,0 +1,13 @@
+{
+    "initial-greetings-plain": [
+        "hi",
+        "hello",
+        "hey",
+        "whats up"
+    ],
+    "initial-greetings-name": [
+        "hi jarvis",
+        "hello jarvis",
+        "hey jarvis"
+    ]
+}

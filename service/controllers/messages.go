@@ -146,6 +146,10 @@ func routes(routeObject response, w http.ResponseWriter) {
 		TextToSpeech(response.Message + city + " " + state, 0)
 
 	} else {
+
+		// general conversation
+
+		
 		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 	}
 

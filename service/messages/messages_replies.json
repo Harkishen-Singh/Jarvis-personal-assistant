@@ -1,0 +1,19 @@
+{
+    "initial-greetings-plain": [
+        "hi! I am jarvis. How can I help you?",
+        "hello! I am jarvis. What can i help you with?",
+        "hi! whats up?",
+        "hello! whats up?",
+        "hey there!",
+        "hey there! Anything I can help you with?"
+    ],
+    "initial-greetings-name": [
+        "hi %s! How can i help you?",
+        "hi %s! How can i help you?",
+        "hey %s! What can i help you with?",
+        "hey %s! What can i help you with?",
+        "hey %s!",
+        "hi %s!",
+        "hello %s!"
+    ]
+}
