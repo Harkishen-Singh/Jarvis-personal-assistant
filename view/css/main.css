@@ -39,14 +39,14 @@ header {
 }
 
 #stackArea-parent {
-    height: 75vh;
+    height: 65vh;
     overflow-y: scroll;
 }
 
 #stackArea {
     padding: 0;
     margin: 0;
-    max-height: 200%;
+    max-height: 2000%;
     margin-bottom: 3%;
 }
 

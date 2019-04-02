@@ -60,6 +60,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			messageObj.sender = 'you';
 
 			$scope.messageStack.push(messageObj);
+			setTimeout(() => {
+				$scope.scrollDown();
+			}, 100);
 			data = 'username='+USER+'&message='+messageObj.message;
 
 			$http({
@@ -83,8 +86,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					result: '',
 					length: null
 				};
-
 				console.log(res);
+				setTimeout(() => {
+					$scope.scrollDown();
+				}, 100);
 				if (status && message === 'here are the current weather conditions') {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
@@ -108,13 +113,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				} else {
 					console.error('[JARVIS] error fetching from service.');
 				}
-
-				// output view
-
 			}).catch(e => {
 				throw e;
 			});
-
 			$scope.message = 'Type a message ...';
 			// if (!recognizing) {
 			// 	setTimeout(() => {
@@ -133,6 +134,11 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			var initial = mess_string.substring(mess_string.length - 1);
 			$scope.message = initial;
 		}
+	};
+
+	$scope.scrollDown = function() {
+		var elem = document.getElementById('stackArea-parent');
+		elem.scrollTop = elem.scrollHeight;
 	};
 
 	$scope.initStack = function() {
