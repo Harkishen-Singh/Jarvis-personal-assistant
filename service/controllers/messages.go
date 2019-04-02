@@ -159,11 +159,9 @@ func routes(routeObject response, w http.ResponseWriter) {
 	} else if strings.ToLower(firstPars) == "image" {
 		query := "https://www.google.com/search?hl=EN&tbm=isch&source=hp&biw=1517&bih=717&ei=02mjXMm7BIS2gwe-66roDQ&q=" + messageExceptFirstPars
 		result := HandlerImage("GET", query)
-		// fmt.Println(result)
 		// processing
 
 		response := processImageResponses(result)
-		fmt.Println(response)
 		responseJSON := jsonResponseQuery {
 			Status: true,
 			Message: "here are the searched images",
@@ -517,7 +515,6 @@ func processImageResponses(result string) []messageQueryBody {
 		link := ""
 		if result[i : i + len(subsl)] == subsl {
 			length := i + len(subsl)
-			fmt.Println(length)
 			var mid int
 			for j := 1; ; j++ {
 				found := false

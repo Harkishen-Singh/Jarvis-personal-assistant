@@ -154,3 +154,13 @@ header {
     border-radius:5px;
     background-color:floralwhite;
     }
+
+.images-searched {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.item {
+    flex: 0 0 auto;
+}
