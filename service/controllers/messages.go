@@ -242,8 +242,8 @@ func processGoogleResponses(result string) []messageQueryBody {
 			}
 		}
 	}
-
 	return queryResultArray
+
 }
 
 func processWeather(response string) weatherStr  {
@@ -279,6 +279,7 @@ func processWeather(response string) weatherStr  {
 	}
 	fmt.Println(weatherInJSON)
 	return weatherInJSON
+
 }
 
 // processes yahoo query result, scraps the required data and returns it
@@ -343,6 +344,7 @@ func processYahooResponses(result string) []messageQueryBody {
 		}
 	}
 	return queryResultArray
+
 }
 
 // processes bing query result, scraps the required data and returns it
@@ -398,7 +400,6 @@ func processBingResponses(result string) []messageQueryBody {
 						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
 							link := result[last + j + lensubsl3 + 1 : last + j + lensubsl3 + k]
 
-							fmt.Println(link)
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
 							link = strings.Replace(link, "<strong>", "", -1)
@@ -436,20 +437,15 @@ func processYoutubeResponses(result string) []messageQueryBody {
 	for i := 0; i < len(result) - len(subsl); i++ {
 		mess := ""
 		if result[i : i + len(subsl)] == subsl {
-			fmt.Println("reached1")
 			length := i + len(subsl)
 			var last int
 			for j:=1; ; j++ {
 				if result[length + j: length + j + len(subsl2)] == subsl2 {
-					fmt.Println("reached2")
 					mid = length + j + len(subsl2)
-					fmt.Println(mid)
 					for k := 1; ; k++ {
 						if result[mid + k: mid + k + 2] == "\">" {
-							fmt.Println("reached3")
 							link := result[mid: mid + k]
 							flink := "https://www.youtube.com" + link
-							fmt.Println(flink)
 							queryResult.Link = flink
 							last = mid + k + 2
 							i = last
@@ -463,7 +459,6 @@ func processYoutubeResponses(result string) []messageQueryBody {
 			found := false
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
-						fmt.Println("reached4")
 						mess = result[last: last + j]
 						i = last + j + lensubsl3
 						found = true
@@ -477,4 +472,5 @@ func processYoutubeResponses(result string) []messageQueryBody {
 		}
 	}
 	return queryResultArray
+
 }
