@@ -36,9 +36,10 @@ var (
 	messagesParser Messages
 	messagesRepliesParser Messagesreplies
 	resp jsonResponse
+	username string
 )
 
-func loadJSONParsers() {
+func loadJSONParsers(name string) {
 
 	fmt.Println("Loading JSON parsers....")
 	messagesFile, err := os.Open("messages.json")
@@ -51,6 +52,7 @@ func loadJSONParsers() {
 	if err2 != nil   {
 		panic(err2)
 	}
+	username = name
 
 	json.Unmarshal(bytvalMF, &messagesParser)
 	json.Unmarshal(bytvalMRF, &messagesRepliesParser)
@@ -60,7 +62,7 @@ func loadJSONParsers() {
 // GeneralConvHandler handles stuff related to general conversation
 func GeneralConvHandler(req response, res http.ResponseWriter) {
 
-	loadJSONParsers()
+	loadJSONParsers(req.username)
 	message := req.message
 	// determine type of message
 	isGreetingPlain := func(s string) bool {
@@ -97,6 +99,7 @@ func GeneralConvHandler(req response, res http.ResponseWriter) {
 		marshalled, _ := json.Marshal(resp)
 		res.Write(marshalled)
 	}
+
 }
 
 func greetingPlainController(s string) string {
@@ -109,6 +112,7 @@ func greetingPlainController(s string) string {
 func greetingNameController(s string) string {
 
 	numb := rand.Intn(len(messagesRepliesParser.InitialGreetingsName))
-	return messagesRepliesParser.InitialGreetingsName[numb]
+	reply := fmt.Sprintf(messagesRepliesParser.InitialGreetingsName[numb], &username) // note the formatter in messages_replies used
+	return reply
 
 }
