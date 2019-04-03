@@ -17,6 +17,7 @@ type response struct {
 type jsonResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
+	Show bool `json:"show"`
 	Result []string `json:"result"`
 }
 
@@ -36,14 +37,14 @@ var (
 	messagesParser Messages
 	messagesRepliesParser Messagesreplies
 	resp jsonResponse
-	username string
+	username, speak string
 )
 
 func loadJSONParsers(name string) {
 
 	fmt.Println("Loading JSON parsers....")
-	messagesFile, err := os.Open("messages.json")
-	messagesRepliesFile, err2 := os.Open("messages_replies.json")
+	messagesFile, err := os.Open("messages/messages.json")
+	messagesRepliesFile, err2 := os.Open("messages/messages_replies.json")
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
 	if err != nil   {
@@ -60,10 +61,11 @@ func loadJSONParsers(name string) {
 }
 
 // GeneralConvHandler handles stuff related to general conversation
-func GeneralConvHandler(req response, res http.ResponseWriter) {
+func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
-	loadJSONParsers(req.username)
-	message := req.message
+	fmt.Println("General conversation...")
+	loadJSONParsers(name)
+	message := req
 	// determine type of message
 	isGreetingPlain := func(s string) bool {
 		for i:=0; i< len(messagesParser.InitialGreetingsPlain); i++ {
@@ -77,10 +79,11 @@ func GeneralConvHandler(req response, res http.ResponseWriter) {
 	if isGreetingPlain {
 		temp := greetingPlainController(message)
 		resp.Status = true
+		resp.Show = true
 		resp.Message = temp
+		speak = temp
 		marshalled, _ := json.Marshal(resp)
 		res.Write(marshalled)
-		return ;
 	}
 
 	isGreetingName := func(s string) bool {
@@ -95,10 +98,14 @@ func GeneralConvHandler(req response, res http.ResponseWriter) {
 	if isGreetingName {
 		temp := greetingNameController(message)
 		resp.Status = true
+		resp.Show = true
 		resp.Message = temp
+		speak = temp
 		marshalled, _ := json.Marshal(resp)
 		res.Write(marshalled)
 	}
+
+	return speak
 
 }
 
@@ -112,7 +119,10 @@ func greetingPlainController(s string) string {
 func greetingNameController(s string) string {
 
 	numb := rand.Intn(len(messagesRepliesParser.InitialGreetingsName))
-	reply := fmt.Sprintf(messagesRepliesParser.InitialGreetingsName[numb], &username) // note the formatter in messages_replies used
+	temp := messagesRepliesParser.InitialGreetingsName[numb]
+	fmt.Println("temp is : ", temp)
+	reply := fmt.Sprintf(temp, username) // note the formatter in messages_replies used
+	fmt.Println("reply is : ", reply)
 	return reply
 
 }

@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"strings"
 	"encoding/json"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"fmt"
 )
 
@@ -162,13 +163,26 @@ func routes(routeObject response, w http.ResponseWriter) {
 		TextToSpeech(response.Message + city + " " + state, 0)
 
 	} else {
-
 		// general conversation
 
-		
-		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-		TextToSpeech("Hi from reply bot", 0)
+		speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
+		TextToSpeech(filterForSpeech(speech), 0)
+
 	}
+
+}
+
+func filterForSpeech(s string) string {
+
+	s = strings.Replace(s, "?", " ", -1)
+	s = strings.Replace(s, "%", " ", -1)
+	s = strings.Replace(s, "#", " ", -1)
+	s = strings.Replace(s, "$", " ", -1)
+	s = strings.Replace(s, "@", " ", -1)
+	s = strings.Replace(s, "&", " ", -1)
+	s = strings.Replace(s, "^", " ", -1)
+	s = strings.Replace(s, "*", " ", -1)
+	return s
 
 }
 

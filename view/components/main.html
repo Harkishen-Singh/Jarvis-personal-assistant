@@ -32,7 +32,8 @@
                     </sub>
                 </span>
             </div>
-            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'Hi from reply bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+            <div data-ng-if="message.sender === 'jarvis-bot' && ( message.message === 'Hi from reply bot' || message.show )"
+             class="chat-screen-messages-jarvis-bot" class="clearfix">
                 <!-- for simple conversation messages -->
                 <div>
                     {{message.message}}

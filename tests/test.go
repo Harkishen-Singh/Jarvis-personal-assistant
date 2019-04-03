@@ -8,5 +8,5 @@ import (
 func main() {
 
 	speech := htgotts.Speech{Folder: "audio", Language: "en"}
-	speech.Speak("Muskan is the best girl")
+	speech.Speak("hi! how can i help you with")
 }
