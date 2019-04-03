@@ -25,9 +25,9 @@ header {
 
 #message-input-parent {
     position: fixed;
-    bottom: 10px;
+    bottom: 4px;
     width: 100%;
-    padding: 1%;
+    padding-left: 1%;
 }
 
 #message-input {
@@ -39,7 +39,8 @@ header {
 }
 
 #stackArea-parent {
-    height: 65vh;
+    margin-top: -4.2%;
+    height: 76vh;
     overflow-y: scroll;
 }
 
