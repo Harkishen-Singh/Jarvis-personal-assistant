@@ -368,7 +368,7 @@ func processBingResponses(result string) []messageQueryBody {
 	for i := 0; i < len(result) - len(subsl); i++ {
 		mess := ""
 		if result[i : i + len(subsl)] == subsl {
-			length := i + len(subsl) 
+			length := i + len(subsl)
 			var last int
 			var aStart int
 			var start int
