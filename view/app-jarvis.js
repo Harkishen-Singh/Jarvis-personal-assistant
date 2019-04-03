@@ -92,7 +92,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				}, 100);
 				if (status && message === 'here are the current weather conditions') {
 					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.result = JSON.parse(result);
@@ -100,16 +100,17 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					console.log(messageObj);
 				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
 					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 				} else if (status === 'success' || status) {
 					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
+					$scope.messageStack.push(messageObj);
 				} else {
 					console.error('[JARVIS] error fetching from service.');
 				}
