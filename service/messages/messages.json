@@ -3,11 +3,20 @@
         "hi",
         "hello",
         "hey",
-        "whats up"
+        "whats up",
+        "yo"
     ],
     "initial-greetings-name": [
         "hi jarvis",
         "hello jarvis",
-        "hey jarvis"
+        "hey jarvis",
+        "yo jarvis"
+    ],
+    "help": [
+        "help",
+        "help me",
+        "how can you help me",
+        "please help me",
+        "help me get started"
     ]
 }

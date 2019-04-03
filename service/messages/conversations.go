@@ -7,6 +7,7 @@ import (
 	"os"
 	"io/ioutil"
 	"math/rand"
+	"strings"
 )
 
 type response struct {
@@ -25,12 +26,14 @@ type jsonResponse struct {
 type Messages struct {
 	InitialGreetingsName []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
+	Help []string `json:"help"`
 }
 
 // Messagesreplies json parser for default reply string types
 type Messagesreplies struct {
 	InitialGreetingsName []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
+	Help []string `json:"help"`
 }
 
 var (
@@ -60,12 +63,26 @@ func loadJSONParsers(name string) {
 
 }
 
+func filterForMessagesComparision(s string) (sr string)  {
+
+	sr = strings.Replace(s, "?", " ", -1)
+	sr = strings.Replace(sr, "%", " ", -1)
+	sr = strings.Replace(sr, "#", " ", -1)
+	sr = strings.Replace(sr, "$", " ", -1)
+	sr = strings.Replace(sr, "@", " ", -1)
+	sr = strings.Replace(sr, "&", " ", -1)
+	sr = strings.Replace(sr, "^", " ", -1)
+	sr = strings.Replace(sr, "*", " ", -1)
+	return
+}
+
 // GeneralConvHandler handles stuff related to general conversation
 func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	fmt.Println("General conversation...")
 	loadJSONParsers(name)
-	message := req
+	message := filterForMessagesComparision(req)
+
 	// determine type of message
 	isGreetingPlain := func(s string) bool {
 		for i:=0; i< len(messagesParser.InitialGreetingsPlain); i++ {
@@ -105,7 +122,33 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 		res.Write(marshalled)
 	}
 
+	isHelp := func(s string) bool {
+		for i:=0; i< len(messagesParser.Help); i++ {
+			if messagesParser.Help[i] == s {
+				return true
+			}
+		}
+		return false
+	}(message)
+
+	if isHelp {
+		temp := helpController(message)
+		resp.Status = true
+		resp.Show = true
+		resp.Message = temp
+		speak = temp
+		marshalled, _ := json.Marshal(resp)
+		res.Write(marshalled)
+	}
+
 	return speak
+
+}
+
+func helpController(s string) string {
+
+	numb := rand.Intn(len(messagesRepliesParser.Help))
+	return messagesRepliesParser.Help[numb]
 
 }
 
@@ -120,9 +163,7 @@ func greetingNameController(s string) string {
 
 	numb := rand.Intn(len(messagesRepliesParser.InitialGreetingsName))
 	temp := messagesRepliesParser.InitialGreetingsName[numb]
-	fmt.Println("temp is : ", temp)
 	reply := fmt.Sprintf(temp, username) // note the formatter in messages_replies used
-	fmt.Println("reply is : ", reply)
 	return reply
 
 }

@@ -15,5 +15,10 @@
         "hey %s!",
         "hi %s!",
         "hello %s!"
+    ],
+    "help": [
+        "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
+        "You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
+        "I can help you with web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!"
     ]
 }
