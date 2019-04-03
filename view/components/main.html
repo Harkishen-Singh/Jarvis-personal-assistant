@@ -77,7 +77,7 @@
                         <div data-ng-repeat="objectQuery in message.result" id="queried-image">
                             <div class="item">
                                 <a href="{{objectQuery.link}}" target="_blank">
-                                    <img src="{{objectQuery.link}}" style="display:block;margin-left: 20px;
+                                    <img ng-src="{{objectQuery.link}}" style="display:block;margin-left: 20px;
                                     margin-right:20px;padding-right: 10px;width:424.66px;height: 318.48px;" />
                                 </a>
                             </div>

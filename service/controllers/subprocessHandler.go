@@ -75,7 +75,7 @@ func HandlerWeather(city string, state string) string {
 
 }
 
-// HandlerYoutube handles the subprocesses related to fetchdata_query.js
+//HandlerYoutube handles the subprocesses related to fetchdata_query.js
 // returns the http body as string
 func HandlerYoutube(method string, url string) string {
 
