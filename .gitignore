@@ -3,6 +3,8 @@ view/package-lock.json
 tests/node_modules
 tests/package-lock.json
 service/audio/
+conversations/audio/
+tests/audio/
 tests/mochawesome-report
 package-lock.json
 service/subprocesses/node_modules/
