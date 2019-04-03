@@ -150,8 +150,8 @@ class Core_Base:
             "time": str(datetime.datetime.now()),
             "temperature": str(self.temperature),
             "city": self.city,
-            "feels_like": str(self.feel) + " C",
-            "visibiliy": str(self.visibility) + " km",
+            "feels_like": str(self.feel),
+            "visibility": str(self.visibility) + " km",
             "humidity": str(self.humidity) + " %",
             "dew_point": str(self.dew_point)
         }
