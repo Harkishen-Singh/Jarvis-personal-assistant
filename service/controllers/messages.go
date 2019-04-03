@@ -264,7 +264,7 @@ func processWeather(response string) weatherStr  {
 		if response[i: i + sublLen] == subl {
 			for j:=1; ; j++ {
 				if response[i+sublLen+j: i+sublLen+j + 1] == "}" {
-					weather = []byte(response[i+sublLen+2: i+sublLen+j+1])
+					weather = []byte(response[i+sublLen+1: i+sublLen+j+1])
 					found = true
 					break
 				}
