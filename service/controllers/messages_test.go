@@ -146,3 +146,26 @@ func TestImagesSearch(t *testing.T) {
 	}
 
 }
+
+func TestYoutube(t *testing.T) {
+
+	form := url.Values{}
+	form.Add("username", "default")
+	form.Add("message", "youtube palazzo song")
+	resp, err := http.PostForm("http://localhost:3000/message", form)
+	if err != nil {
+		panic(err)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+	// success check
+	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
+		t.Errorf("Youtube Response didnt match as required")
+	}
+
+	// incoming data checks
+	if !strings.Contains(string(body), "here are the top search results") {
+		t.Errorf("Youtube functionality response didn't match as required!")
+	}
+
+}
