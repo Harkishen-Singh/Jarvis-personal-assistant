@@ -35,14 +35,13 @@ before-install:
   - nvm install stable
   - nvm use stable
   - go get -u -v -d ./...
-  - pip install -r service/subprocesses/requirements.txt
   - cd tests/
   - cd npm install
 
 
 script:
-  - go run service/maintut.go &
-  - node service/subprocesses/fetchdata_query.js get https://www.google.co.in
+  - cd service && go run maintut.go &
+  - cd .. && pip install -r service/subprocesses/requirements.txt
   - python service/subprocesses/weather.py bhubaneswar odisha
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/app-jarvis.js
