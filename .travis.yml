@@ -41,7 +41,7 @@ before-install:
 
 script:
   - cd service && go run maintut.go &
-  - cd ..
+  # - cd ..
   - pip install -r service/subprocesses/requirements.txt
   - python service/subprocesses/weather.py bhubaneswar odisha
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
