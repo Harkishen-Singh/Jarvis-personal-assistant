@@ -42,6 +42,8 @@ before-install:
 
 script:
   - go run service/maintut.go &
+  - node service/subprocesses/fetchdata_query.js get https://www.google.co.in
+  - python service/subprocesses/weather.py bhubaneswar odisha
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/app-jarvis.js
   - cd view/ && npm start && cd ..
