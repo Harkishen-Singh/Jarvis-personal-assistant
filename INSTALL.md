@@ -21,5 +21,5 @@ The prerequisites for installing the project :
 
 ### for executing tests
 
-7. `eslint view/app-jarvis.js` # for linting checks
-8. `cd tests && npm install && mocha tests.js`
+8. `eslint view/app-jarvis.js` # for linting checks
+9. `cd tests && npm install && mocha tests.js`
