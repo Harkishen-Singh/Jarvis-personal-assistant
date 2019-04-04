@@ -32,7 +32,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	});
 
 	$scope.addMessagesToStack = function() {
-		if (!$scope.message == '') {
+		if ($scope.message.length) {
 
 			if ($scope.showLoaderListening) {
 				$scope.showLoaderListening = false;
