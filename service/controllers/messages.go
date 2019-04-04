@@ -64,16 +64,26 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	message := routeObject.message
 	messageArr := strings.Split(message, " ")
-	secondPars := messageArr[1]
-	thirdPars := messageArr[2]
-	// messageTemp := message
 	var firstPars string
+	var secondPars string
+	var thirdPars string
+	if(len(messageArr)>=3){
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+		thirdPars = messageArr[2]
+	}else if(len(messageArr)==2){
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+	}else if(len(messageArr)==1){
+			firstPars=messageArr[0]
+	}
+	// messageTemp := message
 	/*if strings.Contains(message, " ") {
 		firstPars = message[:strings.Index(message, " ")]
 	} else {
 		firstPars = message
 	}*/
-	firstPars=messageArr[0]
+	
 
 	strArr := strings.Split(firstPars, " ")
 	strArrDiff := strings.Split(message, " ")
