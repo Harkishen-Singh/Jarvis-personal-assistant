@@ -74,13 +74,26 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	message := routeObject.message
 	messageArr := strings.Split(message, " ")
-	// messageTemp := message
 	var firstPars string
-	if strings.Contains(message, " ") {
+	var secondPars string
+	var thirdPars string
+	if(len(messageArr)>=3){
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+		thirdPars = messageArr[2]
+	}else if(len(messageArr)==2){
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+	}else if(len(messageArr)==1){
+			firstPars=messageArr[0]
+	}
+	// messageTemp := message
+	/*if strings.Contains(message, " ") {
 		firstPars = message[:strings.Index(message, " ")]
 	} else {
 		firstPars = message
-	}
+	}*/
+	
 
 	strArr := strings.Split(firstPars, " ")
 	strArrDiff := strings.Split(message, " ")
@@ -91,7 +104,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	// single word operations
 
-	if strings.ToLower(firstPars) == "google" { // for google search
+	if strings.ToLower(firstPars) == "google" || strings.ToLower(secondPars) == "google"{ // for google search
 
 		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
 		result := HandlerGoogle("GET", query)
@@ -108,7 +121,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
-	} else if strings.ToLower(firstPars) == "yahoo" {
+	} else if strings.ToLower(firstPars) == "yahoo" || strings.ToLower(secondPars) == "yahoo"{
 		query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
 		result := HandlerYahoo("GET", query)
 
@@ -124,7 +137,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
-	} else if strings.ToLower(firstPars) == "bing" {
+	} else if strings.ToLower(firstPars) == "bing" || strings.ToLower(secondPars)=="bing"{
 		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
 		result := HandlerBing("GET", query)
 
@@ -140,7 +153,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
-	} else if strings.ToLower(firstPars) == "youtube" {
+	} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars)=="video" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars)=="youtube" || strings.ToLower(thirdPars)=="youtube"{
 		query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
 		result := HandlerYoutube("GET", query)
 
@@ -170,8 +183,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		jData, _ := json.Marshal(responseJSON)
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "weather" {
+		
+	} else if strings.ToLower(firstPars) == "weather" || strings.ToLower(secondPars)=="weather"{
 
 		city := messageArr[len(messageArr)-2]
 		state := messageArr[len(messageArr)-1]
