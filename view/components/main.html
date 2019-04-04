@@ -3,6 +3,22 @@
          Chat Screen 
         <hr>
     </span>
+    <!-- message field -->
+    <div id="message-bar">
+        <div id="message-input-parent">
+            <input type="text"  name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()" placeholder="Type a message">
+            <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
+                Send
+            </button>
+            <!-- banner -->
+            <div id="banner-listen" data-ng-show="showLoaderListening">
+                <span>Listening ... </span>
+                <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
+            </div>
+            <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button" data-ng-click="toggleStartStop()" />
+        </div>
+    </div>
+
     <!-- chat screen -->
 
     <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
