@@ -3,22 +3,6 @@
          Chat Screen 
         <hr>
     </span>
-    <!-- message field -->
-    <div id="message-bar">
-        <div id="message-input-parent">
-            <input type="text"  name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
-            <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
-                Send
-            </button>
-            <!-- banner -->
-            <div id="banner-listen" data-ng-show="showLoaderListening">
-                <span>Listening ... </span>
-                <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
-            </div>
-            <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button" data-ng-click="toggleStartStop()" />
-        </div>
-    </div>
-
     <!-- chat screen -->
 
     <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
@@ -62,6 +46,30 @@
                     </div>
                 </div>
             </div>
+            <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the searched images'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+                <div class="message-style">
+                    {{message.message}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
+                <div id="queried-data" data-ng-if="message.result.length !== 0">
+                    <div class="images-searched">
+                        <div data-ng-repeat="objectQuery in message.result" id="queried-image">
+                            <div class="item">
+                                <a href="{{objectQuery.link}}" target="_blank">
+                                    <img ng-src="{{objectQuery.link}}" style="display:block;margin-left: 20px;
+                                    margin-right:20px;padding-right: 10px;width:424.66px;height: 318.48px;" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the current weather conditions'"
                 class="chat-screen-messages-jarvis-bot" class="clearfix">
                 <div class="message-style">
@@ -86,6 +94,22 @@
                 </div>
             </div>
             <br>
+        </div>
+    </div>
+    <!-- message field -->
+    <div id="message-bar">
+        <div id="message-input-parent">
+            <input type="text" name="" id="message-input" data-ng-model="message" data-ng-change="removeMessage()">
+            <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
+                Send
+            </button>
+            <!-- banner -->
+            <div id="banner-listen" data-ng-show="showLoaderListening">
+                <span>Listening ... </span>
+                <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
+            </div>
+            <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button"
+                data-ng-click="toggleStartStop()" />
         </div>
     </div>
 </div>
