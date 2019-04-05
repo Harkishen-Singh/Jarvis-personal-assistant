@@ -22,11 +22,21 @@ type messageQueryBody struct {
 	Link string `json:"link"`
 }
 
+// type imageQueryBody struct{
+// 	Link string `json:"link"`
+// }
+
 type jsonResponseQuery struct {
 	Status bool	`json:"status"`
 	Message string `json:"message"`
 	Result []messageQueryBody `json:"result"`
 }
+
+// type jsonResponseImage struct {
+// 	Status bool	`json:"status"`
+// 	Message string `json:"message"`
+// 	Result []imageQueryBody `json:"result"`
+// }
 
 type jsonResponseWeather struct {
 	Status bool	`json:"status"`
@@ -147,6 +157,21 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
+	} else if strings.ToLower(firstPars) == "image" {
+		query := "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+		result := HandlerImage("GET", query)
+		// processing
+
+		response := processImageResponses(result)
+		responseJSON := jsonResponseQuery {
+			Status: true,
+			Message: "here are the searched images",
+			Result: response,
+		}
+		jData, _ := json.Marshal(responseJSON)
+		w.Write(jData)
+		TextToSpeech(responseJSON.Message, 0)
+
 	} else if strings.ToLower(firstPars) == "weather" {
 
 		city := messageArr[len(messageArr)-2]
@@ -219,23 +244,25 @@ func stringDifference(slice1 []string, slice2 []string) []string {
 func processGoogleResponses(result string) []messageQueryBody {
 
 	subsl := "<h3 class=\"LC20lb\">"
+	lensubsl := len(subsl)
 	subsl2 := "</h3>"
+	lensubsl2 := len(subsl2)
 	subsl3 := "<cite"
 	lensubsl3 := len(subsl3)
 	subsl4 := "</cite>"
 	lensubsl4 := len(subsl4)
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
-	for i := 0; i < len(result) - len(subsl); i++ {
+	for i := 0; i < len(result) - lensubsl; i++ {
 		mess := ""
-		if result[i : i + len(subsl)] == subsl {
-			length := i + len(subsl)
+		if result[i : i + lensubsl] == subsl {
+			length := i + lensubsl
 			var last int
 			for j:=1; ; j++ {
-				if result[length + j: length + j + len(subsl2)] == subsl2 {
+				if result[length + j: length + j + lensubsl2] == subsl2 {
 					mess = result[length: length + j]
 					queryResult.Head = mess
-					last = length + j + len(subsl2)
+					last = length + j + lensubsl2
 					i = last
 					break
 				}
@@ -249,6 +276,9 @@ func processGoogleResponses(result string) []messageQueryBody {
 							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." && link[0: 8] != "https://" {
+								link = "http://" + link
+							}
 							queryResult.Link = link
 							break
 						}
@@ -305,7 +335,9 @@ func processWeather(response string) weatherStr  {
 func processYahooResponses(result string) []messageQueryBody {
 
 	subsl := "<a class=\" ac-algo fz-l ac-21th lh-24\"";
+	lensubsl := len(subsl)
 	subsl2 := "</a>"
+	lensubsl2 := len(subsl2)
 	subsl3 := "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
 	lensubsl3 := len(subsl3)
 	subsl4 := "</span>"
@@ -313,10 +345,10 @@ func processYahooResponses(result string) []messageQueryBody {
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
-	for i := 0; i < len(result) - len(subsl); i++ {
+	for i := 0; i < len(result) - lensubsl; i++ {
 		mess := ""
-		if result[i : i + len(subsl)] == subsl {
-			length := i + len(subsl)
+		if result[i : i + lensubsl] == subsl {
+			length := i + lensubsl
 			var last int
 			var start int
 
@@ -328,10 +360,10 @@ func processYahooResponses(result string) []messageQueryBody {
 			}
 
 			for j:=1; ; j++ {
-				if result[start + j: start + j + len(subsl2)] == subsl2 {
+				if result[start + j: start + j + lensubsl2] == subsl2 {
 					mess = result[start: start + j]
 					queryResult.Head = mess
-					last = start + j + len(subsl2)
+					last = start + j + lensubsl2
 					i = last
 					break
 				}
@@ -382,7 +414,7 @@ func processBingResponses(result string) []messageQueryBody {
 	for i := 0; i < len(result) - len(subsl); i++ {
 		mess := ""
 		if result[i : i + len(subsl)] == subsl {
-			length := i + len(subsl) 
+			length := i + len(subsl)
 			var last int
 			var aStart int
 			var start int
@@ -488,6 +520,52 @@ func processYoutubeResponses(result string) []messageQueryBody {
 					break
 				}
 			}
+		}
+	}
+	return queryResultArray
+
+}
+
+// processes image query result, scraps the required data and returns it
+func processImageResponses(result string) []messageQueryBody {
+
+	subsl := "<div class=\"rg_meta notranslate\">"
+	lensubsl := len(subsl)
+	subsl2 := "\"ou\":\""
+	lensubsl2 := len(subsl2)
+	count := 0
+
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		link := ""
+		if result[i : i + lensubsl] == subsl {
+			length := i + lensubsl
+			var mid int
+			for j := 1; ; j++ {
+				found := false
+				if result[length + j: length + j + lensubsl2] == subsl2 {
+					mid = length + j + lensubsl2
+					for k := 1; ; k++ {
+						if result[mid + k: mid + k + 1] == "\"" {
+							link = result[mid: mid + k]
+							queryResult.Link = link
+							found = true
+							i = mid + k + 1;
+							break;
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					count ++
+					break;
+				}
+			}
+		}
+		if count == 10 {
+			break;
 		}
 	}
 	return queryResultArray

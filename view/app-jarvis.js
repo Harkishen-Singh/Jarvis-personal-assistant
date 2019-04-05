@@ -4,7 +4,7 @@
 const app = angular.module('jarvis', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-console.log('bbbbbbbbbb');
+console.log('From app-jarvis.js');
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
@@ -32,7 +32,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	});
 
 	$scope.addMessagesToStack = function() {
-		if (!$scope.message.startsWith('Type a message')) {
+		if ($scope.message.length) {
 
 			if ($scope.showLoaderListening) {
 				$scope.showLoaderListening = false;
@@ -41,7 +41,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			}
 
 			var mess = document.getElementById('message-input');
-			mess.value = 'Type a message ...';
+			mess.value = '';
 			let message = $scope.message,
 				date = new Date(),
 				hrs = date.getHours(),
@@ -107,6 +107,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && !show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -128,23 +135,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			}).catch(e => {
 				throw e;
 			});
-			$scope.message = 'Type a message ...';
+			$scope.message = '';
 			// if (!recognizing) {
 			// 	setTimeout(() => {
 			// 		$scope.toggleStartStop(0);
 			// 	}, 2000);
 			// }
 
-		} else {
-			alert('Please enter a message');
-		}
-	};
-
-	$scope.removeMessage = function() {
-		if ($scope.message.startsWith('Type a message ...')) {
-			var mess_string = $scope.message;
-			var initial = mess_string.substring(mess_string.length - 1);
-			$scope.message = initial;
 		}
 	};
 
@@ -154,7 +151,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	};
 
 	$scope.initStack = function() {
-		$scope.message = 'Type a message ...';
+		$scope.message = '';
 		// $scope.toggleStartStop(0);
 	};
 
