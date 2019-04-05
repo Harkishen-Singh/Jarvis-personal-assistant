@@ -10,7 +10,12 @@
         "hi jarvis",
         "hello jarvis",
         "hey jarvis",
-        "yo jarvis"
+        "yo jarvis",
+        "hi",
+        "hello",
+        "hey",
+        "whats up",
+        "yo"
     ],
     "help": [
         "help",
@@ -29,7 +34,7 @@
         "your work",
         "work"
     ],
-    "bucket-about": [
+    "about": [
         "whats your name",
         "tell me your name",
         "name",
@@ -37,5 +42,18 @@
         "tell me about yourself",
         "about you",
         "about"
+    ],
+    "age": [
+        "how old are you",
+        "your age",
+        "how many years are you old",
+        "how long have a been",
+        "jarvis age",
+        "jarvis years"
+    ],
+    "birthday": [
+        "when is your birthday",
+        "your birthday",
+        "jarvis birthday"
     ]
 }

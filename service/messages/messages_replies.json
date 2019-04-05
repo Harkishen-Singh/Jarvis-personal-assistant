@@ -19,12 +19,23 @@
     "help": [
         "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
         "You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
-        "I can help you with web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!"
+        "I can help you with web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
+        "My work is to help you with the web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!"
     ],
-    "bucket-about": [
+    "about": [
         "I am Jarvis, your personal assistant. How can I help you?",
         "Jarvis is my name",
         "My name is jarvis! Anything I can help you with?",
         "I am your assistant, Jarvis. Anything I can help you with?"
+    ],
+    "age": [
+        "I am 2 months old",
+        "I was born on 17th of march, 2019. So, according to math, I am 2 months old",
+        "I am only 2 months of age"
+    ],
+    "birthday": [
+        "I was born on 17th of march, 2019",
+        "I was born on 17th of march, 2019. So, according to math, I am 2 months old",
+        "My birthday is on 17th of march"
     ]
 }
