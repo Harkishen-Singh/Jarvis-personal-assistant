@@ -204,19 +204,22 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		} else if strings.ToLower(firstPars) == "weather" {
 
-			city := messageArr[len(messageArr)-2]
-			state := messageArr[len(messageArr)-1]
-			result := HandlerWeather(city, state)
-			stringified, _ := json.Marshal(processWeather(result))
-			response := jsonResponseWeather{
-				Status: true,
-				Message: "here are the current weather conditions",
-				Result: string(stringified),
+			if len(messageArr) == 1 || len(messageArr) < 3 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
+			} else {
+				city := messageArr[len(messageArr)-2]
+				state := messageArr[len(messageArr)-1]
+				result := HandlerWeather(city, state)
+				stringified, _ := json.Marshal(processWeather(result))
+				response := jsonResponseWeather{
+					Status: true,
+					Message: "here are the current weather conditions",
+					Result: string(stringified),
+				}
+				jData, _ := json.Marshal(response)
+				w.Write(jData)
+				TextToSpeech(response.Message + city + " " + state, 0)
 			}
-			jData, _ := json.Marshal(response)
-			w.Write(jData)
-			TextToSpeech(response.Message + city + " " + state, 0)
-
 		} else {
 			// general conversation
 			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
