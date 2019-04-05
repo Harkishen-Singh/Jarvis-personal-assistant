@@ -190,7 +190,6 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		// general conversation
 
-		
 		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
 		TextToSpeech("Hi from reply bot", 0)
 	}
