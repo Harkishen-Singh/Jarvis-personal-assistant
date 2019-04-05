@@ -3,11 +3,57 @@
         "hi",
         "hello",
         "hey",
-        "whats up"
+        "whats up",
+        "yo"
     ],
     "initial-greetings-name": [
         "hi jarvis",
         "hello jarvis",
-        "hey jarvis"
+        "hey jarvis",
+        "yo jarvis",
+        "hi",
+        "hello",
+        "hey",
+        "whats up",
+        "yo"
+    ],
+    "help": [
+        "help",
+        "help me",
+        "how can you help me",
+        "please help me",
+        "please help",
+        "help me get started",
+        "get started",
+        "tell about you",
+        "about you",
+        "what all can you do",
+        "what can you do",
+        "whats your work",
+        "what is your work",
+        "your work",
+        "work"
+    ],
+    "about": [
+        "whats your name",
+        "tell me your name",
+        "name",
+        "who are you",
+        "tell me about yourself",
+        "about you",
+        "about"
+    ],
+    "age": [
+        "how old are you",
+        "your age",
+        "how many years are you old",
+        "how long have a been",
+        "jarvis age",
+        "jarvis years"
+    ],
+    "birthday": [
+        "when is your birthday",
+        "your birthday",
+        "jarvis birthday"
     ]
 }
