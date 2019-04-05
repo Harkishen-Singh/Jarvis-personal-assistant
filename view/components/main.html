@@ -105,6 +105,18 @@
                         </span>
                     </div>
                 </div>
+                <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'ENTER: weather <city> <state>'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+                    <!-- for displaying error message -->
+                    <div>
+                        {{message.message}}
+                        <span>
+                            <sub class="show-user-creds">
+                                {{message.sender}}
+                                {{message.time}}
+                            </sub>
+                        </span>
+                    </div>
+                </div>
                 <br>
             </div>
         </div>
