@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"strings"
 	"encoding/json"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"fmt"
 )
 
@@ -222,19 +223,35 @@ func routes(routeObject response, w http.ResponseWriter) {
 			}
 		} else {
 			// general conversation
-			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-			TextToSpeech("Hi from reply bot", 0)
+			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
+			TextToSpeech(filterForSpeech(speech), 0)
 		}
 	} else {
+
 		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" {
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
 		} else {
 			// general conversation
-			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-			TextToSpeech("Hi from reply bot", 0)
+			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
+			TextToSpeech(filterForSpeech(speech), 0)
 		}
 	}
+
+}
+
+func filterForSpeech(s string) string {
+
+	s = strings.Replace(s, "?", " ", -1)
+	s = strings.Replace(s, "%", " ", -1)
+	s = strings.Replace(s, "#", " ", -1)
+	s = strings.Replace(s, "$", " ", -1)
+	s = strings.Replace(s, "@", " ", -1)
+	s = strings.Replace(s, "&", " ", -1)
+	s = strings.Replace(s, "^", " ", -1)
+	s = strings.Replace(s, "*", " ", -1)
+	s = strings.Replace(s, "/", ", ", -1)
+	return s
 
 }
 

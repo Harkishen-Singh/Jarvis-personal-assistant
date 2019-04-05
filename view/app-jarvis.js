@@ -77,6 +77,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					message = res['message'],
 					status = res['status'],
 					result = res['result'],
+					show = res['show'],
 					hrs2 = new Date().getHours(),
 					mins2 = new Date().getMinutes();
 				messageObj = {
@@ -84,6 +85,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					sender: '',
 					time: '',
 					result: '',
+					show: false,
 					length: null
 				};
 				console.log(res);
@@ -112,11 +114,18 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
-				} else if (status === 'success' || status) {
+				} else if ((status === 'success' || status) && !show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
+					$scope.messageStack.push(messageObj);
+				} else if (show) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.show = show;
 					$scope.messageStack.push(messageObj);
 				} else {
 					console.error('[JARVIS] error fetching from service.');

@@ -1,10 +1,10 @@
 <div data-ng-init="initStack()">
         <span id="chat-screen" style="color:black;">
-             Chat Screen 
+             Chat Screen
             <hr>
         </span>
         <!-- chat screen -->
-    
+
         <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
             <div data-ng-repeat="message in messageStack" id="stackArea">
                 <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
@@ -16,7 +16,8 @@
                         </sub>
                     </span>
                 </div>
-                <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'Hi from reply bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
+                <div data-ng-if="(message.sender === 'jarvis-bot' && message.message === 'Hi from reply bot') || (message.sender === 'jarvis-bot' && message.show)"
+                 class="chat-screen-messages-jarvis-bot" class="clearfix">
                     <!-- for simple conversation messages -->
                     <div>
                         {{message.message}}
@@ -69,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div data-ng-if="message.sender === 'jarvis-bot' && message.message === 'here are the current weather conditions'"
                     class="chat-screen-messages-jarvis-bot" class="clearfix">
                     <div class="message-style">
