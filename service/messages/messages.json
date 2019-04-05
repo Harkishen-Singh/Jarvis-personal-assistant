@@ -17,6 +17,25 @@
         "help me",
         "how can you help me",
         "please help me",
-        "help me get started"
+        "please help",
+        "help me get started",
+        "get started",
+        "tell about you",
+        "about you",
+        "what all can you do",
+        "what can you do",
+        "whats your work",
+        "what is your work",
+        "your work",
+        "work"
+    ],
+    "bucket-1": [
+        "whats your name",
+        "tell me your name",
+        "name",
+        "who are you",
+        "tell me about yourself",
+        "about you",
+        "about"
     ]
 }

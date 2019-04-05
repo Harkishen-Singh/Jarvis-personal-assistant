@@ -82,64 +82,76 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	fmt.Println("General conversation...")
 	loadJSONParsers(name)
 	message := filterForMessagesComparision(req)
+	match := false
 
 	// determine type of message
-	isGreetingPlain := func(s string) bool {
-		for i:=0; i< len(messagesParser.InitialGreetingsPlain); i++ {
-			if messagesParser.InitialGreetingsPlain[i] == s {
-				return true
+	if !match {
+		isGreetingPlain := func(s string) bool {
+			for i:=0; i< len(messagesParser.InitialGreetingsPlain); i++ {
+				if strings.Contains(s, messagesParser.InitialGreetingsPlain[i]) {
+					match = true
+					return true
+				}
 			}
-		}
-		return false
-	}(message)
+			return false
+		}(message)
 
-	if isGreetingPlain {
-		temp := greetingPlainController(message)
-		resp.Status = true
-		resp.Show = true
-		resp.Message = temp
-		speak = temp
-		marshalled, _ := json.Marshal(resp)
-		res.Write(marshalled)
+		if isGreetingPlain {
+			temp := greetingPlainController(message)
+			resp.Status = true
+			resp.Show = true
+			resp.Message = temp
+			speak = temp
+			marshalled, _ := json.Marshal(resp)
+			res.Write(marshalled)
+		}
 	}
 
-	isGreetingName := func(s string) bool {
-		for i:=0; i< len(messagesParser.InitialGreetingsName); i++ {
-			if messagesParser.InitialGreetingsName[i] == s {
-				return true
-			}
-		}
-		return false
-	}(message)
 
-	if isGreetingName {
-		temp := greetingNameController(message)
-		resp.Status = true
-		resp.Show = true
-		resp.Message = temp
-		speak = temp
-		marshalled, _ := json.Marshal(resp)
-		res.Write(marshalled)
+	if !match {
+		isGreetingName := func(s string) bool {
+			for i:=0; i< len(messagesParser.InitialGreetingsName); i++ {
+				if strings.Contains(s, messagesParser.InitialGreetingsName[i]) {
+					match = true
+					return true
+				}
+			}
+			return false
+		}(message)
+
+		if isGreetingName {
+			temp := greetingNameController(message)
+			resp.Status = true
+			resp.Show = true
+			resp.Message = temp
+			speak = temp
+			marshalled, _ := json.Marshal(resp)
+			res.Write(marshalled)
+		}
 	}
 
-	isHelp := func(s string) bool {
-		for i:=0; i< len(messagesParser.Help); i++ {
-			if messagesParser.Help[i] == s {
-				return true
+	if !match {
+		isHelp := func(s string) bool {
+			for i:=0; i< len(messagesParser.Help); i++ {
+				if strings.Contains(s, messagesParser.Help[i]) {
+					match = true
+					return true
+				}
 			}
-		}
-		return false
-	}(message)
+			return false
+		}(message)
 
-	if isHelp {
-		temp := helpController(message)
-		resp.Status = true
-		resp.Show = true
-		resp.Message = temp
-		speak = temp
-		marshalled, _ := json.Marshal(resp)
-		res.Write(marshalled)
+		if isHelp {
+			temp := helpController(message)
+			resp.Status = true
+			resp.Show = true
+			resp.Message = temp
+			speak = temp
+			marshalled, _ := json.Marshal(resp)
+			res.Write(marshalled)
+		}
 	}
+
 
 	return speak
 

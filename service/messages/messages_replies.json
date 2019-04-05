@@ -20,5 +20,12 @@
         "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
         "You can ask for web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!",
         "I can help you with web search, specific google/yahoo/bing search, images, videos and also find answers for any of your queries!"
-    ]
+    ],
+    "bucket-1": [
+        "I am Jarvis, your personal assistant. How can I help you?",
+        "Jarvis is my name",
+        "My name is jarvis! Anything I can help you with?",
+        "I am your assistant, Jarvis"
+    ],
+    ""
 }
