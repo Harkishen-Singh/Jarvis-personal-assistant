@@ -91,108 +91,116 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	// single word operations
 
-	if strings.ToLower(firstPars) == "google" { // for google search
+	if Connected() {
+		if strings.ToLower(firstPars) == "google" { // for google search
 
-		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
-		result := HandlerGoogle("GET", query)
+			query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
+			result := HandlerGoogle("GET", query)
 
-		// processing
+			// processing
 
-		response := processGoogleResponses(result)
-		responseJSON := jsonResponseQuery {
-			Status: true,
-			Message: "here are the top search results",
-			Result: response,
+			response := processGoogleResponses(result)
+			responseJSON := jsonResponseQuery {
+				Status: true,
+				Message: "here are the top search results",
+				Result: response,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech(responseJSON.Message, 0)
+
+		} else if strings.ToLower(firstPars) == "yahoo" {
+			query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+			result := HandlerYahoo("GET", query)
+
+			// processing
+
+			response := processYahooResponses(result)
+			responseJSON := jsonResponseQuery {
+				Status: true,
+				Message: "here are the top search results",
+				Result: response,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech(responseJSON.Message, 0)
+
+		} else if strings.ToLower(firstPars) == "bing" {
+			query := "https://www.bing.com/search?q=" + messageExceptFirstPars
+			result := HandlerBing("GET", query)
+
+			// processing
+
+			response := processBingResponses(result)
+			responseJSON := jsonResponseQuery {
+				Status: true,
+				Message: "here are the top search results",
+				Result: response,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech(responseJSON.Message, 0)
+
+		} else if strings.ToLower(firstPars) == "youtube" {
+			query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+			result := HandlerYoutube("GET", query)
+
+			// processing
+
+			response := processYoutubeResponses(result)
+			responseJSON := jsonResponseQuery {
+				Status: true,
+				Message: "here are the top search results",
+				Result: response,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech(responseJSON.Message, 0)
+
+		} else if strings.ToLower(firstPars) == "image" {
+			query := "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+			result := HandlerImage("GET", query)
+			// processing
+
+			response := processImageResponses(result)
+			responseJSON := jsonResponseQuery {
+				Status: true,
+				Message: "here are the searched images",
+				Result: response,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech(responseJSON.Message, 0)
+
+		} else if strings.ToLower(firstPars) == "weather" {
+
+			city := messageArr[len(messageArr)-2]
+			state := messageArr[len(messageArr)-1]
+			result := HandlerWeather(city, state)
+			stringified, _ := json.Marshal(processWeather(result))
+			response := jsonResponseWeather{
+				Status: true,
+				Message: "here are the current weather conditions",
+				Result: string(stringified),
+			}
+			jData, _ := json.Marshal(response)
+			w.Write(jData)
+			TextToSpeech(response.Message + city + " " + state, 0)
+
+		} else {
+			// general conversation
+			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
+			TextToSpeech("Hi from reply bot", 0)
 		}
-		jData, _ := json.Marshal(responseJSON)
-		w.Write(jData)
-		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "yahoo" {
-		query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
-		result := HandlerYahoo("GET", query)
-
-		// processing
-
-		response := processYahooResponses(result)
-		responseJSON := jsonResponseQuery {
-			Status: true,
-			Message: "here are the top search results",
-			Result: response,
-		}
-		jData, _ := json.Marshal(responseJSON)
-		w.Write(jData)
-		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "bing" {
-		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
-		result := HandlerBing("GET", query)
-
-		// processing
-
-		response := processBingResponses(result)
-		responseJSON := jsonResponseQuery {
-			Status: true,
-			Message: "here are the top search results",
-			Result: response,
-		}
-		jData, _ := json.Marshal(responseJSON)
-		w.Write(jData)
-		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "youtube" {
-		query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
-		result := HandlerYoutube("GET", query)
-
-		// processing
-
-		response := processYoutubeResponses(result)
-		responseJSON := jsonResponseQuery {
-			Status: true,
-			Message: "here are the top search results",
-			Result: response,
-		}
-		jData, _ := json.Marshal(responseJSON)
-		w.Write(jData)
-		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "image" {
-		query := "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
-		result := HandlerImage("GET", query)
-		// processing
-
-		response := processImageResponses(result)
-		responseJSON := jsonResponseQuery {
-			Status: true,
-			Message: "here are the searched images",
-			Result: response,
-		}
-		jData, _ := json.Marshal(responseJSON)
-		w.Write(jData)
-		TextToSpeech(responseJSON.Message, 0)
-
-	} else if strings.ToLower(firstPars) == "weather" {
-
-		city := messageArr[len(messageArr)-2]
-		state := messageArr[len(messageArr)-1]
-		result := HandlerWeather(city, state)
-		stringified, _ := json.Marshal(processWeather(result))
-		response := jsonResponseWeather{
-			Status: true,
-			Message: "here are the current weather conditions",
-			Result: string(stringified),
-		}
-		jData, _ := json.Marshal(response)
-		w.Write(jData)
-		TextToSpeech(response.Message + city + " " + state, 0)
-
 	} else {
-
-		// general conversation
-
-		
-		w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-		TextToSpeech("Hi from reply bot", 0)
+		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" {
+			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
+			TextToSpeech("Services unavailable at the moment!", 0)
+		} else {
+			// general conversation
+			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
+			TextToSpeech("Hi from reply bot", 0)
+		}
 	}
 
 }
