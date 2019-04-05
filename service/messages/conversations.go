@@ -27,6 +27,7 @@ type Messages struct {
 	InitialGreetingsName []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
 	Help []string `json:"help"`
+	About []string `json:"about"`
 }
 
 // Messagesreplies json parser for default reply string types
@@ -34,6 +35,7 @@ type Messagesreplies struct {
 	InitialGreetingsName []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
 	Help []string `json:"help"`
+	About []string `json:"about"`
 }
 
 var (
@@ -152,6 +154,27 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 		}
 	}
 
+	if !match {
+		isAbout := func(s string) bool {
+			for i:=0; i< len(messagesParser.About); i++ {
+				if strings.Contains(s, messagesParser.About[i]) {
+					match = true
+					return true
+				}
+			}
+			return false
+		}(message)
+
+		if isAbout {
+			temp := aboutController(message)
+			resp.Status = true
+			resp.Show = true
+			resp.Message = temp
+			speak = temp
+			marshalled, _ := json.Marshal(resp)
+			res.Write(marshalled)
+		}
+	}
 
 	return speak
 
@@ -177,5 +200,12 @@ func greetingNameController(s string) string {
 	temp := messagesRepliesParser.InitialGreetingsName[numb]
 	reply := fmt.Sprintf(temp, username) // note the formatter in messages_replies used
 	return reply
+
+}
+
+func aboutController(s string) string {
+
+	numb := rand.Intn(len(messagesRepliesParser.About))
+	return messagesRepliesParser.About[numb]
 
 }
