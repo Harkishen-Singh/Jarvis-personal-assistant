@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"strings"
+	"time"
 )
 
 type response struct {
@@ -72,8 +73,6 @@ func loadJSONParsers(name string) {
 	if err2 != nil {
 		panic(err2)
 	}
-	fmt.Println(messagesParser)
-	fmt.Println(messagesRepliesParser)
 
 }
 
@@ -94,6 +93,7 @@ func filterForMessagesComparision(s string) (sr string)  {
 func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	fmt.Println("General conversation...")
+	rand.Seed(time.Now().UnixNano())
 	loadJSONParsers(name)
 	message := filterForMessagesComparision(req)
 	match := false
@@ -123,7 +123,8 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	if !match {
 		isGreetingName := func(s string) bool {
 			for i:=0; i< len(messagesParser.InitialGreetingsName); i++ {
-				if strings.Contains(strings.ToLower(s), messagesParser.InitialGreetingsName[i]) {
+				if strings.ToLower(s) == messagesParser.InitialGreetingsName[i] {
+					fmt.Println("contains ", strings.ToLower(s), " ", messagesParser.InitialGreetingsName[i])
 					match = true
 					return true
 				}
@@ -143,7 +144,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	if !match {
 		isHelp := func(s string) bool {
 			for i:=0; i< len(messagesParser.Help); i++ {
-				if strings.Contains(strings.ToLower(s), messagesParser.Help[i]) {
+				if strings.ToLower(s) == messagesParser.Help[i] {
 					match = true
 					return true
 				}
@@ -163,7 +164,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	if !match {
 		isAbout := func(s string) bool {
 			for i:=0; i< len(messagesParser.About); i++ {
-				if strings.Contains(strings.ToLower(s), messagesParser.About[i]) {
+				if strings.ToLower(s) == messagesParser.About[i] {
 					match = true
 					return true
 				}
@@ -184,7 +185,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 		fmt.Println("inside")
 		isAge := func(s string) bool {
 			for i:=0; i< len(messagesParser.Age); i++ {
-				if strings.Contains(strings.ToLower(s), messagesParser.Age[i]) {
+				if strings.ToLower(s) == messagesParser.Age[i] {
 					match = true
 					return true
 				}
@@ -193,7 +194,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 		}(message)
 
 		if isAge {
-			temp := aboutController(message)
+			temp := ageController(message)
 			fmt.Println("temp age is ", temp)
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
@@ -205,7 +206,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	if !match {
 		isBirthday := func(s string) bool {
 			for i:=0; i< len(messagesParser.Birthday); i++ {
-				if strings.Contains(strings.ToLower(s), messagesParser.Birthday[i]) {
+				if strings.ToLower(s) == messagesParser.Birthday[i] {
 					match = true
 					return true
 				}
@@ -253,6 +254,13 @@ func aboutController(s string) string {
 
 	numb := rand.Intn(len(messagesRepliesParser.About))
 	return messagesRepliesParser.About[numb]
+
+}
+
+func ageController(s string) string {
+
+	numb := rand.Intn(len(messagesRepliesParser.Age))
+	return messagesRepliesParser.Age[numb]
 
 }
 

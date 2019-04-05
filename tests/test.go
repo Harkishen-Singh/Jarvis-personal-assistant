@@ -1,12 +1,16 @@
 package main
 
 import (
-	"github.com/hegedustibor/htgo-tts"
+	"math/rand"
+	"fmt"
+	"time"
 )
 
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 
-	speech := htgotts.Speech{Folder: "audio", Language: "en"}
-	speech.Speak("I can help you with web search, specific google yahoo bing search, images, videos and also find answers for any of your queries")
+	a := rand.Intn(5)
+	b := rand.Intn(5)
+	fmt.Println(a, " ", b)
 }
