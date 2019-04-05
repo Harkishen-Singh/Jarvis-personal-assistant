@@ -92,9 +92,15 @@ func routes(routeObject response, w http.ResponseWriter) {
 	// single word operations
 
 	if Connected() {
-		if strings.ToLower(firstPars) == "google" { // for google search
 
-			query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
+		if strings.ToLower(firstPars) == "google" { // for google search
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.google.co.in/search?q=google"
+			} else {
+				query = "https://www.google.co.in/search?q=" + messageExceptFirstPars
+			}
+				 
 			result := HandlerGoogle("GET", query)
 
 			// processing
@@ -110,7 +116,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "yahoo" {
-			query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://in.search.yahoo.com/search?p=yahoo"
+			} else {
+				query = "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+			}
+
 			result := HandlerYahoo("GET", query)
 
 			// processing
@@ -126,7 +138,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "bing" {
-			query := "https://www.bing.com/search?q=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.bing.com/search?q=bing"
+			} else {
+				query = "https://www.bing.com/search?q=" + messageExceptFirstPars
+			}
+
 			result := HandlerBing("GET", query)
 
 			// processing
@@ -142,7 +160,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "youtube" {
-			query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.youtube.com/results?search_query=youtube"
+			} else {
+				query = "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+			}
+			 
 			result := HandlerYoutube("GET", query)
 
 			// processing
@@ -158,7 +182,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "image" {
-			query := "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
+			} else {
+				query = "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+			}
+			
 			result := HandlerImage("GET", query)
 			// processing
 
