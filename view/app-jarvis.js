@@ -126,8 +126,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.show = show;
-					console.log('obj is ')
-					console.log(messageObj)
 					$scope.messageStack.push(messageObj);
 				} else {
 					console.error('[JARVIS] error fetching from service.');
