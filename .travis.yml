@@ -1,14 +1,21 @@
 os:
   - linux
 
+sudo: required
+
 services:
   - xvfb
   - docker
 
-language: go
+language:
+  - go
+  - python
 
 go:
   - 1.11.x
+
+python:
+  - "2.7"
 
 # addons:
 #   firefox: "65.0.2"
@@ -29,15 +36,13 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - go get github.com/op/go-logging
-  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
-  - go get github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
+  - go get -u -v -d ./...
   - cd tests/
   - cd npm install
 
 
 script:
-  - go run service/maintut.go &
+  - cd service && go run maintut.go &
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/app-jarvis.js
   - cd view/ && npm start && cd ..

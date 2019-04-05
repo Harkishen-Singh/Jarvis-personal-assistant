@@ -12,7 +12,7 @@ import (
 	"os"
 )
 
-// HandlerGoogle handles the subprocesses related to fetchdata_query.js
+// HandlerGoogle handles the subprocesses related to fetchdata_query.js for google search operations
 // returns the http body as string
 func HandlerGoogle(method string, url string) string {
 
@@ -28,7 +28,7 @@ func HandlerGoogle(method string, url string) string {
 
 }
 
-// HandlerYahoo handles the subprocesses related to fetchdata_query.js
+// HandlerYahoo handles the subprocesses related to fetchdata_query.js for yahoo search operations
 // returns the http body as string
 func HandlerYahoo(method string, url string) string {
 
@@ -44,7 +44,7 @@ func HandlerYahoo(method string, url string) string {
 
 }
 
-// HandlerBing handles the subprocesses related to fetchdata_query.js
+// HandlerBing handles the subprocesses related to fetchdata_query.js for bing search operations
 // returns the http body as string
 func HandlerBing(method string, url string) string {
 
@@ -60,7 +60,7 @@ func HandlerBing(method string, url string) string {
 
 }
 
-// HandlerWeather handles the subprocesses related to weather.py
+// HandlerWeather handles the subprocesses related to weather.py for weather operations
 // returns the http body as string
 func HandlerWeather(city string, state string) string {
 
@@ -75,7 +75,7 @@ func HandlerWeather(city string, state string) string {
 
 }
 
-//HandlerYoutube handles the subprocesses related to fetchdata_query.js
+// HandlerYoutube handles the subprocesses related to fetchdata_query.js for youtube operations
 // returns the http body as string
 func HandlerYoutube(method string, url string) string {
 
@@ -91,7 +91,7 @@ func HandlerYoutube(method string, url string) string {
 
 }
 
-// HandlerImage handles the subprocesses related to fetchdata_query.js
+// HandlerImage handles the subprocesses related to fetchdata_query.js for image operations
 // returns the http body as string
 func HandlerImage(method string, url string) string {
 
