@@ -11,8 +11,6 @@ type ratingData struct {
 }
 
 func compareTwoStrings(first string, second string) int{
-	// first := first.replace(/\s+/g, '')
-	// second := second.replace(/\s+/g, '')
 	first = strings.Replace(first," ", "", -1)
 	second = strings.Replace(second," ", "", -1)
 	
