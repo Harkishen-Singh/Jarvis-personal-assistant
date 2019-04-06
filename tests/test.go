@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/hegedustibor/htgo-tts"
+	"fmt"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers"
 )
 
 
 func main() {
-
-	speech := htgotts.Speech{Folder: "audio", Language: "en"}
-	speech.Speak("Muskan is the best girl")
+	b := []string{"gooogle","googl" , "googleee", "goooogggle", "goole"}
+	result := controllers.FindBestMatch("google", b)
+	fmt.Println("Result: ", result)
 }

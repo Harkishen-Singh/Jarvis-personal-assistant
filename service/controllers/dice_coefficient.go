@@ -5,7 +5,8 @@ import (
 	"strings"
 )
 
-type ratingData struct {
+//RatingData ...
+type RatingData struct {
 	target string
 	rating int
 }
@@ -15,13 +16,13 @@ func compareTwoStrings(first string, second string) int{
 	second = strings.Replace(second," ", "", -1)
 	
 	if len(first) == 0 && len(second) == 0 {
-		return 1 	     							 // if both are empty strings
+		return 100 	     							 // if both are empty strings
 	}              									 
 	if len(first) == 0 || len(second) == 0 {
 		return 0 									// if only one is empty string
 	}                   
 	if first == second {
-		return 1  									// identical
+		return 100  								// identical
 	}      							
 	if len(first) == 1 && len(second) == 1 {
 		return 0 									// both are 1-letter strings
@@ -60,17 +61,15 @@ func compareTwoStrings(first string, second string) int{
 		}
 	}
 
-	var result int
-	result = (2.0 * intersectionSize * 100)  / (len(first) + len(second) - 2)
-	return (result)
+	return ((2.0 * intersectionSize * 100)  / (len(first) + len(second) - 2))
 }
 
-//FindBestMatch ...
-func FindBestMatch(mainString string, targetStrings []string) ratingData {
+//FindBestMatch to check for the ratings of every string and choose the best possible string
+func FindBestMatch(mainString string, targetStrings []string) RatingData {
 	
-	var ratings ratingData
-	var bestMatch ratingData
-	var ratingsArray []ratingData
+	var ratings RatingData
+	var bestMatch RatingData
+	var ratingsArray []RatingData
 	bestMatchIndex := 0
 
 	for i := 0; i < len(targetStrings); i++ {
