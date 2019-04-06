@@ -83,20 +83,109 @@ func routes(routeObject response, w http.ResponseWriter) {
 	} else {
 		firstPars = message
 	}*/
+	var remainingString string
+	var strArr []string
+	var strArr0 string
+	var strArrDiff []string
+	strArrDiff = strings.Split(message, " ")
+	if(strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="video"){
+		if(strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="video" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for"){
+			if(strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="video"){
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}else{
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		}else{
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
+
+	/*if(strings.ToLower(firstPars) == "yahoo"){
+		if(strings.ToLower(secondPars) == "search"){
+			if(strings.ToLower(thirdPars) == "for"){
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}else{
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		}else{
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
+
+
+	if(strings.ToLower(firstPars) == "bing"){
+		if(strings.ToLower(secondPars) == "search"){
+			if(strings.ToLower(thirdPars) == "for"){
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}else{
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		}else{
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
+
+	if(strings.ToLower(firstPars) == "youtube"){
+		if(strings.ToLower(secondPars) == "video"){
+			if(strings.ToLower(thirdPars) == "for"){
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}else{
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		}else{
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
+
 	
+	/*strArr := strings.Split(firstPars, " ")
+	strArrDiff := strings.Split(message, " ")*/
 
-	strArr := strings.Split(firstPars, " ")
-	strArrDiff := strings.Split(message, " ")
-
-	messageExceptFirstPars := strings.Join(stringDifference(strArr, strArrDiff), " ")
+	//messageExceptFirstPars := strings.Join(stringDifference(strArr, strArrDiff), " ")
 	// lastParsArr := strings.Split(messageTemp, " ")
 	// lastPars := lastParsArr[len(lastParsArr) - 1]
 
 	// single word operations
 
-	if strings.ToLower(firstPars) == "google" || strings.ToLower(secondPars) == "google"{ // for google search
+	if strings.ToLower(firstPars) == "google" ||(strings.ToLower(firstPars) =="search" && strings.ToLower(secondPars) =="google"){ // for google search
 
-		query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
+		query := "https://www.google.co.in/search?q=" + remainingString
 		result := HandlerGoogle("GET", query)
 
 		// processing
@@ -112,7 +201,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		TextToSpeech(responseJSON.Message, 0)
 
 	} else if strings.ToLower(firstPars) == "yahoo" || strings.ToLower(secondPars) == "yahoo"{
-		query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+		query := "https://in.search.yahoo.com/search?p=" + remainingString
 		result := HandlerYahoo("GET", query)
 
 		// processing
@@ -128,7 +217,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		TextToSpeech(responseJSON.Message, 0)
 
 	} else if strings.ToLower(firstPars) == "bing" || strings.ToLower(secondPars)=="bing"{
-		query := "https://www.bing.com/search?q=" + messageExceptFirstPars
+		query := "https://www.bing.com/search?q=" + remainingString
 		result := HandlerBing("GET", query)
 
 		// processing
@@ -143,8 +232,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
-	} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars)=="video" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars)=="youtube" || strings.ToLower(thirdPars)=="youtube"{
-		query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+	} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars)=="video" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars)=="youtube"{
+		query := "https://www.youtube.com/results?search_query=" + remainingString
 		result := HandlerYoutube("GET", query)
 
 		// processing
@@ -159,8 +248,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		w.Write(jData)
 		TextToSpeech(responseJSON.Message, 0)
 
-	} else if strings.ToLower(firstPars) == "weather" || strings.ToLower(secondPars)=="weather"{
-
+	} else if strings.ToLower(firstPars) == "weather" || strings.ToLower(firstPars) == "see" || strings.ToLower(secondPars)=="at"||strings.ToLower(secondPars) == "weather"||strings.ToLower(thirdPars) == "at"{
+		
 		city := messageArr[len(messageArr)-2]
 		state := messageArr[len(messageArr)-1]
 		result := HandlerWeather(city, state)
@@ -173,7 +262,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		jData, _ := json.Marshal(response)
 		w.Write(jData)
 		TextToSpeech(response.Message + city + " " + state, 0)
-
+		
 	} else {
 
 		// general conversation
