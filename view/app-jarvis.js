@@ -216,9 +216,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
 			recognizing = false;
-			if ($scope.message === '') {
-				$scope.message = 'Type a message ...';
-			}
 		} else {
 			recognition.start();
 			$scope.showLoaderListening = true;
