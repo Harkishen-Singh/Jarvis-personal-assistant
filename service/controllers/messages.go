@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"strings"
 	"encoding/json"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"fmt"
 )
 
@@ -92,9 +93,15 @@ func routes(routeObject response, w http.ResponseWriter) {
 	// single word operations
 
 	if Connected() {
-		if strings.ToLower(firstPars) == "google" { // for google search
 
-			query := "https://www.google.co.in/search?q=" + messageExceptFirstPars
+		if strings.ToLower(firstPars) == "google" { // for google search
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.google.co.in/search?q=google"
+			} else {
+				query = "https://www.google.co.in/search?q=" + messageExceptFirstPars
+			}
+				 
 			result := HandlerGoogle("GET", query)
 
 			// processing
@@ -110,7 +117,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "yahoo" {
-			query := "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://in.search.yahoo.com/search?p=yahoo"
+			} else {
+				query = "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+			}
+
 			result := HandlerYahoo("GET", query)
 
 			// processing
@@ -126,7 +139,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "bing" {
-			query := "https://www.bing.com/search?q=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.bing.com/search?q=bing"
+			} else {
+				query = "https://www.bing.com/search?q=" + messageExceptFirstPars
+			}
+
 			result := HandlerBing("GET", query)
 
 			// processing
@@ -142,7 +161,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "youtube" {
-			query := "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.youtube.com/results?search_query=youtube"
+			} else {
+				query = "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+			}
+			 
 			result := HandlerYoutube("GET", query)
 
 			// processing
@@ -158,7 +183,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(firstPars) == "image" {
-			query := "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+			query := ""
+			if len(messageExceptFirstPars) == 0 {
+				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
+			} else {
+				query = "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+			}
+			
 			result := HandlerImage("GET", query)
 			// processing
 
@@ -174,34 +205,53 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		} else if strings.ToLower(firstPars) == "weather" {
 
-			city := messageArr[len(messageArr)-2]
-			state := messageArr[len(messageArr)-1]
-			result := HandlerWeather(city, state)
-			stringified, _ := json.Marshal(processWeather(result))
-			response := jsonResponseWeather{
-				Status: true,
-				Message: "here are the current weather conditions",
-				Result: string(stringified),
+			if len(messageArr) == 1 || len(messageArr) < 3 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
+			} else {
+				city := messageArr[len(messageArr)-2]
+				state := messageArr[len(messageArr)-1]
+				result := HandlerWeather(city, state)
+				stringified, _ := json.Marshal(processWeather(result))
+				response := jsonResponseWeather{
+					Status: true,
+					Message: "here are the current weather conditions",
+					Result: string(stringified),
+				}
+				jData, _ := json.Marshal(response)
+				w.Write(jData)
+				TextToSpeech(response.Message + city + " " + state, 0)
 			}
-			jData, _ := json.Marshal(response)
-			w.Write(jData)
-			TextToSpeech(response.Message + city + " " + state, 0)
-
 		} else {
 			// general conversation
-			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-			TextToSpeech("Hi from reply bot", 0)
+			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
+			TextToSpeech(filterForSpeech(speech), 0)
 		}
 	} else {
+
 		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" {
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
 		} else {
 			// general conversation
-			w.Write([]byte(`{"status": "success", "message": "Hi from reply bot", "result": ""}`))
-			TextToSpeech("Hi from reply bot", 0)
+			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
+			TextToSpeech(filterForSpeech(speech), 0)
 		}
 	}
+
+}
+
+func filterForSpeech(s string) string {
+
+	s = strings.Replace(s, "?", " ", -1)
+	s = strings.Replace(s, "%", " ", -1)
+	s = strings.Replace(s, "#", " ", -1)
+	s = strings.Replace(s, "$", " ", -1)
+	s = strings.Replace(s, "@", " ", -1)
+	s = strings.Replace(s, "&", " ", -1)
+	s = strings.Replace(s, "^", " ", -1)
+	s = strings.Replace(s, "*", " ", -1)
+	s = strings.Replace(s, "/", ", ", -1)
+	return s
 
 }
 

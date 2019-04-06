@@ -10,7 +10,7 @@ import (
 func TextToSpeech(message string, waitInSeconds int32) bool {
 
 	time.Sleep(time.Duration(waitInSeconds))
-	fmt.Println("here")
+	fmt.Println("Speaking -> ", message)
     speech := htgotts.Speech{Folder: "audio", Language: "en"}
 	speech.Speak(message)
 	return true
