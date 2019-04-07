@@ -54,13 +54,13 @@ type weatherStr struct {
 	FeelsLike string `json:"feels_like"`
 }
 
-type meaning struct {
+type meaningStr struct {
 	Meaning string `json:"meaning"`
 	Example string `json:"example"`
-	Submeaning []submean `json:"submeaning"`
+	Submeaning []submeanStr `json:"submeaning"`
 }
 
-type submean struct {
+type submeanStr struct {
 	Smean string
 	Subexample string
 }
@@ -238,18 +238,18 @@ func routes(routeObject response, w http.ResponseWriter) {
 			} else {
 				word := messageArr[1]
 				result := HandlerMeaning(word)
-				fmt.Println("RESULT", result)
+				fmt.Println( result)
 				result1 := processMeaning(result)
 				fmt.Println(result1)
 				// stringified, _ := json.Marshal(processWeather(result))
-				// response := jsonResponseWeather{
-				// 	Status: true,
-				// 	Message: "here are the current weather conditions",
-				// 	Result: string(stringified),
-				// }
-				// jData, _ := json.Marshal(response)
-				// w.Write(jData)
-				// TextToSpeech(response.Message + city + " " + state, 0)
+				response := jsonResponseWeather{
+					Status: true,
+					Message: "here are the meaning of the searched word",
+					Result: string(result1),
+				}
+				jData, _ := json.Marshal(response)
+				w.Write(jData)
+				TextToSpeech(response.Message + " " + word, 0)
 			}
 		} else {
 			// general conversation
@@ -650,34 +650,14 @@ func processMeaning(response string) int {
 
 	fmt.Println("this is the response")
 	fmt.Println(response)
-	// subl := "in json format"
-	// sublLen := len(subl)
-	// found := false
-	// var weather []byte
-	// var weatherInJSON weatherStr
-	// for i:=0; i< len(response) - sublLen; i++ {
-	// 	if response[i: i + sublLen] == subl {
-	// 		for j:=1; ; j++ {
-	// 			if response[i+sublLen+j: i+sublLen+j + 1] == "}" {
-	// 				weather = []byte(response[i+sublLen+1: i+sublLen+j+1])
-	// 				found = true
-	// 				break
-	// 			}
-	// 		}
-	// 		if found {
-	// 			break
-	// 		}
-	// 	}
-	// }
-	// if !found {
-	// 	fmt.Println("corrupted logging!")
-	// }
-	// fmt.Println(string(weather))
-	// err := json.Unmarshal(weather, &weatherInJSON)
+	
+	// reg, err := regexp.Compile("[^a-zA-Z0-9]+")
 	// if err != nil {
-	// 	panic(err)
+	// 	log.Fatal(err)
 	// }
-	// fmt.Println(weatherInJSON)
+	// processedString := reg.ReplaceAllString(response, "")
+	// fmt.Println("processedString", processedString)
+
 	return 1
 
 }
