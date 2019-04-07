@@ -29,7 +29,7 @@ process.argv.forEach((val, index, array) => {
     chrome.setDefaultService(service);
     if (index === 2) { // corresponds to the medicine name
         // var medicines = val;
-        var medicines = 'Rebamipide'
+        var medicines = val
 
         // keep the below block of code in the last part the else if block
 
@@ -37,7 +37,7 @@ process.argv.forEach((val, index, array) => {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         var driver = new webdriver.Builder()
                             .setChromeOptions(options)
                             .forBrowser('chrome')
@@ -47,39 +47,19 @@ process.argv.forEach((val, index, array) => {
             ENDWARE = '.htm';
         driver.get(BASEURL + medicines + ENDWARE).then(() => {
             driver.findElements(By.className('drug-content')).then(loop => {
-                var count = 0;
-                loop.forEach(itr => {
-                    var objFormat = {};
-                    if (count == 0) {
+                var count = -1;
+                var data='';
+                loop.forEach((itr, i) => {
+                    if (count == -1) {
                         count++;
                         return;
                     } else {
                         itr.getAttribute('innerText').then(text => {
-                        console.warn(count++);
                         text = text.replace('•', '');
-                        if (count == 1)
-                            objFormat['trade_names'] = text;
-                        else if (count == 2)
-                            objFormat['prescribed'] = text;
-                        else if (count == 3)
-                            objFormat['contraindications'] = text;
-                        else if (count == 4)
-                            objFormat['dosage'] = text;
-                        else if (count == 5)
-                            objFormat['how_to_consume'] = text;
-                        else if (count == 6)
-                            objFormat['precautions'] = text;
-                        else if (count == 7)
-                            objFormat['side_effects'] = text;
-                        else if (count == 8)
-                            objFormat['relevant_info'] = text;
-                        else if (count == 9) {
-
-                            objFormat['storage_conditions'] = text;
-                            let inString = JSON.stringify(objFormat);
-                            inString = inString.replace("'", '"');
-                            console.warn('medicine result');
-                            console.warn(objFormat)
+                        console.warn(count++);
+                        data += text;
+                        if (i === loop.length - 1){
+                            console.warn('data -> ' + data)
                         }
                         });
                     }
