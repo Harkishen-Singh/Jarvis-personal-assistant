@@ -73,7 +73,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func routes(routeObject response, w http.ResponseWriter) {
 
-	message := routeObject.message
+	/*message := routeObject.message
 	messageArr := strings.Split(message, " ")
 	// messageTemp := message
 	var firstPars string
@@ -86,20 +86,61 @@ func routes(routeObject response, w http.ResponseWriter) {
 	strArr := strings.Split(firstPars, " ")
 	strArrDiff := strings.Split(message, " ")
 
-	messageExceptFirstPars := strings.Join(stringDifference(strArr, strArrDiff), " ")
+	remainingString := strings.Join(stringDifference(strArr, strArrDiff), " ")*/
 	// lastParsArr := strings.Split(messageTemp, " ")
 	// lastPars := lastParsArr[len(lastParsArr) - 1]
+	message := routeObject.message
+	messageArr := strings.Split(message, " ")
+	var firstPars string
+	var secondPars string
+	var thirdPars string
+	if len(messageArr)>=3 {
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+		thirdPars = messageArr[2]
+	} else if len(messageArr)==2 {
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+	} else if(len(messageArr)==1) {
+			firstPars=messageArr[0]
+	}
 
+	var remainingString string
+	var strArr []string
+	var strArr0 string
+	var strArrDiff []string
+	strArrDiff = strings.Split(message, " ")
+	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" {
+		if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
+			if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			} else {
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		} else {
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
 	// single word operations
+
 
 	if Connected() {
 
-		if strings.ToLower(firstPars) == "google" { // for google search
+		if strings.ToLower(firstPars) == "google" || strings.ToLower(secondPars) == "google" { // for google search
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q=google"
 			} else {
-				query = "https://www.google.co.in/search?q=" + messageExceptFirstPars
+				query = "https://www.google.co.in/search?q=" + remainingString
 			}
 				 
 			result := HandlerGoogle("GET", query)
@@ -116,12 +157,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "yahoo" {
+		} else if strings.ToLower(firstPars) == "yahoo" || strings.ToLower(secondPars) == "yahoo"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://in.search.yahoo.com/search?p=yahoo"
 			} else {
-				query = "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+				query = "https://in.search.yahoo.com/search?p=" + remainingString
 			}
 
 			result := HandlerYahoo("GET", query)
@@ -138,12 +179,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "bing" {
+		} else if strings.ToLower(firstPars) == "bing" || strings.ToLower(secondPars)=="bing"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.bing.com/search?q=bing"
 			} else {
-				query = "https://www.bing.com/search?q=" + messageExceptFirstPars
+				query = "https://www.bing.com/search?q=" + remainingString
 			}
 
 			result := HandlerBing("GET", query)
@@ -160,12 +201,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "youtube" {
+		} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "videos" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars) == "youtube"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.youtube.com/results?search_query=youtube"
 			} else {
-				query = "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+				query = "https://www.youtube.com/results?search_query=" + remainingString
 			}
 			 
 			result := HandlerYoutube("GET", query)
@@ -182,12 +223,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "image" {
+		} else if strings.ToLower(firstPars) == "images" {
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
 			} else {
-				query = "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+				query = "https://www.google.co.in/search?q="+remainingString+"&source=lnms&tbm=isch"
 			}
 			
 			result := HandlerImage("GET", query)
