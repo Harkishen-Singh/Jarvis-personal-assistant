@@ -20,6 +20,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	var recognition = new webkitSpeechRecognition();
 	var recognizing;
 
+	$scope.controlMainBanner = function() {
+		$scope.mainBanner = true;
+		setTimeout(() =>{
+			$scope.mainBanner = false;
+		}, 500);
+	};
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
 
