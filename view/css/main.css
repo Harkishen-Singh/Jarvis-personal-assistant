@@ -75,6 +75,10 @@ header {
     margin:0 0 5px 10px; 
 }
 
+.loader {
+    width: 100%
+}
+
 .chat-screen-messages-you {
     /* border-right: 6px solid white;
     border-bottom: 6px solid white; */

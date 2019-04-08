@@ -246,10 +246,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 				word := messageArr[1:]
 				wordStr := strings.Join(word," ")
 
-				if len(word) == 1 {
+				result := HandlerMeaning(wordStr)
+				response := processMeaning(result)
+				fmt.Println(len(response))
 
-					result := HandlerMeaning(wordStr)
-					response := processMeaning(result)
+				if len(word) == 1 && len(response) > 0 {
 
 					responseJSON := jsonResponseMeaning{
 					Status: true,
@@ -261,7 +262,9 @@ func routes(routeObject response, w http.ResponseWriter) {
 					w.Write(jData)
 					TextToSpeech(responseJSON.Message + " " + wordStr, 0)
 
-				} else if len(word) >= 2 {
+				} 
+				
+				if len(word) >= 2 || len(response) == 0 {
 					query := "https://www.google.co.in/search?q=" + wordStr
 					result := HandlerGoogle("GET", query)
 					response := processGoogleResponses(result)

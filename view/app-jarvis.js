@@ -66,6 +66,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			messageObj.sender = 'you';
 
 			$scope.messageStack.push(messageObj);
+			$scope.showLoading = true;
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
@@ -105,6 +106,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = JSON.parse(result);
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if (status && message === 'here is the meaning of the searched word') {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -112,6 +114,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -119,6 +122,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
@@ -126,12 +130,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && !show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if (show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -139,6 +145,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.show = show;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else {
 					console.error('[JARVIS] error fetching from service.');
 				}

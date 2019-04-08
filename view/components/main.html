@@ -10,15 +10,22 @@
 
         <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
             <div data-ng-repeat="message in messageStack" id="stackArea">
-                <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
-                    {{message.message}}
-                    <span>
-                        <sub class="show-user-creds">
-                            {{message.sender}}
-                            {{message.time}}
-                        </sub>
-                    </span>
+                <div>
+                    <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
+                        {{message.message}}
+                        <span>
+                            <sub class="show-user-creds">
+                                {{message.sender}}
+                                {{message.time}}
+                            </sub>
+                        </span>
+                    </div>
+                    <div data-ng-if="message.sender === 'you' && showLoading && messageStack.length - 1 === $index" class="loader">
+                        <div class="loader"></div>
+                        <img src="../assets/icons/loader.gif" alt="" style="height:50px;float: right;margin-right: -0.5%">
+                    </div>
                 </div>
+                
 
                 <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot"
                     class="clearfix">
