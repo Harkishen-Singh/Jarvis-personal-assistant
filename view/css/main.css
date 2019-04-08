@@ -35,7 +35,7 @@ header {
 }
 
 #sidebar {
-    height: 94vh;
+    height: 91vh;
     max-height: 100vh;
     border-right: 2px solid #d8d8d8;
     position: absolute;
@@ -61,7 +61,7 @@ header {
 #stackArea-parent {
     margin-top: -4.2%;
     height: 76vh;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 #stackArea {
