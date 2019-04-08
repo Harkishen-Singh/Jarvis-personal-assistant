@@ -1,94 +1,98 @@
 <div>
-    <img src="../assets/icons/main_banner.gif" alt="" id="main-banner"
-    data-ng-show="mainBanner" data-ng-init="controlMainBanner()" />
+    <img src="../assets/icons/main_banner.gif" alt="" id="main-banner" data-ng-show="mainBanner"
+        data-ng-init="controlMainBanner()" />
     <div data-ng-init="initStack()">
-            <span id="chat-screen" style="color:black;">
-                Chat Screen
-                <hr>
-            </span>
-            <!-- chat screen -->
+        <span id="chat-screen" style="color:black;">
+            Chat Screen
+            <hr>
+        </span>
+        <!-- chat screen -->
 
-            <div data-ng-show="messageStack.length !== 0" id="stackArea-parent"  >
-                <div data-ng-repeat="message in messageStack" id="stackArea">
-                    <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
-                        {{message.message}}
-                        <span>
-                            <sub class="show-user-creds">
-                                {{message.sender}}
-                                {{message.time}}
-                            </sub>
-                        </span>
-                    </div>
+        <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
+            <div data-ng-repeat="message in messageStack" id="stackArea">
+                <div data-ng-if="message.sender === 'you'" class="chat-screen-messages-you" class="clearfix">
+                    {{message.message}}
+                    <span>
+                        <sub class="show-user-creds">
+                            {{message.sender}}
+                            {{message.time}}
+                        </sub>
+                    </span>
+                </div>
 
-                    <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
-                        <div ng-switch="message.message">
-                            <!-- for specific messages -->
+                <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot"
+                    class="clearfix">
+                    <div ng-switch="message.message">
+                        <!-- for specific messages -->
 
-                            <div ng-switch-when="here are the top search results">
-                                <div class="message-style">
-                                    {{message.message}}
-                                    <span>
-                                        <sub class="show-user-creds">
-                                            {{message.sender}}
-                                            {{message.time}}
-                                        </sub>
-                                    </span>
-                                </div>
-                                <div id="queried-data" data-ng-if="message.result.length !== 0">
-                                    <br>
-                                    <div data-ng-repeat="objectQuery in message.result" id="queried-info">
-                                        <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
-                                        <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
-                                    </div>
+                        <div ng-switch-when="here are the top search results">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                                    <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
                                 </div>
                             </div>
+                        </div>
 
-                            <div ng-switch-when="here are the searched images">
-                                <div class="message-style">
-                                    {{message.message}}
-                                    <span>
-                                        <sub class="show-user-creds">
-                                            {{message.sender}}
-                                            {{message.time}}
-                                        </sub>
-                                    </span>
-                                </div>
-                                <div id="queried-data" data-ng-if="message.result.length !== 0">
-                                    <div class="images-searched">
-                                        <div data-ng-repeat="objectQuery in message.result" id="queried-image">
-                                            <div class="item">
-                                                <a href="{{objectQuery.link}}" target="_blank">
-                                                <img ng-src="{{objectQuery.link}}" style="display:block;margin-left: 20px;
+                        <div ng-switch-when="here are the searched images">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <div class="images-searched">
+                                    <div data-ng-repeat="objectQuery in message.result" id="queried-image">
+                                        <div class="item">
+                                            <a href="{{objectQuery.link}}" target="_blank">
+                                                <img ng-src="{{objectQuery.link}}"
+                                                    style="display:block;margin-left: 20px;
                                                             margin-right:20px;padding-right: 10px;width:424.66px;height: 318.48px;" />
-                                                </a>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div ng-switch-when="here are the current weather conditions">
-                                <div class="message-style">
-                                    {{message.message}} at {{message.result.city}}
-                                    <span>
-                                        <sub class="show-user-creds">
-                                            {{message.sender}}
-                                            {{message.time}}
-                                        </sub>
-                                    </span>
-                                </div>
-                                <div id="queried-data" data-ng-if="message.result.length !== 0">
-                                    <br>
-                                    <div>
-                                        <span class="head-query-data">Currently {{message.result.temperature}} &deg;C</span><br>
-                                        <span class="head-query-data">Feels like {{message.result.feels_like}} &deg;C</span><br>
-                                        <span class="head-query-data">Humidity being {{message.result.humidity}}</span><br>
-                                        <span class="head-query-data">Visibility {{message.result.visibility}}</span><br>
-                                        <span class="head-query-data">Dew Point {{message.result.dew_point}}</span><br>
-                                        <span class="head-query-data">At time {{message.result.time}}</span>
-                                    </div>
+                        <div ng-switch-when="here are the current weather conditions">
+                            <div class="message-style">
+                                {{message.message}} at {{message.result.city}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div>
+                                    <span class="head-query-data">Currently {{message.result.temperature}}
+                                        &deg;C</span><br>
+                                    <span class="head-query-data">Feels like {{message.result.feels_like}}
+                                        &deg;C</span><br>
+                                    <span class="head-query-data">Humidity being {{message.result.humidity}}</span><br>
+                                    <span class="head-query-data">Visibility {{message.result.visibility}}</span><br>
+                                    <span class="head-query-data">Dew Point {{message.result.dew_point}}</span><br>
+                                    <span class="head-query-data">At time {{message.result.time}}</span>
                                 </div>
                             </div>
+                        </div>
 
                         <div ng-switch-when="here is the meaning of the searched word">
                             <div class="message-style">
@@ -105,7 +109,7 @@
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
                                     <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
                                     <span class="example"><i>Example: {{objectQuery.example}}</i></span><br>
-                                    <div data-ng-repeat="sub in objectQuery.submeaning" id ="submean">
+                                    <div data-ng-repeat="sub in objectQuery.submeaning" id="submean">
                                         <span class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</span><br>
                                         <span class="subexample"><i>Example: {{sub.Subexample}}</i></span><br>
                                     </div>
@@ -126,24 +130,27 @@
                             </div>
                         </div>
                     </div>
-                    <br/>
                 </div>
+                <br />
             </div>
-            <!-- message field -->
-            <div id="message-bar">
-                <div id="message-input-parent">
-                    <input type="text" name="" id="message-input" data-ng-model="message" placeholder="Type a message" autofocus>
-                    <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
-                        Send
-                    </button>
-                    <!-- banner -->
-                    <div id="banner-listen" data-ng-show="showLoaderListening">
-                        <span>Listening ... </span>
-                        <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader" srcset="">
-                    </div>
-                    <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button"
-                        data-ng-click="toggleStartStop()" />
+        </div>
+        <!-- message field -->
+        <div id="message-bar">
+            <div id="message-input-parent">
+                <input type="text" name="" id="message-input" data-ng-model="message" placeholder="Type a message"
+                    autofocus>
+                <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
+                    Send
+                </button>
+                <!-- banner -->
+                <div id="banner-listen" data-ng-show="showLoaderListening">
+                    <span>Listening ... </span>
+                    <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader"
+                        srcset="">
                 </div>
+                <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button"
+                    data-ng-click="toggleStartStop()" />
             </div>
+        </div>
     </div>
 </div>

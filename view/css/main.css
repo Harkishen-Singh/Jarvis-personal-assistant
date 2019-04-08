@@ -61,7 +61,7 @@ header {
 #stackArea-parent {
     margin-top: -4.2%;
     height: 76vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 #stackArea {
