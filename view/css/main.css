@@ -4,10 +4,22 @@ body {
 
 header {
     display: block;
-    height: 35px;
+    height: 55px;
     border-bottom: 2px solid #f6f6f6;
     font-size: x-large;
-    background-color: #d63434;
+    /* background-color: #d63434; */
+}
+
+#logo {
+    height: 58px;
+    /* background-color: white; */
+    border-radius: 7px;
+    top: 5px;
+}
+
+#jarvi {
+    display: inline-table;
+    color: black;
 }
 
 #PA {
