@@ -1,7 +1,6 @@
 from urllib2 import urlopen
 from bs4 import BeautifulSoup
 import sys
-import json
 
 class Core_Base:
     def __init__(self):
@@ -27,8 +26,8 @@ class Core_Base:
         
     def pass_words(self):
         self.data = {}
-        # self.word = "car"
         self.word = sys.argv[1]
+        # self.word = sys.argv[1]
         self.words_p()
     
     #searches and stores the meaning of the particular word
@@ -56,12 +55,12 @@ class Core_Base:
                         self.mean = (details.get_text())
                     self.ex = j.find("li", {"class" : "ex"})
                     self.example = str(self.ex)       
-                    self.example = self.example[22:-12] 
+                    self.example = self.example[21:-12] 
 
                     if(len(self.example) == 0):
                         self.ex = j.find("div", {"class" : "ex"})
                         self.example = str(self.ex)       
-                        self.example = self.example[23:-12]  
+                        self.example = self.example[22:-12]  
                     
                     self.mean_ex[self.part].append({                           
                         "meaning": self.mean,
@@ -76,12 +75,12 @@ class Core_Base:
                         self.submean = self.submean[18:-7]
                         self.ex = details.find("li", {"class" : "ex"})
                         self.subex = str(self.ex)
-                        self.subex = self.subex[22:-12]
+                        self.subex = self.subex[21:-12]
 
                         if(len(self.subex) == 0):
                             self.ex = details.find("div", {"class" : "ex"})
                             self.subex = str(self.ex)
-                            self.subex = self.subex[23:-12]
+                            self.subex = self.subex[22:-12]
 
                         if(len(self.submean) !=0 and len(self.subex) != 0):
                             self.submean_ex[self.part].append({
@@ -100,12 +99,19 @@ class Core_Base:
 
     def display(self):
 
-        json = {
-            "word": str(self.word),
-            "meaning": str(self.data[self.word])
-        }
-        print("in json format")
-        print(json)
+        mean = str(self.data[self.word])
+        new = mean.replace("\\xe2",'')
+        new = new.replace("\\x80",'')
+        new = new.replace("\\x98",'')
+        new = new.replace("u'", "'")
+        new = new.replace("{'", "{*")
+        new = new.replace("':", "*:")
+        new = new.replace(" '", " *")
+        new = new.replace(".'", ".*")
+        new = new.replace('"', "*")
+
+        print("word ", self.word )
+        print(new)
         exit(0)
 
 obj = Core_Base()

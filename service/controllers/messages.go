@@ -64,6 +64,12 @@ type submeanStr struct {
 	Smean string
 	Subexample string
 }
+
+type jsonResponseMeaning struct {
+	Status bool	`json:"status"`
+	Message string `json:"message"`
+	Result []meaningStr `json:"result"`
+}
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
 
@@ -233,23 +239,23 @@ func routes(routeObject response, w http.ResponseWriter) {
 			}
 		} else if strings.ToLower(firstPars) == "meaning" {
 
-			if len(messageArr) == 1 {
+			if len(messageArr) == 0 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
 			} else {
 				word := messageArr[1]
 				result := HandlerMeaning(word)
-				fmt.Println( result)
-				result1 := processMeaning(result)
-				fmt.Println(result1)
-				// stringified, _ := json.Marshal(processWeather(result))
-				response := jsonResponseWeather{
+
+				//processing
+
+				response := processMeaning(result)
+				responseJSON := jsonResponseMeaning{
 					Status: true,
 					Message: "here are the meaning of the searched word",
-					Result: string(result1),
+					Result: response,
 				}
-				jData, _ := json.Marshal(response)
+				jData, _ := json.Marshal(responseJSON)
 				w.Write(jData)
-				TextToSpeech(response.Message + " " + word, 0)
+				TextToSpeech(responseJSON.Message + " " + word, 0)
 			}
 		} else {
 			// general conversation
@@ -646,18 +652,103 @@ func processImageResponses(result string) []messageQueryBody {
 
 }
 
-func processMeaning(response string) int {
+func processMeaning(response string) []meaningStr {
 
 	fmt.Println("this is the response")
-	fmt.Println(response)
-	
-	// reg, err := regexp.Compile("[^a-zA-Z0-9]+")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// processedString := reg.ReplaceAllString(response, "")
-	// fmt.Println("processedString", processedString)
 
-	return 1
+	found := false
+	
+	var subs1 = "meaning"
+	var subs2 = "example"
+	var subs3 = "subMeaning"
+	var subs4 = "subExample"
+	var subsLen1 = len(subs1)
+	var subsLen2 = len(subs2)
+	var subsLen3 = len(subs3)
+	var subsLen4 = len(subs4)
+	var mid = 0
+	var last = 0
+
+	var meaningBody meaningStr
+	var meaningBodyArray []meaningStr
+	var subMeaningBody submeanStr
+	var subMeaningBodyArray []submeanStr
+
+	fmt.Println(len(response))
+	for i:=0; i< len(response) - 200; i++ {
+		found = false
+		if response[i: i + subsLen1] == subs1 {
+			mid = i + subsLen1 + 4
+			last = mid
+			for j:=1; ; j++ {
+				if response[mid+j: mid + j + 1] == "*" {
+					meaningBody.Meaning = response[mid: mid + j]
+					found = true
+					last = mid + j +1
+
+					for k:=1; ; k++ {
+						if response[mid + j + k: mid + j + k + subsLen2] == subs2 {
+							v := mid + j + k + subsLen2 + 4
+							last = v
+							for l:= 1; ; l++ {
+								if response[v + l: v + l + 1] == "*" {
+									meaningBody.Example = response[v : v + l]
+									last = v + l +1
+									break;
+								}
+							}
+							break;
+						}
+					}
+					
+					for k := 1; ; k++ {
+						check := false
+						if response[last + k: last + k + subsLen3] == subs3 {
+							v := last + k + subsLen3 + 4
+							last := v
+							for l:= 1; ; l++ {
+								if response[v +l: v + l + 1] == "*" {
+									subMeaningBody.Smean = response[v : v + l]
+									last = v + l + 1
+									check = true
+									break;
+								}
+							}
+							if check {
+								for m:= 1; ; m++ {
+									if response[last + m: last + m + subsLen4] == subs4 {
+										v := last + m + subsLen4 + 4
+										last = v
+										for l:= 1; ; l++ {
+											if response[v +l: v + l + 1] == "*" {
+												subMeaningBody.Subexample = response[v : v + l]
+												last = v + l + 1
+												break;
+											}
+										}
+										subMeaningBodyArray = append(subMeaningBodyArray, subMeaningBody)
+										meaningBody.Submeaning = subMeaningBodyArray
+										break;
+									}
+								}
+							}
+							break;
+						}
+					}
+					break;	
+				}
+			}
+			if found {
+				meaningBodyArray = append(meaningBodyArray, meaningBody)
+				fmt.Println("i : ", i)
+				fmt.Println("Last: ", last)
+				i = last
+				fmt.Println("meaningBodyArray : ", meaningBodyArray)
+			}
+		}
+	}
+	fmt.Println("meaningBodyArray : ", meaningBodyArray)
+	
+	return meaningBodyArray
 
 }

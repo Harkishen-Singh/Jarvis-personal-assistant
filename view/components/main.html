@@ -31,6 +31,7 @@
                                         {{message.time}}
                                     </sub>
                                 </span>
+                                {{message.result.length}}
                             </div>
                             <div id="queried-data" data-ng-if="message.result.length !== 0">
                                 <br>
@@ -85,6 +86,30 @@
                                     <span class="head-query-data">Visibility {{message.result.visibility}}</span><br>
                                     <span class="head-query-data">Dew Point {{message.result.dew_point}}</span><br>
                                     <span class="head-query-data">At time {{message.result.time}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the meaning of the searched word">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                                {{message.result.length}}
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
+                                    <span class="example">{{objectQuery.example}}</span><br>
+                                    <!-- <div data-ng-repeat="sub in objectQuery.submeaning" id ="">
+                                        <p class="submeaning">{{$index+1}}. {{sub.Smean}}</p>
+                                        <p class="subexample">{{sub.Subexample}}</p>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

@@ -89,6 +89,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					length: null
 				};
 				console.log(res);
+				console.log(status);
+				console.log(result);
 				setTimeout(() => {
 					$scope.scrollDown();
 				}, 100);
@@ -107,8 +109,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
-					console.log(messageObj);
 				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
+					console.log('HIIII');
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
