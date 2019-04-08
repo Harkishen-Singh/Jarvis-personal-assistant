@@ -1,22 +1,19 @@
 package main
 
 import (
-	"net/http"
-	"io/ioutil"
+	// "net/http"
+	// "io/ioutil"
 	"fmt"
+	// "path/filepath"
+	"os"
+	// "log"
 )
 
 
 func main() {
-
-	url := "https://www.medindia.net/doctors/drug_information/ramelteon.htm"
-	resp, err := http.Get(url )
-	if err != nil {
-		panic(err)
-	}
-	var medicineArr []string
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
-
-	fmt.Println(medicineArr)
+	// dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+    // if err != nil {
+    //         log.Fatal(err)
+    // }
+    fmt.Println(os.Getwd())
 }

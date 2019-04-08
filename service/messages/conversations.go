@@ -53,8 +53,9 @@ var (
 func init() {
 
 	fmt.Println("Loading messages JSON parsers....")
-	messagesFile, err := os.Open("messages/messages.json")
-	messagesRepliesFile, err2 := os.Open("messages/messages_replies.json")
+	path, _ := os.Getwd()
+	messagesFile, err := os.Open(path+"/messages/messages.json")
+	messagesRepliesFile, err2 := os.Open(path+"/messages/messages_replies.json")
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
 	if err != nil   {
