@@ -22,12 +22,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	$scope.controlMainBanner = function() {
 		$scope.mainBanner = true;
-		console.warn('inside')
 		setTimeout(() =>{
 			$scope.mainBanner = false;
-			console.warn('false false')
 		}, 500);
-	}
+	};
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
 
