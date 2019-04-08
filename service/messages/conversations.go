@@ -48,14 +48,15 @@ var (
 	messagesRepliesParser Messagesreplies
 	resp jsonResponse
 	username, speak string
+	countMessage int16
 )
 
-func init() {
+
+func loadMessageResources() {
 
 	fmt.Println("Loading messages JSON parsers....")
-	path, _ := os.Getwd()
-	messagesFile, err := os.Open(path+"/messages/messages.json")
-	messagesRepliesFile, err2 := os.Open(path+"/messages/messages_replies.json")
+	messagesFile, err := os.Open("messages/messages.json")
+	messagesRepliesFile, err2 := os.Open("messages/messages_replies.json")
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
 	if err != nil   {
