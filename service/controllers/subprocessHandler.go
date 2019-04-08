@@ -115,7 +115,7 @@ func HandlerMeaning(word string) string {
 	result, err := exec.Command("python", "subprocesses/dictionary.py", word).Output()
 	if err != nil {
 		fmt.Println("Seems like python version 2 is not yet installed or the pip dependencies are not installed")
-		panic(err)
+		// panic(err)
 	}
 	return string(result)
 

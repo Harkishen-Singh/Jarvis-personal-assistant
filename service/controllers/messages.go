@@ -242,20 +242,41 @@ func routes(routeObject response, w http.ResponseWriter) {
 			if len(messageArr) == 0 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
 			} else {
-				word := messageArr[1]
-				result := HandlerMeaning(word)
 
-				//processing
+				word := messageArr[1:]
+				wordStr := strings.Join(word," ")
 
-				response := processMeaning(result)
-				responseJSON := jsonResponseMeaning{
+				if len(word) == 1 {
+
+					result := HandlerMeaning(wordStr)
+					response := processMeaning(result)
+
+					responseJSON := jsonResponseMeaning{
 					Status: true,
 					Message: "here is the meaning of the searched word",
 					Result: response,
+					}
+
+					jData, _ := json.Marshal(responseJSON)
+					w.Write(jData)
+					TextToSpeech(responseJSON.Message + " " + wordStr, 0)
+
+				} else if len(word) >= 2 {
+					query := "https://www.google.co.in/search?q=" + wordStr
+					result := HandlerGoogle("GET", query)
+					response := processGoogleResponses(result)
+
+					responseJSON := jsonResponseQuery{
+					Status: true,
+					Message: "here are the top search results",
+					Result: response,
+					}
+
+					jData, _ := json.Marshal(responseJSON)
+					w.Write(jData)
+					TextToSpeech(responseJSON.Message + " " + wordStr, 0)
+
 				}
-				jData, _ := json.Marshal(responseJSON)
-				w.Write(jData)
-				TextToSpeech(responseJSON.Message + " " + word, 0)
 			}
 		} else if strings.ToLower(firstPars) == "medicine" {
 
