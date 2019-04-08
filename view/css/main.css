@@ -17,6 +17,13 @@ header {
     top: 5px;
 }
 
+#main-banner {
+    position: fixed;
+    top: 20%;
+    left: 40%;
+    border-radius: 60px;
+}
+
 #jarvi {
     display: inline-table;
     color: black;
