@@ -30,14 +30,14 @@ process.argv.forEach((val, index, array) => {
     if (index === 2) { // corresponds to the medicine name
         // var medicines = val;
         var medicines = val
-
+        console.log('medicine name received -> ' + medicines);
         // keep the below block of code in the last part the else if block
 
         var options = new chrome.Options();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
-        // options.addArguments("--headless");
+        options.addArguments("--headless");
         var driver = new webdriver.Builder()
                             .setChromeOptions(options)
                             .forBrowser('chrome')
@@ -46,20 +46,25 @@ process.argv.forEach((val, index, array) => {
         const BASEURL = 'https://www.medindia.net/doctors/drug_information/',
             ENDWARE = '.htm';
         driver.get(BASEURL + medicines + ENDWARE).then(() => {
+            console.log('searching')
             driver.findElements(By.className('drug-content')).then(loop => {
+                console.log('found ' + loop.length)
                 var count = -1;
                 var data='';
                 loop.forEach((itr, i) => {
+                    console.log('hereerere')
                     if (count == -1) {
                         count++;
                         return;
                     } else {
                         itr.getAttribute('innerText').then(text => {
                         text = text.replace('•', '');
-                        console.warn(count++);
-                        data += text;
-                        if (i === loop.length - 1){
-                            console.warn('data -> ' + data)
+                        console.log(count++);
+                        data += text + "\n";
+                        console.log('text -> ' + text)
+                        console.log(count + " ==== " + loop.length-1)
+                        if (count === (loop.length - 1)){
+                            console.log('data -> ' + data)
                         }
                         });
                     }
