@@ -26,7 +26,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		setTimeout(() =>{
 			$scope.mainBanner = false;
 			console.warn('false false')
-		}, 2000);
+		}, 500);
 	}
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
