@@ -14,22 +14,22 @@ type RatingData struct {
 func compareTwoStrings(first string, second string) int{
 	first = strings.Replace(first," ", "", -1)
 	second = strings.Replace(second," ", "", -1)
-	
+
 	if len(first) == 0 && len(second) == 0 {
 		return 100 	     							 // if both are empty strings
-	}              									 
+	}
 	if len(first) == 0 || len(second) == 0 {
-		return 0 									// if only one is empty string
-	}                   
+		return 0 									 // if only one is empty string
+	}
 	if first == second {
-		return 100  								// identical
-	}      							
+		return 100  								 // identical
+	}
 	if len(first) == 1 && len(second) == 1 {
-		return 0 									// both are 1-letter strings
-	}         
+		return 0 									 // both are 1-letter strings
+	}
 	if len(first) < 2 || len(second) < 2 {
-		return 0									// if either is a 1-letter string
-	}	 
+		return 0									 // if either is a 1-letter string
+	}
 
 	var firstBigrams map[string]int
 	var bigram string
@@ -66,7 +66,7 @@ func compareTwoStrings(first string, second string) int{
 
 //FindBestMatch to check for the ratings of every string and choose the best possible string
 func FindBestMatch(mainString string, targetStrings []string) RatingData {
-	
+
 	var ratings RatingData
 	var bestMatch RatingData
 	var ratingsArray []RatingData
@@ -82,9 +82,9 @@ func FindBestMatch(mainString string, targetStrings []string) RatingData {
 			bestMatchIndex = i
 		}
 	}
-	
+
 	bestMatch = ratingsArray[bestMatchIndex]
 	fmt.Println("BestMatch: ", bestMatch)
-	
+
 	return bestMatch;
 }

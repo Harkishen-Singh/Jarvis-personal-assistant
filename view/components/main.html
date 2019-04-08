@@ -18,7 +18,6 @@
                 </div>
 
                 <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot" class="clearfix">
-                    
                     <div ng-switch="message.message">
                         <!-- for specific messages -->
 
@@ -40,7 +39,6 @@
                                 </div>
                             </div>
                         </div>
-                        
 
                         <div ng-switch-when="here are the searched images">
                             <div class="message-style">
@@ -90,7 +88,7 @@
                         </div>
 
                         <!-- for general messages -->
-                        <div ng-switch-default>
+                        <div ng-switch-default style="white-space: pre-wrap;">
                             <div>
                                 {{message.message}}
                                 <span>
@@ -101,13 +99,11 @@
                                 </span>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 <br/>
-            </div>           
-        </div>     
-        
+            </div>
+        </div>
         <!-- message field -->
         <div id="message-bar">
             <div id="message-input-parent">
@@ -125,4 +121,3 @@
             </div>
         </div>
 </div>
-    

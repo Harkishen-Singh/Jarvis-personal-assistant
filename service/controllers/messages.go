@@ -221,6 +221,15 @@ func routes(routeObject response, w http.ResponseWriter) {
 				w.Write(jData)
 				TextToSpeech(response.Message + city + " " + state, 0)
 			}
+		} else if strings.ToLower(firstPars) == "medicine" {
+
+			if len(messageArr) == 1 || len(messageArr) < 2 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
+			} else {
+				med := messageArr[len(messageArr)-1]
+				result := messages.HealthController(med, w)
+				TextToSpeech(result, 0)
+			}
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
