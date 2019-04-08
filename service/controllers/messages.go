@@ -250,7 +250,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 				response := processMeaning(result)
 				responseJSON := jsonResponseMeaning{
 					Status: true,
-					Message: "here are the meaning of the searched word",
+					Message: "here is the meaning of the searched word",
 					Result: response,
 				}
 				jData, _ := json.Marshal(responseJSON)
@@ -674,10 +674,10 @@ func processMeaning(response string) []meaningStr {
 	var subMeaningBody submeanStr
 	var subMeaningBodyArray []submeanStr
 
-	fmt.Println(len(response))
 	for i:=0; i< len(response) - 200; i++ {
 		found = false
 		if response[i: i + subsLen1] == subs1 {
+			subMeaningBodyArray = nil
 			mid = i + subsLen1 + 4
 			last = mid
 			for j:=1; ; j++ {
@@ -740,10 +740,7 @@ func processMeaning(response string) []meaningStr {
 			}
 			if found {
 				meaningBodyArray = append(meaningBodyArray, meaningBody)
-				fmt.Println("i : ", i)
-				fmt.Println("Last: ", last)
 				i = last
-				fmt.Println("meaningBodyArray : ", meaningBodyArray)
 			}
 		}
 	}
