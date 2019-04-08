@@ -242,6 +242,9 @@ func scrapMedicineLog(medicine *string) string {
 	directory, _ := os.Getwd()
 	fmt.Println("health-medicine request")
 	fmt.Println(" medicine-name -> " + *medicine + " direc -> " + directory)
+	*medicine = strings.Replace(*medicine, ",", "_", -1)
+	*medicine = strings.Replace(*medicine, "_ ", "_", -1)
+	*medicine = strings.Replace(*medicine, " ", "_", -1)
 	result, err := exec.Command("node", "subprocesses/health_medicine.js", *medicine).Output()
 	if err != nil {
 		panic(err)

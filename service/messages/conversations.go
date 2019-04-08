@@ -52,7 +52,7 @@ var (
 )
 
 
-func loadMessageResources() {
+func init() {
 
 	fmt.Println("Loading messages JSON parsers....")
 	messagesFile, err := os.Open("messages/messages.json")
