@@ -103,6 +103,7 @@ class Core_Base:
         new = mean.replace("\\xe2",'')
         new = new.replace("\\x80",'')
         new = new.replace("\\x98",'')
+        new = new.replace("\\x99",'')
         new = new.replace("u'", "'")
         new = new.replace("{'", "{*")
         new = new.replace("':", "*:")
