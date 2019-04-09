@@ -126,7 +126,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 	var strArr0 string
 	var strArrDiff []string
 	strArrDiff = strings.Split(message, " ")
-	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" || strings.ToLower(firstPars) =="image" {
+	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" || strings.ToLower(firstPars) =="image" || strings.ToLower(firstPars) =="meaning"{
 		if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
 			if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
 				strArr0=firstPars+" "+secondPars+" "+thirdPars
@@ -280,12 +280,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 			}
 		} else if strings.ToLower(firstPars) == "meaning" {
 
-			if len(messageArr) == 0 {
+			if len(messageArr) == 1 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
 			} else {
 
-				word := messageArr[1:]
-				wordStr := strings.Join(word," ")
+				wordStr := remainingString
 
 				result := HandlerMeaning(wordStr)
 				response := processMeaning(result)
@@ -751,11 +750,11 @@ func processMeaning(response string) []meaningStr {
 					found = true
 					last = mid + j +1
 
-					for k:=1; ; k++ {
+					for k:=1; k < len(response) - last - subsLen2 ; k++ {
 						if response[mid + j + k: mid + j + k + subsLen2] == subs2 {
 							v := mid + j + k + subsLen2 + 4
 							last = v
-							for l:= 1; ; l++ {
+							for l:= 1; l < len(response) - last - 1; l++ {
 								if response[v + l: v + l + 1] == "*" {
 									meaningBody.Example = response[v : v + l]
 									last = v + l +1
@@ -771,7 +770,7 @@ func processMeaning(response string) []meaningStr {
 						if response[last + k: last + k + subsLen3] == subs3 {
 							v := last + k + subsLen3 + 4
 							last := v
-							for l:= 1; ; l++ {
+							for l:= 1; l < len(response) - last - 1; l++ {
 								if response[v +l: v + l + 1] == "*" {
 									subMeaningBody.Smean = response[v : v + l]
 									last = v + l + 1
@@ -780,11 +779,11 @@ func processMeaning(response string) []meaningStr {
 								}
 							}
 							if check {
-								for m:= 1; ; m++ {
+								for m:= 1; m < len(response) - last - subsLen4 ; m++ {
 									if response[last + m: last + m + subsLen4] == subs4 {
 										v := last + m + subsLen4 + 4
 										last = v
-										for l:= 1; ; l++ {
+										for l:= 1; l < len(response) - last - 1 ; l++ {
 											if response[v +l: v + l + 1] == "*" {
 												subMeaningBody.Subexample = response[v : v + l]
 												last = v + l + 1
