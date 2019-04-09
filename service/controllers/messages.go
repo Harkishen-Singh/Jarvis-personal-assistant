@@ -729,8 +729,8 @@ func processMeaning(response string) []meaningStr {
 
 	found := false
 	
-	var subs1, subs2, subs3, subs4 = "meaning", "example", "subMeaning", "subExample"
-	var subsLen1, subsLen2, subsLen3, subsLen4 = len(subs1), len(subs2), len(subs3), len(subs4)
+	subs1, subs2, subs3, subs4  := "meaning", "example", "subMeaning", "subExample"
+	subsLen1, subsLen2, subsLen3, subsLen4 := len(subs1), len(subs2), len(subs3), len(subs4)
 	var mid, last = 0, 0
 
 	var meaningBody meaningStr
