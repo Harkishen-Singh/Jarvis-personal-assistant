@@ -45,33 +45,38 @@ type medicineslist struct {
 	Z []string `json:"Z"`
 }
 
+type symptomsObj struct {
+	Type string
+	Link string
+}
+
 type symptomslist struct {
-	A []string `json:"A"`
-	B []string `json:"B"`
-	C []string `json:"C"`
-	D []string `json:"D"`
-	E []string `json:"E"`
-	F []string `json:"F"`
-	G []string `json:"G"`
-	H []string `json:"H"`
-	I []string `json:"I"`
-	J []string `json:"J"`
-	K []string `json:"K"`
-	L []string `json:"L"`
-	M []string `json:"M"`
-	N []string `json:"N"`
-	O []string `json:"O"`
-	P []string `json:"P"`
-	Q []string `json:"Q"`
-	R []string `json:"R"`
-	S []string `json:"S"`
-	T []string `json:"T"`
-	U []string `json:"U"`
-	V []string `json:"V"`
-	W []string `json:"W"`
-	X []string `json:"X"`
-	Y []string `json:"Y"`
-	Z []string `json:"Z"`
+	A []symptomsObj `json:"A"`
+	B []symptomsObj `json:"B"`
+	C []symptomsObj `json:"C"`
+	D []symptomsObj `json:"D"`
+	E []symptomsObj `json:"E"`
+	F []symptomsObj `json:"F"`
+	G []symptomsObj `json:"G"`
+	H []symptomsObj `json:"H"`
+	I []symptomsObj `json:"I"`
+	J []symptomsObj `json:"J"`
+	K []symptomsObj `json:"K"`
+	L []symptomsObj `json:"L"`
+	M []symptomsObj `json:"M"`
+	N []symptomsObj `json:"N"`
+	O []symptomsObj `json:"O"`
+	P []symptomsObj `json:"P"`
+	Q []symptomsObj `json:"Q"`
+	R []symptomsObj `json:"R"`
+	S []symptomsObj `json:"S"`
+	T []symptomsObj `json:"T"`
+	U []symptomsObj `json:"U"`
+	V []symptomsObj `json:"V"`
+	W []symptomsObj `json:"W"`
+	X []symptomsObj `json:"X"`
+	Y []symptomsObj `json:"Y"`
+	Z []symptomsObj `json:"Z"`
 }
 
 var (
@@ -345,14 +350,14 @@ func HealthSympController(symp string,  res http.ResponseWriter) (speech string)
 	firstAlpha := symp[0]
 	if firstAlpha == 'A' {
 		for i := 0; i < len(symptomParser.A) ; i++ {
-			if strings.Contains(symptomParser.A[i], symp) {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.A[i]), res)
+			if strings.Contains(symptomParser.A[i].Type, symp) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.A[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'B' {
 		for i := 0; i < len(symptomParser.B) ; i++ {
-			if symp == symptomParser.B[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.B[i]), res)
+			if symp == symptomParser.B[i].Type {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.B[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'C' {
