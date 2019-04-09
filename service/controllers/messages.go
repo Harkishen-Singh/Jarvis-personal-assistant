@@ -744,19 +744,19 @@ func processMeaning(response string) []meaningStr {
 			subMeaningBodyArray = nil
 			mid = i + subsLen1 + 4
 			last = mid
-			for j:=1; ; j++ {
-				if response[mid+j: mid + j + 1] == "*" {
+			for j:=1; j< len(response) - last - 1 ; j++ {
+				if response[last+j: last + j + 1] == "*" {
 					meaningBody.Meaning = response[mid: mid + j]
 					found = true
 					last = mid + j +1
 
 					for k:=1; k < len(response) - last - subsLen2 ; k++ {
-						if response[mid + j + k: mid + j + k + subsLen2] == subs2 {
+						if response[last + k: last + k + subsLen2] == subs2 {
 							v := mid + j + k + subsLen2 + 4
 							last = v
 							for l:= 1; l < len(response) - last - 1; l++ {
 								if response[v + l: v + l + 1] == "*" {
-									meaningBody.Example = response[v : v + l]
+									meaningBody.Example = response[v + 1 : v + l]
 									last = v + l +1
 									break;
 								}

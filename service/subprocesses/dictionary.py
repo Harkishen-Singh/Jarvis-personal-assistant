@@ -27,7 +27,6 @@ class Core_Base:
     def pass_words(self):
         self.data = {}
         self.word = sys.argv[1]
-        # self.word = sys.argv[1]
         self.words_p()
     
     #searches and stores the meaning of the particular word
