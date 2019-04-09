@@ -110,7 +110,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 	var strArr0 string
 	var strArrDiff []string
 	strArrDiff = strings.Split(message, " ")
-	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" {
+	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" || strings.ToLower(firstPars) =="image" {
 		if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
 			if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
 				strArr0=firstPars+" "+secondPars+" "+thirdPars
@@ -223,7 +223,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "images" {
+		} else if strings.ToLower(firstPars) == "images" || strings.ToLower(firstPars) =="image"  {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
