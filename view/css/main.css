@@ -35,7 +35,7 @@ header {
 }
 
 #sidebar {
-    height: 94vh;
+    height: 91vh;
     max-height: 100vh;
     border-right: 2px solid #d8d8d8;
     position: absolute;
@@ -60,7 +60,7 @@ header {
 
 #stackArea-parent {
     margin-top: -4.2%;
-    height: 76vh;
+    height: 72vh;
     overflow-y: scroll;
 }
 
@@ -73,6 +73,10 @@ header {
 
 #message-bar-send {
     margin:0 0 5px 10px; 
+}
+
+.loader {
+    width: 100%
 }
 
 .chat-screen-messages-you {
@@ -195,4 +199,22 @@ header {
 
 .item {
     flex: 0 0 auto;
+}
+
+.meaning {
+    font-size: 12px;
+    line-height: normal;
+}
+
+.example {
+    padding: 10px;
+}
+
+.submeaning {
+    font-size: 12px;
+    padding: 10px;
+}
+
+.subexample {
+    padding: 14px;
 }
