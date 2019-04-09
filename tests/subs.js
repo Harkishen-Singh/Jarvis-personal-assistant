@@ -60,10 +60,11 @@ process.argv.forEach((val, index, array) => {
                         // console.log(ee)
                         var text = ee, got = false;
                         var len = text.length, c=0;
+                        // for link
+                        var link = "";
                         console.warn(text)
                         for(var i = 0; i < len; i++) {
                             if (text.substring(i, i+4) === 'href') {
-                                console.warn('inside....****')
                                 for (var j=1; ;j++ ) {
                                     if (text.substr(i+j, 1) === '>') {
                                         console.warn('insie this too')
@@ -86,7 +87,7 @@ process.argv.forEach((val, index, array) => {
                                             "link": link
                                         });
                                         got = true
-                                        driver.quit();
+                                        driver.quit(); 
                                         break;
                                     }
                                 }
@@ -94,11 +95,6 @@ process.argv.forEach((val, index, array) => {
                             if (got)
                                 break
                         }
-                        // for link
-                        var link = "";
-                        // for(var i=0; i< len; i++) {
-                            
-                        // }
                         console.warn(util.inspect(arrAnswer, {maxArrayLength: null}))
                     })
                 })

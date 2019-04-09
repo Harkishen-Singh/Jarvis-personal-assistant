@@ -321,6 +321,23 @@ func handleResponse(data string, res http.ResponseWriter) string {
 	return "generic medicine " + data[0: 500]
 }
 
+func scrapSymptomsLog(sypm *string) string {
+
+	directory, _ := os.Getwd()
+	fmt.Println("health-symptoms request")
+	fmt.Println(" medicine-name -> " + *sypm + " direc -> " + directory)
+	*sypm = strings.Replace(*sypm, ",", "_", -1)
+	*sypm = strings.Replace(*sypm, "_ ", "_", -1)
+	*sypm = strings.Replace(*sypm, " ", "_", -1)
+	result, err := exec.Command("node", "subprocesses/health_symptoms.js", *sypm).Output()
+	if err != nil {
+		panic(err)
+	}
+	stringified := string(result)
+	fmt.Println("result is" , stringified)
+	return processScrapLog(&stringified)
+}
+
 // HealthSympController controls tasks related to health symptoms
 func HealthSympController(symp string,  res http.ResponseWriter) (speech string) {
 
@@ -329,163 +346,163 @@ func HealthSympController(symp string,  res http.ResponseWriter) (speech string)
 	if firstAlpha == 'A' {
 		for i := 0; i < len(symptomParser.A) ; i++ {
 			if strings.Contains(symptomParser.A[i], symp) {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.A[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.A[i]), res)
 			}
 		}
 	} else if firstAlpha == 'B' {
 		for i := 0; i < len(symptomParser.B) ; i++ {
 			if symp == symptomParser.B[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.B[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.B[i]), res)
 			}
 		}
 	} else if firstAlpha == 'C' {
 		for i := 0; i < len(symptomParser.C) ; i++ {
 			if symp == symptomParser.C[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.C[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.C[i]), res)
 			}
 		}
 	} else if firstAlpha == 'D' {
 		for i := 0; i < len(symptomParser.D) ; i++ {
 			if symp == symptomParser.D[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.D[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.D[i]), res)
 			}
 		}
 	} else if firstAlpha == 'E' {
 		for i := 0; i < len(symptomParser.E) ; i++ {
 			if symp == symptomParser.E[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.E[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.E[i]), res)
 			}
 		}
 	} else if firstAlpha == 'F' {
 		for i := 0; i < len(symptomParser.F) ; i++ {
 			if symp == symptomParser.F[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.F[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.F[i]), res)
 			}
 		}
 	} else if firstAlpha == 'F' {
 		for i := 0; i < len(symptomParser.F) ; i++ {
 			if symp == symptomParser.F[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.F[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.F[i]), res)
 			}
 		}
 	} else if firstAlpha == 'G' {
 		for i := 0; i < len(symptomParser.G) ; i++ {
 			if symp == symptomParser.G[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.G[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.G[i]), res)
 			}
 		}
 	} else if firstAlpha == 'H' {
 		for i := 0; i < len(symptomParser.H) ; i++ {
 			if symp == symptomParser.H[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.H[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.H[i]), res)
 			}
 		}
 	} else if firstAlpha == 'I' {
 		for i := 0; i < len(symptomParser.I) ; i++ {
 			if symp == symptomParser.I[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.I[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.I[i]), res)
 			}
 		}
 	} else if firstAlpha == 'J' {
 		for i := 0; i < len(symptomParser.J) ; i++ {
 			if symp == symptomParser.J[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.J[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.J[i]), res)
 			}
 		}
 	} else if firstAlpha == 'K' {
 		for i := 0; i < len(symptomParser.K) ; i++ {
 			if symp == symptomParser.K[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.K[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.K[i]), res)
 			}
 		}
 	} else if firstAlpha == 'L' {
 		for i := 0; i < len(symptomParser.L) ; i++ {
 			if symp == symptomParser.L[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.L[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.L[i]), res)
 			}
 		}
 	} else if firstAlpha == 'M' {
 		for i := 0; i < len(symptomParser.M) ; i++ {
 			if symp == symptomParser.M[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.M[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.M[i]), res)
 			}
 		}
 	} else if firstAlpha == 'N' {
 		for i := 0; i < len(symptomParser.N) ; i++ {
 			if symp == symptomParser.N[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.N[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.N[i]), res)
 			}
 		}
 	} else if firstAlpha == 'O' {
 		for i := 0; i < len(symptomParser.O) ; i++ {
 			if symp == symptomParser.O[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.O[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.O[i]), res)
 			}
 		}
 	} else if firstAlpha == 'P' {
 		for i := 0; i < len(symptomParser.P) ; i++ {
 			if symp == symptomParser.P[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.P[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.P[i]), res)
 			}
 		}
 	} else if firstAlpha == 'Q' {
 		for i := 0; i < len(symptomParser.Q) ; i++ {
 			if symp == symptomParser.Q[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.Q[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Q[i]), res)
 			}
 		}
 	} else if firstAlpha == 'R' {
 		for i := 0; i < len(symptomParser.R) ; i++ {
 			if symp == symptomParser.R[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.R[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.R[i]), res)
 			}
 		}
 	} else if firstAlpha == 'S' {
 		for i := 0; i < len(symptomParser.S) ; i++ {
 			if symp == symptomParser.S[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.S[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.S[i]), res)
 			}
 		}
 	} else if firstAlpha == 'T' {
 		for i := 0; i < len(symptomParser.T) ; i++ {
 			if symp == symptomParser.T[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.T[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.T[i]), res)
 			}
 		}
 	} else if firstAlpha == 'U' {
 		for i := 0; i < len(symptomParser.U) ; i++ {
 			if symp == symptomParser.U[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.U[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.U[i]), res)
 			}
 		}
 	} else if firstAlpha == 'V' {
 		for i := 0; i < len(symptomParser.V) ; i++ {
 			if symp == symptomParser.V[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.V[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.V[i]), res)
 			}
 		}
 	} else if firstAlpha == 'W' {
 		for i := 0; i < len(symptomParser.W) ; i++ {
 			if symp == symptomParser.W[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.W[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.W[i]), res)
 			}
 		}
 	} else if firstAlpha == 'X' {
 		for i := 0; i < len(symptomParser.X) ; i++ {
 			if symp == symptomParser.X[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.X[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.X[i]), res)
 			}
 		}
 	} else if firstAlpha == 'Y' {
 		for i := 0; i < len(symptomParser.Y) ; i++ {
 			if symp == symptomParser.Y[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.Y[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Y[i]), res)
 			}
 		}
 	} else if firstAlpha == 'Z' {
 		for i := 0; i < len(symptomParser.Z) ; i++ {
 			if symp == symptomParser.Z[i] {
-				speech = handleResponse(scrapMedicineLog(&symptomParser.Z[i]), res)
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Z[i]), res)
 			}
 		}
 	} else {

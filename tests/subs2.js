@@ -43,7 +43,7 @@ require('chromedriver');
                             .forBrowser('chrome')
                             .build();
 
-        const BASEURL = 'https://www.medindia.net/doctors/drug_information/',
+        const BASEURL = ' https://www.medindia.net/drugs/medical-condition/',
             ENDWARE = '.htm';
         driver.get(BASEURL + medicines + ENDWARE).then(() => {
             driver.findElements(By.className('drug-content')).then(loop => {
