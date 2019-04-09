@@ -250,7 +250,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 				response := processMeaning(result)
 				fmt.Println(len(response))
 
-				if len(word) == 1 && len(response) > 0 {
+				if len(response) > 0 {
 
 					responseJSON := jsonResponseMeaning{
 					Status: true,
@@ -260,11 +260,9 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 					jData, _ := json.Marshal(responseJSON)
 					w.Write(jData)
-					TextToSpeech(responseJSON.Message + " " + wordStr, 0)
+					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
 
-				} 
-				
-				if len(word) >= 2 || len(response) == 0 {
+				} else {
 					query := "https://www.google.co.in/search?q=" + wordStr
 					result := HandlerGoogle("GET", query)
 					response := processGoogleResponses(result)
@@ -277,7 +275,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 					jData, _ := json.Marshal(responseJSON)
 					w.Write(jData)
-					TextToSpeech(responseJSON.Message + " " + wordStr, 0)
+					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
 
 				}
 			}
@@ -691,23 +689,16 @@ func processMeaning(response string) []meaningStr {
 
 	found := false
 	
-	var subs1 = "meaning"
-	var subs2 = "example"
-	var subs3 = "subMeaning"
-	var subs4 = "subExample"
-	var subsLen1 = len(subs1)
-	var subsLen2 = len(subs2)
-	var subsLen3 = len(subs3)
-	var subsLen4 = len(subs4)
-	var mid = 0
-	var last = 0
+	var subs1, subs2, subs3, subs4 = "meaning", "example", "subMeaning", "subExample"
+	var subsLen1, subsLen2, subsLen3, subsLen4 = len(subs1), len(subs2), len(subs3), len(subs4)
+	var mid, last = 0, 0
 
 	var meaningBody meaningStr
 	var meaningBodyArray []meaningStr
 	var subMeaningBody submeanStr
 	var subMeaningBodyArray []submeanStr
 
-	for i:=0; i< len(response) - 200; i++ {
+	for i:=0; i< len(response) - subsLen1; i++ {
 		found = false
 		if response[i: i + subsLen1] == subs1 {
 			subMeaningBodyArray = nil
@@ -734,7 +725,7 @@ func processMeaning(response string) []meaningStr {
 						}
 					}
 					
-					for k := 1; ; k++ {
+					for k := 1;k < len(response) - last -subsLen3 ; k++ {
 						check := false
 						if response[last + k: last + k + subsLen3] == subs3 {
 							v := last + k + subsLen3 + 4
