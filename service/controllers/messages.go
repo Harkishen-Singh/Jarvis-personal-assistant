@@ -54,6 +54,22 @@ type weatherStr struct {
 	FeelsLike string `json:"feels_like"`
 }
 
+type meaningStr struct {
+	Meaning string `json:"meaning"`
+	Example string `json:"example"`
+	Submeaning []submeanStr `json:"submeaning"`
+}
+
+type submeanStr struct {
+	Smean string
+	Subexample string
+}
+
+type jsonResponseMeaning struct {
+	Status bool	`json:"status"`
+	Message string `json:"message"`
+	Result []meaningStr `json:"result"`
+}
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
 
@@ -73,7 +89,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func routes(routeObject response, w http.ResponseWriter) {
 
-	message := routeObject.message
+	/*message := routeObject.message
 	messageArr := strings.Split(message, " ")
 	// messageTemp := message
 	var firstPars string
@@ -86,20 +102,61 @@ func routes(routeObject response, w http.ResponseWriter) {
 	strArr := strings.Split(firstPars, " ")
 	strArrDiff := strings.Split(message, " ")
 
-	messageExceptFirstPars := strings.Join(stringDifference(strArr, strArrDiff), " ")
+	remainingString := strings.Join(stringDifference(strArr, strArrDiff), " ")*/
 	// lastParsArr := strings.Split(messageTemp, " ")
 	// lastPars := lastParsArr[len(lastParsArr) - 1]
+	message := routeObject.message
+	messageArr := strings.Split(message, " ")
+	var firstPars string
+	var secondPars string
+	var thirdPars string
+	if len(messageArr)>=3 {
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+		thirdPars = messageArr[2]
+	} else if len(messageArr)==2 {
+		firstPars=messageArr[0]
+		secondPars = messageArr[1]
+	} else if(len(messageArr)==1) {
+			firstPars=messageArr[0]
+	}
 
+	var remainingString string
+	var strArr []string
+	var strArr0 string
+	var strArrDiff []string
+	strArrDiff = strings.Split(message, " ")
+	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" || strings.ToLower(firstPars) =="image" || strings.ToLower(firstPars) =="meaning"{
+		if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
+			if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
+				strArr0=firstPars+" "+secondPars+" "+thirdPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			} else {
+				strArr0=firstPars+" "+secondPars
+				strArr=strings.Split(strArr0," ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+		} else {
+				strArr = strings.Split(firstPars, " ")
+				strArrDiff = strings.Split(message, " ")
+				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
+				fmt.Println(remainingString)
+			}
+	}
 	// single word operations
+
 
 	if Connected() {
 
-		if strings.ToLower(firstPars) == "google" { // for google search
+		if strings.ToLower(firstPars) == "google" || strings.ToLower(secondPars) == "google" { // for google search
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q=google"
 			} else {
-				query = "https://www.google.co.in/search?q=" + messageExceptFirstPars
+				query = "https://www.google.co.in/search?q=" + remainingString
 			}
 				 
 			result := HandlerGoogle("GET", query)
@@ -116,12 +173,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "yahoo" {
+		} else if strings.ToLower(firstPars) == "yahoo" || strings.ToLower(secondPars) == "yahoo"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://in.search.yahoo.com/search?p=yahoo"
 			} else {
-				query = "https://in.search.yahoo.com/search?p=" + messageExceptFirstPars
+				query = "https://in.search.yahoo.com/search?p=" + remainingString
 			}
 
 			result := HandlerYahoo("GET", query)
@@ -138,12 +195,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "bing" {
+		} else if strings.ToLower(firstPars) == "bing" || strings.ToLower(secondPars)=="bing"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.bing.com/search?q=bing"
 			} else {
-				query = "https://www.bing.com/search?q=" + messageExceptFirstPars
+				query = "https://www.bing.com/search?q=" + remainingString
 			}
 
 			result := HandlerBing("GET", query)
@@ -160,12 +217,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "youtube" {
+		} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "videos" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars) == "youtube"{
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.youtube.com/results?search_query=youtube"
 			} else {
-				query = "https://www.youtube.com/results?search_query=" + messageExceptFirstPars
+				query = "https://www.youtube.com/results?search_query=" + remainingString
 			}
 			 
 			result := HandlerYoutube("GET", query)
@@ -182,12 +239,12 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "image" {
+		} else if strings.ToLower(firstPars) == "images" || strings.ToLower(firstPars) =="image"  {
 			query := ""
-			if len(messageExceptFirstPars) == 0 {
+			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
 			} else {
-				query = "https://www.google.co.in/search?q="+messageExceptFirstPars+"&source=lnms&tbm=isch"
+				query = "https://www.google.co.in/search?q="+remainingString+"&source=lnms&tbm=isch"
 			}
 			
 			result := HandlerImage("GET", query)
@@ -220,6 +277,47 @@ func routes(routeObject response, w http.ResponseWriter) {
 				jData, _ := json.Marshal(response)
 				w.Write(jData)
 				TextToSpeech(response.Message + city + " " + state, 0)
+			}
+		} else if strings.ToLower(firstPars) == "meaning" {
+
+			if len(messageArr) == 1 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
+			} else {
+
+				wordStr := remainingString
+
+				result := HandlerMeaning(wordStr)
+				response := processMeaning(result)
+				fmt.Println(len(response))
+
+				if len(response) > 0 {
+
+					responseJSON := jsonResponseMeaning{
+					Status: true,
+					Message: "here is the meaning of the searched word",
+					Result: response,
+					}
+
+					jData, _ := json.Marshal(responseJSON)
+					w.Write(jData)
+					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
+
+				} else {
+					query := "https://www.google.co.in/search?q=" + wordStr
+					result := HandlerGoogle("GET", query)
+					response := processGoogleResponses(result)
+
+					responseJSON := jsonResponseQuery{
+					Status: true,
+					Message: "here are the top search results",
+					Result: response,
+					}
+
+					jData, _ := json.Marshal(responseJSON)
+					w.Write(jData)
+					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
+
+				}
 			}
 		} else if strings.ToLower(firstPars) == "medicine" {
 
@@ -633,5 +731,96 @@ func processImageResponses(result string) []messageQueryBody {
 		}
 	}
 	return queryResultArray
+
+}
+
+func processMeaning(response string) []meaningStr {
+
+	fmt.Println("this is the response")
+
+	found := false
+	
+	subs1, subs2, subs3, subs4  := "meaning", "example", "subMeaning", "subExample"
+	subsLen1, subsLen2, subsLen3, subsLen4 := len(subs1), len(subs2), len(subs3), len(subs4)
+	var mid, last = 0, 0
+
+	var meaningBody meaningStr
+	var meaningBodyArray []meaningStr
+	var subMeaningBody submeanStr
+	var subMeaningBodyArray []submeanStr
+
+	for i:=0; i< len(response) - subsLen1; i++ {
+		found = false
+		if response[i: i + subsLen1] == subs1 {
+			subMeaningBodyArray = nil
+			mid = i + subsLen1 + 4
+			last = mid
+			for j:=1; j< len(response) - last - 1 ; j++ {
+				if response[last+j: last + j + 1] == "*" {
+					meaningBody.Meaning = response[mid: mid + j]
+					found = true
+					last = mid + j +1
+
+					for k:=1; k < len(response) - last - subsLen2 ; k++ {
+						if response[last + k: last + k + subsLen2] == subs2 {
+							v := mid + j + k + subsLen2 + 4
+							last = v
+							for l:= 1; l < len(response) - last - 1; l++ {
+								if response[v + l: v + l + 1] == "*" {
+									meaningBody.Example = response[v + 1 : v + l]
+									last = v + l +1
+									break;
+								}
+							}
+							break;
+						}
+					}
+					
+					for k := 1;k < len(response) - last -subsLen3 ; k++ {
+						check := false
+						if response[last + k: last + k + subsLen3] == subs3 {
+							v := last + k + subsLen3 + 4
+							last := v
+							for l:= 1; l < len(response) - last - 1; l++ {
+								if response[v +l: v + l + 1] == "*" {
+									subMeaningBody.Smean = response[v : v + l]
+									last = v + l + 1
+									check = true
+									break;
+								}
+							}
+							if check {
+								for m:= 1; m < len(response) - last - subsLen4 ; m++ {
+									if response[last + m: last + m + subsLen4] == subs4 {
+										v := last + m + subsLen4 + 4
+										last = v
+										for l:= 1; l < len(response) - last - 1 ; l++ {
+											if response[v +l: v + l + 1] == "*" {
+												subMeaningBody.Subexample = response[v : v + l]
+												last = v + l + 1
+												break;
+											}
+										}
+										subMeaningBodyArray = append(subMeaningBodyArray, subMeaningBody)
+										meaningBody.Submeaning = subMeaningBodyArray
+										break;
+									}
+								}
+							}
+							break;
+						}
+					}
+					break;	
+				}
+			}
+			if found {
+				meaningBodyArray = append(meaningBodyArray, meaningBody)
+				i = last
+			}
+		}
+	}
+	fmt.Println("meaningBodyArray : ", meaningBodyArray)
+	
+	return meaningBodyArray
 
 }

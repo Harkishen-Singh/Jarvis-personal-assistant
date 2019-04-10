@@ -105,3 +105,19 @@ func HandlerImage(method string, url string) string {
 	return string(result)
 
 }
+
+// HandlerMeaning handles the subprocesses related to dictionary.py for meaning operations
+// returns the http body as string
+func HandlerMeaning(word string) string {
+
+	fmt.Println("meaning request")
+	fmt.Println("word -> ", word)
+	result, err := exec.Command("python", "subprocesses/dictionary.py", word).Output()
+	if err != nil {
+		fmt.Println("Seems like python version 2 is not yet installed or the pip dependencies are not installed")
+		panic(err)
+	}
+	return string(result)
+
+}
+
