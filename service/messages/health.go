@@ -348,166 +348,162 @@ func HealthSympController(symp string,  res http.ResponseWriter) (speech string)
 
 	symp = strings.TrimSpace(symp)
 	firstAlpha := symp[0]
+	fmt.Println(string(firstAlpha) + " " + symp)
 	if firstAlpha == 'A' {
 		for i := 0; i < len(symptomParser.A) ; i++ {
-			if strings.Contains(symptomParser.A[i].Type, symp) {
+			if strings.Contains(strings.ToLower(symptomParser.A[i].Type), strings.ToLower(symp)) {
 				speech = handleResponse(scrapSymptomsLog(&symptomParser.A[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'B' {
 		for i := 0; i < len(symptomParser.B) ; i++ {
-			if symp == symptomParser.B[i].Type {
+			if strings.Contains(strings.ToLower(symptomParser.B[i].Type), strings.ToLower(symp)) {
 				speech = handleResponse(scrapSymptomsLog(&symptomParser.B[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'C' {
 		for i := 0; i < len(symptomParser.C) ; i++ {
-			if symp == symptomParser.C[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.C[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.C[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.C[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'D' {
 		for i := 0; i < len(symptomParser.D) ; i++ {
-			if symp == symptomParser.D[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.D[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.D[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.D[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'E' {
 		for i := 0; i < len(symptomParser.E) ; i++ {
-			if symp == symptomParser.E[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.E[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.E[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.E[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'F' {
 		for i := 0; i < len(symptomParser.F) ; i++ {
-			if symp == symptomParser.F[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.F[i]), res)
-			}
-		}
-	} else if firstAlpha == 'F' {
-		for i := 0; i < len(symptomParser.F) ; i++ {
-			if symp == symptomParser.F[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.F[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.F[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.F[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'G' {
 		for i := 0; i < len(symptomParser.G) ; i++ {
-			if symp == symptomParser.G[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.G[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.G[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.G[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'H' {
 		for i := 0; i < len(symptomParser.H) ; i++ {
-			if symp == symptomParser.H[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.H[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.H[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.H[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'I' {
 		for i := 0; i < len(symptomParser.I) ; i++ {
-			if symp == symptomParser.I[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.I[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.I[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.I[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'J' {
 		for i := 0; i < len(symptomParser.J) ; i++ {
-			if symp == symptomParser.J[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.J[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.J[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.J[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'K' {
 		for i := 0; i < len(symptomParser.K) ; i++ {
-			if symp == symptomParser.K[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.K[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.K[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.K[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'L' {
 		for i := 0; i < len(symptomParser.L) ; i++ {
-			if symp == symptomParser.L[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.L[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.L[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.L[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'M' {
 		for i := 0; i < len(symptomParser.M) ; i++ {
-			if symp == symptomParser.M[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.M[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.M[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.M[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'N' {
 		for i := 0; i < len(symptomParser.N) ; i++ {
-			if symp == symptomParser.N[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.N[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.N[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.N[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'O' {
 		for i := 0; i < len(symptomParser.O) ; i++ {
-			if symp == symptomParser.O[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.O[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.O[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.O[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'P' {
 		for i := 0; i < len(symptomParser.P) ; i++ {
-			if symp == symptomParser.P[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.P[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.P[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.P[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'Q' {
 		for i := 0; i < len(symptomParser.Q) ; i++ {
-			if symp == symptomParser.Q[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.Q[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.Q[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Q[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'R' {
 		for i := 0; i < len(symptomParser.R) ; i++ {
-			if symp == symptomParser.R[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.R[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.R[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.R[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'S' {
 		for i := 0; i < len(symptomParser.S) ; i++ {
-			if symp == symptomParser.S[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.S[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.S[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.S[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'T' {
 		for i := 0; i < len(symptomParser.T) ; i++ {
-			if symp == symptomParser.T[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.T[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.T[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.T[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'U' {
 		for i := 0; i < len(symptomParser.U) ; i++ {
-			if symp == symptomParser.U[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.U[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.U[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.U[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'V' {
 		for i := 0; i < len(symptomParser.V) ; i++ {
-			if symp == symptomParser.V[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.V[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.V[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.V[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'W' {
 		for i := 0; i < len(symptomParser.W) ; i++ {
-			if symp == symptomParser.W[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.W[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.W[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.W[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'X' {
+		fmt.Println("inside X")
 		for i := 0; i < len(symptomParser.X) ; i++ {
-			if symp == symptomParser.X[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.X[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.X[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.X[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'Y' {
 		for i := 0; i < len(symptomParser.Y) ; i++ {
-			if symp == symptomParser.Y[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.Y[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.Y[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Y[i].Link), res)
 			}
 		}
 	} else if firstAlpha == 'Z' {
 		for i := 0; i < len(symptomParser.Z) ; i++ {
-			if symp == symptomParser.Z[i] {
-				speech = handleResponse(scrapSymptomsLog(&symptomParser.Z[i]), res)
+			if strings.Contains(strings.ToLower(symptomParser.Z[i].Type), strings.ToLower(symp)) {
+				speech = handleResponse(scrapSymptomsLog(&symptomParser.Z[i].Link), res)
 			}
 		}
 	} else {
