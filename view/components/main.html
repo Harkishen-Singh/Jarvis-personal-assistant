@@ -139,7 +139,7 @@
                         </div>
                         <div ng-switch-when="Here are your reminders : ">
                             <div class="message-style">
-                                {{message.result}}
+                                {{message.message}}
                                    <span>
                                     <sub class="show-user-creds">
                                         {{message.sender}}
@@ -153,6 +153,29 @@
                                     <h4 class="head-query-data">{{objectQuery.id}}. {{objectQuery.title}}</h4>
                                     <p>{{objectQuery.description}}</p>
                                     <p>{{objectQuery.time}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here is the meaning of the searched word">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
+                                    <span class="example"><i>Example: {{objectQuery.example}}</i></span><br>
+                                    <div data-ng-repeat="sub in objectQuery.submeaning" id="submean">
+                                        <span class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</span><br>
+                                        <span class="subexample"><i>Example: {{sub.Subexample}}</i></span><br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
