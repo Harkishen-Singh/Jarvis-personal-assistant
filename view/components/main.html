@@ -101,10 +101,46 @@
                             </div>
                         </div>
 
-                        <div ng-switch-when="here is the meaning of the searched word">
+                        <div ng-switch-when="Enter Reminder details : " id="rem-msg">
                             <div class="message-style">
                                 {{message.message}}
-                                <span>
+                               <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div class="container">
+                                <form>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" class="form-control" id="title" data-ng-model="formData.remTitle" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" id="description" data-ng-model="formData.remDescription"></textarea>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <label for="time">Date and Time</label>
+                                        <input type="datetime-local" class="form-control" id="time" data-ng-model="formData.remTime" required>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-success" data-ng-click="setReminder()">
+                                        Set Reminder
+                                    </button>
+                                
+                                </form>
+                            </div>
+                        </div>
+                        <div ng-switch-when="Here are your reminders : ">
+                            <div class="message-style">
+                                {{message.result}}
+                                   <span>
                                     <sub class="show-user-creds">
                                         {{message.sender}}
                                         {{message.time}}
@@ -114,12 +150,9 @@
                             <div id="queried-data" data-ng-if="message.result.length !== 0">
                                 <br>
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
-                                    <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
-                                    <span class="example"><i>Example: {{objectQuery.example}}</i></span><br>
-                                    <div data-ng-repeat="sub in objectQuery.submeaning" id="submean">
-                                        <span class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</span><br>
-                                        <span class="subexample"><i>Example: {{sub.Subexample}}</i></span><br>
-                                    </div>
+                                    <h4 class="head-query-data">{{objectQuery.id}}. {{objectQuery.title}}</h4>
+                                    <p>{{objectQuery.description}}</p>
+                                    <p>{{objectQuery.time}}</p>
                                 </div>
                             </div>
                         </div>
