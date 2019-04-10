@@ -132,13 +132,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && !show) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'Enter Reminder details : ') {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -146,6 +139,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
+					console.log("In show reminder");
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
@@ -153,6 +147,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 					console.log(messageObj);
+				} else if ((status === 'success' || status) && !show) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if (show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
