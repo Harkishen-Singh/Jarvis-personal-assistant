@@ -6,13 +6,13 @@
 
 ## Introduction
 
-The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands. Users can interact with the assistant either through voice commands or using a keyboard input.
+The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands. Users can interact with the assistant either through ***voice commands or using a keyboard input***.
 To know the steps to install and run the project click [here](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
 
 
 ## What Jarvis can do?
 
-As a personal assistant, Jarvis assists the end-user with day-to-day activities like general human conversation, searching queries in google, bing or yahoo, searching for videos, retrieving images, live weather conditions, word meanings, searching for medicine details, health recommendations based on symptoms and reminding the user about the scheduled events and tasks. The user statements/commands are analysed with the help of machine learning to give an optimal solution.
+As a personal assistant, Jarvis assists the end-user with day-to-day activities like *general human conversation, searching queries in google, bing or yahoo, searching for videos, retrieving images, live weather conditions, word meanings, searching for medicine details, health recommendations based on symptoms and reminding the user about the scheduled events and tasks*. The user statements/commands are analysed with the help of **machine learning** to give an optimal solution.
 
 ## Features 
 
@@ -37,6 +37,20 @@ Image “image you want to search”
 **Dictionary meaning**<br/>
 For getting meaning of a word format is,<br/>
 meaning "word you are searching for"
+
+**Medicine Details**<br/>
+Get the complete details of the medicine, including :
+1. Indications
+2. Contradictions
+3. Trade/Brand Names
+4. Indications
+5. Dosage
+6. Process of consumption
+7. Warnings and Precautions related to the medicine
+8. Storage conditions
+
+**Medicine Help based on symptoms**<br/>
+List your noticed symptoms and get immediate help on the medicines that could be taken.
 
 ## Technology used<br/>
 
