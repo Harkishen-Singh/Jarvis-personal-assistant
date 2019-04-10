@@ -6,6 +6,7 @@
 const webdriver = require('selenium-webdriver'),
     chrome = require('selenium-webdriver/chrome'),
     By = webdriver.By;
+const util = require('util')
 
 require('chromedriver');
 // require('geckodriver');
@@ -50,26 +51,43 @@ process.argv.forEach((val, index, array) => {
             driver.findElements(By.className('list-item')).then(cc => {
                 var count = 0;
                 cc.forEach(each => {
-                    if (count %2 !== 0) {
-                        count++;
-                        console.log(count + ' here')
-                        return;
-                    } else count++;
+                    // if (count %2 !== 0) {
+                    //     count++;
+                    //     console.log(count + ' here')
+                    //     return;
+                    // } else count++;
                     each.getAttribute('innerHTML').then(ee => {
                         // console.log(ee)
                         var text = ee, got = false;
                         var len = text.length, c=0;
+                        // for link
+                        var link = "";
+                        console.warn(text)
                         for(var i = 0; i < len; i++) {
+                            if (text.substring(i, i+4) === 'href') {
+                                for (var j=1; ;j++ ) {
+                                    if (text.substr(i+j, 1) === '>') {
+                                        console.warn('insie this too')
+                                        link = text.substring(i + 6,i+ j - 1);
+                                        break;
+                                    }
+                                }
+                            }
                             if(text[i] === '>')
                                 c++;
-                            if(c === 2) {
+                            if(c === 1) {
                                 c = 0;
                                 for (var j=1; ; j++) {
                                     if (text.substring(i+j, i+j+4) === '</a>') {
-                                        let stringss = text.substring(i+1, i+j-1)
+                                        let stringss = text.substring(i+1, i+j)
                                         console.log('this -> ' + stringss + ' >==<ends here')
-                                        arrAnswer.push(stringss.trim())
+                                        stringss = stringss.trim();
+                                        arrAnswer.push({
+                                            "type": stringss,
+                                            "link": link
+                                        });
                                         got = true
+                                        driver.quit(); 
                                         break;
                                     }
                                 }
@@ -77,7 +95,7 @@ process.argv.forEach((val, index, array) => {
                             if (got)
                                 break
                         }
-                        console.log(arrAnswer)
+                        console.warn(util.inspect(arrAnswer, {maxArrayLength: null}))
                     })
                 })
             });

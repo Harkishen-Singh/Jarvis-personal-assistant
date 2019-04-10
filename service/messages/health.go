@@ -26,7 +26,7 @@ type medicineslist struct {
 	G []string `json:"G"`
 	H []string `json:"H"`
 	I []string `json:"I"`
-	J []string `json:"Jarr"`
+	J []string `json:"J"`
 	K []string `json:"K"`
 	L []string `json:"L"`
 	M []string `json:"M"`
@@ -45,8 +45,18 @@ type medicineslist struct {
 	Z []string `json:"Z"`
 }
 
+type symptomsObj struct {
+	Type string
+	Link string
+}
+
+type symptomslist struct {
+	symp []symptomsObj
+}
+
 var (
 	medicineParser medicineslist
+	symptomParser symptomslist
 )
 
 func init() {
@@ -61,12 +71,22 @@ func init() {
 	if err1 != nil {
 		panic(err1)
 	}
+
+	fmt.Println("Loading health-symptoms JSON parsers....")
+	medicineFileSymp, err := os.Open("store/health_symptoms.json")
+	bytvalMF2, _ := ioutil.ReadAll(medicineFileSymp)
+	if err != nil   {
+		panic(err)
+	}
+	err1 = json.Unmarshal(bytvalMF2, &symptomParser.symp)
+	if err1 != nil {
+		panic(err1)
+	}
 }
 
-// HealthController controls tasks related to health services
-func HealthController(medicine string,  res http.ResponseWriter) (speech string) {
+// HealthMedController controls tasks related to medicines
+func HealthMedController(medicine string,  res http.ResponseWriter) (speech string) {
 
-	fmt.Println("Health controllers")
 	medicine = strings.TrimSpace(medicine)
 	firstAlpha := medicine[0]
 	if firstAlpha == 'A' {
@@ -266,6 +286,7 @@ func processScrapLog(log *string) (data string) {
 		}
 	}
 	fmt.Println("scrapped is -> ", data)
+	data = strings.Replace(data, "undefined", "", 1)
 	return
 }
 
@@ -278,5 +299,38 @@ func handleResponse(data string, res http.ResponseWriter) string {
 	}
 	send, _ := json.Marshal(resp)
 	res.Write(send)
-	return "generic medicine " + data[0: 500]
+	return "generic " + data[0: 20]
+}
+
+func scrapSymptomsLog(sypm *string) string {
+
+	directory, _ := os.Getwd()
+	fmt.Println("health-symptoms request")
+	fmt.Println(" medicine-name -> " + *sypm + " direc -> " + directory)
+	*sypm = strings.Replace(*sypm, ",", "_", -1)
+	*sypm = strings.Replace(*sypm, "_ ", "_", -1)
+	*sypm = strings.Replace(*sypm, " ", "_", -1)
+	result, err := exec.Command("node", "subprocesses/health_symptoms.js", *sypm).Output()
+	if err != nil {
+		panic(err)
+	}
+	stringified := string(result)
+	fmt.Println("result is" , stringified)
+	return processScrapLog(&stringified)
+}
+
+// HealthSympController controls tasks related to health symptoms
+func HealthSympController(symp string,  res http.ResponseWriter) (speech string) {
+
+	symp = strings.TrimSpace(symp)
+	firstAlpha := symp[0]
+	fmt.Println(string(firstAlpha) + " " + symp)
+	for i:=0; i< len(symptomParser.symp); i++ {
+		if strings.Contains(strings.ToLower(symptomParser.symp[i].Type), strings.ToLower(symp)) {
+			fmt.Println("Matched with -> ", symptomParser.symp[i].Type)
+			speech = handleResponse(scrapSymptomsLog(&symptomParser.symp[i].Link), res)
+			break
+		}
+	}
+	return
 }

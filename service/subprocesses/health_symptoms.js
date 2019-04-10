@@ -21,19 +21,18 @@ require('chromedriver');
     4: four
  */
 
-
-// process.argv.forEach((val, index, array) => {
+process.argv.forEach((val, index, array) => {
     var path = require('chromedriver').path;
 
     var service = new chrome.ServiceBuilder(path).build();
     chrome.setDefaultService(service);
-    // if (index === 2) { // corresponds to the medicine name
+    if (index === 2) { // corresponds to the medicine name
         // var medicines = val;
-        var medicines = 'Rebamipide'
-
+        var sympLink = val
+        console.log('symptom received -> ' + sympLink);
         // keep the below block of code in the last part the else if block
 
-        var options = new chrome.Options();
+        var options = new chrome.Options(), data
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
@@ -43,29 +42,20 @@ require('chromedriver');
                             .forBrowser('chrome')
                             .build();
 
-        const BASEURL = ' https://www.medindia.net/drugs/medical-condition/',
-            ENDWARE = '.htm';
-        driver.get(BASEURL + medicines + ENDWARE).then(() => {
-            driver.findElements(By.className('drug-content')).then(loop => {
-                var count = -1;
-                var data='';
-                loop.forEach((itr, i) => {
-                    if (count == -1) {
-                        count++;
-                        return;
-                    } else {
-                        itr.getAttribute('innerText').then(text => {
-                        text = text.replace('•', '');
-                        console.warn(count++);
-                        data += text;
-                        if (i === loop.length - 1){
-                            console.warn('data -> ' + data)
+        const BASEURL = ' https://www.medindia.net/drugs/medical-condition/';
+        driver.get(BASEURL + sympLink).then(() => {
+            console.log('searching')
+            driver.findElements(By.tagName('article')).then(loop => {
+                loop.forEach((itr, ind) => {
+                    itr.getAttribute('innerText').then(attr => {
+                        attr = attr.replace('•', '');
+                        data += attr + "\n";
+                        if (ind === (loop.length - 1)){
+                            console.log('data -> ' + data)
                         }
-                        });
-                    }
-                });
+                    })
+                })
             });
         });
-    // }
-// });
-
+    }
+});

@@ -321,11 +321,22 @@ func routes(routeObject response, w http.ResponseWriter) {
 			}
 		} else if strings.ToLower(firstPars) == "medicine" {
 
-			if len(messageArr) == 1 || len(messageArr) < 2 {
-				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
+			if len(messageArr) <= 1 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: medicine <generic / common name>", "result": ""}`))
 			} else {
 				med := messageArr[len(messageArr)-1]
-				result := messages.HealthController(med, w)
+				result := messages.HealthMedController(med, w)
+				TextToSpeech(result, 0)
+			}
+		} else if strings.ToLower(firstPars) == "symptoms" {
+			// add support for multiple symptoms at once and use ML to determine the best medicine suited
+
+			if len(messageArr) < 1 {
+				w.Write([]byte(`{"status": "success", "message": "ENTER: symptoms <symptom / condition>", "result": ""}`))
+			} else {
+				fmt.Println("inside")
+				symp := strings.Join(messageArr[1:len(messageArr)], " ")
+				result := messages.HealthSympController(symp, w)
 				TextToSpeech(result, 0)
 			}
 		} else {
