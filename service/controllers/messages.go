@@ -337,7 +337,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		} else if strings.ToLower(firstPars) == "symptoms" {
 			// add support for multiple symptoms at once and use ML to determine the best medicine suited
 
-			if len(messageArr) < 1 {
+			if len(messageArr) < 2 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: symptoms <symptom / condition>", "result": ""}`))
 			} else {
 				fmt.Println("inside")
@@ -365,7 +365,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	} else {
 
-		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" || strings.ToLower(firstPars) == "medicine" {
+		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" || strings.ToLower(firstPars) == "medicine" || strings.ToLower(firstPars) == "symptoms" {
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
 		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {

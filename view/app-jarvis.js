@@ -147,7 +147,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 					console.log(messageObj);
-				} else if ((status === 'success' || status) && message === 'Information about the medicine : ' ) {
+				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
 					messageObj.length = message.length;
