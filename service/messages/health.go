@@ -13,7 +13,7 @@ import (
 type medicineResponse struct {
 	Status bool `json:"status"`
 	Message string `json:"message"`
-	Result []string `json:"result"`
+	Result string `json:"result"`
 }
 
 type medicineslist struct {
@@ -87,7 +87,8 @@ func init() {
 // HealthMedController controls tasks related to medicines
 func HealthMedController(medicine string,  res http.ResponseWriter) (speech string) {
 
-	medicine = strings.TrimSpace(medicine)
+	medicine = strings.ToLower(strings.TrimSpace(medicine))
+	medicine = strings.Title(medicine)
 	firstAlpha := medicine[0]
 	if firstAlpha == 'A' {
 		for i := 0; i < len(medicineParser.A) ; i++ {
@@ -294,8 +295,8 @@ func handleResponse(data string, res http.ResponseWriter) string {
 
 	resp := medicineResponse{
 		Status: true,
-		Message: data,
-		Result: nil,
+		Message: "Information about the medicine : ",
+		Result: data,
 	}
 	send, _ := json.Marshal(resp)
 	res.Write(send)
