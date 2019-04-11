@@ -26,6 +26,12 @@ type messageQueryBody struct {
 // 	Link string `json:"link"`
 // }
 
+type reminderResponse struct {
+	Status bool	`json:"status"`
+	Message string `json:"message"`
+	Result []reminder `json:"result"`
+}
+
 type jsonResponseQuery struct {
 	Status bool	`json:"status"`
 	Message string `json:"message"`
@@ -72,7 +78,7 @@ type jsonResponseMeaning struct {
 }
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
-
+	
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	r.ParseForm()
@@ -339,6 +345,19 @@ func routes(routeObject response, w http.ResponseWriter) {
 				result := messages.HealthSympController(symp, w)
 				TextToSpeech(result, 0)
 			}
+		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
+			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
+		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
+			result := ShowReminder()
+			fmt.Println(result)
+			responseJSON := reminderResponse {
+				Status: true,
+				Message: "Here are your reminders : ",
+				Result: result,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech("Here are your reminders.", 0)
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
@@ -349,6 +368,19 @@ func routes(routeObject response, w http.ResponseWriter) {
 		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" {
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
+		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
+			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
+		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
+			result := ShowReminder()
+			fmt.Println(result)
+			responseJSON := reminderResponse {
+				Status: true,
+				Message: "Here are your reminders : ",
+				Result: result,
+			}
+			jData, _ := json.Marshal(responseJSON)
+			w.Write(jData)
+			TextToSpeech("Here are your reminders.", 0)
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)

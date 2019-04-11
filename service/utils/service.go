@@ -9,6 +9,7 @@ import (
 func routes() {
 	http.HandleFunc("/", controllers.HomeController)
 	http.HandleFunc("/message", controllers.MessagesController)
+	http.HandleFunc("/reminder", controllers.ReminderController)
 }
 
 // Server service server for Jarvis

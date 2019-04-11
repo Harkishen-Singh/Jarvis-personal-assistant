@@ -8,3 +8,4 @@ tests/audio/
 tests/mochawesome-report
 package-lock.json
 service/subprocesses/node_modules/
+service/jarvis.db

@@ -57,4 +57,3 @@ script:
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
-
