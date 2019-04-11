@@ -51,6 +51,34 @@
                             </div>
                         </div>
 
+                        <div ng-switch-when="Information about the medicine : ">
+                            <div class="message-style">
+                                <b>{{message.message}}</b>
+                                <br>
+                                <p style="white-space: pre-wrap">{{message.result}}</p>
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="Help on the given symptoms : ">
+                            <div class="message-style">
+                                <b>{{message.message}}</b>
+                                <br>
+                                <p style="white-space: pre-wrap">{{message.result}}</p>
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                        </div>
+
                         <div ng-switch-when="here are the searched images">
                             <div class="message-style">
                                 {{message.message}}
