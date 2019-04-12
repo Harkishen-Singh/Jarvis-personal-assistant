@@ -159,10 +159,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 	var a []string
 	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
 	"meaning", "google", "yahoo", "bing", "search"}
-	fmt.Println("Priority: ", priority )
 	for i := 0; i < len(messageArr); i++ {
 		for j := 0; j < len(priority); j++ {
-			fmt.Println("i: ",i , " ", messageArr[i], "j: ", j, " ", priority[j])
 			if (messageArr[i] == priority[j]) {
 				a = append(a, messageArr[i])
 				if i < len(messageArr) {
@@ -182,11 +180,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 		matchPars = sort[0]
 		remainingString = strings.Join(messageArr[:]," ")
 		messageArr = append([]string{matchPars}, messageArr...)
-		fmt.Println("messageArr:", messageArr)
 		fmt.Println("Remaining String:", remainingString)
 		fmt.Println("matchPars: ", matchPars)
 	} else {
 		remainingString = strings.Join(messageArr[:], " ")
+		fmt.Println("messageArr:", messageArr)
+		fmt.Println("Remaining String:", remainingString)
+		fmt.Println("matchPars: ", matchPars)
 	}
 
 
@@ -445,8 +445,6 @@ func customSort(arr1 []string, arr2 []string, m,n int) []string{
 		}
 		delete(freq, arr2[i])
 	}
-	fmt.Println(arr1)
-
 	return arr1
 }
 
