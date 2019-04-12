@@ -1,6 +1,6 @@
 # Jarvis-Personal-Linux-Assistant
 
-[![Gitter](https://badges.gitter.im/COSS-Jarvis/community.svg)](https://gitter.im/COSS-Jarvis/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Build Status](https://travis-ci.com/Harkishen-Singh/Jarvis-personal-assistant.svg?branch=master)](https://travis-ci.com/Harkishen-Singh/Jarvis-personal-assistant)
+[![Build Status](https://travis-ci.com/Harkishen-Singh/Jarvis-personal-assistant.svg?branch=master)](https://travis-ci.com/Harkishen-Singh/Jarvis-personal-assistant)
 
 [![dfsdf](https://files.gitter.im/COSS-Jarvis/community/euO1/tumblr_nrqm32yH3W1r6xm5co1_1280.gif)](https://gitter.im/COSS-Jarvis/community)
 
