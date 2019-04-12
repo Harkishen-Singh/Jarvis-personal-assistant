@@ -95,69 +95,43 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func routes(routeObject response, w http.ResponseWriter) {
 
-	/*message := routeObject.message
-	messageArr := strings.Split(message, " ")
-	// messageTemp := message
-	var firstPars string
-	if strings.Contains(message, " ") {
-		firstPars = message[:strings.Index(message, " ")]
-	} else {
-		firstPars = message
-	}
-
-	strArr := strings.Split(firstPars, " ")
-	strArrDiff := strings.Split(message, " ")
-
-	remainingString := strings.Join(stringDifference(strArr, strArrDiff), " ")*/
-	// lastParsArr := strings.Split(messageTemp, " ")
-	// lastPars := lastParsArr[len(lastParsArr) - 1]
 	message := routeObject.message
-	messageArr := strings.Split(message, " ")
-	var firstPars string
-	var secondPars string
-	var thirdPars string
-	if len(messageArr)>=3 {
-		firstPars=messageArr[0]
-		secondPars = messageArr[1]
-		thirdPars = messageArr[2]
-	} else if len(messageArr)==2 {
-		firstPars=messageArr[0]
-		secondPars = messageArr[1]
-	} else if(len(messageArr)==1) {
-			firstPars=messageArr[0]
+	messageArr := strings.Fields(message)
+	var a []string
+	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
+						 "meaning", "google", "yahoo", "bing", "search"}
+	for i := 0; i < len(messageArr); i++ {
+		for _, prior := range priority {
+			if (messageArr[i] == prior) {
+				a = append(a, messageArr[i])
+				if i < len(messageArr) {
+					messageArr = append(messageArr[:i], messageArr[i+1:]...)
+					i = i - 1
+				} else {
+					fmt.Println("Position Invalid")
+				}
+				break;
+			}
+		}
+	}
+	matchPars := ""
+	remainingString := ""
+	if len(a) > 0 {
+		sort := customSort(a, priority, len(a), len(priority))
+		matchPars = sort[0]
+		remainingString = strings.Join(messageArr[:]," ")
+		messageArr = append([]string{matchPars}, messageArr...)
+	} else {
+		remainingString = strings.Join(messageArr[:], " ")
 	}
 
-	var remainingString string
-	var strArr []string
-	var strArr0 string
-	var strArrDiff []string
-	strArrDiff = strings.Split(message, " ")
-	if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) =="yahoo" || strings.ToLower(firstPars) =="bing" || strings.ToLower(firstPars) =="search" || strings.ToLower(firstPars) =="youtube"|| strings.ToLower(firstPars) == "watch"||strings.ToLower(firstPars) =="videos" || strings.ToLower(firstPars) =="images" || strings.ToLower(firstPars) =="image" || strings.ToLower(firstPars) =="meaning"{
-		if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
-			if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
-				strArr0=firstPars+" "+secondPars+" "+thirdPars
-				strArr=strings.Split(strArr0," ")
-				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-				fmt.Println(remainingString)
-			} else {
-				strArr0=firstPars+" "+secondPars
-				strArr=strings.Split(strArr0," ")
-				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-				fmt.Println(remainingString)
-			}
-		} else {
-				strArr = strings.Split(firstPars, " ")
-				strArrDiff = strings.Split(message, " ")
-				remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-				fmt.Println(remainingString)
-			}
-	}
+
 	// single word operations
 
 
 	if Connected() {
 
-		if strings.ToLower(firstPars) == "google" || strings.ToLower(secondPars) == "google" { // for google search
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "search" { // for google search
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q=google"
@@ -179,7 +153,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "yahoo" || strings.ToLower(secondPars) == "yahoo"{
+		} else if strings.ToLower(matchPars) == "yahoo" {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://in.search.yahoo.com/search?p=yahoo"
@@ -201,7 +175,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "bing" || strings.ToLower(secondPars)=="bing"{
+		} else if strings.ToLower(matchPars) == "bing" {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.bing.com/search?q=bing"
@@ -223,7 +197,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "videos" || strings.ToLower(firstPars) == "watch" || strings.ToLower(secondPars) == "youtube"{
+		} else if strings.ToLower(matchPars) == "youtube" || strings.ToLower(matchPars) == "videos" || strings.ToLower(matchPars) == "watch" {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.youtube.com/results?search_query=youtube"
@@ -245,7 +219,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "images" || strings.ToLower(firstPars) =="image"  {
+		} else if strings.ToLower(matchPars) == "images" || strings.ToLower(matchPars) =="image"  {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
@@ -266,7 +240,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(firstPars) == "weather" {
+		} else if strings.ToLower(matchPars) == "weather" {
 
 			if len(messageArr) == 1 || len(messageArr) < 3 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
@@ -284,7 +258,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 				w.Write(jData)
 				TextToSpeech(response.Message + city + " " + state, 0)
 			}
-		} else if strings.ToLower(firstPars) == "meaning" {
+		} else if strings.ToLower(matchPars) == "meaning" {
 
 			if len(messageArr) == 1 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
@@ -325,7 +299,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 				}
 			}
-		} else if strings.ToLower(firstPars) == "medicine" {
+		} else if strings.ToLower(matchPars) == "medicine" {
 
 			if len(messageArr) <= 1 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: medicine <generic / common name>", "result": ""}`))
@@ -334,7 +308,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 				result := messages.HealthMedController(med, w)
 				TextToSpeech(result, 0)
 			}
-		} else if strings.ToLower(firstPars) == "symptoms" {
+		} else if strings.ToLower(matchPars) == "symptoms" {
 			// add support for multiple symptoms at once and use ML to determine the best medicine suited
 
 			if len(messageArr) < 2 {
@@ -365,7 +339,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	} else {
 
-		if strings.ToLower(firstPars) == "google" || strings.ToLower(firstPars) == "yahoo" || strings.ToLower(firstPars) == "bing" || strings.ToLower(firstPars) == "youtube" || strings.ToLower(firstPars) == "image" || strings.ToLower(firstPars) == "weather" || strings.ToLower(firstPars) == "medicine" || strings.ToLower(firstPars) == "symptoms" {
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" {
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
 		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
@@ -388,6 +362,27 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	}
 
+}
+
+// customSort() to sort an array according to the order defined by another array
+func customSort(arr1 []string, arr2 []string, m,n int) []string{
+	freq := make(map[string]int)
+
+	for i := 0; i < m; i++ {
+		freq[arr1[i]]++;
+	}
+
+	index := 0
+
+	for i := 0; i < n; i++ {
+		for freq[arr2[i]] > 0 {
+			arr1[index] = arr2[i]
+			index++
+			freq[arr2[i]]--
+		}
+		delete(freq, arr2[i])
+	}
+	return arr1
 }
 
 func filterForSpeech(s string) string {
