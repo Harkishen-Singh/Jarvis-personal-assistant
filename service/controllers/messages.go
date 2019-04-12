@@ -95,73 +95,14 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func routes(routeObject response, w http.ResponseWriter) {
 
-	/*message := routeObject.message
-	messageArr := strings.Split(message, " ")
-	// messageTemp := message
-	var matchPars string
-	if strings.Contains(message, " ") {
-		matchPars = message[:strings.Index(message, " ")]
-	} else {
-		matchPars = message
-	}
-
-	strArr := strings.Split(matchPars, " ")
-	strArrDiff := strings.Split(message, " ")
-
-	remainingString := strings.Join(stringDifference(strArr, strArrDiff), " ")*/
-	// lastParsArr := strings.Split(messageTemp, " ")
-	// lastPars := lastParsArr[len(lastParsArr) - 1]
-
-	// message := routeObject.message
-	// messageArr := strings.Split(message, " ")
-	// var matchPars string
-	// var secondPars string
-	// var thirdPars string
-	// if len(messageArr)>=3 {
-	// 	matchPars=messageArr[0]
-	// 	secondPars = messageArr[1]
-	// 	thirdPars = messageArr[2]
-	// } else if len(messageArr)==2 {
-	// 	matchPars=messageArr[0]
-	// 	secondPars = messageArr[1]
-	// } else if(len(messageArr)==1) {
-	// 		matchPars=messageArr[0]
-	// }
-
-	// var remainingString string
-	// var strArr []string
-	// var strArr0 string
-	// var strArrDiff []string
-	// strArrDiff = strings.Split(message, " ")
-	// if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) =="yahoo" || strings.ToLower(matchPars) =="bing" || strings.ToLower(matchPars) =="search" || strings.ToLower(matchPars) =="youtube"|| strings.ToLower(matchPars) == "watch"||strings.ToLower(matchPars) =="videos" || strings.ToLower(matchPars) =="images" || strings.ToLower(matchPars) =="image" || strings.ToLower(matchPars) =="meaning"{
-	// 	if strings.ToLower(secondPars) == "search" || strings.ToLower(secondPars) =="google" ||strings.ToLower(secondPars) =="yahoo" ||strings.ToLower(secondPars) =="bing" ||strings.ToLower(secondPars) =="videos" ||strings.ToLower(secondPars) =="youtube"||strings.ToLower(secondPars) =="for" || strings.ToLower(secondPars) =="of"{
-	// 		if strings.ToLower(thirdPars) == "for" || strings.ToLower(thirdPars) =="videos" {
-	// 			strArr0=matchPars+" "+secondPars+" "+thirdPars
-	// 			strArr=strings.Split(strArr0," ")
-	// 			remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-	// 			fmt.Println(remainingString)
-	// 		} else {
-	// 			strArr0=matchPars+" "+secondPars
-	// 			strArr=strings.Split(strArr0," ")
-	// 			remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-	// 			fmt.Println(remainingString)
-	// 		}
-	// 	} else {
-	// 			strArr = strings.Split(matchPars, " ")
-	// 			strArrDiff = strings.Split(message, " ")
-	// 			remainingString=strings.Join(stringDifference(strArr,strArrDiff)," ")
-	// 			fmt.Println(remainingString)
-	// 		}
-	// }
-
 	message := routeObject.message
 	messageArr := strings.Fields(message)
 	var a []string
 	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
-	"meaning", "google", "yahoo", "bing", "search"}
+						 "meaning", "google", "yahoo", "bing", "search"}
 	for i := 0; i < len(messageArr); i++ {
-		for j := 0; j < len(priority); j++ {
-			if (messageArr[i] == priority[j]) {
+		for _, prior := range priority {
+			if (messageArr[i] == prior) {
 				a = append(a, messageArr[i])
 				if i < len(messageArr) {
 					messageArr = append(messageArr[:i], messageArr[i+1:]...)
@@ -180,13 +121,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 		matchPars = sort[0]
 		remainingString = strings.Join(messageArr[:]," ")
 		messageArr = append([]string{matchPars}, messageArr...)
-		fmt.Println("Remaining String:", remainingString)
-		fmt.Println("matchPars: ", matchPars)
 	} else {
 		remainingString = strings.Join(messageArr[:], " ")
-		fmt.Println("messageArr:", messageArr)
-		fmt.Println("Remaining String:", remainingString)
-		fmt.Println("matchPars: ", matchPars)
 	}
 
 
@@ -428,6 +364,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 }
 
+// customSort() to sort an array according to the order defined by another array
 func customSort(arr1 []string, arr2 []string, m,n int) []string{
 	freq := make(map[string]int)
 
