@@ -20,6 +20,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	var recognition = new webkitSpeechRecognition();
 	var recognizing;
 
+	$scope.controlMainBanner = function() {
+		$scope.mainBanner = true;
+		setTimeout(() =>{
+			$scope.mainBanner = false;
+		}, 500);
+	};
 	$scope.messageStack = [];
 	$scope.showLoaderListening = false;
 
@@ -60,6 +66,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			messageObj.sender = 'you';
 
 			$scope.messageStack.push(messageObj);
+			$scope.showLoading = true;
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
@@ -88,6 +95,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					show: false,
 					length: null
 				};
+				console.log(messageObj);
 				console.log(res);
 				setTimeout(() => {
 					$scope.scrollDown();
@@ -99,7 +107,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = JSON.parse(result);
 					$scope.messageStack.push(messageObj);
-					console.log(messageObj);
+					$scope.showLoading = false;
+				} else if (status && message === 'here is the meaning of the searched word') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -107,6 +123,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
@@ -114,12 +131,35 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
+				} else if ((status === 'success' || status) && message === 'Enter Reminder details : ') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(hrs2 + ':' + mins2);
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && !show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if (show) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
@@ -127,6 +167,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.show = show;
 					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else {
 					console.error('[JARVIS] error fetching from service.');
 				}
@@ -141,6 +182,67 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			// }
 
 		}
+	};
+
+	$scope.formData = {};
+	$scope.setReminder = function() {
+		$scope.messageStack.pop();
+		let reminder_title = $scope.formData.remTitle,
+			reminder_description = $scope.formData.remDescription,
+			reminder_time = $scope.formData.remTime,
+			
+			reminderObj = {
+				title: '',
+				description: '',
+				time: ''
+			},
+			data = null;
+		
+		reminderObj.title = reminder_title;
+		reminderObj.description = reminder_description;
+		reminderObj.time = reminder_time;
+
+		console.log(reminderObj);
+		
+		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time;
+		
+		console.log(data);
+		
+		$http({
+			url:URL+'/reminder',
+			method:'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data:data
+		}).then(resp => {
+			let res = (resp.data),
+				message = res['message'],
+				status = res['status'],
+				messageObj = {
+					message: '',
+					sender: '',
+					time: '',
+					show: false,
+					length: null
+				};
+			setTimeout(() => {
+				$scope.scrollDown();
+			}, 100);
+			if ((status === 'success' || status) && message === 'Reminder has been set !') {
+				messageObj.sender = 'jarvis-bot';
+				messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				messageObj.length = message.length;
+				messageObj.message = message;
+				$scope.messageStack.push(messageObj);
+			} else {
+				console.error('[JARVIS] error fetching from service.');
+			}
+		}).catch(e => {
+			throw e;
+		});
+		$scope.formData.remTitle = '';
+		$scope.formData.remDescription = '';
 	};
 
 	$scope.scrollDown = function() {
@@ -216,9 +318,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			recognition.stop();
 			$scope.showLoaderListening = false;
 			recognizing = false;
-			if ($scope.message === '') {
-				$scope.message = 'Type a message ...';
-			}
 		} else {
 			recognition.start();
 			$scope.showLoaderListening = true;

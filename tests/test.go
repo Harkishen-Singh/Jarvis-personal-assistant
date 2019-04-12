@@ -1,16 +1,19 @@
 package main
 
 import (
-	"math/rand"
+	// "net/http"
+	// "io/ioutil"
 	"fmt"
-	"time"
+	"path/filepath"
+	"os"
+	"log"
 )
 
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
-
-	a := rand.Intn(5)
-	b := rand.Intn(5)
-	fmt.Println(a, " ", b)
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+    if err != nil {
+            log.Fatal(err)
+    }
+    fmt.Println(dir)
 }

@@ -48,11 +48,13 @@ var (
 	messagesRepliesParser Messagesreplies
 	resp jsonResponse
 	username, speak string
+	countMessage int16
 )
 
-func loadJSONParsers(name string) {
 
-	fmt.Println("Loading JSON parsers....")
+func init() {
+
+	fmt.Println("Loading messages JSON parsers....")
 	messagesFile, err := os.Open("messages/messages.json")
 	messagesRepliesFile, err2 := os.Open("messages/messages_replies.json")
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
@@ -63,7 +65,6 @@ func loadJSONParsers(name string) {
 	if err2 != nil   {
 		panic(err2)
 	}
-	username = name
 
 	err1 := json.Unmarshal(bytvalMF, &messagesParser)
 	err2 = json.Unmarshal(bytvalMRF, &messagesRepliesParser)
@@ -94,7 +95,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	fmt.Println("General conversation...")
 	rand.Seed(time.Now().UnixNano())
-	loadJSONParsers(name)
+	username = name
 	message := filterForMessagesComparision(req)
 	match := false
 

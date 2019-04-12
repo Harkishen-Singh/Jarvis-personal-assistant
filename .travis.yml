@@ -17,9 +17,6 @@ go:
 python:
   - "2.7"
 
-# addons:
-#   firefox: "65.0.2"
-
 addons:
   chrome: stable
   apt:
@@ -36,7 +33,13 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - go get -u -v -d ./...
+  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
+  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
+  - go get -u github.com/hegedustibor/htgo-tts
+  - go get -u github.com/mattn/go-sqlite3
+  - go get -u github.com/op/go-logging
+  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
+  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
   - cd tests/
   - cd npm install
 
@@ -46,8 +49,8 @@ script:
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/app-jarvis.js
   - cd view/ && npm start && cd ..
-  - go test -v ./...
+  - go test service/controllers/messages_test.go
+  - go test service/utils/service_test.go
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
-

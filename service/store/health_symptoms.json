@@ -1,0 +1,5853 @@
+[
+    {
+        "type": "Abdominal Distension",
+        "link": "abdominal-distension.htm"
+    },
+    {
+        "type": "Abdominal Pain",
+        "link": "abdominal-pain.htm"
+    },
+    {
+        "type": "Abdominal Tuberculosis (Stomach Tuberculosis / Intestinal Tuberculosis )",
+        "link": "stomach-tuberculosis.htm"
+    },
+    {
+        "type": "Abortion (Induced Abortion )",
+        "link": "abortion.htm"
+    },
+    {
+        "type": "Abscessed Tooth (Tooth Abscess )",
+        "link": "abscessed-tooth.htm"
+    },
+    {
+        "type": "Acanthosis Nigricans - Skin Pigmentation Disorder (Skin Pigmentation Disorder - Acanthosis Nigricans / Hyperpigmentation Skin Disorder - Acanthosis Nigricans )",
+        "link": "acanthosis-nigricans-skin-pigmentation-disorder.htm"
+    },
+    {
+        "type": "Acceleration Flexion-Extension Neck Injury (Whiplash | Whiplash-associated disorders / Neck Sprain / Cervical Acceleration-deceleration )",
+        "link": "whiplash.htm"
+    },
+    {
+        "type": "Achalasia | Achalasia Cardia (Esophageal Achalasia – All you Need to Know / Cardiospasm )",
+        "link": "achalasia-esophageal-achalasia-cardiospasm-achalasia-cardia.htm"
+    },
+    {
+        "type": "Achilles Tendon Rupture or Tear",
+        "link": "achilles-tendon-rupture-or-tear.htm"
+    },
+    {
+        "type": "Aching Back (Back Pain )",
+        "link": "backpain.htm"
+    },
+    {
+        "type": "Aching Tooth (Toothache / Pain in the Tooth )",
+        "link": "toothache.htm"
+    },
+    {
+        "type": "Achondroplasia",
+        "link": "achondroplasia.htm"
+    },
+    {
+        "type": "Acid Maltase Deficiency (Pompe Disease / Glycogen Storage Disease Type II )",
+        "link": "pompe-disease.htm"
+    },
+    {
+        "type": "Acid Peptic Disease ( Peptic Ulcer Disease)",
+        "link": "acid-peptic-disease.htm"
+    },
+    {
+        "type": "Acidity (Stomach acid - Why and How it forms )",
+        "link": "acidity.htm"
+    },
+    {
+        "type": "Acne (Pimples)",
+        "link": "acne.htm"
+    },
+    {
+        "type": "Acquired Epileptiform Aphasia (Landau - Kleffner Syndrome )",
+        "link": "acquired-epileptiform-aphasia.htm"
+    },
+    {
+        "type": "Acromegaly",
+        "link": "acromegaly.htm"
+    },
+    {
+        "type": "Actinic Keratosis (Solar Keratosis )",
+        "link": "actinic-keratosis.htm"
+    },
+    {
+        "type": "Actinomycosis (Lumpy Jaw) (Face and Neck Bacterial Infection (Lumpy Jaw) )",
+        "link": "actinomycosis.htm"
+    },
+    {
+        "type": "Acute Bronchitis (Bronchitis-Acute )",
+        "link": "acutebronchitis.htm"
+    },
+    {
+        "type": "Acute Confusional State (Delirium )",
+        "link": "delirium.htm"
+    },
+    {
+        "type": "Acute Ear Infection - Symptom Evaluation (Symptom Evaluation of Acute Ear Infection )",
+        "link": "acute-ear-infection.htm"
+    },
+    {
+        "type": "Acute Lymphoblastic Leukemia (Lymphoblastic Leukemia -Acute)",
+        "link": "acute-lymphoblastic-leukemia.htm"
+    },
+    {
+        "type": "Acute Myeloid Leukemia (Myeloid Leukemia-Acute / Leukemia - Acute Myeloid )",
+        "link": "acute_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Acute pyelonephritis, Kidney infection (Pyelonephritis )",
+        "link": "pyelonephritis.htm"
+    },
+    {
+        "type": "Acute Radiation Syndrome | Acute Radiation Sickness",
+        "link": "acute-radiation-syndrome.htm"
+    },
+    {
+        "type": "Acute Renal Failure (Renal Failure-Acute )",
+        "link": "acute-renal-failure.htm"
+    },
+    {
+        "type": "Acute Respiratory Distress Syndrome (ARDS) (Respiratory Distress Syndrome)",
+        "link": "respiratory-distress-syndrome.htm"
+    },
+    {
+        "type": "Addison’s Disease ( Hypocorticism , Hypocortisolism , Adrenal Insufficiency)",
+        "link": "addisons-disease.htm"
+    },
+    {
+        "type": "Adenocarcinoma of Renal Cells (Renal Cell Carcinoma | Renal Cancer / Kidney Cancer / Hypernephroma )",
+        "link": "renal-cell-carcinoma.htm"
+    },
+    {
+        "type": "Adenomyosis (Enlarged Uterus / Bulky Uterus )",
+        "link": "adenomyosis.htm"
+    },
+    {
+        "type": "Adolescent Depression (Depression-Adolescent )",
+        "link": "adolescence_depression.htm"
+    },
+    {
+        "type": "Adrenal Gland Disorders",
+        "link": "adrenal-gland-disorders.htm"
+    },
+    {
+        "type": "Adrenal Gland Tumor (Pheochromocytoma )",
+        "link": "pheochromocytoma.htm"
+    },
+    {
+        "type": "Adrenal Insufficiency (Addison’s Disease , Hypocorticism , Hypocortisolism )",
+        "link": "addisons-disease.htm"
+    },
+    {
+        "type": "Adreno Cortical Carcinoma | Adreno Cortical Cancer | Adrenal Cortex Cancer (Cancer of Adrenal Cortex )",
+        "link": "adreno-cortical-carcinoma.htm"
+    },
+    {
+        "type": "Adult Attention-Deficit Hyperactivity Disorder (ADHD) (Exploring Adult ADHD )",
+        "link": "adult-attention-deficit-hyperactivity-disorder.htm"
+    },
+    {
+        "type": "Adult Immunization (What You Should Know about Immunization of Adults )",
+        "link": "adult-immunization.htm"
+    },
+    {
+        "type": "Adult-Onset Diabetes (Type 2 Diabetes , Diabetes - Type 2 , Non-Insulin-Dependent Diabetes Mellitus (NIDDM) )",
+        "link": "type-2-diabetes.htm"
+    },
+    {
+        "type": "Age Related Macular Degeneration | Age-related Maculopath (Macular Degeneration )",
+        "link": "age-related-macular-degeneration.htm"
+    },
+    {
+        "type": "Ageing and Sleep (Sleep Disorders in Elderly )",
+        "link": "sleep_disorders_elderly.htm"
+    },
+    {
+        "type": "Agoraphobia",
+        "link": "agoraphobia.htm"
+    },
+    {
+        "type": "Aicardi-Goutieres Syndrome",
+        "link": "aicardi-goutieres-syndrome.htm"
+    },
+    {
+        "type": "AIDS (HIV)",
+        "link": "aids.htm"
+    },
+    {
+        "type": "AIDS (HIV) - Cancer ( Cancer - AIDS (HIV))",
+        "link": "aids-hiv-cancer.htm"
+    },
+    {
+        "type": "AIDS and Oral Health (Oral Health: The First Reflector of AIDS )",
+        "link": "oralhealthandaids.htm"
+    },
+    {
+        "type": "AIDS and Pregnancy (Pregnancy and AIDS  )",
+        "link": "aids-and-pregnancy.htm"
+    },
+    {
+        "type": "Airplane Ear (Ear Barotrauma )",
+        "link": "airplane-ear.htm"
+    },
+    {
+        "type": "Alcohol Addiction and Women",
+        "link": "alcohol-addiction-women.htm"
+    },
+    {
+        "type": "Alcohol Use Disorder | Alcoholism",
+        "link": "alcoholism.htm"
+    },
+    {
+        "type": "Alcoholic Liver Disease (Liver Disease-Alcoholic)",
+        "link": "alcoholicliverdisease.htm"
+    },
+    {
+        "type": "Alibert-Bazin Syndrome (Mycosis Fungoides )",
+        "link": "mycosis-fungoides.htm"
+    },
+    {
+        "type": "Alkalosis (Management and Prevention of Alkalosis )",
+        "link": "alkalosis.htm"
+    },
+    {
+        "type": "Allergic Granulomatosis | Allergic Angiitis (Churg-Strauss Syndrome )",
+        "link": "churg-strauss-syndrome.htm"
+    },
+    {
+        "type": "Allergic Inflammation of the Esophagus (Eosinophilic Esophagitis (EoE) )",
+        "link": "eosinophilic-esophagitis-allergic-esophagitis.htm"
+    },
+    {
+        "type": "Allergic Rhinitis",
+        "link": "allergic-rhinitis.htm"
+    },
+    {
+        "type": "Allergies in Children (Childhood Allergies )",
+        "link": "childhood-allergies.htm"
+    },
+    {
+        "type": "Allergy",
+        "link": "allergy.htm"
+    },
+    {
+        "type": "Allergy Eye Drops ( Eye Drops for Allergy)",
+        "link": "allergy-eye-drops.htm"
+    },
+    {
+        "type": "Allergy to Mushrooms (Mushroom Allergy )",
+        "link": "mushroom-allergy.htm"
+    },
+    {
+        "type": "Allodynia (Neuropathic Pain - Allodynia )",
+        "link": "allodynia-pain.htm"
+    },
+    {
+        "type": "Alopecia (Loss of Hair / Hair Loss )",
+        "link": "hair-loss.htm"
+    },
+    {
+        "type": "Alpha-1 Antitrypsin Deficiency | Alpha-1 Protease Inhibitor Deficiency | Alpha-1 Related Emphysema",
+        "link": "alpha-1-antitrypsin-deficiency.htm"
+    },
+    {
+        "type": "Alport Syndrome (Hereditary Nephritis | Hematuria - Nephropathy Deafness | Hemorrhagic Familial Nephritis | Hereditary Deafness and Nephropathy )",
+        "link": "alport-syndrome.htm"
+    },
+    {
+        "type": "Altitude Sickness (Surviving Altitude Sickness )",
+        "link": "altitude-sickness.htm"
+    },
+    {
+        "type": "Alzheimer´s Disease (Degenerative disease of the brain )",
+        "link": "alzheimers.htm"
+    },
+    {
+        "type": "American trypanosomiasis (Chagas Disease )",
+        "link": "chagas-disease.htm"
+    },
+    {
+        "type": "Amnesia (Memory Loss / Loss of Memory )",
+        "link": "amnesia.htm"
+    },
+    {
+        "type": "Amoebiasis (Amoebic Dysentery )",
+        "link": "amoebicdysentery.htm"
+    },
+    {
+        "type": "Amoebic Dysentery ( Amoebiasis)",
+        "link": "amoebicdysentery.htm"
+    },
+    {
+        "type": "Amyotrophic Lateral Sclerosis (ALS)",
+        "link": "amyotrophic-lateral-sclerosis.htm"
+    },
+    {
+        "type": "Anaesthesia - Local (Local Anaesthesia )",
+        "link": "local-anaesthesia.htm"
+    },
+    {
+        "type": "Anal Cancer (Cancer of Anal )",
+        "link": "anal-cancer.htm"
+    },
+    {
+        "type": "Anal Warts",
+        "link": "anal-warts.htm"
+    },
+    {
+        "type": "Anaphylaxis (Hypersensitivity - Anaphylaxis )",
+        "link": "anaphylaxis.htm"
+    },
+    {
+        "type": "Andropause (Male Menopause )",
+        "link": "andropause.htm"
+    },
+    {
+        "type": "Anemia (Low Heamoglobin )",
+        "link": "anemia.htm"
+    },
+    {
+        "type": "Anemia - Megaloblastic Anemia (Megaloblastic Anemia )",
+        "link": "megaloblastic-anemia.htm"
+    },
+    {
+        "type": "Anemia in Children with Chronic Kidney Disease (Chronic Kidney Disease in Children with Anemia )",
+        "link": "anemia-in-children-with-chronic-kidney-disease.htm"
+    },
+    {
+        "type": "Anemia in Pregnancy ( Pregnancy - Anemia)",
+        "link": "anemia-in-pregnancy.htm"
+    },
+    {
+        "type": "Anemia in Pregnancy - Iron &amp; Folate Deficiency Anemia (Iron &amp; Folate Deficiency - Anemia in Pregnancy )",
+        "link": "anemia-in-pregnancy-iron-folate-deficiency-iron.htm"
+    },
+    {
+        "type": "Anesthesia - General (General Anesthesia )",
+        "link": "general-anesthesia.htm"
+    },
+    {
+        "type": "Anesthesia -Spinal and Epidural (Spinal and Epidural Anesthesia )",
+        "link": "spinal-and-epidural-anesthesia.htm"
+    },
+    {
+        "type": "Anesthesia Dental (Dental Anesthesia )",
+        "link": "dental-anesthesia.htm"
+    },
+    {
+        "type": "Angioedema",
+        "link": "angioedema.htm"
+    },
+    {
+        "type": "Angiofollicular Lymph Node Hyperplasia (Giant Lymph Node Hyperplasia / Castleman Disease (CD) - Rare Disease of Lymph Nodes )",
+        "link": "castleman-disease-rare-disease-of-lymph-nodes.htm"
+    },
+    {
+        "type": "Animal Bites",
+        "link": "animal-bites.htm"
+    },
+    {
+        "type": "Ankylosing Spondylitis",
+        "link": "ankylosing-spondylitis.htm"
+    },
+    {
+        "type": "Ano Rectal Malformation (Malformation-Ano Rectal )",
+        "link": "ano-rectal-malformation.htm"
+    },
+    {
+        "type": "Anorexia Nervosa (Eating Disorder - Anorexia Nervosa )",
+        "link": "anorexianervosa.htm"
+    },
+    {
+        "type": "Anosmia ( Loss of Smell)",
+        "link": "anosmia.htm"
+    },
+    {
+        "type": "Anosognosia (What You Should Know about Anosognosia )",
+        "link": "anosognosia.htm"
+    },
+    {
+        "type": "Antenatal Counseling (Hydronephrosis)",
+        "link": "hydronephrosis.htm"
+    },
+    {
+        "type": "Anthrax",
+        "link": "anthrax.htm"
+    },
+    {
+        "type": "Anticoagulants (Blood Thinners )",
+        "link": "anticoagulants.htm"
+    },
+    {
+        "type": "Antipsychotic Medications (Medications for Mental disorders )",
+        "link": "antipsychotic-medications.htm"
+    },
+    {
+        "type": "Anxiety Attack (Panic Attack )",
+        "link": "anxiety-attack.htm"
+    },
+    {
+        "type": "Anxiety Disorder",
+        "link": "anxiety-disorder.htm"
+    },
+    {
+        "type": "Aortic Valve Stenosis",
+        "link": "aortic-valve-stenosis.htm"
+    },
+    {
+        "type": "Aplastic Anemia",
+        "link": "aplastic-anemia.htm"
+    },
+    {
+        "type": "Appendicitis",
+        "link": "appendicitis.htm"
+    },
+    {
+        "type": "Arm pain (Sprained Arm )",
+        "link": "sprained-arm.htm"
+    },
+    {
+        "type": "Arnold–Chiari Malformations (Chiari Malformations )",
+        "link": "chiari-malformations.htm"
+    },
+    {
+        "type": "Arrhythmias And Palpitations (Palpitations And Arrhythmias )",
+        "link": "palpitations-arrhythmias.htm"
+    },
+    {
+        "type": "Arsenic Poisoning (Poisoning - Arsenic )",
+        "link": "arsenic-poisoning.htm"
+    },
+    {
+        "type": "Arthritis - Rheumatoid Arthritis (Rheumatoid Arthritis )",
+        "link": "rheumatoid-arthritis.htm"
+    },
+    {
+        "type": "Arthritis In Children (Oligoarthritis , Childhood Arthritis , Juvenile Arthritis )",
+        "link": "oligoarthritis.htm"
+    },
+    {
+        "type": "Asbestosis",
+        "link": "asbestosis.htm"
+    },
+    {
+        "type": "Ascariasis",
+        "link": "ascariasis.htm"
+    },
+    {
+        "type": "Asperger's Syndrome",
+        "link": "aspergers-syndrome.htm"
+    },
+    {
+        "type": "Aspergillosis",
+        "link": "aspergillosis.htm"
+    },
+    {
+        "type": "Asthenia (The Concept of Asthenia )",
+        "link": "asthenia.htm"
+    },
+    {
+        "type": "Asthma",
+        "link": "asthma.htm"
+    },
+    {
+        "type": "Asthma in Children (Childhood Asthma )",
+        "link": "childhood-asthma.htm"
+    },
+    {
+        "type": "Asthma in Children and Adults (Differences Between Asthma in Children and Adults )",
+        "link": "asthma-in-children-and-adults.htm"
+    },
+    {
+        "type": "Astrocytoma",
+        "link": "astrocytoma.htm"
+    },
+    {
+        "type": "Atherosclerosis (Hardening of Arteries )",
+        "link": "atherosclerosis.htm"
+    },
+    {
+        "type": "Athletes Foot ( Tinea Pedis)",
+        "link": "athletesfoot.htm"
+    },
+    {
+        "type": "Athletic Pubalgia (Sports Hernia / Inguinal Disruption / Gilmore´s Groin )",
+        "link": "gilmores-groin.htm"
+    },
+    {
+        "type": "Atopic Dermatitis (Skin Disorder - Atopic Dermatitis / Eczema )",
+        "link": "general-info-about-atopic-dermatitis.htm"
+    },
+    {
+        "type": "Atrial Fibrillation (Understanding Atrial Fibrillation )",
+        "link": "atrial-fibrillation.htm"
+    },
+    {
+        "type": "Attention Deficit Hyperactivity Disorder (ADHD)",
+        "link": "attention-deficit-hyperactivity-disorder.htm"
+    },
+    {
+        "type": "Autism",
+        "link": "autism.htm"
+    },
+    {
+        "type": "Autoimmune Condition - Systemic Lupus Erythematosus (Systemic Lupus Erythematosus )",
+        "link": "systemic-lupus-erythematosus.htm"
+    },
+    {
+        "type": "Autoimmune Disorders",
+        "link": "autoimmune-disorders.htm"
+    },
+    {
+        "type": "Autoimmune Hepatitis (Lupoid Hepatitis (Autoimmune Disease of the Liver) )",
+        "link": "autoimmune-hepatitis.htm"
+    },
+    {
+        "type": "Avian Influenza (Bird Flu )",
+        "link": "birdflu.htm"
+    },
+    {
+        "type": "Azotemia (High Blood Nitrogen Levels) (Uremia / Elevated Levels of Blood Urea Nitrogen )",
+        "link": "azotemia.htm"
+    },
+    {
+        "type": "Babesiosis | Babesia",
+        "link": "babesiosis.htm"
+    },
+    {
+        "type": "Bacillary Dysentery ( Shigellosis , Shigella Infection)",
+        "link": "shigellosis.htm"
+    },
+    {
+        "type": "Back Injuries (Injuries of Backbone )",
+        "link": "back-injuries.htm"
+    },
+    {
+        "type": "Back Pain (Aching Back )",
+        "link": "backpain.htm"
+    },
+    {
+        "type": "Back Pain at Workplace: Prevention and Exercises ( Ergonomics for Back Pain)",
+        "link": "back-pain-at-workplace-prevention-and-exercises.htm"
+    },
+    {
+        "type": "Bacteremia",
+        "link": "bacteremia.htm"
+    },
+    {
+        "type": "Bacterial Illness - Toxic Shock Syndrome (Toxic Shock Syndrome )",
+        "link": "toxic-shock-syndrome.htm"
+    },
+    {
+        "type": "Bacterial Meningitis (Everything you need to know about Bacterial Meningitis )",
+        "link": "bacterial-meningitis.htm"
+    },
+    {
+        "type": "Bacterial Skin infection - Impetigo (Impetigo )",
+        "link": "impetigo.htm"
+    },
+    {
+        "type": "Bad Breath (Halitosis , Oral Malodor )",
+        "link": "halitosis.htm"
+    },
+    {
+        "type": "Balantidiasis (Large-Intestinal Infection )",
+        "link": "balantidiasis.htm"
+    },
+    {
+        "type": "Ballooning Mitral Valve Syndrome (Mitral Valve Prolapse , Floppy Valve Syndrome)",
+        "link": "mitral-valve-prolapse.htm"
+    },
+    {
+        "type": "Barrett’s Esophagus",
+        "link": "barretts-esophagus.htm"
+    },
+    {
+        "type": "Bartonellosis (Cat Scratch Disease (CSD) | Cat Scratch Fever )",
+        "link": "cat-scratch-disease.htm"
+    },
+    {
+        "type": "Basal Cell Cancer of the Skin | Basal Cell Carcinoma ( Rodent Ulcer , Tear Cancer)",
+        "link": "basal-cell-cancer-of-the-skin.htm"
+    },
+    {
+        "type": "Bedwetting (Enuresis )",
+        "link": "general-info-about-bedwetting.htm"
+    },
+    {
+        "type": "Bedwetting in Children - Paediatrics (Paediatrics - Bedwetting in Children )",
+        "link": "eneuresis.htm"
+    },
+    {
+        "type": "Behcet’s Syndrome | Behcet’s Disease (Rare Inflammatory Disorder - Behcet’s Syndrome )",
+        "link": "behcets-syndrome.htm"
+    },
+    {
+        "type": "Bell's Palsy",
+        "link": "bellspalsy.htm"
+    },
+    {
+        "type": "Benign Joint | Hyperlaxity (Hypermobility Syndrome / Extreme-Flexibility )",
+        "link": "hypermobility-syndrome.htm"
+    },
+    {
+        "type": "Benign Migratory Glossitis (Geographic Tongue | Geographic Stomatitis / Erythema Migrans of Tongue )",
+        "link": "geographic-tongue.htm"
+    },
+    {
+        "type": "Benign Prostatic Hyperplasia (BPH) | Benign Enlargement of Prostate (BEP)",
+        "link": "benign-prostatic-hyperplasia.htm"
+    },
+    {
+        "type": "Besnier - Boeck disease (Sarcoidosis )",
+        "link": "sarcoidosis.htm"
+    },
+    {
+        "type": "Bibliomania | Bibliokleptomania - A Psychiatric Disorder (Psychiatric Disorder - Bibliomania )",
+        "link": "bibliomania.htm"
+    },
+    {
+        "type": "Bicuspid Aortic Valve (Congenital Abnormality - Bicuspid Aortic Valve )",
+        "link": "bicuspid-aortic-valve.htm"
+    },
+    {
+        "type": "Bile Duct Cancer (Cholangiocarcinoma )",
+        "link": "bile-duct-cancer.htm"
+    },
+    {
+        "type": "Biliary Cirrhosis (Liver Cirrhosis Biliary )",
+        "link": "biliary-cirrhosis.htm"
+    },
+    {
+        "type": "Biopsy - Skin (Skin Biopsy)",
+        "link": "skinbiopsy.htm"
+    },
+    {
+        "type": "Biopsy of Prostate (Prostate  Biopsy)",
+        "link": "biopsyprostate.htm"
+    },
+    {
+        "type": "Bipolar Disorder (Mood Swing Disorder )",
+        "link": "bipolar-disorder.htm"
+    },
+    {
+        "type": "Bird Flu (Avian Influenza )",
+        "link": "birdflu.htm"
+    },
+    {
+        "type": "Birth Control Pills ( Contraceptive Pills)",
+        "link": "birthcontrolpills.htm"
+    },
+    {
+        "type": "Birth defects - Infections (Infections causing Birth defects)",
+        "link": "birthdefects_infections.htm"
+    },
+    {
+        "type": "Birth Defects-Metabolic (Metabolic Defects-Birth Defects)",
+        "link": "metabolicdefects.htm"
+    },
+    {
+        "type": "BK Virus Infection (Viral Infections - BK Virus )",
+        "link": "bk-virus-infection.htm"
+    },
+    {
+        "type": "Blackheads (Comedones )",
+        "link": "blackheads.htm"
+    },
+    {
+        "type": "Bladder Cancer (Cancer of Bladder )",
+        "link": "bladder-cancer.htm"
+    },
+    {
+        "type": "Bladder Pain Syndrome (Interstitial Cystitis,Hypersensitive Bladder Syndrome,Painful Bladder Syndrome (PBS))",
+        "link": "interstitial-cystitis.htm"
+    },
+    {
+        "type": "Bladder Spasms",
+        "link": "bladder-spasms.htm"
+    },
+    {
+        "type": "Bladder Stones (Stone in Urinary Tract - Management &amp; Prevention , Kidney Stones , Renal Stones , Ureteric Stones  Nephrolithiasis )",
+        "link": "stones-in-urinary-tract-management-prevention.htm"
+    },
+    {
+        "type": "Bleeding after Delivery | Blood Loss Post-Labor (Postpartum Hemorrhage / Hemorrhaging Post-Childbirth )",
+        "link": "postpartum-hemorrhage.htm"
+    },
+    {
+        "type": "Bleeding Diathesis (Hemorrhagic Diathesis )",
+        "link": "bleeding-diathesis.htm"
+    },
+    {
+        "type": "Bleeding Disorders",
+        "link": "bleeding-disorders.htm"
+    },
+    {
+        "type": "Bleeding Gums (Gum Disease - Bleeding Gums )",
+        "link": "what-is-bleeding-gums.htm"
+    },
+    {
+        "type": "Bleedingnose (Nosebleed / Epistaxis )",
+        "link": "nosebleed.htm"
+    },
+    {
+        "type": "Blepharospasm - Eye Twitching (Eye Twitching - Blepharospasm )",
+        "link": "eye-twitching-blepharospasm.htm"
+    },
+    {
+        "type": "Blood Cancer (Leukemia / Cancer of Blood )",
+        "link": "leukemia.htm"
+    },
+    {
+        "type": "Blood Clots",
+        "link": "blood-clots.htm"
+    },
+    {
+        "type": "Blood Pressure - Low Blood Pressure (Low Blood Pressure / Hypotension )",
+        "link": "low-blood-pressure.htm"
+    },
+    {
+        "type": "Blood Pressure Tablets - Benefits on your Health (Hypertension Tablets - Benefits on your Health)",
+        "link": "blood-pressure-tablets-benefits-on-your-health.htm"
+    },
+    {
+        "type": "Blood Thinners (Anticoagulants )",
+        "link": "anticoagulants.htm"
+    },
+    {
+        "type": "Blood-Borne Diseases (Facts on Blood-Borne Diseases )",
+        "link": "blood-borne-diseases.htm"
+    },
+    {
+        "type": "Blue Colored Skin and Mucus Membranes - Symptom Evaluation (Symptom Evaluation of Blue Colored Skin and Mucus Membranes / Cyanosis )",
+        "link": "blue-colored-skin-and-mucus-membranes.htm"
+    },
+    {
+        "type": "Bluish Discoloration of Skin - Know About It (Cyanosis )",
+        "link": "cyanosis.htm"
+    },
+    {
+        "type": "Body Dysmorphic Disorder (BDD) - A Psychological Disorder",
+        "link": "body-dysmorphic-disorder.htm"
+    },
+    {
+        "type": "Boils (Skin Abscess )",
+        "link": "boils.htm"
+    },
+    {
+        "type": "Bone Cancer (Cancer in Bone )",
+        "link": "bone-cancer.htm"
+    },
+    {
+        "type": "Bone Marrow Transplantation ( Hematopoietic Stem Cell Transplantation)",
+        "link": "bone-marrow-transplantation.htm"
+    },
+    {
+        "type": "Bone Metastases (Osseous Metastatic Disease / Cancer: Bone Metastasis )",
+        "link": "bone-metastases.htm"
+    },
+    {
+        "type": "Botulism | Botulism - Lethal Bacterial Infection Caused By Contaminated Food or Infected Wounds",
+        "link": "botulism.htm"
+    },
+    {
+        "type": "Brain Injury (Head Injury )",
+        "link": "headinjury.htm"
+    },
+    {
+        "type": "Brain Swelling (Cerebral Edema )",
+        "link": "cerebral-edema.htm"
+    },
+    {
+        "type": "Brain Tumor ( Tumor in Brain)",
+        "link": "braintumor.htm"
+    },
+    {
+        "type": "Brain Tumor in Children (Pediatric Brain Tumor )",
+        "link": "brain-tumor-in-children.htm"
+    },
+    {
+        "type": "Breast and Pagets Disease (Pagets disease of the breast )",
+        "link": "pagetsdisease.htm"
+    },
+    {
+        "type": "Breast Biopsy | Biopsy of Breast",
+        "link": "breast-biopsy.htm"
+    },
+    {
+        "type": "Breast Cancer (Carcinoma of the Breast )",
+        "link": "breast-cancer.htm"
+    },
+    {
+        "type": "Breast Cancer and Lifestyle ( Lifestyle and Breast Cancer)",
+        "link": "breast-cancer-and-lifestyle.htm"
+    },
+    {
+        "type": "Breast Cancer during Pregnancy (Pregnancy and Breast Cancer Management )",
+        "link": "breast-cancer-during-pregnancy.htm"
+    },
+    {
+        "type": "Breast Cancer in Males (Male Breast Cancer )",
+        "link": "male-breast-cancer.htm"
+    },
+    {
+        "type": "Breast Cancer Management: Recent Advances (Recent Advances in the Management of Breast Cancer)",
+        "link": "breast-cancer-management-advances-recent.htm"
+    },
+    {
+        "type": "Breast Enlargement in Males (Gynecomastia )",
+        "link": "gynecomastia.htm"
+    },
+    {
+        "type": "Breast Infection (Mastitis )",
+        "link": "lacationmastitis.htm"
+    },
+    {
+        "type": "Breast Lumps ( Lumps in Breast)",
+        "link": "breast-lumps.htm"
+    },
+    {
+        "type": "Bridges–Good Syndrome (Chronic Granulomatous Disease | Chronic Granulomatous Disorder , Quie Syndrome)",
+        "link": "chronic-granulomatous-disease.htm"
+    },
+    {
+        "type": "Broken Collarbone (Clavicle Fracture )",
+        "link": "clavicle-fracture.htm"
+    },
+    {
+        "type": "Broken Heart Syndrome (Takotsubo Cardiomyopathy | Takotsubo Syndrome (TTS) / Cardiomyopathy )",
+        "link": "broken-heart-syndrome.htm"
+    },
+    {
+        "type": "Broken Jaw (Mandibular Fracture / Fractures of the Jaw )",
+        "link": "mandibular-fracture.htm"
+    },
+    {
+        "type": "Broken or Bruised Ribs (Fractured Ribs - An Overview )",
+        "link": "broken-or-bruised-ribs.htm"
+    },
+    {
+        "type": "Broken Wrist (Colle’s Fracture )",
+        "link": "colles-fracture.htm"
+    },
+    {
+        "type": "Bromodosis (Smelly Feet )",
+        "link": "smelly-feet.htm"
+    },
+    {
+        "type": "Bronchiectasis (Understanding Bronchiectasis )",
+        "link": "bronchiectasis.htm"
+    },
+    {
+        "type": "Bronchitis-Acute (Acute Bronchitis )",
+        "link": "acutebronchitis.htm"
+    },
+    {
+        "type": "Bronchopulmonary Dysplasia (Respiratory insufficiency / Chronic Lung Disease of Neonates - Facts and Management )",
+        "link": "bronchopulmonary-dysplasia-or-respiratory-insufficiency.htm"
+    },
+    {
+        "type": "Brucellosis (Rock fever / Mediterranean fever / Cyprus fever )",
+        "link": "brucellosis.htm"
+    },
+    {
+        "type": "Bug-Borne Diseases (Vector-Borne Diseases / Insect-Borne Diseases )",
+        "link": "vector-borne-diseases.htm"
+    },
+    {
+        "type": "Bulging Eyes (Eye Proptosis | Exophthalmos )",
+        "link": "bulging-eyes.htm"
+    },
+    {
+        "type": "Bulimia Nervosa ( Eating Disorder - Bulimia Nervosa)",
+        "link": "bulimianervosa.htm"
+    },
+    {
+        "type": "Bulky Uterus (Enlarged Uterus / Adenomyosis )",
+        "link": "adenomyosis.htm"
+    },
+    {
+        "type": "Burkitt’s Lymphoma (Cancer of the Lymphatic System )",
+        "link": "burkitts-lymphoma.htm"
+    },
+    {
+        "type": "Burning Mouth Syndrome",
+        "link": "burning-mouth-syndrome.htm"
+    },
+    {
+        "type": "Burns (Skin Injury - Burns )",
+        "link": "burns.htm"
+    },
+    {
+        "type": "Buruli Ulcer (Searls Ulcer - The Painless Necrotizing Ulcer )",
+        "link": "buruli-ulcer.htm"
+    },
+    {
+        "type": "Calcinosis",
+        "link": "calcinosis.htm"
+    },
+    {
+        "type": "Calcium and Vitamin Supplements",
+        "link": "calcium-vitamin.htm"
+    },
+    {
+        "type": "Campylobacteriosis",
+        "link": "campylobacteriosis.htm"
+    },
+    {
+        "type": "Cancer - AIDS (HIV) (AIDS (HIV) - Cancer )",
+        "link": "aids-hiv-cancer.htm"
+    },
+    {
+        "type": "Cancer And Smoking (Smoking And Cancer )",
+        "link": "smoking-and-cancer.htm"
+    },
+    {
+        "type": "Cancer and Women (Women and Cancer )",
+        "link": "womenandcancer.htm"
+    },
+    {
+        "type": "Cancer in Bone (Bone Cancer )",
+        "link": "bone-cancer.htm"
+    },
+    {
+        "type": "Cancer in the Ovaries (Ovarian Cancer )",
+        "link": "ovarian-cancer.htm"
+    },
+    {
+        "type": "Cancer of Adrenal Cortex (Adreno Cortical Carcinoma | Adreno Cortical Cancer | Adrenal Cortex Cancer )",
+        "link": "adreno-cortical-carcinoma.htm"
+    },
+    {
+        "type": "Cancer of Anal (Anal Cancer )",
+        "link": "anal-cancer.htm"
+    },
+    {
+        "type": "Cancer of Bladder (Bladder Cancer )",
+        "link": "bladder-cancer.htm"
+    },
+    {
+        "type": "Cancer of Blood (Leukemia / Blood Cancer )",
+        "link": "leukemia.htm"
+    },
+    {
+        "type": "Cancer of Cervix | Cervical Cancer",
+        "link": "cervical-cancer.htm"
+    },
+    {
+        "type": "Cancer of Endometrium (Endometrial Cancer )",
+        "link": "endometrial_cancer.htm"
+    },
+    {
+        "type": "Cancer of Gallbladder (Gallbladder Cancer )",
+        "link": "gallbladder-cancer.htm"
+    },
+    {
+        "type": "Cancer of Larynx (Laryngeal Cancer|Laryngeal Carcinoma,Throat Cancer)",
+        "link": "laryngeal-cancer.htm"
+    },
+    {
+        "type": "Cancer of Liver (Liver Cancer )",
+        "link": "liver-cancer.htm"
+    },
+    {
+        "type": "Cancer of Lungs (Lung Cancer )",
+        "link": "lung-cancer.htm"
+    },
+    {
+        "type": "Cancer of Pancreas (Pancreatic Cancer )",
+        "link": "pancreatic-cancer.htm"
+    },
+    {
+        "type": "Cancer of Peritoneal Cavity (Peritoneal Cancer )",
+        "link": "peritoneal-cancer.htm"
+    },
+    {
+        "type": "Cancer of Prostate (Prostate Cancer )",
+        "link": "prostate-cancer.htm"
+    },
+    {
+        "type": "Cancer of Salivary Gland (Salivary Gland Cancer )",
+        "link": "salivary-gland-cancer.htm"
+    },
+    {
+        "type": "Cancer of Skin (Skin Cancer )",
+        "link": "skin-cancer.htm"
+    },
+    {
+        "type": "Cancer of Squamous Cells (Squamous Cell Cancer of the Skin )",
+        "link": "squamous-cell-cancer-of-the-skin.htm"
+    },
+    {
+        "type": "Cancer of Testicles (Testicular Cancer )",
+        "link": "testicular-cancer.htm"
+    },
+    {
+        "type": "Cancer of the Lymphatic System (Burkitt’s Lymphoma )",
+        "link": "burkitts-lymphoma.htm"
+    },
+    {
+        "type": "Cancer of the Penis (Penile Cancer )",
+        "link": "penile-cancer.htm"
+    },
+    {
+        "type": "Cancer of the Thymus Gland (Thymus Cancer | Thymus Carcinoma )",
+        "link": "thymus-cancer-thymomas.htm"
+    },
+    {
+        "type": "Cancer of the Vulva (Vulvar Cancer )",
+        "link": "vulvar-cancer.htm"
+    },
+    {
+        "type": "Cancer of the Windpipe (Tracheal Cancer )",
+        "link": "tracheal-windpipe-cancer.htm"
+    },
+    {
+        "type": "Cancer of Thyroid (Thyroid Cancer )",
+        "link": "thyroid-cancer.htm"
+    },
+    {
+        "type": "Cancer of Uterus (Uterine Cancer , Endometrial Cancer , Cancer of the Endometrium)",
+        "link": "uterine-cancer.htm"
+    },
+    {
+        "type": "Cancer Pain (Pain During Cancer Treatment )",
+        "link": "cancer-pain.htm"
+    },
+    {
+        "type": "Cancer- Oropharyngeal Cancer of the Head and Neck (Oropharyngeal Cancer )",
+        "link": "oropharyngeal-cancer.htm"
+    },
+    {
+        "type": "Cancer: Bone Metastasis (Osseous Metastatic Disease / Bone Metastases )",
+        "link": "bone-metastases.htm"
+    },
+    {
+        "type": "Cancers of the Ear $@$ Ear Cancers",
+        "link": "ear-cancers.htm"
+    },
+    {
+        "type": "Candida (Yeast Infections / Infections of Yeast )",
+        "link": "yeast-infections.htm"
+    },
+    {
+        "type": "Carcinoid Tumors | Carcinoid Syndrome",
+        "link": "carcinoid-tumors.htm"
+    },
+    {
+        "type": "Carcinoma of the Breast (Breast Cancer )",
+        "link": "breast-cancer.htm"
+    },
+    {
+        "type": "Cardiac Arrest (Heart Disease - Cardiac Arrest )",
+        "link": "cardiac-arrest.htm"
+    },
+    {
+        "type": "Cardiac Markers",
+        "link": "cardiac-markers.htm"
+    },
+    {
+        "type": "Cardiac Murmurs (Heart Murmurs )",
+        "link": "heart-murmurs.htm"
+    },
+    {
+        "type": "Cardiogenic Shock",
+        "link": "cardiogenic-shock.htm"
+    },
+    {
+        "type": "Cardiomyopathy",
+        "link": "cardiomyopathy.htm"
+    },
+    {
+        "type": "Cardiomyopathy (Takotsubo Cardiomyopathy | Takotsubo Syndrome (TTS) / Broken Heart Syndrome )",
+        "link": "broken-heart-syndrome.htm"
+    },
+    {
+        "type": "Cardiopulmonary Bypass (Heart Lung Machine )",
+        "link": "cardiopulmonary-bypass.htm"
+    },
+    {
+        "type": "Cardiospasm (Esophageal Achalasia – All you Need to Know / Achalasia | Achalasia Cardia )",
+        "link": "achalasia-esophageal-achalasia-cardiospasm-achalasia-cardia.htm"
+    },
+    {
+        "type": "Castleman Disease (CD) - Rare Disease of Lymph Nodes (Giant Lymph Node Hyperplasia / Angiofollicular Lymph Node Hyperplasia )",
+        "link": "castleman-disease-rare-disease-of-lymph-nodes.htm"
+    },
+    {
+        "type": "Cat Scratch Disease (CSD) | Cat Scratch Fever ( Bartonellosis)",
+        "link": "cat-scratch-disease.htm"
+    },
+    {
+        "type": "Cataract (Eye Disease - Cataract )",
+        "link": "cataract.htm"
+    },
+    {
+        "type": "Cataract in Detail",
+        "link": "cataractindetail.htm"
+    },
+    {
+        "type": "Caver's disease ( Spelunker's lung / Histoplasmosis )",
+        "link": "histoplasmosis.htm"
+    },
+    {
+        "type": "Celiac Disease | Celiac Sprue (Gluten-Sensitive Enteropathy )",
+        "link": "celiac-disease.htm"
+    },
+    {
+        "type": "Cellulitis ( Skin Infection - Cellulitis )",
+        "link": "cellulitis.htm"
+    },
+    {
+        "type": "Cephalgia ( Headache )",
+        "link": "headache.htm"
+    },
+    {
+        "type": "Cerebral Edema (Brain Swelling )",
+        "link": "cerebral-edema.htm"
+    },
+    {
+        "type": "Cervical Acceleration-deceleration (Whiplash | Whiplash-associated disorders / Neck Sprain / Acceleration Flexion-Extension Neck Injury )",
+        "link": "whiplash.htm"
+    },
+    {
+        "type": "Cervical Dysplasia | Cervical Intraepithelial Neoplasia (CIN)",
+        "link": "cervical-dysplasia.htm"
+    },
+    {
+        "type": "Cervical Dystonia (Wryneck / Torticollis / Stiff Neck )",
+        "link": "torticollis.htm"
+    },
+    {
+        "type": "Cervical Spondylosis (Degenerative Neck Disease )",
+        "link": "cervical-spondylosis.htm"
+    },
+    {
+        "type": "Cervicalgia (Stiff Neck / Neck Pain )",
+        "link": "neck-pain.htm"
+    },
+    {
+        "type": "Chagas Disease (American trypanosomiasis )",
+        "link": "chagas-disease.htm"
+    },
+    {
+        "type": "Chalazion (Meibomian Gland Lipogranuloma )",
+        "link": "chalazion.htm"
+    },
+    {
+        "type": "Cheilitis | Chapped Lips",
+        "link": "cheilitis.htm"
+    },
+    {
+        "type": "Chemical Castration",
+        "link": "chemical-castration.htm"
+    },
+    {
+        "type": "Chemotherapy",
+        "link": "chemotherapy.htm"
+    },
+    {
+        "type": "Chemotherapy Drugs (Drugs - Chemotherapy)",
+        "link": "chemotherapy-drugs.htm"
+    },
+    {
+        "type": "Chest Pain; Chest Tightness; Chest pressure; Chest Discomfort",
+        "link": "chestpain.htm"
+    },
+    {
+        "type": "Chiari Malformations (Arnold–Chiari Malformations )",
+        "link": "chiari-malformations.htm"
+    },
+    {
+        "type": "Chicken pox shingles (Shingles , Herpes Zoster,Post Herpetic Neuralgia)",
+        "link": "shingles.htm"
+    },
+    {
+        "type": "Chickenpox (Varicella )",
+        "link": "chickenpox.htm"
+    },
+    {
+        "type": "Chikungunya",
+        "link": "chikungunya.htm"
+    },
+    {
+        "type": "Childhood Allergies (Allergies in Children )",
+        "link": "childhood-allergies.htm"
+    },
+    {
+        "type": "Childhood Arthritis (Oligoarthritis , Arthritis In Children , Juvenile Arthritis )",
+        "link": "oligoarthritis.htm"
+    },
+    {
+        "type": "Childhood Asthma (Asthma in Children )",
+        "link": "childhood-asthma.htm"
+    },
+    {
+        "type": "Childhood Nephrotic Syndrome (Nephrotic Syndrome in Childhood )",
+        "link": "childhood-nephrotic-syndrome.htm"
+    },
+    {
+        "type": "Chinese Restaurant Syndrome (Monosodium Glutamate (MSG) Allergy / Intolerance to MSG )",
+        "link": "monosodium-glutamate-allergy.htm"
+    },
+    {
+        "type": "Chlamydia Trachomatis (Sexual Disease - Chlamydia Trachomatis )",
+        "link": "chlamydia-trachomatis.htm"
+    },
+    {
+        "type": "Chloasma Faciei (Melasma )",
+        "link": "melasma.htm"
+    },
+    {
+        "type": "Cholangiocarcinoma (Bile Duct Cancer )",
+        "link": "bile-duct-cancer.htm"
+    },
+    {
+        "type": "Cholecystitis (Inflammation of the Gall Bladder / Gall bladder Inflammation )",
+        "link": "cholecystitis.htm"
+    },
+    {
+        "type": "Cholelithiasis (Gallstones )",
+        "link": "gallstones.htm"
+    },
+    {
+        "type": "Cholera",
+        "link": "cholera.htm"
+    },
+    {
+        "type": "Cholestatic Jaundice",
+        "link": "cholestatic-jaundice.htm"
+    },
+    {
+        "type": "Cholesterol",
+        "link": "cholesterol.htm"
+    },
+    {
+        "type": "Cholesteryl Ester Storage Disease",
+        "link": "cholesteryl-ester-storage-disease.htm"
+    },
+    {
+        "type": "Chorioamnionitis (Intra-amniotic Infection )",
+        "link": "intra-amniotic-infection.htm"
+    },
+    {
+        "type": "Chorioangioma (Placental Chorioangioma )",
+        "link": "chorioangioma.htm"
+    },
+    {
+        "type": "Choriocarcinoma in Females (Trophoblastic Tumor )",
+        "link": "choriocarcinoma-in-females.htm"
+    },
+    {
+        "type": "Chromoblastomycosis - Skin Disease (Fungal Skin Infection - Chromomycosis )",
+        "link": "chromoblastomycosis.htm"
+    },
+    {
+        "type": "Chronic Bronchitis (What Happens in Chronic Bronchitis? )",
+        "link": "chronic-bronchitis.htm"
+    },
+    {
+        "type": "Chronic Depression (Persistent Depressive Disorder / Dysthymia )",
+        "link": "dysthymia.htm"
+    },
+    {
+        "type": "Chronic Fatigue Syndrome (Fatigue Syndrome - Chronic )",
+        "link": "chronic-fatigue-syndrome.htm"
+    },
+    {
+        "type": "Chronic Granulomatous Disease | Chronic Granulomatous Disorder ( Bridges–Good Syndrome , Quie Syndrome)",
+        "link": "chronic-granulomatous-disease.htm"
+    },
+    {
+        "type": "Chronic Kidney Disease in Children with Anemia (Anemia in Children with Chronic Kidney Disease )",
+        "link": "anemia-in-children-with-chronic-kidney-disease.htm"
+    },
+    {
+        "type": "Chronic Lung Disease of Neonates - Facts and Management (Respiratory insufficiency / Bronchopulmonary Dysplasia )",
+        "link": "bronchopulmonary-dysplasia-or-respiratory-insufficiency.htm"
+    },
+    {
+        "type": "Chronic Lymphocytic Leukemia ( Lymphocytic Leukemia - Chronic)",
+        "link": "chronic-lymphocytic-leukemia.htm"
+    },
+    {
+        "type": "Chronic Myeloid Leukemia | Chronic Myelocytic Leukemia (Myeloid Leukemia - Chronic / Leukemia - Chronic Myeloid )",
+        "link": "chronic_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Chronic Obstructive Pulmonary Disease ( COPD)",
+        "link": "chronic-obstructive-pulmonary-disease.htm"
+    },
+    {
+        "type": "Chronic Renal Failure (CRF) (Renal Failure - Chronic )",
+        "link": "chronic-renal-failure.htm"
+    },
+    {
+        "type": "Churg-Strauss Syndrome (Allergic Granulomatosis | Allergic Angiitis )",
+        "link": "churg-strauss-syndrome.htm"
+    },
+    {
+        "type": "Cigarette Smoking - A Silent Killer ( Smoking Cigarette - A Silent Killer)",
+        "link": "cigarette-smoking-a-silent-killer.htm"
+    },
+    {
+        "type": "Ciguatera - Fish Poisoning | Ciguatera Toxin",
+        "link": "ciguatera-fish-poisoning.htm"
+    },
+    {
+        "type": "Cirrhosis of the Liver (Liver Cirrhosis )",
+        "link": "liver-cirrhosis.htm"
+    },
+    {
+        "type": "Clap (Sexually Transmitted Disease - Gonorrhea / Gonorrhea )",
+        "link": "gonorrhea.htm"
+    },
+    {
+        "type": "Claudication (Intermittent Claudication )",
+        "link": "claudication.htm"
+    },
+    {
+        "type": "Clavicle Fracture (Broken Collarbone )",
+        "link": "clavicle-fracture.htm"
+    },
+    {
+        "type": "Clumsy Child Syndrome (Dyspraxia / Developmental Coordination Disorder )",
+        "link": "dyspraxia.htm"
+    },
+    {
+        "type": "Cluster Headache (Histamine Headache )",
+        "link": "cluster-headache.htm"
+    },
+    {
+        "type": "Cold Sores (Recurrent Herpes Labialis / Herpes Labialis / Fever Blisters )",
+        "link": "general-info-about-cold-sores.htm"
+    },
+    {
+        "type": "Colic in Babies",
+        "link": "colic-in-babies.htm"
+    },
+    {
+        "type": "Colle’s Fracture ( Broken Wrist)",
+        "link": "colles-fracture.htm"
+    },
+    {
+        "type": "Colo-rectal Cancer - Management ( Management of Colo-rectal Cancer)",
+        "link": "colorectal-cancer-management.htm"
+    },
+    {
+        "type": "Colorectal Cancer | Cancer - Colorectal",
+        "link": "colorectal-cancer.htm"
+    },
+    {
+        "type": "Coma",
+        "link": "coma.htm"
+    },
+    {
+        "type": "Comedones (Blackheads )",
+        "link": "blackheads.htm"
+    },
+    {
+        "type": "Common Cold",
+        "link": "commoncold.htm"
+    },
+    {
+        "type": "Common Mental Health Issues - Social Anxiety Disorder (Social Anxiety Disorder | Social Phobia )",
+        "link": "social-anxiety-disorder.htm"
+    },
+    {
+        "type": "Compartment Syndrome",
+        "link": "compartment-syndrome.htm"
+    },
+    {
+        "type": "Compound Fractures",
+        "link": "compound-fractures.htm"
+    },
+    {
+        "type": "Congenital Abnormality - Bicuspid Aortic Valve (Bicuspid Aortic Valve )",
+        "link": "bicuspid-aortic-valve.htm"
+    },
+    {
+        "type": "Congenital Heart Disease – Septal Defects ( Septal Defect-Congenital Heart Disease)",
+        "link": "heart-septal-defects.htm"
+    },
+    {
+        "type": "Congestive Heart Failure (Congestive Cardiac Failure) Current Management",
+        "link": "congestive-heart-failure.htm"
+    },
+    {
+        "type": "Congo Fever | Crimean-Congo Hemorrhagic Fever (CCHF)",
+        "link": "congo-fever.htm"
+    },
+    {
+        "type": "Conjunctivitis ( Pink Eye)",
+        "link": "conjunctivitis.htm"
+    },
+    {
+        "type": "Constipation",
+        "link": "constipation.htm"
+    },
+    {
+        "type": "Contact Dermatitis (Eczema or Inflammation of the Skin )",
+        "link": "contact-dermatitis.htm"
+    },
+    {
+        "type": "Continuous Ambulatory Peritoneal Dialysis (Haemodialysis / Dialysis )",
+        "link": "dialysis.htm"
+    },
+    {
+        "type": "Contraceptive Pills (Birth Control Pills )",
+        "link": "birthcontrolpills.htm"
+    },
+    {
+        "type": "Control of Iodine Deficiency Disorder ( Iodine Deficiency Disorder-Control)",
+        "link": "iodine-deficiency.htm"
+    },
+    {
+        "type": "Convulsions (Fits,Epilepsy)",
+        "link": "epilepsy.htm"
+    },
+    {
+        "type": "Convulsions | Seizures | Fits - Symptom Evaluation (Symptom Evaluation of Convulsions | Seizures | Fits )",
+        "link": "convulsions-seizures-fits.htm"
+    },
+    {
+        "type": "COPD (Chronic Obstructive Pulmonary Disease )",
+        "link": "chronic-obstructive-pulmonary-disease.htm"
+    },
+    {
+        "type": "Coping with Hay Fever (Hay Fever )",
+        "link": "hay-fever.htm"
+    },
+    {
+        "type": "Copper Deficiency (What You Should Know About Copper Deficiency / Hypocupremia )",
+        "link": "copper-deficiency.htm"
+    },
+    {
+        "type": "Copper Storage Disease (Wilson’s Disease , Hepatolenticular Degeneration )",
+        "link": "wilsons-disease.htm"
+    },
+    {
+        "type": "Corneal Transplantation",
+        "link": "corneal-transplantation.htm"
+    },
+    {
+        "type": "Corneal Ulcer ( Ulcer-Corneal)",
+        "link": "cornealulcer.htm"
+    },
+    {
+        "type": "Coronary Angioplasty | Coronary Balloon Angioplasty (Percutaneous Transluminal Coronary Angioplasty )",
+        "link": "coronary-balloon-angioplasty.htm"
+    },
+    {
+        "type": "Coronary Artery Bypass Grafting(CABG)",
+        "link": "coronary-artery-bypass-grafting.htm"
+    },
+    {
+        "type": "Coronary Heart Disease | Coronary Artery Disease",
+        "link": "coronary-heart-disease.htm"
+    },
+    {
+        "type": "Costochondritis ( Tietzes Syndrome)",
+        "link": "costochondritis.htm"
+    },
+    {
+        "type": "Cotard’s Syndrome (Walking Corpse Syndrome )",
+        "link": "walking-corpse-syndrome.htm"
+    },
+    {
+        "type": "Cradle Cap (Seborrheic Dermatitis , Dandruff)",
+        "link": "dandruff.htm"
+    },
+    {
+        "type": "Crest syndrome (Scleroderma | | Systemic Sclerosis / Progressive systemic sclerosis / Localized scleroderma )",
+        "link": "scleroderma.htm"
+    },
+    {
+        "type": "Crigler-Najjar Syndrome",
+        "link": "crigler-najjar-syndrome.htm"
+    },
+    {
+        "type": "Crohn’s Disease ( Regional Enteritis)",
+        "link": "crohns-disease.htm"
+    },
+    {
+        "type": "Cryptococcal Meningitis (Current developments in the management of cryptococcal meningitis )",
+        "link": "cryptococcal-meningitis.htm"
+    },
+    {
+        "type": "Current developments in the management of cryptococcal meningitis (Cryptococcal Meningitis )",
+        "link": "cryptococcal-meningitis.htm"
+    },
+    {
+        "type": "Cutaneous TB (Skin Tuberculosis )",
+        "link": "skin-tuberculosis.htm"
+    },
+    {
+        "type": "Cyanosis (Bluish Discoloration of Skin - Know About It )",
+        "link": "cyanosis.htm"
+    },
+    {
+        "type": "Cyanosis (Symptom Evaluation of Blue Colored Skin and Mucus Membranes / Blue Colored Skin and Mucus Membranes - Symptom Evaluation )",
+        "link": "blue-colored-skin-and-mucus-membranes.htm"
+    },
+    {
+        "type": "Cyprus fever (Rock fever / Mediterranean fever / Brucellosis )",
+        "link": "brucellosis.htm"
+    },
+    {
+        "type": "Cystic Fibrosis (Fibrocystic Disease )",
+        "link": "cystic-fibrosis.htm"
+    },
+    {
+        "type": "Cystic Skin Lesions (Skin Cyst )",
+        "link": "skin-cyst.htm"
+    },
+    {
+        "type": "Cysticercosis of Brain (Neurocysticercosis )",
+        "link": "neurocysticercosis.htm"
+    },
+    {
+        "type": "Cystitis",
+        "link": "cystitis.htm"
+    },
+    {
+        "type": "Dancing Eyes (Nystagmus / Jerky Eyes )",
+        "link": "nystagmus.htm"
+    },
+    {
+        "type": "Dandruff (Seborrheic Dermatitis , Cradle Cap )",
+        "link": "dandruff.htm"
+    },
+    {
+        "type": "Decreased Bone Density (Osteopenia )",
+        "link": "osteopenia.htm"
+    },
+    {
+        "type": "Deep Vein Thrombosis (DVT)",
+        "link": "deep-vein-thrombosis.htm"
+    },
+    {
+        "type": "Deer Fly Fever (Tularemia / Rabbit Fever / Pahvant Valley Plague )",
+        "link": "tularemia.htm"
+    },
+    {
+        "type": "Degenerative disease of the brain (Alzheimer´s Disease )",
+        "link": "alzheimers.htm"
+    },
+    {
+        "type": "Degenerative Neck Disease (Cervical Spondylosis )",
+        "link": "cervical-spondylosis.htm"
+    },
+    {
+        "type": "Delirium (Acute Confusional State )",
+        "link": "delirium.htm"
+    },
+    {
+        "type": "Dementia (Understanding and Coping with Dementia )",
+        "link": "dementia.htm"
+    },
+    {
+        "type": "Dengue - Waterborne ( Hemorrhagic Fever - Waterborne)",
+        "link": "dengue.htm"
+    },
+    {
+        "type": "Dengue and Dengue fever",
+        "link": "dengue.htm"
+    },
+    {
+        "type": "Dental Anesthesia (Anesthesia Dental )",
+        "link": "dental-anesthesia.htm"
+    },
+    {
+        "type": "Dental Anxiety | Dental Phobia (How to Overcome Fear of Dentists / Fear of Dentists and How to Overcome it )",
+        "link": "dental-anxiety-or-dental-phobia.htm"
+    },
+    {
+        "type": "Dental Caries (Tooth Decay )",
+        "link": "tooth-decay.htm"
+    },
+    {
+        "type": "Depression",
+        "link": "depression.htm"
+    },
+    {
+        "type": "Depression-Adolescent (Adolescent Depression)",
+        "link": "adolescence_depression.htm"
+    },
+    {
+        "type": "Dermatitis (Skin inflammation - Features Management and Prevention )",
+        "link": "dermatitis.htm"
+    },
+    {
+        "type": "Dermatology (Skin Disease )",
+        "link": "skindisease.htm"
+    },
+    {
+        "type": "Dermatophytosis (Tinea / Ringworm )",
+        "link": "ringworm.htm"
+    },
+    {
+        "type": "Developmental Coordination Disorder (Dyspraxia / Clumsy Child Syndrome )",
+        "link": "dyspraxia.htm"
+    },
+    {
+        "type": "Developmental Disturbances of the Tongue (Tongue Abnormalities )",
+        "link": "tongueabnormalities.htm"
+    },
+    {
+        "type": "Diabetes",
+        "link": "diabetes.htm"
+    },
+    {
+        "type": "Diabetes - Essentials (Essentials for Diabetes )",
+        "link": "diabetes-essentials.htm"
+    },
+    {
+        "type": "Diabetes - Foot Care ( Foot Care - Diabetes)",
+        "link": "diabetes-foot-care.htm"
+    },
+    {
+        "type": "Diabetes - Gestational (Gestational Diabetes )",
+        "link": "gestational-diabetes.htm"
+    },
+    {
+        "type": "Diabetes - Type 2 (Type 2 Diabetes , Non-Insulin-Dependent Diabetes Mellitus (NIDDM) , Adult-Onset Diabetes)",
+        "link": "type-2-diabetes.htm"
+    },
+    {
+        "type": "Diabetes and Hypertension: Preventing a Toxic Combination (Hypertension and Diabetes – Preventive Health )",
+        "link": "diabetes-and-hypertension-preventing-a-toxic-combination.htm"
+    },
+    {
+        "type": "Diabetes Insipidus",
+        "link": "diabetes-insipidus.htm"
+    },
+    {
+        "type": "Diabetes Prevention (Syndrome X )",
+        "link": "syndrome-x.htm"
+    },
+    {
+        "type": "Diabetic Ketoacidosis (Life-threatening Complication of Diabetes - Diabetic ketoacidosis (DKA) )",
+        "link": "diabetic-ketoacidosis.htm"
+    },
+    {
+        "type": "Diabetic Kidney Disease | Diabetic Nephropathy",
+        "link": "diabetic-kidney-disease.htm"
+    },
+    {
+        "type": "Diabetic Neuropathy (Nerve Disorders – Diabetes )",
+        "link": "diabetic-neuropathy.htm"
+    },
+    {
+        "type": "Diabetic Retinopathy",
+        "link": "general-info-about-diabetic-retinopathy.htm"
+    },
+    {
+        "type": "Diabetic sore on Foot (Foot Ulcer )",
+        "link": "foot-ulcer.htm"
+    },
+    {
+        "type": "Diabulimia | Diabetes with Eating Disorder",
+        "link": "diabulimia.htm"
+    },
+    {
+        "type": "Dialysis (Haemodialysis / Continuous Ambulatory Peritoneal Dialysis )",
+        "link": "dialysis.htm"
+    },
+    {
+        "type": "Diamond Blackfan Anemia",
+        "link": "diamond-blackfan-anemia.htm"
+    },
+    {
+        "type": "Diaper Dermatitis (Diaper Rash )",
+        "link": "diaperrash.htm"
+    },
+    {
+        "type": "Diaper Rash ( Diaper Dermatitis)",
+        "link": "diaperrash.htm"
+    },
+    {
+        "type": "Diarrhea due to E. coli infection (E. coli Infection | Escherichia coli Infection )",
+        "link": "e-coli-infection.htm"
+    },
+    {
+        "type": "Differences Between Asthma in Children and Adults (Asthma in Children and Adults )",
+        "link": "asthma-in-children-and-adults.htm"
+    },
+    {
+        "type": "Diphtheria",
+        "link": "diphtheria.htm"
+    },
+    {
+        "type": "Diseases - Genetic Testing (Genetic Testing of Diseases )",
+        "link": "genetic_testing_screening.htm"
+    },
+    {
+        "type": "Disorders of the Pelvic Floor (Pelvic Floor Disorders )",
+        "link": "pelvic-floor-disorders.htm"
+    },
+    {
+        "type": "Dissociative Identity Disorder (What is Multiple Personality? / Multiple Personality Disorder )",
+        "link": "dissociative-identity-disorder.htm"
+    },
+    {
+        "type": "Divergent Squint | Divergent Strabismus (Exotropia )",
+        "link": "exotropia.htm"
+    },
+    {
+        "type": "Diverticulosis and Diverticulitis",
+        "link": "diverticulosis-and-diverticulitis.htm"
+    },
+    {
+        "type": "Dizziness and Vertigo: Know the Difference | Difference Between Dizziness and Vertigo",
+        "link": "dizziness-and-vertigo-know-the-difference.htm"
+    },
+    {
+        "type": "Down Syndrome (Genetic Disorder - Down Syndrome )",
+        "link": "down-syndrome.htm"
+    },
+    {
+        "type": "Dravet Syndrome (Rare Childhood Epilepsy Disorder - Dravet Syndrome )",
+        "link": "dravet-syndrome.htm"
+    },
+    {
+        "type": "Drug Detox",
+        "link": "drug-detox.htm"
+    },
+    {
+        "type": "Drug Toxicity",
+        "link": "drugtoxicity.htm"
+    },
+    {
+        "type": "Drug-induced Liver Toxicity (Hepatotoxicity Due to Drugs )",
+        "link": "hepatotoxicity-due-to-drugs.htm"
+    },
+    {
+        "type": "Drugs - Chemotherapy (Chemotherapy Drugs)",
+        "link": "chemotherapy-drugs.htm"
+    },
+    {
+        "type": "Drugs for Erectile Dysfunction (Erectile Dysfunction - Causes and Medications )",
+        "link": "drugs-for-erectile-dysfunction.htm"
+    },
+    {
+        "type": "Drugs For Weight Loss (Weight Loss Drugs )",
+        "link": "weight-loss-drugs.htm"
+    },
+    {
+        "type": "Drugs In Impotence ( Impotence-Drugs)",
+        "link": "drugsinimpotence.htm"
+    },
+    {
+        "type": "Drugs- A cause of Dry Eye Disease (Medications Causing Dry Eye Disease / Dry Eye Disease- An Adverse Effect of Drugs )",
+        "link": "medications-causing-dry-eye-disease.htm"
+    },
+    {
+        "type": "Dry Eye Disease- An Adverse Effect of Drugs (Medications Causing Dry Eye Disease / Drugs- A cause of Dry Eye Disease )",
+        "link": "medications-causing-dry-eye-disease.htm"
+    },
+    {
+        "type": "Dry Mouth (Xerostomia / What You Should Know About Dry Mouth )",
+        "link": "dry-mouth.htm"
+    },
+    {
+        "type": "Dry Skin (Skin Disorder , Xerosis)",
+        "link": "skindisorder.htm"
+    },
+    {
+        "type": "Dry Skin (Xerosis )",
+        "link": "dry-skin.htm"
+    },
+    {
+        "type": "Duchenne Muscular Dystrophy (Muscular Dystrophy )",
+        "link": "musculardystrophy.htm"
+    },
+    {
+        "type": "Dum-Dum Fever (Leishmaniasis , Kala-Azar )",
+        "link": "leishmaniasis.htm"
+    },
+    {
+        "type": "Dysfunction of the Urinary Bladder (Neurogenic Bladder )",
+        "link": "neurogenic-bladder.htm"
+    },
+    {
+        "type": "Dyslexia (Learning Disorder - Dyslexia )",
+        "link": "dyslexia.htm"
+    },
+    {
+        "type": "Dysmenorrhea (Menstrual Cramps )",
+        "link": "dysmenorrhea.htm"
+    },
+    {
+        "type": "Dyspepsia (Indigestion )",
+        "link": "indigestion.htm"
+    },
+    {
+        "type": "Dyspraxia (Developmental Coordination Disorder / Clumsy Child Syndrome )",
+        "link": "dyspraxia.htm"
+    },
+    {
+        "type": "Dysthymia (Persistent Depressive Disorder / Chronic Depression )",
+        "link": "dysthymia.htm"
+    },
+    {
+        "type": "Dystrophia Myotonica (Myotonic Dystrophy )",
+        "link": "myotonicdystrophy.htm"
+    },
+    {
+        "type": "E. coli Infection | Escherichia coli Infection (Diarrhea due to E. coli infection )",
+        "link": "e-coli-infection.htm"
+    },
+    {
+        "type": "Ear Barotrauma (Airplane Ear )",
+        "link": "airplane-ear.htm"
+    },
+    {
+        "type": "Ear Blockage (Wax Blockage )",
+        "link": "ear-blockage.htm"
+    },
+    {
+        "type": "Ear Poisoning (Ototoxicity )",
+        "link": "ototoxicity.htm"
+    },
+    {
+        "type": "Eating Disorder - Anorexia Nervosa (Anorexia Nervosa )",
+        "link": "anorexianervosa.htm"
+    },
+    {
+        "type": "Eating Disorder - Bulimia Nervosa (Bulimia Nervosa )",
+        "link": "bulimianervosa.htm"
+    },
+    {
+        "type": "EBV Infectious Mononucleosis (Infectious Mononucleosis ,  Pfeiffer’s disease , Filatov’s disease)",
+        "link": "infectious-mononucleosis.htm"
+    },
+    {
+        "type": "Ecchymosis (Subcutaneous Bleeding or Ecchymosis )",
+        "link": "ecchymosis.htm"
+    },
+    {
+        "type": "Echinococcosis | Echinococcal disease (Hydatid disease )",
+        "link": "hydatid-disease.htm"
+    },
+    {
+        "type": "Eclampsia",
+        "link": "eclampsia.htm"
+    },
+    {
+        "type": "Ectopic Kidney (Renal Ectopia )",
+        "link": "ectopic-kidney.htm"
+    },
+    {
+        "type": "Ectopic Pregnancy (Pregnancy - Ectopic )",
+        "link": "ectopicpregnancy.htm"
+    },
+    {
+        "type": "Eczema (Skin Disorder - Atopic Dermatitis / Atopic Dermatitis )",
+        "link": "general-info-about-atopic-dermatitis.htm"
+    },
+    {
+        "type": "Eczema or Inflammation of the Skin (Contact Dermatitis )",
+        "link": "contact-dermatitis.htm"
+    },
+    {
+        "type": "Ejaculation - Premature (Premature Ejaculation (PE) )",
+        "link": "premature-ejaculation.htm"
+    },
+    {
+        "type": "Elevated Levels of Blood Urea Nitrogen (Uremia / Azotemia (High Blood Nitrogen Levels) )",
+        "link": "azotemia.htm"
+    },
+    {
+        "type": "Emphysema",
+        "link": "emphysema.htm"
+    },
+    {
+        "type": "Encephalitis (What is Encephalitis? )",
+        "link": "encephalitis.htm"
+    },
+    {
+        "type": "Endocarditis Infection (Infective Endocarditis )",
+        "link": "infective-endocarditis.htm"
+    },
+    {
+        "type": "Endometrial Cancer (Cancer of Endometrium )",
+        "link": "endometrial_cancer.htm"
+    },
+    {
+        "type": "Endometriosis",
+        "link": "endometriosis.htm"
+    },
+    {
+        "type": "Enlarged Uterus (Bulky Uterus / Adenomyosis )",
+        "link": "adenomyosis.htm"
+    },
+    {
+        "type": "Enuresis (Bedwetting )",
+        "link": "general-info-about-bedwetting.htm"
+    },
+    {
+        "type": "Eosinophilic Esophagitis (EoE) (Allergic Inflammation of the Esophagus )",
+        "link": "eosinophilic-esophagitis-allergic-esophagitis.htm"
+    },
+    {
+        "type": "Epiglottitis",
+        "link": "epiglottitis.htm"
+    },
+    {
+        "type": "Epilepsy (Fits,Convulsions)",
+        "link": "epilepsy.htm"
+    },
+    {
+        "type": "Epilepsy and Associated Sleep Disorders (Sleep Disorders Associated with Epilepsy )",
+        "link": "sleep-disorders-associated-with-epilepsy.htm"
+    },
+    {
+        "type": "Epilepsy During Pregnancy (Seizures During Pregnancy / Pregnancy and Seizures / Pregnancy and Epilepsy )",
+        "link": "epilepsy-during-pregnancy.htm"
+    },
+    {
+        "type": "Epistaxis (Nosebleed / Bleedingnose )",
+        "link": "nosebleed.htm"
+    },
+    {
+        "type": "Erectile Dysfunction (Impotence )",
+        "link": "impotence.htm"
+    },
+    {
+        "type": "Erectile Dysfunction - Causes and Medications (Drugs for Erectile Dysfunction )",
+        "link": "drugs-for-erectile-dysfunction.htm"
+    },
+    {
+        "type": "Ergonomics for Back Pain (Back Pain at Workplace: Prevention and Exercises )",
+        "link": "back-pain-at-workplace-prevention-and-exercises.htm"
+    },
+    {
+        "type": "Erysipelas (Skin Infection - Erysipelas )",
+        "link": "erysipelas.htm"
+    },
+    {
+        "type": "Erythema",
+        "link": "erythema.htm"
+    },
+    {
+        "type": "Erythema Migrans of Tongue (Geographic Tongue | Geographic Stomatitis / Benign Migratory Glossitis )",
+        "link": "geographic-tongue.htm"
+    },
+    {
+        "type": "Erythroderma | Exfoliative Dermatitis",
+        "link": "exfoliative-dermatitis.htm"
+    },
+    {
+        "type": "Esophageal Achalasia – All you Need to Know (Cardiospasm / Achalasia | Achalasia Cardia )",
+        "link": "achalasia-esophageal-achalasia-cardiospasm-achalasia-cardia.htm"
+    },
+    {
+        "type": "Esophageal Cancer",
+        "link": "esophageal-cancer.htm"
+    },
+    {
+        "type": "Essentials for Diabetes (Diabetes - Essentials )",
+        "link": "diabetes-essentials.htm"
+    },
+    {
+        "type": "Eustachian Tube Dysfunction (Understanding Eustachian Tube Dysfunction )",
+        "link": "eustachian-tube-dysfunction.htm"
+    },
+    {
+        "type": "Everything you need to know about Bacterial Meningitis (Bacterial Meningitis )",
+        "link": "bacterial-meningitis.htm"
+    },
+    {
+        "type": "Ewing Sarcoma",
+        "link": "ewing-sarcoma.htm"
+    },
+    {
+        "type": "Excess Calcium in the Blood (Hypercalcemia )",
+        "link": "hypercalcemia.htm"
+    },
+    {
+        "type": "Excessive Fear (Phobias - Specific and Social) (Phobias )",
+        "link": "phobias.htm"
+    },
+    {
+        "type": "Excessive Hairiness in Women (Hirsutism )",
+        "link": "hirsutism.htm"
+    },
+    {
+        "type": "Excessive Sleepiness Disorder (Hypersomnia , Idiopathic Hypersomnia)",
+        "link": "sleep_disorder_hypersomnia.htm"
+    },
+    {
+        "type": "Excessive Sweating (Hyperhidrosis )",
+        "link": "hyperhidrosis.htm"
+    },
+    {
+        "type": "Excessive Tearing (Watery Eyes )",
+        "link": "watery-eyes.htm"
+    },
+    {
+        "type": "Exotropia (Divergent Squint | Divergent Strabismus )",
+        "link": "exotropia.htm"
+    },
+    {
+        "type": "Exploding head syndrome",
+        "link": "exploding-head-syndrome.htm"
+    },
+    {
+        "type": "Exploring Adult ADHD (Adult Attention-Deficit Hyperactivity Disorder (ADHD) )",
+        "link": "adult-attention-deficit-hyperactivity-disorder.htm"
+    },
+    {
+        "type": "Extra Pulmonary Tuberculosis (Koch's disease )",
+        "link": "extra-pulmonary-tuberculosis.htm"
+    },
+    {
+        "type": "Extreme-Flexibility (Hypermobility Syndrome / Benign Joint | Hyperlaxity )",
+        "link": "hypermobility-syndrome.htm"
+    },
+    {
+        "type": "Eye Cancer - Retinoblastoma (Retinoblastoma )",
+        "link": "retinoblastoma.htm"
+    },
+    {
+        "type": "Eye Disease - Cataract (Cataract )",
+        "link": "cataract.htm"
+    },
+    {
+        "type": "Eye Disorder - Glaucoma (Glaucoma )",
+        "link": "glaucoma.htm"
+    },
+    {
+        "type": "Eye Drops for Allergy (Allergy Eye Drops )",
+        "link": "allergy-eye-drops.htm"
+    },
+    {
+        "type": "Eye Infections (Ocular Infections )",
+        "link": "eye-infections.htm"
+    },
+    {
+        "type": "Eye Inflammation (Uveitis )",
+        "link": "uveitis.htm"
+    },
+    {
+        "type": "Eye Proptosis | Exophthalmos (Bulging Eyes )",
+        "link": "bulging-eyes.htm"
+    },
+    {
+        "type": "Eye Redness",
+        "link": "eye-redness.htm"
+    },
+    {
+        "type": "Eye Twitching - Blepharospasm (Blepharospasm - Eye Twitching )",
+        "link": "eye-twitching-blepharospasm.htm"
+    },
+    {
+        "type": "Face and Neck Bacterial Infection (Lumpy Jaw) (Actinomycosis (Lumpy Jaw) )",
+        "link": "actinomycosis.htm"
+    },
+    {
+        "type": "Facts on Blood-Borne Diseases (Blood-Borne Diseases )",
+        "link": "blood-borne-diseases.htm"
+    },
+    {
+        "type": "Fahr´s Syndrome | Familial Cerebral Ferrocalcinosis | Familial Idiopathic Basal Ganglia Calcification",
+        "link": "fahrs-syndrome.htm"
+    },
+    {
+        "type": "Fallen Arch (Pes Planus / Flat Feet )",
+        "link": "flat-feet.htm"
+    },
+    {
+        "type": "Fallopian Tube Cancer (Tubal Cancer )",
+        "link": "fallopian-tube-cancer.htm"
+    },
+    {
+        "type": "False Perceptions - Hallucinations (Hallucinations )",
+        "link": "hallucinations.htm"
+    },
+    {
+        "type": "Fasciculations (Muscle Twitching )",
+        "link": "muscle-twitching.htm"
+    },
+    {
+        "type": "Fatal Familial Insomnia (Sleep Disorder - Fatal Familial Insomnia )",
+        "link": "fatal-familial-insomnia.htm"
+    },
+    {
+        "type": "Fatigue Syndrome - Chronic ( Chronic Fatigue Syndrome)",
+        "link": "chronic-fatigue-syndrome.htm"
+    },
+    {
+        "type": "Fatty Liver Disease: A Growing Health Problem in India (Non alcoholic fatty liver disease (NFALD) - A Growing Health Problem in India )",
+        "link": "fatty-liver-disease.htm"
+    },
+    {
+        "type": "Fear of Dentists and How to Overcome it (How to Overcome Fear of Dentists / Dental Anxiety | Dental Phobia )",
+        "link": "dental-anxiety-or-dental-phobia.htm"
+    },
+    {
+        "type": "Febrile Fits | Febrile Convulsions",
+        "link": "febrilefits.htm"
+    },
+    {
+        "type": "Female Sexual Dysfunction (Sexual Dysfunction - Female )",
+        "link": "femalesexdysfunction.htm"
+    },
+    {
+        "type": "Fertility Drug Effects: Ovarian Hyper Stimulation Syndrome (Ovarian Hyper Stimulation Syndrome (OHSS) )",
+        "link": "ovarian-hyper-stimulation-syndrome.htm"
+    },
+    {
+        "type": "Fetal Alcohol Syndrome (FAS)",
+        "link": "fetal-alcohol-syndrome.htm"
+    },
+    {
+        "type": "Fever",
+        "link": "fever.htm"
+    },
+    {
+        "type": "Fever - Yellow Fever (Yellow Fever )",
+        "link": "yellow-fever.htm"
+    },
+    {
+        "type": "Fever Blisters (Recurrent Herpes Labialis / Herpes Labialis / Cold Sores )",
+        "link": "general-info-about-cold-sores.htm"
+    },
+    {
+        "type": "Fibrocystic Disease (Cystic Fibrosis )",
+        "link": "cystic-fibrosis.htm"
+    },
+    {
+        "type": "Fibroids in Uterus (Uterine Fibroids )",
+        "link": "fibroids-in-uterus.htm"
+    },
+    {
+        "type": "Fibromyalgia",
+        "link": "fibromyalgia.htm"
+    },
+    {
+        "type": "Fibrosis of Lung (Pulmonary Fibrosis )",
+        "link": "pulmonary-fibrosis.htm"
+    },
+    {
+        "type": "Filariasis (Mosquito Disease - Filariasis )",
+        "link": "filariasis.htm"
+    },
+    {
+        "type": "Filatov’s disease (Infectious Mononucleosis , EBV Infectious Mononucleosis ,  Pfeiffer’s disease )",
+        "link": "infectious-mononucleosis.htm"
+    },
+    {
+        "type": "Fits (Epilepsy,Convulsions)",
+        "link": "epilepsy.htm"
+    },
+    {
+        "type": "Flat Feet (Pes Planus / Fallen Arch )",
+        "link": "flat-feet.htm"
+    },
+    {
+        "type": "Flatulence",
+        "link": "flatulence.htm"
+    },
+    {
+        "type": "Flea Bites",
+        "link": "fleabites.htm"
+    },
+    {
+        "type": "Flesh-Eating Disease - A rare, Life-threatening Bacterial Infection (Necrotizing Fasciitis (NF) )",
+        "link": "necrotizing-fasciitis-flesh-eating-disease.htm"
+    },
+    {
+        "type": "Flexor Tendon Injuries",
+        "link": "flexor-tendon-injuries.htm"
+    },
+    {
+        "type": "Floppy Valve Syndrome (Mitral Valve Prolapse , Ballooning Mitral Valve Syndrome )",
+        "link": "mitral-valve-prolapse.htm"
+    },
+    {
+        "type": "Focal Seizures | Focal Aware Seizures (Partial Seizures )",
+        "link": "focal-seizures-or-partial-seizures.htm"
+    },
+    {
+        "type": "Follicular Lymphoma (What One Should Know About Follicular Lymphoma )",
+        "link": "follicular-lymphoma.htm"
+    },
+    {
+        "type": "Food Allergies - Types (Types of Food Allergies )",
+        "link": "types-of-food-allergies.htm"
+    },
+    {
+        "type": "Foodborne Illnesses",
+        "link": "all-you-need-to-know-about-foodborne-illnesses.htm"
+    },
+    {
+        "type": "Foot Care - Diabetes (Diabetes - Foot Care )",
+        "link": "diabetes-foot-care.htm"
+    },
+    {
+        "type": "Foot Ulcer (Diabetic sore on Foot )",
+        "link": "foot-ulcer.htm"
+    },
+    {
+        "type": "Fracture",
+        "link": "fracture.htm"
+    },
+    {
+        "type": "Fracture - Spinal Compression (Spinal Fracture )",
+        "link": "spinal-fracture.htm"
+    },
+    {
+        "type": "Fracture of Knee Cap (Patella Fracture / Knee Cap Fracture )",
+        "link": "fracture-of-knee-cap.htm"
+    },
+    {
+        "type": "Fractured Ribs - An Overview (Broken or Bruised Ribs )",
+        "link": "broken-or-bruised-ribs.htm"
+    },
+    {
+        "type": "Fractures of the Cranium (Skull Fractures )",
+        "link": "skull-fractures.htm"
+    },
+    {
+        "type": "Fractures of the Jaw (Mandibular Fracture / Broken Jaw )",
+        "link": "mandibular-fracture.htm"
+    },
+    {
+        "type": "Fungal Infections (Fungal Infections - What You Should Know )",
+        "link": "fungal-infections.htm"
+    },
+    {
+        "type": "Fungal Infections - What You Should Know (Fungal Infections )",
+        "link": "fungal-infections.htm"
+    },
+    {
+        "type": "Fungal Skin Infection - Chromomycosis (Chromoblastomycosis - Skin Disease )",
+        "link": "chromoblastomycosis.htm"
+    },
+    {
+        "type": "Galactorrhea | Galactorrhea - Milky Nipple Discharge (Lactation In The Absence of Pregnancy / Hyperprolactinemia )",
+        "link": "galactorrhea.htm"
+    },
+    {
+        "type": "Galactosemia - Genetic Disorder of Sugar Galactose (Understanding Galactosemia - Genetic Disorder of Sugar Galactose )",
+        "link": "galactosemia.htm"
+    },
+    {
+        "type": "Gall bladder Inflammation (Inflammation of the Gall Bladder / Cholecystitis )",
+        "link": "cholecystitis.htm"
+    },
+    {
+        "type": "Gallbladder Cancer (Cancer of Gallbladder )",
+        "link": "gallbladder-cancer.htm"
+    },
+    {
+        "type": "Gallstones (Cholelithiasis )",
+        "link": "gallstones.htm"
+    },
+    {
+        "type": "Gamekeeper’s Thumb (Skier´s Thumb )",
+        "link": "skiers-thumb.htm"
+    },
+    {
+        "type": "Gas Bloat Syndrome (The Complete Guide on Gas Bloat Syndrome )",
+        "link": "gas-bloat-syndrome.htm"
+    },
+    {
+        "type": "Gastric Cancer (Stomach Cancer )",
+        "link": "gastric-cancer.htm"
+    },
+    {
+        "type": "Gastroenteritis (Stomach Flu )",
+        "link": "gastroenteritis.htm"
+    },
+    {
+        "type": "Gastroschisis",
+        "link": "gastroschisis-about.htm"
+    },
+    {
+        "type": "Gaucher’s Disease",
+        "link": "gauchers-disease.htm"
+    },
+    {
+        "type": "General Anesthesia (Anesthesia - General )",
+        "link": "general-anesthesia.htm"
+    },
+    {
+        "type": "Genetic Disorder - Down Syndrome (Down Syndrome )",
+        "link": "down-syndrome.htm"
+    },
+    {
+        "type": "Genetic Disorder - Tuberous Sclerosis (Tuberous Sclerosis )",
+        "link": "tuberous-sclerosis.htm"
+    },
+    {
+        "type": "Genetic disorder - Turner Syndrome (Turners Syndrome )",
+        "link": "turner-syndrome.htm"
+    },
+    {
+        "type": "Genetic Testing of Diseases (Diseases - Genetic Testing )",
+        "link": "genetic_testing_screening.htm"
+    },
+    {
+        "type": "Genital Herpes ( Herpes Infections in Genital Area)",
+        "link": "genital-herpes.htm"
+    },
+    {
+        "type": "Geographic Tongue | Geographic Stomatitis (Erythema Migrans of Tongue / Benign Migratory Glossitis )",
+        "link": "geographic-tongue.htm"
+    },
+    {
+        "type": "GERD(Gastroesophageal reflux disease)",
+        "link": "gerd.htm"
+    },
+    {
+        "type": "Gestational Diabetes (Diabetes - Gestational )",
+        "link": "gestational-diabetes.htm"
+    },
+    {
+        "type": "Giant Cell Arteritis (GCA) (Temporal Arteritis )",
+        "link": "temporal-arteritis.htm"
+    },
+    {
+        "type": "Giant Lymph Node Hyperplasia (Castleman Disease (CD) - Rare Disease of Lymph Nodes / Angiofollicular Lymph Node Hyperplasia )",
+        "link": "castleman-disease-rare-disease-of-lymph-nodes.htm"
+    },
+    {
+        "type": "Giardiasis",
+        "link": "giardiasis.htm"
+    },
+    {
+        "type": "Gigantism | Gigantism - Growth Hormone Excess in Childhood",
+        "link": "gigantism.htm"
+    },
+    {
+        "type": "Gilbert’s Syndrome",
+        "link": "gilberts-syndrome.htm"
+    },
+    {
+        "type": "Gilmore´s Groin (Sports Hernia / Inguinal Disruption / Athletic Pubalgia )",
+        "link": "gilmores-groin.htm"
+    },
+    {
+        "type": "Gingival Hyperplasia | Gingival Enlargement | Gum Overgrowth",
+        "link": "gingival-hyperplasia-gingival-enlargement.htm"
+    },
+    {
+        "type": "Glaucoma (Eye Disorder - Glaucoma )",
+        "link": "glaucoma.htm"
+    },
+    {
+        "type": "Glomerulonephritis (Nephrotic Syndrome )",
+        "link": "glomerulonephritis.htm"
+    },
+    {
+        "type": "Gluten-Sensitive Enteropathy (Celiac Disease | Celiac Sprue )",
+        "link": "celiac-disease.htm"
+    },
+    {
+        "type": "Glycogen Storage Disease Type II (Pompe Disease / Acid Maltase Deficiency )",
+        "link": "pompe-disease.htm"
+    },
+    {
+        "type": "Glycosuria (Renal Glycosuria )",
+        "link": "glycosuria.htm"
+    },
+    {
+        "type": "Goitre (Thyroid Swelling )",
+        "link": "goitre.htm"
+    },
+    {
+        "type": "Gonad Deficiency (Hypogonadism) (What You Ought to Know About Hypogonadism (Gonad Deficiency ) )",
+        "link": "hypogonadism.htm"
+    },
+    {
+        "type": "Gonorrhea (Sexually Transmitted Disease - Gonorrhea / Clap )",
+        "link": "gonorrhea.htm"
+    },
+    {
+        "type": "Gout",
+        "link": "gout.htm"
+    },
+    {
+        "type": "Graft versus Host Disease (GvHD)",
+        "link": "graft-versus-host-disease.htm"
+    },
+    {
+        "type": "Granulomatosis with Polyangiitis (GPA)",
+        "link": "granulomatosis-with-polyangiitis.htm"
+    },
+    {
+        "type": "Grow as tall as you want (Increase your height / Height - Grow as tall as you want )",
+        "link": "grow-as-tall-as-you-want.htm"
+    },
+    {
+        "type": "Grow Taller",
+        "link": "grow-taller.htm"
+    },
+    {
+        "type": "Gum Disease - Bleeding Gums (Bleeding Gums )",
+        "link": "what-is-bleeding-gums.htm"
+    },
+    {
+        "type": "Gum Recession | Gingival Recession (Receding Gums )",
+        "link": "gum-recession.htm"
+    },
+    {
+        "type": "Gynecomastia (Breast Enlargement in Males )",
+        "link": "gynecomastia.htm"
+    },
+    {
+        "type": "Haemodialysis (Dialysis / Continuous Ambulatory Peritoneal Dialysis )",
+        "link": "dialysis.htm"
+    },
+    {
+        "type": "Hair Loss (Loss of Hair / Alopecia )",
+        "link": "hair-loss.htm"
+    },
+    {
+        "type": "Hair Pulling Disorder (What is Hair Pulling Disorder? / Trichotillomania )",
+        "link": "trichotillomania-or-hair-pulling-disorder.htm"
+    },
+    {
+        "type": "Hairy Cell Leukemia (Leukemia - Hairy Cell Leukemia )",
+        "link": "hairy-cell-leukemia.htm"
+    },
+    {
+        "type": "Halitosis ( Oral Malodor , Bad Breath)",
+        "link": "halitosis.htm"
+    },
+    {
+        "type": "Hallucinations (False Perceptions - Hallucinations )",
+        "link": "hallucinations.htm"
+    },
+    {
+        "type": "Hansen’s Disease (Skin Disease - Leprosy / Leprosy )",
+        "link": "leprosy.htm"
+    },
+    {
+        "type": "Hardening of Arteries (Atherosclerosis )",
+        "link": "atherosclerosis.htm"
+    },
+    {
+        "type": "Hashimoto´s Thyroiditis | Hypothyroidism Associated With Hashimoto’s Thyroiditis",
+        "link": "hashimotos-thyroiditis.htm"
+    },
+    {
+        "type": "Hay Fever (Coping with Hay Fever )",
+        "link": "hay-fever.htm"
+    },
+    {
+        "type": "Hazards of Radiation and its Effects on HumanBody (Radiation Hazards and its Effects on Human Body )",
+        "link": "radiation-hazards.htm"
+    },
+    {
+        "type": "HbS Disease (Sickle Cell Anemia )",
+        "link": "sickle-cell-anemia.htm"
+    },
+    {
+        "type": "HCV Drug Treatment - New Frontiers (Latest in Line Drugs for HCV Treatment in India )",
+        "link": "hcv-drug-treatment-new-frontiers.htm"
+    },
+    {
+        "type": "Head and Neck Cancers",
+        "link": "head-and-neck-cancers.htm"
+    },
+    {
+        "type": "Head Injury ( Brain Injury)",
+        "link": "headinjury.htm"
+    },
+    {
+        "type": "Headache ( Cephalgia)",
+        "link": "headache.htm"
+    },
+    {
+        "type": "Headache - Migraine (Migraine - Headache )",
+        "link": "what-is-migraine.htm"
+    },
+    {
+        "type": "Hearing Loss due to Otosclerosis (Otosclerosis )",
+        "link": "otosclerosis.htm"
+    },
+    {
+        "type": "Heart Attack - Prevention (What Is A Heart Attack , How To Prevent Heart Attacks )",
+        "link": "heart-attack-lifestyle-risks.htm"
+    },
+    {
+        "type": "Heart Attack | Heart Attack-Know How | Heart Attack - About",
+        "link": "heartattack.htm"
+    },
+    {
+        "type": "Heart Cancer",
+        "link": "heart-cancer.htm"
+    },
+    {
+        "type": "Heart Disease - Cardiac Arrest (Cardiac Arrest )",
+        "link": "cardiac-arrest.htm"
+    },
+    {
+        "type": "Heart Disease - Myocarditis (Myocarditis )",
+        "link": "myocarditis.htm"
+    },
+    {
+        "type": "Heart Lung Machine (Cardiopulmonary Bypass )",
+        "link": "cardiopulmonary-bypass.htm"
+    },
+    {
+        "type": "Heart Murmurs (Cardiac Murmurs )",
+        "link": "heart-murmurs.htm"
+    },
+    {
+        "type": "Heart Rate and Heart Rhythm (Identifying and Measuring Heart Rate )",
+        "link": "heart-rate-and-heart-rhythm.htm"
+    },
+    {
+        "type": "Heat Exhaustion",
+        "link": "general-info-about-heat-exhaustion.htm"
+    },
+    {
+        "type": "Heat Stroke (Sun Stroke )",
+        "link": "general-info-about-heat-stroke.htm"
+    },
+    {
+        "type": "Heavy Menstrual Bleeding | Heavy Periods (Menorrhagia )",
+        "link": "menorrhagia.htm"
+    },
+    {
+        "type": "Heel Bone Pain (Plantar Fasciitis )",
+        "link": "plantar-fasciitis.htm"
+    },
+    {
+        "type": "Height - Grow as tall as you want (Increase your height / Grow as tall as you want )",
+        "link": "grow-as-tall-as-you-want.htm"
+    },
+    {
+        "type": "Hematopoietic Stem Cell Transplantation (Bone Marrow Transplantation )",
+        "link": "bone-marrow-transplantation.htm"
+    },
+    {
+        "type": "Hemiplegia (What is Hemiplegia? )",
+        "link": "hemiplegia.htm"
+    },
+    {
+        "type": "Hemochromatosis (Iron Overload)",
+        "link": "hemochromatosis.htm"
+    },
+    {
+        "type": "Hemophilia",
+        "link": "hemophilia.htm"
+    },
+    {
+        "type": "Hemorrhagic Diathesis (Bleeding Diathesis )",
+        "link": "bleeding-diathesis.htm"
+    },
+    {
+        "type": "Hemorrhagic Fever - Waterborne (Dengue - Waterborne )",
+        "link": "dengue.htm"
+    },
+    {
+        "type": "Hemorrhaging Post-Childbirth (Postpartum Hemorrhage / Bleeding after Delivery | Blood Loss Post-Labor )",
+        "link": "postpartum-hemorrhage.htm"
+    },
+    {
+        "type": "Hemorrhoids (Piles )",
+        "link": "hemorrhoids.htm"
+    },
+    {
+        "type": "Hepatic Encephalopathy",
+        "link": "hepatic-encephalopathy.htm"
+    },
+    {
+        "type": "Hepatic Failure (Liver Failure )",
+        "link": "liver-failure.htm"
+    },
+    {
+        "type": "Hepatitis A",
+        "link": "hepatitisa.htm"
+    },
+    {
+        "type": "Hepatitis B",
+        "link": "hepatitisb.htm"
+    },
+    {
+        "type": "Hepatitis C",
+        "link": "hepatitis-c.htm"
+    },
+    {
+        "type": "Hepatitis C - New Treatments (New Treatments for Hepatitis C )",
+        "link": "new-treatments-for-hepatitis-c.htm"
+    },
+    {
+        "type": "Hepatitis in Babies (Neonatal Hepatitis )",
+        "link": "neonatal-hepatitis.htm"
+    },
+    {
+        "type": "Hepatolenticular Degeneration (Wilson’s Disease , Copper Storage Disease)",
+        "link": "wilsons-disease.htm"
+    },
+    {
+        "type": "Hepatomegaly",
+        "link": "hepatomegaly.htm"
+    },
+    {
+        "type": "Hepatorenal Syndrome",
+        "link": "hepatorenal-syndrome.htm"
+    },
+    {
+        "type": "Hepatotoxicity Due to Drugs (Drug-induced Liver Toxicity )",
+        "link": "hepatotoxicity-due-to-drugs.htm"
+    },
+    {
+        "type": "Hereditary Nephritis | Hematuria - Nephropathy Deafness | Hemorrhagic Familial Nephritis | Hereditary Deafness and Nephropathy (Alport Syndrome )",
+        "link": "alport-syndrome.htm"
+    },
+    {
+        "type": "Herniated Disc (Slipped Disc )",
+        "link": "herniated-disc.htm"
+    },
+    {
+        "type": "Herpangina (Painful Mouth Infection) (Mouth Blisters )",
+        "link": "herpangina.htm"
+    },
+    {
+        "type": "Herpes Infections in Genital Area (Genital Herpes )",
+        "link": "genital-herpes.htm"
+    },
+    {
+        "type": "Herpes Labialis (Recurrent Herpes Labialis / Fever Blisters / Cold Sores )",
+        "link": "general-info-about-cold-sores.htm"
+    },
+    {
+        "type": "Herpes Zoster (Shingles ,Post Herpetic Neuralgia,Chicken pox shingles)",
+        "link": "shingles.htm"
+    },
+    {
+        "type": "Hiatal Hernia (Hiatus Hernia )",
+        "link": "hiatal-hernia.htm"
+    },
+    {
+        "type": "Hiatus Hernia (Hiatal Hernia )",
+        "link": "hiatal-hernia.htm"
+    },
+    {
+        "type": "Hiccoughs (Hiccups , Synchronous Diaphragmatic Flutter (SDF) , Singultus)",
+        "link": "hiccups.htm"
+    },
+    {
+        "type": "Hiccups ( Hiccoughs , Synchronous Diaphragmatic Flutter (SDF) , Singultus)",
+        "link": "hiccups.htm"
+    },
+    {
+        "type": "High Blood Potassium (Hyperkalemia )",
+        "link": "hyperkalemia.htm"
+    },
+    {
+        "type": "High Blood Pressure (Hypertension )",
+        "link": "high-blood-pressure.htm"
+    },
+    {
+        "type": "High Blood Pressure in Children (Pediatric Hypertension )",
+        "link": "pediatric-hypertension.htm"
+    },
+    {
+        "type": "High Cholesterol (Hypercholesterolemia )",
+        "link": "high-cholesterol.htm"
+    },
+    {
+        "type": "Hirsutism (Excessive Hairiness in Women )",
+        "link": "hirsutism.htm"
+    },
+    {
+        "type": "Histamine Headache (Cluster Headache )",
+        "link": "cluster-headache.htm"
+    },
+    {
+        "type": "Histoplasmosis (Spelunker's lung / Caver's disease )",
+        "link": "histoplasmosis.htm"
+    },
+    {
+        "type": "HIV (AIDS)",
+        "link": "aids.htm"
+    },
+    {
+        "type": "Hives ( Utricaria)",
+        "link": "hives.htm"
+    },
+    {
+        "type": "Hodgkins Lymphoma",
+        "link": "hodgkins-lymphoma.htm"
+    },
+    {
+        "type": "Hog Flu (Swine Flu | Swine Influenza / Pig Flu )",
+        "link": "swine-flu.htm"
+    },
+    {
+        "type": "Hookworm Infection (Parasitic Hookworm Infection )",
+        "link": "hookworm-infection.htm"
+    },
+    {
+        "type": "Hormonal disorder - Hyperparathyroidism (Hyperparathyroidism )",
+        "link": "hyperparathyroidism.htm"
+    },
+    {
+        "type": "Hospital Acquired Infections (Nosocomial Infections )",
+        "link": "hospital-acquired-infections.htm"
+    },
+    {
+        "type": "Hospital addiction syndrome | Hospital hopper syndrome $@$ Thick chart syndrome (Munchausen Syndrome )",
+        "link": "munchausen-syndrome.htm"
+    },
+    {
+        "type": "Hot Flash",
+        "link": "hotflash.htm"
+    },
+    {
+        "type": "How to Cope With Cancer Pain (Therapeutic Approaches to Overcome Cancer Pain )",
+        "link": "how-to-cope-with-cancer-pain.htm"
+    },
+    {
+        "type": "How to Deal with a Stroke ( Stroke - How to Deal)",
+        "link": "how-to-deal-with-a-stroke.htm"
+    },
+    {
+        "type": "How to Deal with Work Related Stress (Simple Ways to Deal with Work Related Stress )",
+        "link": "simple-ways-to-deal-with-work-related-stress.htm"
+    },
+    {
+        "type": "How to Overcome Fear of Dentists (Fear of Dentists and How to Overcome it / Dental Anxiety | Dental Phobia )",
+        "link": "dental-anxiety-or-dental-phobia.htm"
+    },
+    {
+        "type": "How To Prevent Heart Attacks (What Is A Heart Attack , Heart Attack - Prevention)",
+        "link": "heart-attack-lifestyle-risks.htm"
+    },
+    {
+        "type": "How to Prevent Kidney Stone (Kidney Stone Prevention )",
+        "link": "kidney-stone-prevention.htm"
+    },
+    {
+        "type": "Huntington´s Disease | Huntington's Chorea",
+        "link": "huntingtons-disease.htm"
+    },
+    {
+        "type": "Hydatid disease ( Echinococcosis | Echinococcal disease)",
+        "link": "hydatid-disease.htm"
+    },
+    {
+        "type": "Hydrocephalus",
+        "link": "hydrocephalus.htm"
+    },
+    {
+        "type": "Hydromyelia (Syringomyelia | Syrinx )",
+        "link": "syringomyelia.htm"
+    },
+    {
+        "type": "Hydronephrosis (Antenatal Counseling)",
+        "link": "hydronephrosis.htm"
+    },
+    {
+        "type": "Hypercalcemia (Excess Calcium in the Blood )",
+        "link": "hypercalcemia.htm"
+    },
+    {
+        "type": "Hypercholesterolemia (High Cholesterol )",
+        "link": "high-cholesterol.htm"
+    },
+    {
+        "type": "Hyperhidrosis (Excessive Sweating )",
+        "link": "hyperhidrosis.htm"
+    },
+    {
+        "type": "Hyperkalemia (High Blood Potassium )",
+        "link": "hyperkalemia.htm"
+    },
+    {
+        "type": "Hypermobility Syndrome (Extreme-Flexibility / Benign Joint | Hyperlaxity )",
+        "link": "hypermobility-syndrome.htm"
+    },
+    {
+        "type": "Hypernephroma (Renal Cell Carcinoma | Renal Cancer / Kidney Cancer / Adenocarcinoma of Renal Cells )",
+        "link": "renal-cell-carcinoma.htm"
+    },
+    {
+        "type": "Hyperparathyroidism (Hormonal disorder - Hyperparathyroidism )",
+        "link": "hyperparathyroidism.htm"
+    },
+    {
+        "type": "Hyperpigmentation Skin Disorder - Acanthosis Nigricans (Skin Pigmentation Disorder - Acanthosis Nigricans / Acanthosis Nigricans - Skin Pigmentation Disorder )",
+        "link": "acanthosis-nigricans-skin-pigmentation-disorder.htm"
+    },
+    {
+        "type": "Hyperprolactinemia (Lactation In The Absence of Pregnancy / Galactorrhea | Galactorrhea - Milky Nipple Discharge )",
+        "link": "galactorrhea.htm"
+    },
+    {
+        "type": "Hyperprolactinemia (Prolactin Hormone - Effects of High Levels on Women's Health )",
+        "link": "hyperprolactinemia.htm"
+    },
+    {
+        "type": "Hypersensitive Bladder Syndrome (Interstitial Cystitis,Bladder Pain Syndrome,Painful Bladder Syndrome (PBS))",
+        "link": "interstitial-cystitis.htm"
+    },
+    {
+        "type": "Hypersensitivity - Anaphylaxis (Anaphylaxis )",
+        "link": "anaphylaxis.htm"
+    },
+    {
+        "type": "Hypersomnia ( Excessive Sleepiness Disorder , Idiopathic Hypersomnia)",
+        "link": "sleep_disorder_hypersomnia.htm"
+    },
+    {
+        "type": "Hypertension (High Blood Pressure )",
+        "link": "high-blood-pressure.htm"
+    },
+    {
+        "type": "Hypertension and Diabetes – Preventive Health (Diabetes and Hypertension: Preventing a Toxic Combination )",
+        "link": "diabetes-and-hypertension-preventing-a-toxic-combination.htm"
+    },
+    {
+        "type": "Hypertension Tablets - Benefits on your Health (Blood Pressure Tablets - Benefits on your Health)",
+        "link": "blood-pressure-tablets-benefits-on-your-health.htm"
+    },
+    {
+        "type": "Hyperthyroidism (Overactive Thyroid )",
+        "link": "hyperthyroidism.htm"
+    },
+    {
+        "type": "Hypertrophic Cardiomyopathy",
+        "link": "hypertrophic-cardiomyopathy.htm"
+    },
+    {
+        "type": "Hyperventilation ( Overbreathing , Rapid deep breathing)",
+        "link": "hyperventilation.htm"
+    },
+    {
+        "type": "Hypocorticism (Addison’s Disease , Hypocortisolism , Adrenal Insufficiency)",
+        "link": "addisons-disease.htm"
+    },
+    {
+        "type": "Hypocortisolism (Addison’s Disease , Hypocorticism , Adrenal Insufficiency)",
+        "link": "addisons-disease.htm"
+    },
+    {
+        "type": "Hypocupremia (What You Should Know About Copper Deficiency / Copper Deficiency )",
+        "link": "copper-deficiency.htm"
+    },
+    {
+        "type": "Hypoglycemia (Low Blood Sugar in Diabetes )",
+        "link": "hypoglycemia.htm"
+    },
+    {
+        "type": "Hypokalemia (Low Potassium Levels: Hypokalemia )",
+        "link": "hypokalemia.htm"
+    },
+    {
+        "type": "Hypopituitarism (Underactive Pituitary Gland )",
+        "link": "hypopituitarism.htm"
+    },
+    {
+        "type": "Hypoplastic Left Heart Syndrome",
+        "link": "hypoplastic-left-heart-syndrome.htm"
+    },
+    {
+        "type": "Hypotension (Low Blood Pressure / Blood Pressure - Low Blood Pressure )",
+        "link": "about-low-blood-pressure.htm"
+    },
+    {
+        "type": "Hypothyroidism (Myxoedema )",
+        "link": "hypothyroidism.htm"
+    },
+    {
+        "type": "Hypoxemia (Low Blood Oxygen - Hypoxemia )",
+        "link": "hypoxemia.htm"
+    },
+    {
+        "type": "Ichthyosis (Understanding Ichthyosis )",
+        "link": "ichthyosis.htm"
+    },
+    {
+        "type": "ICU Delirium",
+        "link": "icu-delirium.htm"
+    },
+    {
+        "type": "Identifying and Measuring Heart Rate (Heart Rate and Heart Rhythm )",
+        "link": "heart-rate-and-heart-rhythm.htm"
+    },
+    {
+        "type": "Idiopathic Hypersomnia (Hypersomnia , Excessive Sleepiness Disorder )",
+        "link": "sleep_disorder_hypersomnia.htm"
+    },
+    {
+        "type": "Idiopathic Parkinsonism (Parkinson’s Disease )",
+        "link": "Parkinsonsdisease.htm"
+    },
+    {
+        "type": "Impetigo (Bacterial Skin infection - Impetigo )",
+        "link": "impetigo.htm"
+    },
+    {
+        "type": "Impotence ( Erectile Dysfunction )",
+        "link": "impotence.htm"
+    },
+    {
+        "type": "Impotence-Drugs (Drugs In Impotence )",
+        "link": "drugsinimpotence.htm"
+    },
+    {
+        "type": "Inability to Pass Urine (Urinary Retention )",
+        "link": "urinary-retention.htm"
+    },
+    {
+        "type": "Inborn Errors of Metabolism (Inherited Metabolic Disorders )",
+        "link": "inborn-errors-of-metabolism.htm"
+    },
+    {
+        "type": "Increase your height (Height - Grow as tall as you want / Grow as tall as you want )",
+        "link": "grow-as-tall-as-you-want.htm"
+    },
+    {
+        "type": "Indian Snake Antivenom (What You Should Know about Indian Snake Antivenom )",
+        "link": "indian-snake-antivenom.htm"
+    },
+    {
+        "type": "Indigestion ( Dyspepsia)",
+        "link": "indigestion.htm"
+    },
+    {
+        "type": "Induced Abortion (Abortion )",
+        "link": "abortion.htm"
+    },
+    {
+        "type": "Indurations Plastica Penis (Peyronie´s Disease )",
+        "link": "peyronies-disease.htm"
+    },
+    {
+        "type": "Infection of Mastoid bone (Mastoiditis )",
+        "link": "mastoiditis.htm"
+    },
+    {
+        "type": "Infection of Middle Ear (Otitis Media,Middle Ear Infection)",
+        "link": "otitismedia.htm"
+    },
+    {
+        "type": "Infection of Paranasal Sinuses (Sinusitis )",
+        "link": "sinusitis.htm"
+    },
+    {
+        "type": "Infections Caused by Tapeworm (Tapeworm Infections )",
+        "link": "tapeworm.htm"
+    },
+    {
+        "type": "Infections causing Birth defects (Birth defects - Infections)",
+        "link": "birthdefects_infections.htm"
+    },
+    {
+        "type": "Infections of Yeast (Yeast Infections / Candida )",
+        "link": "yeast-infections.htm"
+    },
+    {
+        "type": "Infectious Arthritis (Septic Arthritis )",
+        "link": "septic-arthritis.htm"
+    },
+    {
+        "type": "Infectious Mononucleosis (EBV Infectious Mononucleosis / Pfeiffer’s disease / Filatov’s disease)",
+        "link": "infectious-mononucleosis.htm"
+    },
+    {
+        "type": "Infective Endocarditis (Endocarditis Infection )",
+        "link": "infective-endocarditis.htm"
+    },
+    {
+        "type": "Infertility",
+        "link": "infertility.htm"
+    },
+    {
+        "type": "Inflammation and Infection of the Peritoneum and its Complications (Peritonitis )",
+        "link": "peritonitis.htm"
+    },
+    {
+        "type": "Inflammation of a Tendon (Tendinitis | Tendonitis )",
+        "link": "tendinitis.htm"
+    },
+    {
+        "type": "Inflammation of the Gall Bladder (Gall bladder Inflammation / Cholecystitis )",
+        "link": "cholecystitis.htm"
+    },
+    {
+        "type": "Ingrown Hair",
+        "link": "ingrown-hair.htm"
+    },
+    {
+        "type": "Inguinal Disruption (Sports Hernia / Gilmore´s Groin / Athletic Pubalgia )",
+        "link": "gilmores-groin.htm"
+    },
+    {
+        "type": "Inherited Metabolic Disorders (Inborn Errors of Metabolism )",
+        "link": "inborn-errors-of-metabolism.htm"
+    },
+    {
+        "type": "Injuries of Backbone (Back Injuries )",
+        "link": "back-injuries.htm"
+    },
+    {
+        "type": "Insect-Borne Diseases (Vector-Borne Diseases / Bug-Borne Diseases )",
+        "link": "vector-borne-diseases.htm"
+    },
+    {
+        "type": "Intellectual disability (Mental Retardation )",
+        "link": "intellectual-disability.htm"
+    },
+    {
+        "type": "Intermittent Claudication (Claudication )",
+        "link": "claudication.htm"
+    },
+    {
+        "type": "Interstitial Cystitis (Bladder Pain Syndrome,Hypersensitive Bladder Syndrome,Painful Bladder Syndrome (PBS))",
+        "link": "interstitial-cystitis.htm"
+    },
+    {
+        "type": "Intestinal Tuberculosis (Stomach Tuberculosis / Abdominal Tuberculosis )",
+        "link": "stomach-tuberculosis.htm"
+    },
+    {
+        "type": "Intolerance to MSG (Monosodium Glutamate (MSG) Allergy / Chinese Restaurant Syndrome )",
+        "link": "monosodium-glutamate-allergy.htm"
+    },
+    {
+        "type": "Intra-amniotic Infection (Chorioamnionitis )",
+        "link": "intra-amniotic-infection.htm"
+    },
+    {
+        "type": "Iodine Deficiency Disorder-Control (Control of Iodine Deficiency Disorder )",
+        "link": "iodine-deficiency.htm"
+    },
+    {
+        "type": "Iron &amp; Folate Deficiency - Anemia in Pregnancy ( Anemia in Pregnancy - Iron &amp; Folate Deficiency Anemia)",
+        "link": "anemia-in-pregnancy-iron-folate-deficiency-iron.htm"
+    },
+    {
+        "type": "Itchy Armpits (Pruritus )",
+        "link": "itchy-armpits.htm"
+    },
+    {
+        "type": "Irritable Bowel Syndrome ( Spastic Colon)",
+        "link": "irritable-bowel-syndrome.htm"
+    },
+    {
+        "type": "Iron Deficiency Anemia",
+        "link": "iron-deficiency-anemia.htm"
+    },
+    {
+        "type": "Itchy Skin (Pruritus )",
+        "link": "itchy-skin.htm"
+    },
+    {
+        "type": "Japanese Encephalitis (What You Should Know about Japanese Encephalitis )",
+        "link": "what-you-should-know-about-japanese-encephalitis.htm"
+    },
+    {
+        "type": "Jaw Bone Diseases And Pagets (Pagets And Jaw Bone Diseases )",
+        "link": "pagets.htm"
+    },
+    {
+        "type": "Jaw disorders – What You Need to Know (Temporomandibular Joint Disorders )",
+        "link": "temporomandibular-joint-disorders.htm"
+    },
+    {
+        "type": "Jerky Eyes (Nystagmus / Dancing Eyes )",
+        "link": "nystagmus.htm"
+    },
+    {
+        "type": "Juvenile Arthritis (Oligoarthritis , Arthritis In Children , Childhood Arthritis )",
+        "link": "oligoarthritis.htm"
+    },
+    {
+        "type": "Juvenile Myoclonic Epilepsy (Understanding Juvenile Myoclonic Epilepsy )",
+        "link": "juvenile-myoclonic-epilepsy.htm"
+    },
+    {
+        "type": "Kala-Azar (Leishmaniasis , Dum-Dum Fever)",
+        "link": "leishmaniasis.htm"
+    },
+    {
+        "type": "Kawasaki Disease",
+        "link": "kawasakidisease.htm"
+    },
+    {
+        "type": "Keloids",
+        "link": "keloids.htm"
+    },
+    {
+        "type": "Keratoconus",
+        "link": "keratoconus.htm"
+    },
+    {
+        "type": "Kidney Cancer (Renal Cell Carcinoma | Renal Cancer / Hypernephroma / Adenocarcinoma of Renal Cells )",
+        "link": "renal-cell-carcinoma.htm"
+    },
+    {
+        "type": "Kidney Disease Prevention (Prevention of Kidney Disease )",
+        "link": "prevention-of-kidney-disease.htm"
+    },
+    {
+        "type": "Kidney Failure due to Melamine Toxicity (Melamine Adulteration in Milk and Milk Products | Melamine Toxicity and Kidney Failure )",
+        "link": "kidney-failure-due-to-melamine-toxicity.htm"
+    },
+    {
+        "type": "Kidney Stone Prevention (How to Prevent Kidney Stone )",
+        "link": "kidney-stone-prevention.htm"
+    },
+    {
+        "type": "Kidney Stones (Stones in Kidney / Renal Stones )",
+        "link": "kidneystones.htm"
+    },
+    {
+        "type": "Kidney Stones during Pregnancy (Urolithiasis in Pregnancy )",
+        "link": "kidney-stones-during-pregnancy.htm"
+    },
+    {
+        "type": "Kidney Transplantation (Organ Transplantation - Kidney )",
+        "link": "kidneytransplantation.htm"
+    },
+    {
+        "type": "Kinetosis (Travel Sickness / Sea sickness | Space sickness / Motion Sickness )",
+        "link": "motion-sickness.htm"
+    },
+    {
+        "type": "Kleine-Levin Syndrome (KLS) (What You Should Know About Kleine-Levin Syndrome / Sleeping Beauty Syndrome )",
+        "link": "kleine-levin-syndrome.htm"
+    },
+    {
+        "type": "Klinefelter's Syndrome (XXY syndrome, XXY trisomy )",
+        "link": "klinefelters-syndrome.htm"
+    },
+    {
+        "type": "Knee Cap Fracture (Patella Fracture / Fracture of Knee Cap )",
+        "link": "fracture-of-knee-cap.htm"
+    },
+    {
+        "type": "Koch's disease (Extra Pulmonary Tuberculosis )",
+        "link": "extra-pulmonary-tuberculosis.htm"
+    },
+    {
+        "type": "Labor and Delivery ( Pregnancy Labor)",
+        "link": "labor.htm"
+    },
+    {
+        "type": "Labor Pain Management and Pharmacologic Agents (Pain Management During Labor )",
+        "link": "pain-management-during-labor.htm"
+    },
+    {
+        "type": "Lactation In The Absence of Pregnancy (Hyperprolactinemia / Galactorrhea | Galactorrhea - Milky Nipple Discharge )",
+        "link": "galactorrhea.htm"
+    },
+    {
+        "type": "Landau - Kleffner Syndrome (Acquired Epileptiform Aphasia )",
+        "link": "acquired-epileptiform-aphasia.htm"
+    },
+    {
+        "type": "Large-Intestinal Infection (Balantidiasis )",
+        "link": "balantidiasis.htm"
+    },
+    {
+        "type": "Laryngeal Cancer|Laryngeal Carcinoma (Cancer of Larynx,Throat Cancer)",
+        "link": "laryngeal-cancer.htm"
+    },
+    {
+        "type": "Laryngeal Papillomatosis (Understanding Laryngeal Papillomatosis )",
+        "link": "laryngeal-papillomatosis.htm"
+    },
+    {
+        "type": "Laryngitis (Understanding Laryngitis )",
+        "link": "laryngitis.htm"
+    },
+    {
+        "type": "Lassa Fever | Lassa Hemorrhagic Fever",
+        "link": "lassa-fever.htm"
+    },
+    {
+        "type": "Latest in Line Drugs for HCV Treatment in India (HCV Drug Treatment - New Frontiers )",
+        "link": "hcv-drug-treatment-new-frontiers.htm"
+    },
+    {
+        "type": "Lead Poisoning",
+        "link": "lead-poisoning.htm"
+    },
+    {
+        "type": "Lifestyle and Breast Cancer (Breast Cancer and Lifestyle )",
+        "link": "breast-cancer-and-lifestyle.htm"
+    },
+    {
+        "type": "Liposarcoma (What Should You Know About Liposarcoma? )",
+        "link": "liposarcoma.htm"
+    },
+    {
+        "type": "Liver Cancer (Cancer of Liver )",
+        "link": "liver-cancer.htm"
+    },
+    {
+        "type": "Liver Cirrhosis (Cirrhosis of the Liver )",
+        "link": "liver-cirrhosis.htm"
+    },
+    {
+        "type": "Liver Cirrhosis Biliary (Biliary Cirrhosis )",
+        "link": "biliary-cirrhosis.htm"
+    },
+    {
+        "type": "Liver Disease-Alcoholic (Alcoholic Liver Disease)",
+        "link": "alcoholicliverdisease.htm"
+    },
+    {
+        "type": "Liver Failure (Hepatic Failure )",
+        "link": "liver-failure.htm"
+    },
+    {
+        "type": "Liver Transplantation (Transplant Surgery - Liver Transplant / Organ Transplantation - Liver )",
+        "link": "liver-transplantation.htm"
+    },
+    {
+        "type": "Living Donor Liver Transplant: What Are the Risks? (Risks in Living Donor Hepatectomy )",
+        "link": "living-donor-liver-transplant-what-are-the-risks.htm"
+    },
+    {
+        "type": "Living with Pituitary Tumors (Pituitary Tumors )",
+        "link": "pituitary-tumors.htm"
+    },
+    {
+        "type": "Living With Sugar In The Bloodstream- Type 1 Diabetes (Type 1 Diabetes )",
+        "link": "type-1-diabetes.htm"
+    },
+    {
+        "type": "Lobstein Syndrome (Osteogenesis Imperfecta )",
+        "link": "osteogenesisimperfecta.htm"
+    },
+    {
+        "type": "Local Anaesthesia (Anaesthesia - Local )",
+        "link": "local-anaesthesia.htm"
+    },
+    {
+        "type": "Localized scleroderma (Scleroderma | | Systemic Sclerosis / Progressive systemic sclerosis / Crest syndrome )",
+        "link": "scleroderma.htm"
+    },
+    {
+        "type": "Loss of Hair (Hair Loss / Alopecia )",
+        "link": "hair-loss.htm"
+    },
+    {
+        "type": "Loss of Memory (Memory Loss / Amnesia )",
+        "link": "amnesia.htm"
+    },
+    {
+        "type": "Loss of Smell (Anosmia )",
+        "link": "anosmia.htm"
+    },
+    {
+        "type": "Low Blood Oxygen - Hypoxemia (Hypoxemia )",
+        "link": "hypoxemia.htm"
+    },
+    {
+        "type": "Low Blood Pressure (Hypotension / Blood Pressure - Low Blood Pressure )",
+        "link": "low-blood-pressure.htm"
+    },
+    {
+        "type": "Low Blood Sugar in Diabetes (Hypoglycemia )",
+        "link": "hypoglycemia.htm"
+    },
+    {
+        "type": "Low Blood Sugar in Newborns (Neonatal Hypoglycemia )",
+        "link": "neonatal-hypoglycemia.htm"
+    },
+    {
+        "type": "Low Heamoglobin (Anemia )",
+        "link": "anemia.htm"
+    },
+    {
+        "type": "Low Platelet Count (Thrombocytopenia )",
+        "link": "thrombocytopenia.htm"
+    },
+    {
+        "type": "Low Potassium Levels: Hypokalemia (Hypokalemia )",
+        "link": "hypokalemia.htm"
+    },
+    {
+        "type": "Lumbar Radiculopathy (Sciatica )",
+        "link": "sciatica.htm"
+    },
+    {
+        "type": "Lumps in Breast (Breast Lumps )",
+        "link": "breast-lumps.htm"
+    },
+    {
+        "type": "Lung Cancer (Cancer of Lungs )",
+        "link": "lung-cancer.htm"
+    },
+    {
+        "type": "Lupoid Hepatitis (Autoimmune Disease of the Liver) (Autoimmune Hepatitis )",
+        "link": "autoimmune-hepatitis.htm"
+    },
+    {
+        "type": "Lupus Nephritis",
+        "link": "lupus-nephritis.htm"
+    },
+    {
+        "type": "Lyme Disease | Lyme Disease - A Ticking Tale",
+        "link": "lyme-disease.htm"
+    },
+    {
+        "type": "Lymphedema (Obstruction of Lymphatic System )",
+        "link": "lymphedema.htm"
+    },
+    {
+        "type": "Lymphoblastic Leukemia -Acute (Acute Lymphoblastic Leukemia)",
+        "link": "acute-lymphoblastic-leukemia.htm"
+    },
+    {
+        "type": "Lymphocytic Leukemia - Chronic (Chronic Lymphocytic Leukemia )",
+        "link": "chronic-lymphocytic-leukemia.htm"
+    },
+    {
+        "type": "Lymphoma - Non-Hodgkins (Non-Hodgkins Lymphoma )",
+        "link": "non-hodgkin-lymphoma.htm"
+    },
+    {
+        "type": "Learning Disorder - Dyslexia (Dyslexia )",
+        "link": "dyslexia.htm"
+    },
+    {
+        "type": "Leishmaniasis ( Kala-Azar , Dum-Dum Fever)",
+        "link": "leishmaniasis.htm"
+    },
+    {
+        "type": "Leukemia - Acute Myeloid (Myeloid Leukemia-Acute / Acute Myeloid Leukemia )",
+        "link": "acute_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Leprosy (Skin Disease - Leprosy / Hansen’s Disease )",
+        "link": "leprosy.htm"
+    },
+    {
+        "type": "Leptospirosis (Weil’s Disease )",
+        "link": "leptospirosis.htm"
+    },
+    {
+        "type": "Leukemia (Cancer of Blood / Blood Cancer )",
+        "link": "leukemia.htm"
+    },
+    {
+        "type": "Leucopenia | Leukocytopenia",
+        "link": "leucopenia.htm"
+    },
+    {
+        "type": "Leukemia - Hairy Cell Leukemia (Hairy Cell Leukemia )",
+        "link": "hairy-cell-leukemia.htm"
+    },
+    {
+        "type": "Life-threatening Complication of Diabetes - Diabetic ketoacidosis (DKA) (Diabetic Ketoacidosis )",
+        "link": "diabetic-ketoacidosis.htm"
+    },
+    {
+        "type": "Leukemia - Chronic Myeloid (Myeloid Leukemia - Chronic / Chronic Myeloid Leukemia | Chronic Myelocytic Leukemia )",
+        "link": "chronic_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Macular Degeneration (Age Related Macular Degeneration | Age-related Maculopath )",
+        "link": "age-related-macular-degeneration.htm"
+    },
+    {
+        "type": "Malaria - Detailed",
+        "link": "malaria.htm"
+    },
+    {
+        "type": "Malaria - Overview",
+        "link": "malaria.htm"
+    },
+    {
+        "type": "Male Breast Cancer (Breast Cancer in Males )",
+        "link": "male-breast-cancer.htm"
+    },
+    {
+        "type": "Male Menopause (Andropause )",
+        "link": "andropause.htm"
+    },
+    {
+        "type": "Malformation-Ano Rectal (Ano Rectal Malformation )",
+        "link": "ano-rectal-malformation.htm"
+    },
+    {
+        "type": "Management and Prevention of Alkalosis (Alkalosis )",
+        "link": "alkalosis.htm"
+    },
+    {
+        "type": "Management of Colo-rectal Cancer (Colo-rectal Cancer - Management )",
+        "link": "colorectal-cancer-management.htm"
+    },
+    {
+        "type": "Mandibular Fracture (Fractures of the Jaw / Broken Jaw )",
+        "link": "mandibular-fracture.htm"
+    },
+    {
+        "type": "Mastitis (Breast Infection )",
+        "link": "lacationmastitis.htm"
+    },
+    {
+        "type": "Mastocytosis (Rare Diseases - Excess Mast Cell Production )",
+        "link": "mastocytosis.htm"
+    },
+    {
+        "type": "Mastoiditis (Infection of Mastoid bone )",
+        "link": "mastoiditis.htm"
+    },
+    {
+        "type": "Measles (Rubeola | Red measles )",
+        "link": "measles.htm"
+    },
+    {
+        "type": "Medications Causing Dry Eye Disease (Dry Eye Disease- An Adverse Effect of Drugs / Drugs- A cause of Dry Eye Disease )",
+        "link": "medications-causing-dry-eye-disease.htm"
+    },
+    {
+        "type": "Medications for Mental disorders (Antipsychotic Medications )",
+        "link": "antipsychotic-medications.htm"
+    },
+    {
+        "type": "Mediterranean fever (Rock fever / Cyprus fever / Brucellosis )",
+        "link": "brucellosis.htm"
+    },
+    {
+        "type": "Megaloblastic Anemia (Anemia - Megaloblastic Anemia )",
+        "link": "megaloblastic-anemia.htm"
+    },
+    {
+        "type": "Meibomian Gland Lipogranuloma (Chalazion )",
+        "link": "chalazion.htm"
+    },
+    {
+        "type": "Melamine Adulteration in Milk and Milk Products | Melamine Toxicity and Kidney Failure (Kidney Failure due to Melamine Toxicity )",
+        "link": "kidney-failure-due-to-melamine-toxicity.htm"
+    },
+    {
+        "type": "Melanoma",
+        "link": "melanoma.htm"
+    },
+    {
+        "type": "Melasma (Chloasma Faciei )",
+        "link": "melasma.htm"
+    },
+    {
+        "type": "Melioidosis (Whitmore's disease )",
+        "link": "melioidosis.htm"
+    },
+    {
+        "type": "Memory Loss (Loss of Memory / Amnesia )",
+        "link": "amnesia.htm"
+    },
+    {
+        "type": "Meniere’s Disease",
+        "link": "menieres-disease.htm"
+    },
+    {
+        "type": "Meningitis",
+        "link": "meningitis.htm"
+    },
+    {
+        "type": "Meniscal Tears",
+        "link": "meniscal-tears.htm"
+    },
+    {
+        "type": "Menopause (What is Menopause? )",
+        "link": "what-is-menopause.htm"
+    },
+    {
+        "type": "Menorrhagia ( Heavy Menstrual Bleeding | Heavy Periods)",
+        "link": "menorrhagia.htm"
+    },
+    {
+        "type": "Menstrual Cramps (Dysmenorrhea )",
+        "link": "dysmenorrhea.htm"
+    },
+    {
+        "type": "Menstrual Cycle",
+        "link": "menstrual-cycle.htm"
+    },
+    {
+        "type": "Menstrual Migraine",
+        "link": "menstrual-migraine.htm"
+    },
+    {
+        "type": "Mental Disorder - Schizophrenia (Schizophrenia )",
+        "link": "schizophrenia.htm"
+    },
+    {
+        "type": "Mental Health - Neurosis vs Psychosis (Neurosis and Psychosis: Mental Illnesses )",
+        "link": "mental-health-neurosis-vs-psychosis.htm"
+    },
+    {
+        "type": "Mental Retardation (Intellectual disability )",
+        "link": "intellectual-disability.htm"
+    },
+    {
+        "type": "Merkel Cell Carcinoma (Trabecular Cancer / Neuroendocrine Cancer of the Skin )",
+        "link": "merkel-cell-carcinoma.htm"
+    },
+    {
+        "type": "Mesothelioma",
+        "link": "mesothelioma.htm"
+    },
+    {
+        "type": "Metabolic Defects-Birth Defects (Birth Defects-Metabolic)",
+        "link": "metabolicdefects.htm"
+    },
+    {
+        "type": "Metabolic Genetic Disorder - Porphyria (Porphyria )",
+        "link": "porphyria.htm"
+    },
+    {
+        "type": "Metabolic Syndrome",
+        "link": "metabolic-syndrome.htm"
+    },
+    {
+        "type": "Metformin - Diabetes Drug with New Therapeutic Uses (Therapeutic Indications of Metformin other than Diabetes )",
+        "link": "metformin-diabetes-drug-with-new-therapeutic-uses.htm"
+    },
+    {
+        "type": "Methods of Abortion (Termination of Pregnancy )",
+        "link": "methods-of-abortion.htm"
+    },
+    {
+        "type": "Microscopic Polyangiitis (MPA)",
+        "link": "microscopic-polyangiitis.htm"
+    },
+    {
+        "type": "Motion Sickness (Travel Sickness / Sea sickness | Space sickness / Kinetosis )",
+        "link": "motion-sickness.htm"
+    },
+    {
+        "type": "Motor Disorder | Motor Stereotypies (Stereotypic Movement Disorder (SMD) )",
+        "link": "stereotypic-movement-disorder.htm"
+    },
+    {
+        "type": "Mouth Blisters (Herpangina (Painful Mouth Infection) )",
+        "link": "herpangina.htm"
+    },
+    {
+        "type": "Mouth Cancer (Oral Cancer )",
+        "link": "oral-cancer.htm"
+    },
+    {
+        "type": "Mouth Ulcers (Oral Ulcers )",
+        "link": "mouth-ulcers.htm"
+    },
+    {
+        "type": "MRSA – The Super Bug ( Super Bug - MRSA)",
+        "link": "mrsa.htm"
+    },
+    {
+        "type": "Multi-drug therapy : Alert on Interactions! (Ten Common Drug-Drug interactions )",
+        "link": "ten-common-drug-drug-interactions.htm"
+    },
+    {
+        "type": "Multiple Drug Allergy Syndrome | Multiple Drug Hypersensitivity",
+        "link": "multiple-drug-allergy-syndrome.htm"
+    },
+    {
+        "type": "Multiple Myeloma ( Plasma Cell Myeloma)",
+        "link": "multiple-myeloma.htm"
+    },
+    {
+        "type": "Multiple Osteochondromas $@$ Hereditary Multiple Exostoses",
+        "link": "multiple-osteochondromas.htm"
+    },
+    {
+        "type": "Multiple Personality Disorder (What is Multiple Personality? / Dissociative Identity Disorder )",
+        "link": "dissociative-identity-disorder.htm"
+    },
+    {
+        "type": "Multiple Sclerosis",
+        "link": "multiple-sclerosis.htm"
+    },
+    {
+        "type": "Multiple Sclerosis - Treatment and Modify",
+        "link": "multiple-sclerosis-treatment-course-modification.htm"
+    },
+    {
+        "type": "Mumps",
+        "link": "mumps.htm"
+    },
+    {
+        "type": "Munchausen Syndrome (Hospital addiction syndrome | Hospital hopper syndrome $@$ Thick chart syndrome )",
+        "link": "munchausen-syndrome.htm"
+    },
+    {
+        "type": "Muscle Atrophy (Understanding Muscle Atrophy )",
+        "link": "muscle-atrophy.htm"
+    },
+    {
+        "type": "Muscle Twitching (Fasciculations )",
+        "link": "muscle-twitching.htm"
+    },
+    {
+        "type": "Muscular Dystrophy ( Duchenne )",
+        "link": "musculardystrophy.htm"
+    },
+    {
+        "type": "Mushroom Allergy (Allergy to Mushrooms )",
+        "link": "mushroom-allergy.htm"
+    },
+    {
+        "type": "Myasthenia Gravis",
+        "link": "myasthenia-gravis.htm"
+    },
+    {
+        "type": "Mycosis Fungoides (Alibert-Bazin Syndrome )",
+        "link": "mycosis-fungoides.htm"
+    },
+    {
+        "type": "Myeloid Leukemia - Chronic (Leukemia - Chronic Myeloid / Chronic Myeloid Leukemia | Chronic Myelocytic Leukemia )",
+        "link": "chronic_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Myeloid Leukemia-Acute (Leukemia - Acute Myeloid / Acute Myeloid Leukemia )",
+        "link": "acute_myeloid_leukemia.htm"
+    },
+    {
+        "type": "Myocarditis (Heart Disease - Myocarditis )",
+        "link": "myocarditis.htm"
+    },
+    {
+        "type": "Myotonic Dystrophy (Dystrophia Myotonica )",
+        "link": "myotonicdystrophy.htm"
+    },
+    {
+        "type": "Myths and Facts about Vitamins (Vitamins - Myths and Facts )",
+        "link": "vitamins-myths-and-facts.htm"
+    },
+    {
+        "type": "Myxoedema (Hypothyroidism )",
+        "link": "hypothyroidism.htm"
+    },
+    {
+        "type": "Middle Ear Infection (Otitis Media,Infection of Middle Ear)",
+        "link": "otitismedia.htm"
+    },
+    {
+        "type": "Mitral Valve Prolapse ( Ballooning Mitral Valve Syndrome , Floppy Valve Syndrome)",
+        "link": "mitral-valve-prolapse.htm"
+    },
+    {
+        "type": "Miscarriage (Spontaneous Abortion )",
+        "link": "miscarriage.htm"
+    },
+    {
+        "type": "Mitral Valve Regurgitation and Mitral Valve Replacement (Replacement of Mitral Valve Regurgitation and Mitral Valve )",
+        "link": "mitral-valve-regurgitation-replacement.htm"
+    },
+    {
+        "type": "Migraine - Headache (Headache - Migraine )",
+        "link": "what-is-migraine.htm"
+    },
+    {
+        "type": "Mosquito Diseases",
+        "link": "mosquito.htm"
+    },
+    {
+        "type": "Most Common Monsoon Diseases (Rainy Season Infections )",
+        "link": "most-common-monsoon-diseases.htm"
+    },
+    {
+        "type": "Monosodium Glutamate (MSG) Allergy (Intolerance to MSG / Chinese Restaurant Syndrome )",
+        "link": "monosodium-glutamate-allergy.htm"
+    },
+    {
+        "type": "Mosquito Disease - Filariasis (Filariasis )",
+        "link": "filariasis.htm"
+    },
+    {
+        "type": "Mood Swing Disorder (Bipolar Disorder )",
+        "link": "bipolar-disorder.htm"
+    },
+    {
+        "type": "Morton´s Neuroma",
+        "link": "mortons-neuroma.htm"
+    },
+    {
+        "type": "Naegleriasis (Brain-Eating Amoeba Infection)",
+        "link": "naegleriasis.htm"
+    },
+    {
+        "type": "Narcissistic Personality Disorder",
+        "link": "narcissistic-personality-disorder.htm"
+    },
+    {
+        "type": "Nasal Polyps (What You Ought to Know about Nasal Polyp )",
+        "link": "nasal-polyp.htm"
+    },
+    {
+        "type": "Neck Pain (Stiff Neck / Cervicalgia )",
+        "link": "neck-pain.htm"
+    },
+    {
+        "type": "Neck Sprain (Whiplash | Whiplash-associated disorders / Cervical Acceleration-deceleration / Acceleration Flexion-Extension Neck Injury )",
+        "link": "whiplash.htm"
+    },
+    {
+        "type": "Necrotising Enterocolitis",
+        "link": "necrotising-enterocolitis.htm"
+    },
+    {
+        "type": "Necrotizing Fasciitis (NF) (Flesh-Eating Disease - A rare, Life-threatening Bacterial Infection )",
+        "link": "necrotizing-fasciitis-flesh-eating-disease.htm"
+    },
+    {
+        "type": "Neonatal Hepatitis (Hepatitis in Babies )",
+        "link": "neonatal-hepatitis.htm"
+    },
+    {
+        "type": "Neonatal Hypoglycemia (Low Blood Sugar in Newborns )",
+        "link": "neonatal-hypoglycemia.htm"
+    },
+    {
+        "type": "Neonatal Resuscitation",
+        "link": "neonatal-resuscitation.htm"
+    },
+    {
+        "type": "Nephrotic Syndrome (Glomerulonephritis )",
+        "link": "glomerulonephritis.htm"
+    },
+    {
+        "type": "Nephrotic Syndrome in Childhood (Childhood Nephrotic Syndrome )",
+        "link": "childhood-nephrotic-syndrome.htm"
+    },
+    {
+        "type": "Nerve Disorders – Diabetes (Diabetic Neuropathy )",
+        "link": "diabetic-neuropathy.htm"
+    },
+    {
+        "type": "Nervous Tic (Trigeminal Neuralgia )",
+        "link": "nervoustic.htm"
+    },
+    {
+        "type": "Neural Tube Defects (Structural Birth Defects of the Brain and Spinal Cord )",
+        "link": "neural-tube-defects.htm"
+    },
+    {
+        "type": "Neurocysticercosis (Cysticercosis of Brain )",
+        "link": "neurocysticercosis.htm"
+    },
+    {
+        "type": "Neuroendocrine Cancer of the Skin (Trabecular Cancer / Merkel Cell Carcinoma )",
+        "link": "merkel-cell-carcinoma.htm"
+    },
+    {
+        "type": "Neurofibromatosis Type 1 (Von Recklinghausen’s Disease )",
+        "link": "von-recklinghausens-disease.htm"
+    },
+    {
+        "type": "Neurogenic Bladder (Dysfunction of the Urinary Bladder )",
+        "link": "neurogenic-bladder.htm"
+    },
+    {
+        "type": "Neuropathic Pain - Allodynia (Allodynia )",
+        "link": "allodynia-pain.htm"
+    },
+    {
+        "type": "Neurosis and Psychosis: Mental Illnesses (Mental Health - Neurosis vs Psychosis )",
+        "link": "mental-health-neurosis-vs-psychosis.htm"
+    },
+    {
+        "type": "Neutropenia (Understanding Neutropenia )",
+        "link": "neutropenia.htm"
+    },
+    {
+        "type": "New Treatments for Hepatitis C (Hepatitis C - New Treatments )",
+        "link": "new-treatments-for-hepatitis-c.htm"
+    },
+    {
+        "type": "Nocturnal Leg Cramps",
+        "link": "nocturnal-leg-cramps-about.htm"
+    },
+    {
+        "type": "Nodding Syndrome | Nodding Disease",
+        "link": "nodding-syndrome.htm"
+    },
+    {
+        "type": "Non alcoholic fatty liver disease (NFALD) - A Growing Health Problem in India (Fatty Liver Disease: A Growing Health Problem in India )",
+        "link": "fatty-liver-disease.htm"
+    },
+    {
+        "type": "Non-Hodgkins Lymphoma (Lymphoma - Non-Hodgkins )",
+        "link": "non-hodgkin-lymphoma.htm"
+    },
+    {
+        "type": "Non-Insulin-Dependent Diabetes Mellitus (NIDDM) (Type 2 Diabetes , Diabetes - Type 2 , Adult-Onset Diabetes)",
+        "link": "type-2-diabetes.htm"
+    },
+    {
+        "type": "Noonan Syndrome",
+        "link": "noonan-syndrome.htm"
+    },
+    {
+        "type": "Nootropics - Improve Cognitive Functions - OR Brain boosters - Smart Drugs (Smart Drugs )",
+        "link": "smart-drugs.htm"
+    },
+    {
+        "type": "Nosebleed (Epistaxis / Bleedingnose )",
+        "link": "nosebleed.htm"
+    },
+    {
+        "type": "Nosocomial Infections (Hospital Acquired Infections )",
+        "link": "hospital-acquired-infections.htm"
+    },
+    {
+        "type": "Nystagmus (Jerky Eyes / Dancing Eyes )",
+        "link": "nystagmus.htm"
+    },
+    {
+        "type": "Osteogenesis Imperfecta (Lobstein Syndrome )",
+        "link": "osteogenesisimperfecta.htm"
+    },
+    {
+        "type": "Obesity",
+        "link": "obesity.htm"
+    },
+    {
+        "type": "Obesity during Pregnancy: Know the Risks",
+        "link": "obesity-during-pregnancy-know-the-risks.htm"
+    },
+    {
+        "type": "Obsessive Compulsive Disorder",
+        "link": "obsessive-compulsive-disorder.htm"
+    },
+    {
+        "type": "Obstetric Fistula",
+        "link": "obstetric-fistula.htm"
+    },
+    {
+        "type": "Obstruction of Lymphatic System (Lymphedema )",
+        "link": "lymphedema.htm"
+    },
+    {
+        "type": "Ocular Hypertension",
+        "link": "ocular-hypertension.htm"
+    },
+    {
+        "type": "Ocular Infections (Eye Infections )",
+        "link": "eye-infections.htm"
+    },
+    {
+        "type": "Ocular Migraine (Retinal Migraine )",
+        "link": "ocular-migraine.htm"
+    },
+    {
+        "type": "Oligoarthritis ( Arthritis In Children , Childhood Arthritis , Juvenile Arthritis )",
+        "link": "oligoarthritis.htm"
+    },
+    {
+        "type": "Optic Neuritis",
+        "link": "optic-neuritis.htm"
+    },
+    {
+        "type": "Oral Cancer (Mouth Cancer )",
+        "link": "oral-cancer.htm"
+    },
+    {
+        "type": "Oral Health: The First Reflector of AIDS (AIDS and Oral Health )",
+        "link": "oralhealthandaids.htm"
+    },
+    {
+        "type": "Oral Malodor (Halitosis , Bad Breath)",
+        "link": "halitosis.htm"
+    },
+    {
+        "type": "Oral Ulcers (Mouth Ulcers )",
+        "link": "mouth-ulcers.htm"
+    },
+    {
+        "type": "Organ Transplantation - Kidney (Kidney Transplantation )",
+        "link": "kidneytransplantation.htm"
+    },
+    {
+        "type": "Organ Transplantation - Liver (Transplant Surgery - Liver Transplant / Liver Transplantation )",
+        "link": "liver-transplantation.htm"
+    },
+    {
+        "type": "Organophosphorus Poisoning (Poisoning of Organophosphorus )",
+        "link": "organophosphorus-poisoning.htm"
+    },
+    {
+        "type": "Ormond´s Disease (Retroperitoneal Fibrosis )",
+        "link": "retroperitoneal-fibrosis.htm"
+    },
+    {
+        "type": "Oropharyngeal Cancer (Cancer- Oropharyngeal Cancer of the Head and Neck )",
+        "link": "oropharyngeal-cancer.htm"
+    },
+    {
+        "type": "Osseous Metastatic Disease (Cancer: Bone Metastasis / Bone Metastases )",
+        "link": "bone-metastases.htm"
+    },
+    {
+        "type": "Osteoarthritis (Osteoarthrosis | Osteoarthrosis )",
+        "link": "osteoarthritis-about.htm"
+    },
+    {
+        "type": "Osteoarthrosis | Osteoarthrosis (Osteoarthritis )",
+        "link": "osteoarthritis-about.htm"
+    },
+    {
+        "type": "Otitis Media (Middle Ear Infection,Infection of Middle Ear)",
+        "link": "otitismedia.htm"
+    },
+    {
+        "type": "Osteopenia (Decreased Bone Density )",
+        "link": "osteopenia.htm"
+    },
+    {
+        "type": "Osteoporosis",
+        "link": "osteoporosis-about.htm"
+    },
+    {
+        "type": "Osteosarcoma",
+        "link": "osteosarcoma.htm"
+    },
+    {
+        "type": "Ototoxicity (Ear Poisoning )",
+        "link": "ototoxicity.htm"
+    },
+    {
+        "type": "Ovarian Hyper Stimulation Syndrome (OHSS) (Fertility Drug Effects: Ovarian Hyper Stimulation Syndrome )",
+        "link": "ovarian-hyper-stimulation-syndrome.htm"
+    },
+    {
+        "type": "Overactive Thyroid (Hyperthyroidism )",
+        "link": "hyperthyroidism.htm"
+    },
+    {
+        "type": "Ovarian Cysts",
+        "link": "ovarian-cysts.htm"
+    },
+    {
+        "type": "Overbreathing (Hyperventilation , Rapid deep breathing)",
+        "link": "hyperventilation.htm"
+    },
+    {
+        "type": "Otosclerosis (Hearing Loss due to Otosclerosis )",
+        "link": "otosclerosis.htm"
+    },
+    {
+        "type": "Ovarian Cancer (Cancer in the Ovaries )",
+        "link": "ovarian-cancer.htm"
+    },
+    {
+        "type": "Paediatric Osteomalacia (Rickets )",
+        "link": "rickets.htm"
+    },
+    {
+        "type": "Paediatrics - Bedwetting in Children (Bedwetting in Children - Paediatrics )",
+        "link": "eneuresis.htm"
+    },
+    {
+        "type": "Pagets And Jaw Bone Diseases (Jaw Bone Diseases And Pagets )",
+        "link": "pagets.htm"
+    },
+    {
+        "type": "Pagets disease of the breast (Breast and Pagets Disease )",
+        "link": "pagetsdisease.htm"
+    },
+    {
+        "type": "Pahvant Valley Plague (Tularemia / Rabbit Fever / Deer Fly Fever )",
+        "link": "tularemia.htm"
+    },
+    {
+        "type": "Pain During Cancer Treatment (Cancer Pain )",
+        "link": "cancer-pain.htm"
+    },
+    {
+        "type": "Pancreas Transplantation (Transplantation - Pancreas Transplantation )",
+        "link": "pancreas-transplantation.htm"
+    },
+    {
+        "type": "Pancreatic Cancer (Cancer of Pancreas )",
+        "link": "pancreatic-cancer.htm"
+    },
+    {
+        "type": "Pancreatitis",
+        "link": "pancreatitis.htm"
+    },
+    {
+        "type": "Panic Attack (Anxiety Attack )",
+        "link": "anxiety-attack.htm"
+    },
+    {
+        "type": "Papillary Thyroid Cancer",
+        "link": "papillary-thyroid-cancer.htm"
+    },
+    {
+        "type": "Parasitic Hookworm Infection (Hookworm Infection )",
+        "link": "hookworm-infection.htm"
+    },
+    {
+        "type": "Parkinson’s Disease (Idiopathic Parkinsonism )",
+        "link": "Parkinsonsdisease.htm"
+    },
+    {
+        "type": "Partial Seizures (Focal Seizures | Focal Aware Seizures )",
+        "link": "focal-seizures-or-partial-seizures.htm"
+    },
+    {
+        "type": "Patella Fracture (Knee Cap Fracture / Fracture of Knee Cap )",
+        "link": "fracture-of-knee-cap.htm"
+    },
+    {
+        "type": "Patellofemoral Pain Syndrome (Runner’s Knee )",
+        "link": "runners-knee.htm"
+    },
+    {
+        "type": "Patent Ductus Arteriosus",
+        "link": "patent-ductus-arteriosus.htm"
+    },
+    {
+        "type": "Pediatric Brain Tumor (Brain Tumor in Children )",
+        "link": "brain-tumor-in-children.htm"
+    },
+    {
+        "type": "Pediatric Hypertension (High Blood Pressure in Children )",
+        "link": "pediatric-hypertension.htm"
+    },
+    {
+        "type": "Pelvic Floor Disorders (Disorders of the Pelvic Floor )",
+        "link": "pelvic-floor-disorders.htm"
+    },
+    {
+        "type": "Pelvic Inflammatory Disorder (What You Need to Know about Pelvic Inflammatory Disorder )",
+        "link": "pelvic-inflammatory-disorder.htm"
+    },
+    {
+        "type": "Pelvic Pain in Women ( Women’s Pelvic Pain)",
+        "link": "pelvic-pain-in-women.htm"
+    },
+    {
+        "type": "Pemphigus",
+        "link": "pemphigus.htm"
+    },
+    {
+        "type": "Penile Cancer (Cancer of the Penis )",
+        "link": "penile-cancer.htm"
+    },
+    {
+        "type": "Peptic Ulcer (Ulcer Peptic)",
+        "link": "pepticulcer.htm"
+    },
+    {
+        "type": "Peptic Ulcer Disease (Acid Peptic Disease )",
+        "link": "acid-peptic-disease.htm"
+    },
+    {
+        "type": "Percutaneous Transluminal Coronary Angioplasty (Coronary Angioplasty | Coronary Balloon Angioplasty )",
+        "link": "coronary-balloon-angioplasty.htm"
+    },
+    {
+        "type": "Periodontitis| Periodontal Gingivitis",
+        "link": "periodontitis.htm"
+    },
+    {
+        "type": "Peripheral Artery Disease (What is Peripheral arterial disease and how do you treat it? )",
+        "link": "peripheral-artery-disease.htm"
+    },
+    {
+        "type": "Peripheral Neuropathy (What is Peripheral Neuropathy? )",
+        "link": "peripheral-neuropathy.htm"
+    },
+    {
+        "type": "Peritoneal Cancer (Cancer of Peritoneal Cavity )",
+        "link": "peritoneal-cancer.htm"
+    },
+    {
+        "type": "Peritonitis (Inflammation and Infection of the Peritoneum and its Complications )",
+        "link": "peritonitis.htm"
+    },
+    {
+        "type": "Persistent Depressive Disorder (Dysthymia / Chronic Depression )",
+        "link": "dysthymia.htm"
+    },
+    {
+        "type": "Personality Disorder",
+        "link": "personality-disorder.htm"
+    },
+    {
+        "type": "Pertussis (Whooping Cough )",
+        "link": "whooping-cough.htm"
+    },
+    {
+        "type": "Pes Planus (Flat Feet / Fallen Arch )",
+        "link": "flat-feet.htm"
+    },
+    {
+        "type": "Peyronie´s Disease (Indurations Plastica Penis )",
+        "link": "peyronies-disease.htm"
+    },
+    {
+        "type": "Pfeiffer’s disease (Infectious Mononucleosis , EBV Infectious Mononucleosis , Filatov’s disease)",
+        "link": "infectious-mononucleosis.htm"
+    },
+    {
+        "type": "Pharyngeal Cancer $@$ Throat Cancer",
+        "link": "pharyngeal-cancer.htm"
+    },
+    {
+        "type": "Pheochromocytoma (Adrenal Gland Tumor )",
+        "link": "pheochromocytoma.htm"
+    },
+    {
+        "type": "Phimosis (Tight Foreskin )",
+        "link": "phimosis.htm"
+    },
+    {
+        "type": "Phobias (Excessive Fear (Phobias - Specific and Social) )",
+        "link": "phobias.htm"
+    },
+    {
+        "type": "Pig Flu (Swine Flu | Swine Influenza / Hog Flu )",
+        "link": "swine-flu.htm"
+    },
+    {
+        "type": "Pigmentation Disorders (Skin Pigmentation Disorders )",
+        "link": "skin-pigmentation-disorders.htm"
+    },
+    {
+        "type": "Piles (Hemorrhoids )",
+        "link": "hemorrhoids.htm"
+    },
+    {
+        "type": "Pink Eye (Conjunctivitis )",
+        "link": "conjunctivitis.htm"
+    },
+    {
+        "type": "Pinworm Infection (Thread worm Infection )",
+        "link": "pinworm-infection.htm"
+    },
+    {
+        "type": "Pituitary Tumors (Living with Pituitary Tumors )",
+        "link": "pituitary-tumors.htm"
+    },
+    {
+        "type": "Pityriasis Rosea",
+        "link": "pityriasis-rosea.htm"
+    },
+    {
+        "type": "Pneumoconiosis",
+        "link": "pneumoconiosis.htm"
+    },
+    {
+        "type": "Pneumonia",
+        "link": "pneumonia.htm"
+    },
+    {
+        "type": "Poor Blood Circulation (Warning Signs of Poor Blood Circulation )",
+        "link": "poor-blood-circulation.htm"
+    },
+    {
+        "type": "Porphyria (Metabolic Genetic Disorder - Porphyria )",
+        "link": "porphyria.htm"
+    },
+    {
+        "type": "Portal Hypertension",
+        "link": "portal-hypertension.htm"
+    },
+    {
+        "type": "Post Herpetic Neuralgia (Shingles , Herpes Zoster,Chicken pox shingles)",
+        "link": "shingles.htm"
+    },
+    {
+        "type": "Post Traumatic Stress Disorder (PTSD)",
+        "link": "post-traumatic-stress-disorder.htm"
+    },
+    {
+        "type": "Post-Nasal Drip (What You Ought to Know about Post-Nasal Drip )",
+        "link": "post-nasal-drip.htm"
+    },
+    {
+        "type": "Postherpetic Neuralgia",
+        "link": "postherpetic-neuralgia.htm"
+    },
+    {
+        "type": "Postpartum Hemorrhage (Hemorrhaging Post-Childbirth / Bleeding after Delivery | Blood Loss Post-Labor )",
+        "link": "postpartum-hemorrhage.htm"
+    },
+    {
+        "type": "Pre-Cancerous Lesions",
+        "link": "precancerouslesions.htm"
+    },
+    {
+        "type": "Precocious Puberty | Premature Puberty",
+        "link": "precocious-puberty.htm"
+    },
+    {
+        "type": "Pregnancy - Anemia (Anemia in Pregnancy )",
+        "link": "anemia-in-pregnancy.htm"
+    },
+    {
+        "type": "Pregnancy - Ectopic (Ectopic Pregnancy )",
+        "link": "ectopicpregnancy.htm"
+    },
+    {
+        "type": "Pregnancy and AIDS (AIDS and Pregnancy)",
+        "link": "aids-and-pregnancy.htm"
+    },
+    {
+        "type": "Pregnancy and Breast Cancer Management (Breast Cancer during Pregnancy )",
+        "link": "breast-cancer-during-pregnancy.htm"
+    },
+    {
+        "type": "Pregnancy and Epilepsy (Seizures During Pregnancy / Pregnancy and Seizures / Epilepsy During Pregnancy )",
+        "link": "epilepsy-during-pregnancy.htm"
+    },
+    {
+        "type": "Pregnancy and Seizures (Seizures During Pregnancy / Pregnancy and Epilepsy / Epilepsy During Pregnancy )",
+        "link": "epilepsy-during-pregnancy.htm"
+    },
+    {
+        "type": "Pregnancy Labor (Labor and Delivery )",
+        "link": "labor.htm"
+    },
+    {
+        "type": "Pregnancy Related Urinary Tract Infection – Complete Information (Urinary Tract Infection During Pregnancy )",
+        "link": "urinary-tract-infection-during-pregnancy.htm"
+    },
+    {
+        "type": "Premature Ejaculation (PE) (Ejaculation - Premature )",
+        "link": "premature-ejaculation.htm"
+    },
+    {
+        "type": "Premenstrual Syndrome (PMS)",
+        "link": "premenstrual-syndrome.htm"
+    },
+    {
+        "type": "Prevention of Kidney Disease (Kidney Disease Prevention )",
+        "link": "prevention-of-kidney-disease.htm"
+    },
+    {
+        "type": "Priapism",
+        "link": "priapism.htm"
+    },
+    {
+        "type": "Primary Amenorrhea",
+        "link": "primary-amenorrhea.htm"
+    },
+    {
+        "type": "Principal Side Effects of Abortion Pills You Need to Know (Side Effects of Abortion Pills )",
+        "link": "principal-side-effects-of-abortion-pills-you-need-to-know.htm"
+    },
+    {
+        "type": "Problems in Voice Production (Voice Disorders )",
+        "link": "voice-disorders.htm"
+    },
+    {
+        "type": "Progressive systemic sclerosis (Scleroderma | | Systemic Sclerosis / Localized scleroderma / Crest syndrome )",
+        "link": "scleroderma.htm"
+    },
+    {
+        "type": "Prolactin Hormone - Effects of High Levels on Womens Health (Hyperprolactinemia )",
+        "link": "hyperprolactinemia.htm"
+    },
+    {
+        "type": "Prostate  Biopsy (Biopsy of Prostate)",
+        "link": "biopsyprostate.htm"
+    },
+    {
+        "type": "Prostate Cancer (Cancer of Prostate )",
+        "link": "prostate-cancer.htm"
+    },
+    {
+        "type": "Proximal  Distal Renal Tubular Acidosis (RTA) (Renal Tubular Acidosis (RTA) )",
+        "link": "renal-tubular-acidosis.htm"
+    },
+    {
+        "type": "Pruritus (Itchy Armpits )",
+        "link": "itchy-armpits.htm"
+    },
+    {
+        "type": "Pruritus (Itchy Skin )",
+        "link": "itchy-skin.htm"
+    },
+    {
+        "type": "Psoriasis (Skin Disease - Psoriasis )",
+        "link": "psoriasis.htm"
+    },
+    {
+        "type": "Psoriasis of the Scalp (Scalp Psoriasis )",
+        "link": "scalp-psoriasis.htm"
+    },
+    {
+        "type": "Psoriatic Arthritis (Skin Psoriasis and Arthritis )",
+        "link": "psoriatic-arthritis.htm"
+    },
+    {
+        "type": "Psychiatric Disorder - Bibliomania (Bibliomania | Bibliokleptomania - A Psychiatric Disorder )",
+        "link": "bibliomania.htm"
+    },
+    {
+        "type": "Psychoactive Substances (Substance Abuse - Drug Abuse )",
+        "link": "drugabuse.htm"
+    },
+    {
+        "type": "Psychological Changes In Pregnancy | Pregnancy - Psychological Changes",
+        "link": "psychological-changes-in-pregnancy.htm"
+    },
+    {
+        "type": "Psychotherapy (Talk Therapy - How Does Psychotherapy Work? )",
+        "link": "psychotherapy.htm"
+    },
+    {
+        "type": "Pulmonary Arterial Hypertension",
+        "link": "pulmonary-arterial-hypertension.htm"
+    },
+    {
+        "type": "Pulmonary Edema (Things You Need to Know about Pulmonary Edema )",
+        "link": "pulmonary-edema.htm"
+    },
+    {
+        "type": "Pulmonary Embolism",
+        "link": "pulmonary-embolism.htm"
+    },
+    {
+        "type": "Pulmonary Fibrosis (Fibrosis of Lung )",
+        "link": "pulmonary-fibrosis.htm"
+    },
+    {
+        "type": "Pulmonary Lung TB (Tuberculosis )",
+        "link": "tuberculosis.htm"
+    },
+    {
+        "type": "Pyelonephritis (Acute pyelonephritis, Kidney infection )",
+        "link": "pyelonephritis.htm"
+    },
+    {
+        "type": "Painful Bladder Syndrome (PBS) (Interstitial Cystitis,Bladder Pain Syndrome,Hypersensitive Bladder Syndrome)",
+        "link": "interstitial-cystitis.htm"
+    },
+    {
+        "type": "Palpitations And Arrhythmias ( Arrhythmias And Palpitations)",
+        "link": "palpitations-arrhythmias.htm"
+    },
+    {
+        "type": "Pleural Effusion",
+        "link": "pleural-effusion.htm"
+    },
+    {
+        "type": "Plasma Cell Myeloma (Multiple Myeloma )",
+        "link": "multiple-myeloma.htm"
+    },
+    {
+        "type": "Poisoning - Arsenic (Arsenic Poisoning )",
+        "link": "arsenic-poisoning.htm"
+    },
+    {
+        "type": "Pollen Allergy (Spring Allergy )",
+        "link": "spring-allergy.htm"
+    },
+    {
+        "type": "Plantar Fasciitis (Heel Bone Pain )",
+        "link": "plantar-fasciitis.htm"
+    },
+    {
+        "type": "Poisoning of Organophosphorus (Organophosphorus Poisoning )",
+        "link": "organophosphorus-poisoning.htm"
+    },
+    {
+        "type": "Placental Chorioangioma (Chorioangioma )",
+        "link": "chorioangioma.htm"
+    },
+    {
+        "type": "Poliomyelitis | Polio",
+        "link": "poliomyelitis.htm"
+    },
+    {
+        "type": "Pleurisy",
+        "link": "pleurisy.htm"
+    },
+    {
+        "type": "Polymyalgia Rheumatica (What Should You Know about Polymyalgia Rheumatica? )",
+        "link": "polymyalgia-rheumatica.htm"
+    },
+    {
+        "type": "Pompe Disease (Glycogen Storage Disease Type II / Acid Maltase Deficiency )",
+        "link": "pompe-disease.htm"
+    },
+    {
+        "type": "Polymyositis",
+        "link": "polymyositis.htm"
+    },
+    {
+        "type": "Polyuria (What Should You Know about Polyuria? )",
+        "link": "polyuria.htm"
+    },
+    {
+        "type": "Pain in the Tooth (Toothache / Aching Tooth )",
+        "link": "toothache.htm"
+    },
+    {
+        "type": "Polyhydramnios",
+        "link": "polyhydramnios.htm"
+    },
+    {
+        "type": "Pain Management During Labor (Labor Pain Management and Pharmacologic Agents )",
+        "link": "pain-management-during-labor.htm"
+    },
+    {
+        "type": "Polyarteritis Nodosa",
+        "link": "polyarteritis-nodosa.htm"
+    },
+    {
+        "type": "Polycystic ovary disease (Polycystic Ovarian Syndrome )",
+        "link": "polycystic_ovarian_syndrome.htm"
+    },
+    {
+        "type": "Pain of the Vulva (Vulvodynia )",
+        "link": "vulvodynia.htm"
+    },
+    {
+        "type": "Polycystic Ovarian Syndrome ( Polycystic ovary disease)",
+        "link": "polycystic_ovarian_syndrome.htm"
+    },
+    {
+        "type": "Quie Syndrome (Chronic Granulomatous Disease | Chronic Granulomatous Disorder , Bridges–Good Syndrome )",
+        "link": "chronic-granulomatous-disease.htm"
+    },
+    {
+        "type": "Rabbit Fever (Tularemia / Pahvant Valley Plague / Deer Fly Fever )",
+        "link": "tularemia.htm"
+    },
+    {
+        "type": "Rabies",
+        "link": "rabies.htm"
+    },
+    {
+        "type": "Radiation Hazards and its Effects on Human Body (Hazards of Radiation and its Effects on HumanBody )",
+        "link": "radiation-hazards.htm"
+    },
+    {
+        "type": "Radiofrequency Ablation for Liver Cancer Tumors",
+        "link": "radiofrequency-ablation-for-liver-cancer-tumors.htm"
+    },
+    {
+        "type": "Radiotherapy",
+        "link": "radiotherapy.htm"
+    },
+    {
+        "type": "Rainy Season Infections (Most Common Monsoon Diseases )",
+        "link": "most-common-monsoon-diseases.htm"
+    },
+    {
+        "type": "Rapid deep breathing (Hyperventilation , Overbreathing )",
+        "link": "hyperventilation.htm"
+    },
+    {
+        "type": "Rare Childhood Epilepsy Disorder - Dravet Syndrome (Dravet Syndrome )",
+        "link": "dravet-syndrome.htm"
+    },
+    {
+        "type": "Rare Diseases - Excess Mast Cell Production (Mastocytosis )",
+        "link": "mastocytosis.htm"
+    },
+    {
+        "type": "Rare Inflammatory Disorder - Behcet’s Syndrome (Behcet’s Syndrome | Behcet’s Disease )",
+        "link": "behcets-syndrome.htm"
+    },
+    {
+        "type": "Rare Skin Conditions - Sweet's Syndrome (Sweet's Syndrome )",
+        "link": "sweets-syndrome.htm"
+    },
+    {
+        "type": "Rashes (Skin Disease - Rashes )",
+        "link": "rashes.htm"
+    },
+    {
+        "type": "Receding Gums (Gum Recession | Gingival Recession )",
+        "link": "gum-recession.htm"
+    },
+    {
+        "type": "Recurrent Herpes Labialis (Herpes Labialis / Fever Blisters / Cold Sores )",
+        "link": "general-info-about-cold-sores.htm"
+    },
+    {
+        "type": "Reflux Esophagitis",
+        "link": "refluxesophagitis.htm"
+    },
+    {
+        "type": "Regenerative Medicine - Stem Cell Therapy - Current Perspectives (Stem Cell Therapy - Basics )",
+        "link": "stem-cell-therapy.htm"
+    },
+    {
+        "type": "Regional Enteritis (Crohn’s Disease )",
+        "link": "crohns-disease.htm"
+    },
+    {
+        "type": "Remedies for Seasonal Allergy Relief (Seasonal Allergy Relief - Remedies )",
+        "link": "remedies-for-seasonal-allergy-relief.htm"
+    },
+    {
+        "type": "Renal Cell Carcinoma | Renal Cancer (Kidney Cancer / Hypernephroma / Adenocarcinoma of Renal Cells )",
+        "link": "renal-cell-carcinoma.htm"
+    },
+    {
+        "type": "Renal Ectopia (Ectopic Kidney )",
+        "link": "ectopic-kidney.htm"
+    },
+    {
+        "type": "Renal Failure - Chronic (Chronic Renal Failure (CRF) )",
+        "link": "chronic-renal-failure.htm"
+    },
+    {
+        "type": "Renal Failure-Acute (Acute Renal Failure )",
+        "link": "acute-renal-failure.htm"
+    },
+    {
+        "type": "Renal Glycosuria (Glycosuria )",
+        "link": "glycosuria.htm"
+    },
+    {
+        "type": "Renal Stones (Stones in Kidney / Kidney Stones )",
+        "link": "kidneystones.htm"
+    },
+    {
+        "type": "Renal Tuberculosis (Tuberculosis of the Kidney )",
+        "link": "renal-tuberculosis.htm"
+    },
+    {
+        "type": "Rheumatic Heart Disease (RHD)",
+        "link": "rheumatic-heart-disease.htm"
+    },
+    {
+        "type": "Rheumatoid Arthritis (Arthritis - Rheumatoid Arthritis )",
+        "link": "rheumatoid-arthritis.htm"
+    },
+    {
+        "type": "Rock fever (Mediterranean fever / Cyprus fever / Brucellosis )",
+        "link": "brucellosis.htm"
+    },
+    {
+        "type": "Rocky Mountain Spotted Fever (Understanding Rocky Mountain Spotted Fever )",
+        "link": "rocky-mountain-spotted-fever.htm"
+    },
+    {
+        "type": "Rodent Ulcer (Basal Cell Cancer of the Skin | Basal Cell Carcinoma , Tear Cancer)",
+        "link": "basal-cell-cancer-of-the-skin.htm"
+    },
+    {
+        "type": "Rosacea",
+        "link": "rosacea.htm"
+    },
+    {
+        "type": "Rubeola | Red measles (Measles )",
+        "link": "measles.htm"
+    },
+    {
+        "type": "Runner’s Knee (Patellofemoral Pain Syndrome )",
+        "link": "runners-knee.htm"
+    },
+    {
+        "type": "Rhabdomyosarcoma",
+        "link": "rhabdomyosarcoma.htm"
+    },
+    {
+        "type": "Retroperitoneal Fibrosis (Ormond´s Disease )",
+        "link": "retroperitoneal-fibrosis.htm"
+    },
+    {
+        "type": "River Blindness (What You Ought to Know About Onchocerciasis )",
+        "link": "onchocerciasis.htm"
+    },
+    {
+        "type": "Risks in Living Donor Hepatectomy (Living Donor Liver Transplant: What Are the Risks? )",
+        "link": "living-donor-liver-transplant-what-are-the-risks.htm"
+    },
+    {
+        "type": "Rheumatic Fever",
+        "link": "rheumatic-fever.htm"
+    },
+    {
+        "type": "Recent Advances in the Management of Breast Cancer (Breast Cancer Management: Recent Advances)",
+        "link": "breast-cancer-management-advances-recent.htm"
+    },
+    {
+        "type": "Respiratory Distress Syndrome (Acute Respiratory Distress Syndrome (ARDS))",
+        "link": "respiratory-distress-syndrome.htm"
+    },
+    {
+        "type": "Retinoblastoma (Eye Cancer - Retinoblastoma )",
+        "link": "retinoblastoma.htm"
+    },
+    {
+        "type": "Respiratory insufficiency (Chronic Lung Disease of Neonates - Facts and Management / Bronchopulmonary Dysplasia )",
+        "link": "bronchopulmonary-dysplasia-or-respiratory-insufficiency.htm"
+    },
+    {
+        "type": "Retinal Migraine (Ocular Migraine )",
+        "link": "ocular-migraine.htm"
+    },
+    {
+        "type": "Rhinoplasty",
+        "link": "rhinoplasty.htm"
+    },
+    {
+        "type": "Rickets ( Paediatric Osteomalacia )",
+        "link": "rickets.htm"
+    },
+    {
+        "type": "Ringworm (Tinea / Dermatophytosis )",
+        "link": "ringworm.htm"
+    },
+    {
+        "type": "Respiratory Diseases",
+        "link": "respiratory_diseases.htm"
+    },
+    {
+        "type": "Replacement of Mitral Valve Regurgitation and Mitral Valve (Mitral Valve Regurgitation and Mitral Valve Replacement )",
+        "link": "mitral-valve-regurgitation-replacement.htm"
+    },
+    {
+        "type": "Renal Tubular Acidosis (RTA) (Proximal  Distal Renal Tubular Acidosis (RTA) )",
+        "link": "renal-tubular-acidosis.htm"
+    },
+    {
+        "type": "Stiff Neck (Neck Pain / Cervicalgia )",
+        "link": "neck-pain.htm"
+    },
+    {
+        "type": "Stiff Neck (Wryneck / Torticollis / Cervical Dystonia )",
+        "link": "torticollis.htm"
+    },
+    {
+        "type": "Sacroiliac Joint Dysfunction | Sacroiliac Joint Pain (SI Joint Pain) | Sacroiliitis",
+        "link": "sacroiliac-joint-dysfunction.htm"
+    },
+    {
+        "type": "Salivary Gland Cancer ( Cancer of Salivary Gland)",
+        "link": "salivary-gland-cancer.htm"
+    },
+    {
+        "type": "Salmonella Enteritis  (Salmonellosis )",
+        "link": "salmonellosis.htm"
+    },
+    {
+        "type": "Salmonellosis ( Salmonella Enteritis )",
+        "link": "salmonellosis.htm"
+    },
+    {
+        "type": "Sarcoidosis ( Besnier - Boeck disease)",
+        "link": "sarcoidosis.htm"
+    },
+    {
+        "type": "Sexual Disease - Chlamydia Trachomatis (Chlamydia Trachomatis )",
+        "link": "chlamydia-trachomatis.htm"
+    },
+    {
+        "type": "Sexual Dysfunction - Female (Female Sexual Dysfunction )",
+        "link": "femalesexdysfunction.htm"
+    },
+    {
+        "type": "Sexually Transmitted Disease - Gonorrhea (Gonorrhea / Clap )",
+        "link": "gonorrhea.htm"
+    },
+    {
+        "type": "Shigella Infection (Bacillary Dysentery , Shigellosis )",
+        "link": "shigellosis.htm"
+    },
+    {
+        "type": "Shigellosis ( Bacillary Dysentery)",
+        "link": "shigellosis.htm"
+    },
+    {
+        "type": "Shigellosis (Bacillary Dysentery , Shigella Infection)",
+        "link": "shigellosis.htm"
+    },
+    {
+        "type": "Shingles ( Herpes Zoster,Post Herpetic Neuralgia,Chicken pox shingles)",
+        "link": "shingles.htm"
+    },
+    {
+        "type": "Sick Building Syndrome",
+        "link": "sick-building-syndrome.htm"
+    },
+    {
+        "type": "Sick Sinus Syndrome (Sinoatrial Node (SA Node) Dysfunction - Etiology Clinical features and Management )",
+        "link": "sick-sinus-syndrome.htm"
+    },
+    {
+        "type": "Sickle Cell Anemia ( HbS Disease)",
+        "link": "sickle-cell-anemia.htm"
+    },
+    {
+        "type": "Side Effects of Abortion Pills (Principal Side Effects of Abortion Pills You Need to Know )",
+        "link": "principal-side-effects-of-abortion-pills-you-need-to-know.htm"
+    },
+    {
+        "type": "Simple Ways to Deal with Work Related Stress (How to Deal with Work Related Stress )",
+        "link": "simple-ways-to-deal-with-work-related-stress.htm"
+    },
+    {
+        "type": "Singultus (Hiccups , Hiccoughs , Synchronous Diaphragmatic Flutter (SDF) )",
+        "link": "hiccups.htm"
+    },
+    {
+        "type": "Sinoatrial Node (SA Node) Dysfunction - Etiology Clinical features and Management (Sick Sinus Syndrome )",
+        "link": "sick-sinus-syndrome.htm"
+    },
+    {
+        "type": "Sinusitis (Infection of Paranasal Sinuses )",
+        "link": "sinusitis.htm"
+    },
+    {
+        "type": "Sjogren’s Syndrome",
+        "link": "sjogrens-syndrome.htm"
+    },
+    {
+        "type": "Skier´s Thumb (Gamekeeper’s Thumb )",
+        "link": "skiers-thumb.htm"
+    },
+    {
+        "type": "Skin Abscess (Boils )",
+        "link": "boils.htm"
+    },
+    {
+        "type": "Skin Biopsy (Biopsy - Skin)",
+        "link": "skinbiopsy.htm"
+    },
+    {
+        "type": "Skin Cancer (Cancer of Skin )",
+        "link": "skin-cancer.htm"
+    },
+    {
+        "type": "Skin Cyst (Cystic Skin Lesions )",
+        "link": "skin-cyst.htm"
+    },
+    {
+        "type": "Skin Disease (Dermatology )",
+        "link": "skindisease.htm"
+    },
+    {
+        "type": "Skin Disease - Leprosy (Leprosy / Hansen’s Disease )",
+        "link": "leprosy.htm"
+    },
+    {
+        "type": "Skin Disease - Psoriasis (Psoriasis )",
+        "link": "psoriasis.htm"
+    },
+    {
+        "type": "Skin Disease - Rashes (Rashes )",
+        "link": "rashes.htm"
+    },
+    {
+        "type": "Skin Disease - Wrinkles (Wrinkles )",
+        "link": "wrinkles.htm"
+    },
+    {
+        "type": "Skin Disorder ( Dry Skin , Xerosis)",
+        "link": "skindisorder.htm"
+    },
+    {
+        "type": "Skin Disorder - Atopic Dermatitis (Eczema / Atopic Dermatitis )",
+        "link": "general-info-about-atopic-dermatitis.htm"
+    },
+    {
+        "type": "Skin Disorder - Warts (Warts )",
+        "link": "warts.htm"
+    },
+    {
+        "type": "Skin Infection - Cellulitis (Cellulitis )",
+        "link": "cellulitis.htm"
+    },
+    {
+        "type": "Skin Infection - Erysipelas (Erysipelas )",
+        "link": "erysipelas.htm"
+    },
+    {
+        "type": "Skull Fractures (Fractures of the Cranium )",
+        "link": "skull-fractures.htm"
+    },
+    {
+        "type": "Sleep Disorders Associated with Epilepsy (Epilepsy and Associated Sleep Disorders )",
+        "link": "sleep-disorders-associated-with-epilepsy.htm"
+    },
+    {
+        "type": "Sleep Disorders in Children | Sleep Problems in Children",
+        "link": "sleep-disorders-in-children.htm"
+    },
+    {
+        "type": "Sleep Disorders in Elderly ( Ageing and Sleep )",
+        "link": "sleep_disorders_elderly.htm"
+    },
+    {
+        "type": "Sleep Disturbances In Women",
+        "link": "sleep_disturbance_women.htm"
+    },
+    {
+        "type": "Sleep Paralysis",
+        "link": "sleep-paralysis.htm"
+    },
+    {
+        "type": "Sleeping Beauty Syndrome (What You Should Know About Kleine-Levin Syndrome / Kleine-Levin Syndrome (KLS) )",
+        "link": "kleine-levin-syndrome.htm"
+    },
+    {
+        "type": "Sleeping sickness (Trypanosomiasis )",
+        "link": "trypanosomiasis.htm"
+    },
+    {
+        "type": "Slipped Disc (Herniated Disc )",
+        "link": "herniated-disc.htm"
+    },
+    {
+        "type": "Sports Hernia (Inguinal Disruption / Gilmore´s Groin / Athletic Pubalgia )",
+        "link": "gilmores-groin.htm"
+    },
+    {
+        "type": "Sprained Ankle",
+        "link": "sprained-ankle.htm"
+    },
+    {
+        "type": "Sprained Arm (Arm pain )",
+        "link": "sprained-arm.htm"
+    },
+    {
+        "type": "Spring Allergy (Pollen Allergy )",
+        "link": "spring-allergy.htm"
+    },
+    {
+        "type": "Squamous Cell Cancer of the Skin ( Cancer of Squamous Cells)",
+        "link": "squamous-cell-cancer-of-the-skin.htm"
+    },
+    {
+        "type": "Stem Cell Therapy - Basics (Regenerative Medicine - Stem Cell Therapy - Current Perspectives )",
+        "link": "stem-cell-therapy.htm"
+    },
+    {
+        "type": "Stereotypic Movement Disorder (SMD) (Motor Disorder | Motor Stereotypies )",
+        "link": "stereotypic-movement-disorder.htm"
+    },
+    {
+        "type": "Sternutation (Sneezing )",
+        "link": "sneezing.htm"
+    },
+    {
+        "type": "Stomach acid - Why and How it forms (Acidity )",
+        "link": "acidity.htm"
+    },
+    {
+        "type": "Stomach Cancer (Gastric Cancer )",
+        "link": "gastric-cancer.htm"
+    },
+    {
+        "type": "Schizophrenia (Mental Disorder - Schizophrenia )",
+        "link": "schizophrenia.htm"
+    },
+    {
+        "type": "Scalp Psoriasis (Psoriasis of the Scalp )",
+        "link": "scalp-psoriasis.htm"
+    },
+    {
+        "type": "Schistosomiasis",
+        "link": "schistosomiasis.htm"
+    },
+    {
+        "type": "Scapho-lunate ligament sprain (Wrist Sprain )",
+        "link": "wrist-sprain.htm"
+    },
+    {
+        "type": "Septal Defect-Congenital Heart Disease (Congenital Heart Disease – Septal Defects )",
+        "link": "heart-septal-defects.htm"
+    },
+    {
+        "type": "Sexual Deviance",
+        "link": "sexual-deviance.htm"
+    },
+    {
+        "type": "Septic Arthritis (Infectious Arthritis )",
+        "link": "septic-arthritis.htm"
+    },
+    {
+        "type": "Septicemia | Sepsis",
+        "link": "septicemia.htm"
+    },
+    {
+        "type": "Sleep Disorder:Sleep Problems in Children",
+        "link": "sleep_problems_children.htm"
+    },
+    {
+        "type": "Sleep Disorder: Periodic Limb Movement Disorder",
+        "link": "periodic_limb_movement_disorder.htm"
+    },
+    {
+        "type": "Sleep Disorder: Obstructive Sleep Apnea (OSA)",
+        "link": "obstructive-sleep-apnea.htm"
+    },
+    {
+        "type": "Skin inflammation - Features Management and Prevention (Dermatitis )",
+        "link": "dermatitis.htm"
+    },
+    {
+        "type": "Sleep Disorder : Restless Legs Syndrome",
+        "link": "restlesslegssyndrome.htm"
+    },
+    {
+        "type": "Sleep Disorder: Insomnia",
+        "link": "insomnia.htm"
+    },
+    {
+        "type": "Sleep Disorder - Fatal Familial Insomnia (Fatal Familial Insomnia )",
+        "link": "fatal-familial-insomnia.htm"
+    },
+    {
+        "type": "Sleep Disorder: Narcolepsy",
+        "link": "narcolepsy.htm"
+    },
+    {
+        "type": "Stomach Tuberculosis (Intestinal Tuberculosis / Abdominal Tuberculosis )",
+        "link": "stomach-tuberculosis.htm"
+    },
+    {
+        "type": "Strabismus|Squint",
+        "link": "strabismus.htm"
+    },
+    {
+        "type": "Stone in Urinary Tract - Management &amp; Prevention ( Kidney Stones , Renal Stones , Bladder Stones , Ureteric Stones  Nephrolithiasis )",
+        "link": "stones-in-urinary-tract-management-prevention.htm"
+    },
+    {
+        "type": "Synchronous Diaphragmatic Flutter (SDF) (Hiccups , Hiccoughs , Singultus)",
+        "link": "hiccups.htm"
+    },
+    {
+        "type": "Symptom Evaluation of Swollen Glands (Swollen Glands Symptom Evaluation )",
+        "link": "swollen-glands.htm"
+    },
+    {
+        "type": "Symptoms and Treatment of Vitamin B12 Deficiency (Vitamin B12 Deficiency )",
+        "link": "vitamin-b12-deficiency.htm"
+    },
+    {
+        "type": "Symptom Evaluation of Wheezing (Wheezing - Symptom Evaluation )",
+        "link": "wheezing.htm"
+    },
+    {
+        "type": "Stones in Kidney (Renal Stones / Kidney Stones )",
+        "link": "kidneystones.htm"
+    },
+    {
+        "type": "Sciatica (Lumbar Radiculopathy )",
+        "link": "sciatica.htm"
+    },
+    {
+        "type": "Solar Keratosis (Actinic Keratosis )",
+        "link": "actinic-keratosis.htm"
+    },
+    {
+        "type": "Spinal and Epidural Anesthesia (Anesthesia -Spinal and Epidural )",
+        "link": "spinal-and-epidural-anesthesia.htm"
+    },
+    {
+        "type": "Searls Ulcer - The Painless Necrotizing Ulcer (Buruli Ulcer )",
+        "link": "buruli-ulcer.htm"
+    },
+    {
+        "type": "Smoking Cigarette - A Silent Killer (Cigarette Smoking - A Silent Killer )",
+        "link": "cigarette-smoking-a-silent-killer.htm"
+    },
+    {
+        "type": "Skin Pigmentation Disorder - Acanthosis Nigricans (Hyperpigmentation Skin Disorder - Acanthosis Nigricans / Acanthosis Nigricans - Skin Pigmentation Disorder )",
+        "link": "acanthosis-nigricans-skin-pigmentation-disorder.htm"
+    },
+    {
+        "type": "Stroke",
+        "link": "stroke.htm"
+    },
+    {
+        "type": "Swine Flu | Swine Influenza (Pig Flu / Hog Flu )",
+        "link": "swine-flu.htm"
+    },
+    {
+        "type": "Skin Pigmentation Disorders (Pigmentation Disorders )",
+        "link": "skin-pigmentation-disorders.htm"
+    },
+    {
+        "type": "Subcutaneous Bleeding or Ecchymosis (Ecchymosis )",
+        "link": "ecchymosis.htm"
+    },
+    {
+        "type": "Super Bug - MRSA (MRSA – The Super Bug )",
+        "link": "mrsa.htm"
+    },
+    {
+        "type": "Skin Injury - Burns (Burns )",
+        "link": "burns.htm"
+    },
+    {
+        "type": "Stroke - How to Deal (How to Deal with a Stroke )",
+        "link": "how-to-deal-with-a-stroke.htm"
+    },
+    {
+        "type": "Sweet's Syndrome (Rare Skin Conditions - Sweet's Syndrome )",
+        "link": "sweets-syndrome.htm"
+    },
+    {
+        "type": "Skin Psoriasis and Arthritis (Psoriatic Arthritis )",
+        "link": "psoriatic-arthritis.htm"
+    },
+    {
+        "type": "Structural Birth Defects of the Brain and Spinal Cord (Neural Tube Defects )",
+        "link": "neural-tube-defects.htm"
+    },
+    {
+        "type": "Surviving Altitude Sickness (Altitude Sickness )",
+        "link": "altitude-sickness.htm"
+    },
+    {
+        "type": "Stomach Flu (Gastroenteritis )",
+        "link": "gastroenteritis.htm"
+    },
+    {
+        "type": "Swollen Glands Symptom Evaluation (Symptom Evaluation of Swollen Glands )",
+        "link": "swollen-glands.htm"
+    },
+    {
+        "type": "Symptom Evaluation of Convulsions | Seizures | Fits (Convulsions | Seizures | Fits - Symptom Evaluation )",
+        "link": "convulsions-seizures-fits.htm"
+    },
+    {
+        "type": "Symptom Evaluation of Acute Ear Infection (Acute Ear Infection - Symptom Evaluation )",
+        "link": "acute-ear-infection.htm"
+    },
+    {
+        "type": "Symptom Evaluation of Blue Colored Skin and Mucus Membranes (Cyanosis / Blue Colored Skin and Mucus Membranes - Symptom Evaluation )",
+        "link": "blue-colored-skin-and-mucus-membranes.htm"
+    },
+    {
+        "type": "Stress Incontinence - Management",
+        "link": "stressincontinence_management.htm"
+    },
+    {
+        "type": "Substance Abuse - Drug Abuse (Psychoactive Substances )",
+        "link": "drugabuse.htm"
+    },
+    {
+        "type": "Skin Tuberculosis (Cutaneous TB )",
+        "link": "skin-tuberculosis.htm"
+    },
+    {
+        "type": "Strep Throat - Symptom Evaluation",
+        "link": "strep-throat-symptom-evaluation.htm"
+    },
+    {
+        "type": "Sun Stroke (Heat Stroke )",
+        "link": "general-info-about-heat-stroke.htm"
+    },
+    {
+        "type": "Sleep Disorder",
+        "link": "sleepdisorder.htm"
+    },
+    {
+        "type": "Stress Incontinence",
+        "link": "stressincontinence.htm"
+    },
+    {
+        "type": "Substance Abuse Disorder | Substance Use Disorder",
+        "link": "substance-abuse-disorder.htm"
+    },
+    {
+        "type": "Scabies",
+        "link": "scabies.htm"
+    },
+    {
+        "type": "Skin Substitutes",
+        "link": "skin-substitutes.htm"
+    },
+    {
+        "type": "Stress Fracture",
+        "link": "stress-fracture.htm"
+    },
+    {
+        "type": "Sulphonamide Allergy",
+        "link": "sulphonamide-allergy.htm"
+    },
+    {
+        "type": "Seizures During Pregnancy (Pregnancy and Seizures / Pregnancy and Epilepsy / Epilepsy During Pregnancy )",
+        "link": "epilepsy-during-pregnancy.htm"
+    },
+    {
+        "type": "Seasonal Affective Disorder (Winter Depression | Winter Blues )",
+        "link": "seasonal-affective-disorder.htm"
+    },
+    {
+        "type": "Seborrheic Dermatitis ( Cradle Cap , Dandruff)",
+        "link": "dandruff.htm"
+    },
+    {
+        "type": "Seasonal Allergy Relief - Remedies (Remedies for Seasonal Allergy Relief )",
+        "link": "remedies-for-seasonal-allergy-relief.htm"
+    },
+    {
+        "type": "Smart Drugs (Nootropics - Improve Cognitive Functions - OR Brain boosters - Smart Drugs )",
+        "link": "smart-drugs.htm"
+    },
+    {
+        "type": "Spondylolisthesis",
+        "link": "spondylolisthesis.htm"
+    },
+    {
+        "type": "Smoking And Cancer (Cancer And Smoking )",
+        "link": "smoking-and-cancer.htm"
+    },
+    {
+        "type": "Spontaneous Abortion (Miscarriage )",
+        "link": "miscarriage.htm"
+    },
+    {
+        "type": "Smell and Taste Disorders (Taste and Smell Disorders )",
+        "link": "smell-and-taste-disorders.htm"
+    },
+    {
+        "type": "Syndrome X (Diabetes Prevention )",
+        "link": "syndrome-x.htm"
+    },
+    {
+        "type": "Systemic Lupus Erythematosus (Autoimmune Condition - Systemic Lupus Erythematosus )",
+        "link": "systemic-lupus-erythematosus.htm"
+    },
+    {
+        "type": "Spelunker's lung (Histoplasmosis / Caver's disease )",
+        "link": "histoplasmosis.htm"
+    },
+    {
+        "type": "Scleroderma | | Systemic Sclerosis (Progressive systemic sclerosis / Localized scleroderma / Crest syndrome )",
+        "link": "scleroderma.htm"
+    },
+    {
+        "type": "Social Anxiety Disorder | Social Phobia (Common Mental Health Issues - Social Anxiety Disorder )",
+        "link": "social-anxiety-disorder.htm"
+    },
+    {
+        "type": "Spinal Fracture (Fracture - Spinal Compression )",
+        "link": "spinal-fracture.htm"
+    },
+    {
+        "type": "Sea sickness | Space sickness (Travel Sickness / Motion Sickness / Kinetosis )",
+        "link": "motion-sickness.htm"
+    },
+    {
+        "type": "Spinocerebellar Ataxia | Spinocerebellar Atrophy",
+        "link": "spinocerebellar-ataxia.htm"
+    },
+    {
+        "type": "Smelly Feet (Bromodosis )",
+        "link": "smelly-feet.htm"
+    },
+    {
+        "type": "Small bowel atresia",
+        "link": "bowelatresia.htm"
+    },
+    {
+        "type": "Syphilis",
+        "link": "syphilis.htm"
+    },
+    {
+        "type": "Syringomyelia | Syrinx (Hydromyelia )",
+        "link": "syringomyelia.htm"
+    },
+    {
+        "type": "Trypanosomiasis ( Sleeping sickness)",
+        "link": "trypanosomiasis.htm"
+    },
+    {
+        "type": "Tubal Cancer (Fallopian Tube Cancer )",
+        "link": "fallopian-tube-cancer.htm"
+    },
+    {
+        "type": "Tuberculosis (Pulmonary Lung TB )",
+        "link": "tuberculosis.htm"
+    },
+    {
+        "type": "Tuberculosis of the Kidney (Renal Tuberculosis )",
+        "link": "renal-tuberculosis.htm"
+    },
+    {
+        "type": "Tuberous Sclerosis (Genetic Disorder - Tuberous Sclerosis )",
+        "link": "tuberous-sclerosis.htm"
+    },
+    {
+        "type": "Takayasu Arteritis",
+        "link": "takayasu-arteritis.htm"
+    },
+    {
+        "type": "Takotsubo Cardiomyopathy | Takotsubo Syndrome (TTS) (Cardiomyopathy / Broken Heart Syndrome )",
+        "link": "broken-heart-syndrome.htm"
+    },
+    {
+        "type": "Talk Therapy - How Does Psychotherapy Work? (Psychotherapy )",
+        "link": "psychotherapy.htm"
+    },
+    {
+        "type": "Tapeworm Infections (Infections Caused by Tapeworm )",
+        "link": "tapeworm.htm"
+    },
+    {
+        "type": "Taste and Smell Disorders (Smell and Taste Disorders )",
+        "link": "smell-and-taste-disorders.htm"
+    },
+    {
+        "type": "Testicular Cancer ( Cancer of Testicles)",
+        "link": "testicular-cancer.htm"
+    },
+    {
+        "type": "Tetanus",
+        "link": "tetanus.htm"
+    },
+    {
+        "type": "Thalassemia",
+        "link": "thalassemia.htm"
+    },
+    {
+        "type": "The Complete Guide on Gas Bloat Syndrome (Gas Bloat Syndrome )",
+        "link": "gas-bloat-syndrome.htm"
+    },
+    {
+        "type": "The Concept of Asthenia (Asthenia )",
+        "link": "asthenia.htm"
+    },
+    {
+        "type": "Therapeutic Approaches to Overcome Cancer Pain (How to Cope With Cancer Pain )",
+        "link": "how-to-cope-with-cancer-pain.htm"
+    },
+    {
+        "type": "Therapeutic Indications of Metformin other than Diabetes (Metformin - Diabetes Drug with New Therapeutic Uses )",
+        "link": "metformin-diabetes-drug-with-new-therapeutic-uses.htm"
+    },
+    {
+        "type": "Things You Need to Know about Pulmonary Edema (Pulmonary Edema )",
+        "link": "pulmonary-edema.htm"
+    },
+    {
+        "type": "Thread worm Infection (Pinworm Infection )",
+        "link": "pinworm-infection.htm"
+    },
+    {
+        "type": "Throat Cancer (Laryngeal Cancer|Laryngeal Carcinoma,Cancer of Larynx)",
+        "link": "laryngeal-cancer.htm"
+    },
+    {
+        "type": "Thrombocytopenia (Low Platelet Count )",
+        "link": "thrombocytopenia.htm"
+    },
+    {
+        "type": "Thunderclap Headaches (What You Should Know about Thunderclap Headaches )",
+        "link": "thunderclap-headaches.htm"
+    },
+    {
+        "type": "Toxic Shock Syndrome (Bacterial Illness - Toxic Shock Syndrome )",
+        "link": "toxic-shock-syndrome.htm"
+    },
+    {
+        "type": "Toxoplasmosis",
+        "link": "toxoplasmosis.htm"
+    },
+    {
+        "type": "Trabecular Cancer (Neuroendocrine Cancer of the Skin / Merkel Cell Carcinoma )",
+        "link": "merkel-cell-carcinoma.htm"
+    },
+    {
+        "type": "Tracheal Cancer (Cancer of the Windpipe )",
+        "link": "tracheal-windpipe-cancer.htm"
+    },
+    {
+        "type": "Transplant Surgery - Liver Transplant (Organ Transplantation - Liver / Liver Transplantation )",
+        "link": "liver-transplantation.htm"
+    },
+    {
+        "type": "Transplantation - Pancreas Transplantation (Pancreas Transplantation )",
+        "link": "pancreas-transplantation.htm"
+    },
+    {
+        "type": "Transplantation of Organs and Tissues (Tissue and Organ Transplantation )",
+        "link": "organ-donation-transplantation-consent-rejection-immunosuppression.htm"
+    },
+    {
+        "type": "Travel Sickness (Sea sickness | Space sickness / Motion Sickness / Kinetosis )",
+        "link": "motion-sickness.htm"
+    },
+    {
+        "type": "Traveler´s Diarrhea",
+        "link": "travelers-diarrhea.htm"
+    },
+    {
+        "type": "Trichomoniasis | Trichomonas Infection",
+        "link": "trichomoniasis.htm"
+    },
+    {
+        "type": "Trichotillomania (What is Hair Pulling Disorder? / Hair Pulling Disorder )",
+        "link": "trichotillomania-or-hair-pulling-disorder.htm"
+    },
+    {
+        "type": "Trigeminal Neuralgia (Nervous Tic )",
+        "link": "nervoustic.htm"
+    },
+    {
+        "type": "Triple-Negative Breast Cancer",
+        "link": "triple-negative-breast-cancer.htm"
+    },
+    {
+        "type": "Trophoblastic Tumor (Choriocarcinoma in Females )",
+        "link": "choriocarcinoma-in-females.htm"
+    },
+    {
+        "type": "Troublesome Gynecological Problems (Ten Most Common Gynecological Problems Every Woman Must Know )",
+        "link": "ten-most-common-gynecological-problems-every-woman-must-know.htm"
+    },
+    {
+        "type": "Tear Cancer (Basal Cell Cancer of the Skin | Basal Cell Carcinoma , Rodent Ulcer )",
+        "link": "basal-cell-cancer-of-the-skin.htm"
+    },
+    {
+        "type": "Temporal Arteritis ( Giant Cell Arteritis (GCA))",
+        "link": "temporal-arteritis.htm"
+    },
+    {
+        "type": "Temporomandibular Joint Disorders (Jaw disorders – What You Need to Know )",
+        "link": "temporomandibular-joint-disorders.htm"
+    },
+    {
+        "type": "Tooth Abscess (Abscessed Tooth )",
+        "link": "abscessed-tooth.htm"
+    },
+    {
+        "type": "Torticollis (Wryneck / Stiff Neck / Cervical Dystonia )",
+        "link": "torticollis.htm"
+    },
+    {
+        "type": "Tooth Decay (Dental Caries )",
+        "link": "tooth-decay.htm"
+    },
+    {
+        "type": "Toothache (Pain in the Tooth / Aching Tooth )",
+        "link": "toothache.htm"
+    },
+    {
+        "type": "Thyroiditis",
+        "link": "thyroiditis.htm"
+    },
+    {
+        "type": "Tongue Abnormalities ( Developmental Disturbances of the Tongue )",
+        "link": "tongueabnormalities.htm"
+    },
+    {
+        "type": "Tissue and Organ Transplantation (Transplantation of Organs and Tissues )",
+        "link": "organ-donation-transplantation-consent-rejection-immunosuppression.htm"
+    },
+    {
+        "type": "Tonsillitis",
+        "link": "tonsillitis.htm"
+    },
+    {
+        "type": "Tinnitus",
+        "link": "tinnitus.htm"
+    },
+    {
+        "type": "Tight Foreskin (Phimosis )",
+        "link": "phimosis.htm"
+    },
+    {
+        "type": "Tinea (Ringworm / Dermatophytosis )",
+        "link": "ringworm.htm"
+    },
+    {
+        "type": "Tietzes Syndrome (Costochondritis )",
+        "link": "costochondritis.htm"
+    },
+    {
+        "type": "Tinea Pedis (Athletes Foot  )",
+        "link": "athletesfoot.htm"
+    },
+    {
+        "type": "Type 2 Diabetes ( Diabetes - Type 2 , Non-Insulin-Dependent Diabetes Mellitus (NIDDM) , Adult-Onset Diabetes)",
+        "link": "type-2-diabetes.htm"
+    },
+    {
+        "type": "Types of Food Allergies ( Food Allergies - Types)",
+        "link": "types-of-food-allergies.htm"
+    },
+    {
+        "type": "Type 1 Diabetes (Living With Sugar In The Bloodstream- Type 1 Diabetes )",
+        "link": "type-1-diabetes.htm"
+    },
+    {
+        "type": "Typhoid and Paratyphoid Enteric Fevers",
+        "link": "enteric_fever.htm"
+    },
+    {
+        "type": "Tennis Elbow",
+        "link": "tenniselbow.htm"
+    },
+    {
+        "type": "Thymus Cancer | Thymus Carcinoma (Cancer of the Thymus Gland )",
+        "link": "thymus-cancer-thymomas.htm"
+    },
+    {
+        "type": "Termination of Pregnancy (Methods of Abortion )",
+        "link": "methods-of-abortion.htm"
+    },
+    {
+        "type": "Thyroid Cancer ( Cancer of Thyroid)",
+        "link": "thyroid-cancer.htm"
+    },
+    {
+        "type": "Tumor in Brain (Brain Tumor )",
+        "link": "braintumor.htm"
+    },
+    {
+        "type": "Tourette Syndrome",
+        "link": "tourette-syndrome.htm"
+    },
+    {
+        "type": "Tularemia (Rabbit Fever / Pahvant Valley Plague / Deer Fly Fever )",
+        "link": "tularemia.htm"
+    },
+    {
+        "type": "Turners Syndrome (Genetic disorder - Turner Syndrome )",
+        "link": "turner-syndrome.htm"
+    },
+    {
+        "type": "Tendinitis | Tendonitis (Inflammation of a Tendon )",
+        "link": "tendinitis.htm"
+    },
+    {
+        "type": "Thyroid Swelling (Goitre )",
+        "link": "goitre.htm"
+    },
+    {
+        "type": "Ten Common Drug-Drug interactions (Multi-drug therapy : Alert on Interactions! )",
+        "link": "ten-common-drug-drug-interactions.htm"
+    },
+    {
+        "type": "Tibia (Shinbone) Shaft Fractures",
+        "link": "tibia-shinbone-shaft-fractures.htm"
+    },
+    {
+        "type": "Ten Most Common Gynecological Problems Every Woman Must Know (Troublesome Gynecological Problems )",
+        "link": "ten-most-common-gynecological-problems-every-woman-must-know.htm"
+    },
+    {
+        "type": "Understanding Muscle Atrophy (Muscle Atrophy )",
+        "link": "muscle-atrophy.htm"
+    },
+    {
+        "type": "Understanding Neutropenia (Neutropenia )",
+        "link": "neutropenia.htm"
+    },
+    {
+        "type": "Understanding Rocky Mountain Spotted Fever (Rocky Mountain Spotted Fever )",
+        "link": "rocky-mountain-spotted-fever.htm"
+    },
+    {
+        "type": "Understanding Wolff-Parkinson-White syndrome (Wolff-Parkinson-White Syndrome (WPW) )",
+        "link": "wolff-parkinson-white-syndrome.htm"
+    },
+    {
+        "type": "Uremia (Elevated Levels of Blood Urea Nitrogen / Azotemia (High Blood Nitrogen Levels) )",
+        "link": "azotemia.htm"
+    },
+    {
+        "type": "Ulcer Peptic (Peptic Ulcer )",
+        "link": "pepticulcer.htm"
+    },
+    {
+        "type": "Ulcer-Corneal (Corneal Ulcer )",
+        "link": "cornealulcer.htm"
+    },
+    {
+        "type": "Ulcerative Colitis",
+        "link": "ulcerative-colitis.htm"
+    },
+    {
+        "type": "Underactive Pituitary Gland (Hypopituitarism )",
+        "link": "hypopituitarism.htm"
+    },
+    {
+        "type": "Understanding and Coping with Dementia (Dementia )",
+        "link": "dementia.htm"
+    },
+    {
+        "type": "Urinary Stones In Children",
+        "link": "urinary_stones_introduction.htm"
+    },
+    {
+        "type": "Urinary Stone Disease",
+        "link": "urinarystonedisease.htm"
+    },
+    {
+        "type": "Urinary Tract Infection (Vesico Ureteric Reflux)",
+        "link": "urinary_infection.htm"
+    },
+    {
+        "type": "Urinary Retention (Inability to Pass Urine )",
+        "link": "urinary-retention.htm"
+    },
+    {
+        "type": "Understanding Atrial Fibrillation (Atrial Fibrillation )",
+        "link": "atrial-fibrillation.htm"
+    },
+    {
+        "type": "Understanding Laryngitis (Laryngitis )",
+        "link": "laryngitis.htm"
+    },
+    {
+        "type": "Urinary Tract Infection During Pregnancy (Pregnancy Related Urinary Tract Infection – Complete Information )",
+        "link": "urinary-tract-infection-during-pregnancy.htm"
+    },
+    {
+        "type": "Urolithiasis in Pregnancy (Kidney Stones during Pregnancy )",
+        "link": "kidney-stones-during-pregnancy.htm"
+    },
+    {
+        "type": "Uterine Fibroids ( Fibroids in Uterus)",
+        "link": "fibroids-in-uterus.htm"
+    },
+    {
+        "type": "Uveitis (Eye Inflammation )",
+        "link": "uveitis.htm"
+    },
+    {
+        "type": "Utricaria (Hives )",
+        "link": "hives.htm"
+    },
+    {
+        "type": "Urinary Tract Infection (UTI)",
+        "link": "general-info-about-urinary-tract-infection.htm"
+    },
+    {
+        "type": "Uterine Cancer ( Cancer of Uterus , Endometrial Cancer , Cancer of the Endometrium)",
+        "link": "uterine-cancer.htm"
+    },
+    {
+        "type": "Understanding Bronchiectasis (Bronchiectasis )",
+        "link": "bronchiectasis.htm"
+    },
+    {
+        "type": "Understanding Laryngeal Papillomatosis (Laryngeal Papillomatosis )",
+        "link": "laryngeal-papillomatosis.htm"
+    },
+    {
+        "type": "Understanding Ichthyosis (Ichthyosis )",
+        "link": "ichthyosis.htm"
+    },
+    {
+        "type": "Understanding Galactosemia - Genetic Disorder of Sugar Galactose (Galactosemia - Genetic Disorder of Sugar Galactose )",
+        "link": "galactosemia.htm"
+    },
+    {
+        "type": "Understanding Juvenile Myoclonic Epilepsy (Juvenile Myoclonic Epilepsy )",
+        "link": "juvenile-myoclonic-epilepsy.htm"
+    },
+    {
+        "type": "Understanding Eustachian Tube Dysfunction (Eustachian Tube Dysfunction )",
+        "link": "eustachian-tube-dysfunction.htm"
+    },
+    {
+        "type": "Ureteric Stones  Nephrolithiasis (Stone in Urinary Tract - Management &amp; Prevention , Kidney Stones , Renal Stones , Bladder Stones )",
+        "link": "stones-in-urinary-tract-management-prevention.htm"
+    },
+    {
+        "type": "Vaginal Infections (Vaginitis )",
+        "link": "vaginitis.htm"
+    },
+    {
+        "type": "Vaginitis ( Vaginal Infections)",
+        "link": "vaginitis.htm"
+    },
+    {
+        "type": "Vaginosis",
+        "link": "bacterialvaginosis.htm"
+    },
+    {
+        "type": "Varicella (Chickenpox )",
+        "link": "chickenpox.htm"
+    },
+    {
+        "type": "Varicose Veins",
+        "link": "varicose-veins.htm"
+    },
+    {
+        "type": "Vascular Dementia | Vascular Cognitive Impairment (VCI)",
+        "link": "vascular-dementia.htm"
+    },
+    {
+        "type": "Vaginal Bleeding",
+        "link": "vaginal-bleeding.htm"
+    },
+    {
+        "type": "Vulvar Cancer (Cancer of the Vulva )",
+        "link": "vulvar-cancer.htm"
+    },
+    {
+        "type": "Voice Disorders (Problems in Voice Production )",
+        "link": "voice-disorders.htm"
+    },
+    {
+        "type": "von Willebrand Disease",
+        "link": "von-willebrand-disease.htm"
+    },
+    {
+        "type": "Von Recklinghausen’s Disease (Neurofibromatosis Type 1 )",
+        "link": "von-recklinghausens-disease.htm"
+    },
+    {
+        "type": "Vulvodynia (Pain of the Vulva )",
+        "link": "vulvodynia.htm"
+    },
+    {
+        "type": "Vitamin Supplements",
+        "link": "vitaminsupplements.htm"
+    },
+    {
+        "type": "Vocal Cord Dysfunction | Vocal Cord Malfunction",
+        "link": "vocal-cord-dysfunction.htm"
+    },
+    {
+        "type": "Vitamins - Myths and Facts (Myths and Facts about Vitamins )",
+        "link": "vitamins-myths-and-facts.htm"
+    },
+    {
+        "type": "Vitiligo",
+        "link": "vitiligo.htm"
+    },
+    {
+        "type": "Vitamin B12 Deficiency (Symptoms and Treatment of Vitamin B12 Deficiency )",
+        "link": "vitamin-b12-deficiency.htm"
+    },
+    {
+        "type": "Vertigo",
+        "link": "vertigo.htm"
+    },
+    {
+        "type": "Viral Infections - BK Virus (BK Virus Infection )",
+        "link": "bk-virus-infection.htm"
+    },
+    {
+        "type": "Vesico Ureteric Reflux (Urinary Tract Infection)",
+        "link": "urinary_infection.htm"
+    },
+    {
+        "type": "Vector-Borne Diseases (Insect-Borne Diseases / Bug-Borne Diseases )",
+        "link": "vector-borne-diseases.htm"
+    },
+    {
+        "type": "Vasculitis",
+        "link": "vasculitis.htm"
+    },
+    {
+        "type": "Walking Corpse Syndrome (Cotard’s Syndrome )",
+        "link": "walking-corpse-syndrome.htm"
+    },
+    {
+        "type": "Warning Signs of Poor Blood Circulation (Poor Blood Circulation )",
+        "link": "poor-blood-circulation.htm"
+    },
+    {
+        "type": "Warts (Skin Disorder - Warts )",
+        "link": "warts.htm"
+    },
+    {
+        "type": "Water Borne Diseases",
+        "link": "waterborne.htm"
+    },
+    {
+        "type": "Watery Eyes ( Excessive Tearing)",
+        "link": "watery-eyes.htm"
+    },
+    {
+        "type": "Weil’s Disease (Leptospirosis )",
+        "link": "leptospirosis.htm"
+    },
+    {
+        "type": "What You Should Know about Thunderclap Headaches (Thunderclap Headaches )",
+        "link": "thunderclap-headaches.htm"
+    },
+    {
+        "type": "What You Should Know About Kleine-Levin Syndrome (Sleeping Beauty Syndrome / Kleine-Levin Syndrome (KLS) )",
+        "link": "kleine-levin-syndrome.htm"
+    },
+    {
+        "type": "Weight Loss Drugs (Drugs For Weight Loss )",
+        "link": "weight-loss-drugs.htm"
+    },
+    {
+        "type": "Wheezing - Symptom Evaluation (Symptom Evaluation of Wheezing )",
+        "link": "wheezing.htm"
+    },
+    {
+        "type": "Wax Blockage (Ear Blockage )",
+        "link": "ear-blockage.htm"
+    },
+    {
+        "type": "What You Should Know about Japanese Encephalitis (Japanese Encephalitis )",
+        "link": "what-you-should-know-about-japanese-encephalitis.htm"
+    },
+    {
+        "type": "Winter Depression | Winter Blues (Seasonal Affective Disorder )",
+        "link": "seasonal-affective-disorder.htm"
+    },
+    {
+        "type": "Whooping Cough ( Pertussis)",
+        "link": "whooping-cough.htm"
+    },
+    {
+        "type": "Wilson’s Disease ( Hepatolenticular Degeneration , Copper Storage Disease)",
+        "link": "wilsons-disease.htm"
+    },
+    {
+        "type": "Wilms Tumor (What Should You Know About Wilms Tumor? )",
+        "link": "wilms-tumor.htm"
+    },
+    {
+        "type": "What is Peripheral Neuropathy? (Peripheral Neuropathy )",
+        "link": "peripheral-neuropathy.htm"
+    },
+    {
+        "type": "Wrist Sprain (Scapho-lunate ligament sprain )",
+        "link": "wrist-sprain.htm"
+    },
+    {
+        "type": "Wryneck (Torticollis / Stiff Neck / Cervical Dystonia )",
+        "link": "torticollis.htm"
+    },
+    {
+        "type": "Whiplash | Whiplash-associated disorders (Neck Sprain / Cervical Acceleration-deceleration / Acceleration Flexion-Extension Neck Injury )",
+        "link": "whiplash.htm"
+    },
+    {
+        "type": "Whitmore's disease (Melioidosis )",
+        "link": "melioidosis.htm"
+    },
+    {
+        "type": "Whiplash and Conditions that Mimic Whiplash",
+        "link": "whiplash-and-conditions-that-mimic-whiplash.htm"
+    },
+    {
+        "type": "Whipple’s Disease",
+        "link": "whipples-disease.htm"
+    },
+    {
+        "type": "What is Peripheral arterial disease and how do you treat it? (Peripheral Artery Disease )",
+        "link": "peripheral-artery-disease.htm"
+    },
+    {
+        "type": "What You Ought to Know about Post-Nasal Drip (Post-Nasal Drip )",
+        "link": "post-nasal-drip.htm"
+    },
+    {
+        "type": "What is Hemiplegia? (Hemiplegia )",
+        "link": "hemiplegia.htm"
+    },
+    {
+        "type": "What You Ought to Know About Onchocerciasis (River Blindness )",
+        "link": "onchocerciasis.htm"
+    },
+    {
+        "type": "What is Multiple Personality? (Multiple Personality Disorder / Dissociative Identity Disorder )",
+        "link": "dissociative-identity-disorder.htm"
+    },
+    {
+        "type": "What You Should Know about Anosognosia (Anosognosia )",
+        "link": "anosognosia.htm"
+    },
+    {
+        "type": "What is Menopause? (Menopause )",
+        "link": "what-is-menopause.htm"
+    },
+    {
+        "type": "What You Ought to Know about Nasal Polyp (Nasal Polyps )",
+        "link": "nasal-polyp.htm"
+    },
+    {
+        "type": "Wolff-Parkinson-White Syndrome (WPW) (Understanding Wolff-Parkinson-White syndrome )",
+        "link": "wolff-parkinson-white-syndrome.htm"
+    },
+    {
+        "type": "Wrinkles (Skin Disease - Wrinkles )",
+        "link": "wrinkles.htm"
+    },
+    {
+        "type": "Women and Cancer (Cancer and Women )",
+        "link": "womenandcancer.htm"
+    },
+    {
+        "type": "Women’s Pelvic Pain (Pelvic Pain in Women )",
+        "link": "pelvic-pain-in-women.htm"
+    },
+    {
+        "type": "What Happens in Chronic Bronchitis? (Chronic Bronchitis )",
+        "link": "chronic-bronchitis.htm"
+    },
+    {
+        "type": "What You Should Know About Dry Mouth (Xerostomia / Dry Mouth )",
+        "link": "dry-mouth.htm"
+    },
+    {
+        "type": "What is Hair Pulling Disorder? (Trichotillomania / Hair Pulling Disorder )",
+        "link": "trichotillomania-or-hair-pulling-disorder.htm"
+    },
+    {
+        "type": "What You Should Know about Immunization of Adults (Adult Immunization )",
+        "link": "adult-immunization.htm"
+    },
+    {
+        "type": "What Is A Heart Attack ( How To Prevent Heart Attacks , Heart Attack - Prevention)",
+        "link": "heart-attack-lifestyle-risks.htm"
+    },
+    {
+        "type": "What You Should Know About Copper Deficiency (Hypocupremia / Copper Deficiency )",
+        "link": "copper-deficiency.htm"
+    },
+    {
+        "type": "What is Encephalitis? (Encephalitis )",
+        "link": "encephalitis.htm"
+    },
+    {
+        "type": "What You Should Know about Indian Snake Antivenom (Indian Snake Antivenom )",
+        "link": "indian-snake-antivenom.htm"
+    },
+    {
+        "type": "Xenophobia",
+        "link": "xenophobia.htm"
+    },
+    {
+        "type": "Xerosis (Dry Skin )",
+        "link": "dry-skin.htm"
+    },
+    {
+        "type": "Xerosis (Skin Disorder , Dry Skin )",
+        "link": "skindisorder.htm"
+    },
+    {
+        "type": "Xerostomia (What You Should Know About Dry Mouth / Dry Mouth )",
+        "link": "dry-mouth.htm"
+    },
+    {
+        "type": "XXY syndrome, XXY trisomy (Klinefelter's Syndrome )",
+        "link": "klinefelters-syndrome.htm"
+    },
+    {
+        "type": "Yeast Infections (Infections of Yeast / Candida )",
+        "link": "yeast-infections.htm"
+    },
+    {
+        "type": "Yellow Fever (Fever - Yellow Fever )",
+        "link": "yellow-fever.htm"
+    }, {
+        "type": "Zollinger-Ellison Syndrome",
+        "link": "zollinger-ellison-syndrome.htm"
+    }
+]
