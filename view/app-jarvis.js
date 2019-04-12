@@ -95,7 +95,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					show: false,
 					length: null
 				};
-				console.log(messageObj)
+				console.log(messageObj);
 				console.log(res);
 				setTimeout(() => {
 					$scope.scrollDown();
@@ -139,7 +139,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
-					console.log("In show reminder");
+					console.log('In show reminder');
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
@@ -245,7 +245,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		});
 		$scope.formData.remTitle = '';
 		$scope.formData.remDescription = '';
-	}
+	};
 
 	$scope.scrollDown = function() {
 		var elem = document.getElementById('stackArea-parent');
