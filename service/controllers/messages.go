@@ -157,7 +157,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 	message := routeObject.message
 	messageArr := strings.Fields(message)
 	var a []string
-	priority := []string{"images", "image", "video", "videos", "symptoms", "medicine", "weather", 
+	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
 	"meaning", "google", "yahoo", "bing", "search"}
 	fmt.Println("Priority: ", priority )
 	for i := 0; i < len(messageArr); i++ {
@@ -195,7 +195,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 	if Connected() {
 
-		if strings.ToLower(matchPars) == "google"  { // for google search
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "search" { // for google search
 			query := ""
 			if len(remainingString) == 0 {
 				query = "https://www.google.co.in/search?q=google"
