@@ -5,7 +5,7 @@
         "hey",
         "whats up",
         "yo",
-        "Hey there"
+        "hey there"
     ],
     "initial-greetings-name": [
         "hi jarvis",
@@ -34,11 +34,11 @@
         "what is your work",
         "your work",
         "work",
-        "I need your help",
-	    "I need your help. Please help me!",
-        "How you work?",
-        "How you work? Please guide me!",
-        "How you work? Let me know!"
+        "i need your help",
+	    "i need your help please help me",
+        "how you work",
+        "how you work please guide me",
+        "how you work let me know"
 
     ],
     "about": [
@@ -49,15 +49,15 @@
         "tell me about yourself",
         "about you",
         "about",
-        "May I know something about you?",
-	    "Can you say something about you?",
-        "Would you bother to introduce yourself?",
-        "Would you please bother to introduce yourself?",
-	    "Introduce yourself",
-	    "Can you please introduce yourself?",
-	    "I wanna know something about you. Can you introduce yourself?",
-        "I would like to know something about you. Can you introduce yourself?",
-        "I would like to know something about you. Would you please bother to introduce yourself?"
+        "may i know something about you",
+	    "can you say something about you",
+        "would you bother to introduce yourself",
+        "would you please bother to introduce yourself",
+	    "introduce yourself",
+	    "can you please introduce yourself",
+	    "i wanna know something about you can you introduce yourself",
+        "i would like to know something about you can you introduce yourself",
+        "i would like to know something about you would you please bother to introduce yourself"
 
     ],
     "age": [
@@ -66,12 +66,12 @@
         "how long have a been",
         "jarvis age",
         "jarvis years",
-        "Whats your age?",
-        "Whats your age, Jarvis?",
-        "Hey jarvis! Whats your age now?",
-        "Hey jarvis! Whats your age?",
-        "Hey jarvis! How old are you?",
-        "Hey! Whats your age?"
+        "whats your age",
+        "whats your age, jarvis",
+        "hey jarvis whats your age now",
+        "hey jarvis whats your age",
+        "hey jarvis how old are you",
+        "hey whats your age"
 
     ],
     "birthday": [

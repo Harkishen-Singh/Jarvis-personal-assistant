@@ -21,10 +21,10 @@
         "hey %s! I am ready here. Anything I may help you with?"
     ],
     "help": [
-        "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder and also find answers for any of your queries!",
-        "You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder and also find answers for any of your queries!",
-        "I can help you with web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder and also find answers for any of your queries!",
-        "My work is to help you with the web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder and also find answers for any of your queries!"
+        "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "I can help you with web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "My work is to help you with the web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!"
     ],
     "about": [
         "I am Jarvis, your personal assistant. How can I help you?",

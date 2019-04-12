@@ -139,14 +139,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
-					console.log('In show reminder');
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
-					console.log(messageObj);
 				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
