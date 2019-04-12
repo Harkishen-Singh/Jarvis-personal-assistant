@@ -17,9 +17,6 @@ go:
 python:
   - "2.7"
 
-# addons:
-#   firefox: "65.0.2"
-
 addons:
   chrome: stable
   apt:
