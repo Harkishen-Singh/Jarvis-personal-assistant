@@ -175,14 +175,20 @@ func routes(routeObject response, w http.ResponseWriter) {
 			}
 		}
 	}
+	matchPars := ""
+	remainingString := ""
+	if len(a) > 0 {
+		sort := customSort(a, priority, len(a), len(priority))
+		matchPars = sort[0]
+		remainingString = strings.Join(messageArr[:]," ")
+		messageArr = append([]string{matchPars}, messageArr...)
+		fmt.Println("messageArr:", messageArr)
+		fmt.Println("Remaining String:", remainingString)
+		fmt.Println("matchPars: ", matchPars)
+	} else {
+		remainingString = strings.Join(messageArr[:], " ")
+	}
 
-	sort := customSort(a, priority, len(a), len(priority))
-	matchPars := sort[0]
-	remainingString := strings.Join(messageArr[:]," ")
-	messageArr = append([]string{matchPars}, messageArr...)
-	fmt.Println("messageArr:", messageArr)
-	fmt.Println("Remaining String:", remainingString)
-	fmt.Println("matchPars: ", matchPars)
 
 	// single word operations
 
