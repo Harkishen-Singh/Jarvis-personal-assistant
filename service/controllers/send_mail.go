@@ -39,10 +39,16 @@ func EmailController(w http.ResponseWriter, r *http.Request) {
 
 	to := r.FormValue("to")
 	toArr := strings.Split(to, ";")
+	cc := r.FormValue("cc")
+	ccArr := strings.Split(cc, ";")
+	bcc := r.FormValue("bcc")
+	bccArr := strings.Split(bcc, ";")
 
 	request := Mail{
 		Sender: r.FormValue("sender"),
 		To: toArr,
+		Cc: ccArr,
+		Bcc: bccArr,
 		Subject: r.FormValue("subject"),
 		Body: r.FormValue("body"),
 	}
@@ -85,7 +91,7 @@ func send(mailObject Mail, w http.ResponseWriter) {
 		ServerName:         smtpServer.Host,
 	}
 
-	auth := smtp.PlainAuth("", mail.Sender, "yvkjsisuovulsqrr", smtpServer.Host)
+	auth := smtp.PlainAuth("", mail.Sender, "Jarvis@123", smtpServer.Host)
 
 	conn, err := tls.Dial("tcp", smtpServer.ServerName(), smtpServer.TLSConfig)
 	if err != nil {
@@ -121,7 +127,7 @@ func send(mailObject Mail, w http.ResponseWriter) {
 		log.Panic(err)
 	}
 
-	_, err = w.Write([]byte(messageBody))
+	_, err = wr.Write([]byte(messageBody))
 	if err != nil {
 		log.Panic(err)
 	}
@@ -134,7 +140,6 @@ func send(mailObject Mail, w http.ResponseWriter) {
 	client.Quit()
 
 	log.Println("Mail sent successfully")
-	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"`))
-	log.Println("Mail sent successfully.....")
+	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`))
 
 }
