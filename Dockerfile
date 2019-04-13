@@ -20,12 +20,15 @@ RUN apt-get install python -y
 # # golang
 RUN apt-get update
 RUN apt-get install golang-go -y
-RUN mkdir -p $HOME/go
-RUN echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
-RUN source $HOME/.bashrc
 RUN go env GOPATH
 
 # dependencies installation
 RUN npm install -g http-server selenium-webdriver mocha mochawesome eslint
-RUN go get -v -u -d ./...
 RUN python --version
+
+# install git
+RUN apt install git -y
+RUN git --version
+
+RUN go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service
+
