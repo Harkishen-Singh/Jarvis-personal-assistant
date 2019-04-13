@@ -402,6 +402,7 @@ $(document).ready(() => {
 	$('#imagesBody').hide(500);
 	$('#weatherBody').hide(500);
 	$('#meaningBody').hide(500);
+	$('#medicineBody').hide(500);
 	$('#symptomsBody').show(1000);
   });
 });
