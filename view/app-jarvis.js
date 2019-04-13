@@ -96,7 +96,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					length: null
 				};
 				console.log(messageObj);
-				console.log(res);
 				setTimeout(() => {
 					$scope.scrollDown();
 				}, 100);
@@ -259,12 +258,16 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.messageStack.pop();
 		let mail_sender = $scope.formData.Sender,
 			mail_to = $scope.formData.To,
+			mail_cc = $scope.formData.CC,
+			mail_bcc = $scope.formData.BCC,
 			mail_subject = $scope.formData.Subject,
 			mail_body = $scope.formData.Body,
 			
 			mailObj = {
 				sender: '',
 				to: '',
+				cc: '',
+				bcc: '',
 				subject: '',
 				body: ''
 			},
@@ -272,12 +275,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		
 		mailObj.sender = mail_sender;
 		mailObj.to = mail_to;
+		mailObj.cc = mail_cc;
+		mailObj.bcc = mail_bcc;
 		mailObj.subject = mail_subject;
 		mailObj.body = mail_body;
 
 		console.log(mailObj);
 		
-		data = 'sender='+mailObj.sender+'&to='+mailObj.to+'&subject='+mailObj.subject+'&body='+mailObj.body;
+		data = 'sender='+mailObj.sender+'&to='+mailObj.to+'&subject='+mailObj.subject+'&body='+mailObj.body+
+			'&cc='+mailObj.cc+'&body='+mailObj.bcc;
 		
 		console.log(data);
 		
@@ -299,10 +305,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					show: false,
 					length: null
 				};
-			console.log('resp: ', res);
-			console.log('res: ', res);
-			console.log('response: ', res);
-			console.log('message: ', message);
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
@@ -318,9 +320,9 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		}).catch(e => {
 			throw e;
 		});
-		// $scope.formData.To = '';
-		// $scope.formData.Subject = '';
-		// $scope.formData.Body = '';
+		$scope.formData.To = '';
+		$scope.formData.Subject = '';
+		$scope.formData.Body = '';
 	};
 
 	$scope.scrollDown = function() {
