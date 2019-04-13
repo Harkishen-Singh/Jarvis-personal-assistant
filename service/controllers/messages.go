@@ -96,6 +96,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 func routes(routeObject response, w http.ResponseWriter) {
 
 	message := routeObject.message
+	message = strings.ToLower(message)
 	messageArr := strings.Fields(message)
 	var a []string
 	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
