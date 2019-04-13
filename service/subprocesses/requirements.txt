@@ -5,7 +5,7 @@ chardet==3.0.4
 get==2019.3.22
 idna==2.8
 post==2019.3.22
-public==2019.3.22
+public==2019.4.13
 pymongo==3.7.2
 query-string==2019.3.22
 request==2019.4.13
