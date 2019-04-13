@@ -145,6 +145,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && message === 'Enter Mail Details : ') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					console.log(messageObj);
+					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
@@ -226,6 +233,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					show: false,
 					length: null
 				};
+			console.log('res: ', res);
+			console.log('message', message);
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
@@ -243,6 +252,75 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		});
 		$scope.formData.remTitle = '';
 		$scope.formData.remDescription = '';
+	};
+
+	$scope.formData = {};
+	$scope.sendMail = function() {
+		$scope.messageStack.pop();
+		let mail_sender = $scope.formData.Sender,
+			mail_to = $scope.formData.To,
+			mail_subject = $scope.formData.Subject,
+			mail_body = $scope.formData.Body,
+			
+			mailObj = {
+				sender: '',
+				to: '',
+				subject: '',
+				body: ''
+			},
+			data = null;
+		
+		mailObj.sender = mail_sender;
+		mailObj.to = mail_to;
+		mailObj.subject = mail_subject;
+		mailObj.body = mail_body;
+
+		console.log(mailObj);
+		
+		data = 'sender='+mailObj.sender+'&to='+mailObj.to+'&subject='+mailObj.subject+'&body='+mailObj.body;
+		
+		console.log(data);
+		
+		$http({
+			url:URL+'/email',
+			method:'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data:data
+		}).then(resp => {
+			let res = (resp.data),
+				message = res['message'],
+				status = res['status'],
+				messageObj = {
+					message: '',
+					sender: '',
+					time: '',
+					show: false,
+					length: null
+				};
+			console.log('resp: ', res);
+			console.log('res: ', res);
+			console.log('response: ', res);
+			console.log('message: ', message);
+			setTimeout(() => {
+				$scope.scrollDown();
+			}, 100);
+			if ((status === 'success' || status) && message === 'Mail sent Successfully') {
+				messageObj.sender = 'jarvis-bot';
+				messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				messageObj.length = message.length;
+				messageObj.message = message;
+				$scope.messageStack.push(messageObj);
+			} else {
+				console.error('[JARVIS] error fetching from service.');
+			}
+		}).catch(e => {
+			throw e;
+		});
+		// $scope.formData.To = '';
+		// $scope.formData.Subject = '';
+		// $scope.formData.Body = '';
 	};
 
 	$scope.scrollDown = function() {
