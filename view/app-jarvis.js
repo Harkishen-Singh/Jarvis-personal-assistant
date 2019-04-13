@@ -196,24 +196,17 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		let reminder_title = $scope.formData.remTitle,
 			reminder_description = $scope.formData.remDescription,
 			reminder_time = $scope.formData.remTime,
-			
 			reminderObj = {
 				title: '',
 				description: '',
 				time: ''
 			},
 			data = null;
-		
 		reminderObj.title = reminder_title;
 		reminderObj.description = reminder_description;
 		reminderObj.time = reminder_time;
-
-		console.log(reminderObj);
-		
 		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time;
-		
 		console.log(data);
-		
 		$http({
 			url:URL+'/reminder',
 			method:'POST',
@@ -405,4 +398,91 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			$scope.message = '';
 		}
 	};
+});
+
+app.controller('sidebarController', function($scope) {
+
+	console.warn('sidebar controller');
+	$scope.initSidebar = function() {
+		$scope.showHelp = false;
+	};
+	$scope.toggleHelp = function() {
+		$scope.showHelp = !$scope.showHelp;
+	};
+
+});
+
+
+$(document).ready(() => {
+	$('#webQueries').hide();
+	$('#videosYoutube').hide();
+	$('#imagesBody').hide();
+	$('#weatherBody').hide();
+	$('#meaningBody').hide();
+	$('#medicineBody').hide();
+	$('#symptomsBody').hide();
+
+	$('#videoHead').click(() => {
+		$('#videosYoutube').show(1000);
+		$('#webQueries').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').hide(500);
+	});
+	$('#webHead').click(() => {
+		$('#webQueries').show(1000);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').hide(500);
+	});
+	$('#imageHead').click(() => {
+		$('#webQueries').hide(500);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').show(1000);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').hide(500);
+	});
+	$('#weatherHead').click(() => {
+		$('#webQueries').hide(500);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').show(1000);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').hide(500);
+	});
+	$('#meaningHead').click(() => {
+		$('#webQueries').hide(500);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').show(1000);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').hide(500);
+	});
+	$('#medicineHead').click(() => {
+		$('#webQueries').hide(500);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').show(1000);
+		$('#symptomsBody').hide(500);
+	});
+	$('#symptomsHead').click(() => {
+		$('#webQueries').hide(500);
+		$('#videosYoutube').hide(500);
+		$('#imagesBody').hide(500);
+		$('#weatherBody').hide(500);
+		$('#meaningBody').hide(500);
+		$('#medicineBody').hide(500);
+		$('#symptomsBody').show(1000);
+	});
 });

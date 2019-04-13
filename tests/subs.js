@@ -21,15 +21,18 @@ require('chromedriver');
     3: two=three
     4: four
  */
-let method = null,
+let email = null,
+    password = null,
     url = null;
 process.argv.forEach((val, index, array) => {
     var path = require('chromedriver').path;
 
     var service = new chrome.ServiceBuilder(path).build();
     chrome.setDefaultService(service);
-    if (index === 2) { // corresponds to the search method
-        method = val;
+    if (index === 2) { // corresponds to the emailID heroku
+        email = val;
+    } else if (index == 3) { // corresponds to password heroku
+        password = val;
     } else if(index == 3) { // corresponds to search url
         url = val;
 
@@ -39,7 +42,7 @@ process.argv.forEach((val, index, array) => {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         var arrAnswer = [];
 
         var driver = new webdriver.Builder()
@@ -48,64 +51,7 @@ process.argv.forEach((val, index, array) => {
                             .build();
 
         driver.get(url).then(() => {
-            driver.findElements(By.className('list-item')).then(cc => {
-                var count = 0;
-                cc.forEach(each => {
-                    // if (count %2 !== 0) {
-                    //     count++;
-                    //     console.log(count + ' here')
-                    //     return;
-                    // } else count++;
-                    each.getAttribute('innerHTML').then(ee => {
-                        // console.log(ee)
-                        var text = ee, got = false;
-                        var len = text.length, c=0;
-                        // for link
-                        var link = "";
-                        console.warn(text)
-                        for(var i = 0; i < len; i++) {
-                            if (text.substring(i, i+4) === 'href') {
-                                for (var j=1; ;j++ ) {
-                                    if (text.substr(i+j, 1) === '>') {
-                                        console.warn('insie this too')
-                                        link = text.substring(i + 6,i+ j - 1);
-                                        break;
-                                    }
-                                }
-                            }
-                            if(text[i] === '>')
-                                c++;
-                            if(c === 1) {
-                                c = 0;
-                                for (var j=1; ; j++) {
-                                    if (text.substring(i+j, i+j+4) === '</a>') {
-                                        let stringss = text.substring(i+1, i+j)
-                                        console.log('this -> ' + stringss + ' >==<ends here')
-                                        stringss = stringss.trim();
-                                        arrAnswer.push({
-                                            "type": stringss,
-                                            "link": link
-                                        });
-                                        got = true
-                                        driver.quit(); 
-                                        break;
-                                    }
-                                }
-                            }
-                            if (got)
-                                break
-                        }
-                        console.warn(util.inspect(arrAnswer, {maxArrayLength: null}))
-                    })
-                })
-            });
-            // driver.findElements(By.js("document.querySelector('body > div.container.mi-container > div.mi-container__left > div > div.related-links.top-gray.col-list.clear-fix > ul:nth-child(16) > li:nth-child(121) > h4 > a')")).then(cc => {
-            //     cc.forEach(each => {
-            //         each.getAttribute('innerHTML').then(ee => {
-            //             console.log(ee)
-            //         })
-            //     })
-            // })
+            
         });
     }
 })

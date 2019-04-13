@@ -1,4 +1,4 @@
-package main
+package herokuhost
 
 import (
 	"fmt"
@@ -133,8 +133,4 @@ func DeploymentFunction() {
 	herokuContainerRelease()
 	herokuOpen()
 	fmt.Println("-do-")
-}
-
-func main() {
-	DeploymentFunction()
 }

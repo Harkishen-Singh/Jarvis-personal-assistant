@@ -218,3 +218,17 @@ header {
 .subexample {
     padding: 14px;
 }
+
+.descrp-sidebar {
+    padding: 5px;
+    border-top: 1px solid #b1d6b1;
+}
+
+.descrp-body {
+    padding: 10px;
+    font-size: 12px;
+}
+
+h5 {
+    font-size: 15px;
+}
