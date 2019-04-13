@@ -333,6 +333,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
 			TextToSpeech("Here are your reminders.", 0)
+		} else if strings.HasPrefix(strings.ToLower(message),"send mail") {
+			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
@@ -340,9 +342,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	} else {
 
-		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" {
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || 
+			strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" ||
+			strings.HasPrefix(strings.ToLower(message), "send mail"){
+
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
+
 		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
 		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
