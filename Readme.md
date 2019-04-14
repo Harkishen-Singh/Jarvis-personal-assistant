@@ -54,6 +54,9 @@ Get the complete details of the medicine, including :
 **Medicine Help based on symptoms**<br/>
 List your noticed symptoms and get immediate help on the medicines that could be taken.
 
+### DFD explaining the data flow in the software:<br>
+![DFd expalining data flow](https://files.gitter.im/muskankhedia/inED/moqup-_1_.png)
+
 ## Technology used<br/>
 
 **Front-end**<br/>
