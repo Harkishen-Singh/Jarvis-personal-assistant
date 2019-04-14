@@ -1,5 +1,5 @@
 /**
- * CMOS society
+ * COSS society
  * logs google search engine code for the caller parent subprocess
  * author: codeZero
  */

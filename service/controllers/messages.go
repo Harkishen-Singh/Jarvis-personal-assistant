@@ -5,6 +5,7 @@ import (
 	"strings"
 	"encoding/json"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
 	"fmt"
 )
 
@@ -139,7 +140,6 @@ func routes(routeObject response, w http.ResponseWriter) {
 			} else {
 				query = "https://www.google.co.in/search?q=" + remainingString
 			}
-				 
 			result := HandlerGoogle("GET", query)
 
 			// processing
@@ -205,7 +205,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			} else {
 				query = "https://www.youtube.com/results?search_query=" + remainingString
 			}
-			 
+
 			result := HandlerYoutube("GET", query)
 
 			// processing
@@ -227,7 +227,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			} else {
 				query = "https://www.google.co.in/search?q="+remainingString+"&source=lnms&tbm=isch"
 			}
-			
+
 			result := HandlerImage("GET", query)
 			// processing
 
@@ -333,6 +333,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
 			TextToSpeech("Here are your reminders.", 0)
+		} else if strings.HasPrefix(strings.ToLower(message),"deploy") {
+			// support for deployment functionality
+			fmt.Println("remaining string ", messageArr[len(messageArr) - 1])
+			status := herokuhost.DeploymentFunction(messageArr[len(messageArr) - 1], w)
+			TextToSpeech(filterForSpeech(status), 0)
 		} else if strings.HasPrefix(strings.ToLower(message),"send mail") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
 		} else {
