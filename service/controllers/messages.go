@@ -338,6 +338,8 @@ func routes(routeObject response, w http.ResponseWriter) {
 			fmt.Println("remaining string ", messageArr[len(messageArr) - 1])
 			status := herokuhost.DeploymentFunction(messageArr[len(messageArr) - 1], w)
 			TextToSpeech(filterForSpeech(status), 0)
+		} else if strings.HasPrefix(strings.ToLower(message),"send mail") {
+			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
@@ -345,9 +347,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	} else {
 
-		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" {
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || 
+			strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" ||
+			strings.HasPrefix(strings.ToLower(message), "send mail"){
+
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
+
 		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
 		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
@@ -574,7 +580,7 @@ func processYahooResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
-							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" && link[0: 4] != "www." {
 								link = "http://" + link
 							}
 							queryResult.Link = link
@@ -650,7 +656,7 @@ func processBingResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<strong>", "", -1)
 							link = strings.Replace(link, "</strong>", "", -1)
-							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" &&  link[0: 4] != "www." {
 								link = "http://" + link
 							}
 							queryResult.Link = link
