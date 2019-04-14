@@ -151,6 +151,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.message = message;
 					console.log(messageObj);
 					$scope.messageStack.push(messageObj);
+				} else if ((status === 'success' || status) && message === 'Enter Mail Details with time : ') {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					console.log(messageObj);
+					$scope.messageStack.push(messageObj);
 				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);
@@ -255,6 +262,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			mail_bcc = $scope.formData.BCC,
 			mail_subject = $scope.formData.Subject,
 			mail_body = $scope.formData.Body,
+			mail_time = $scope.formData.Time,
 			
 			mailObj = {
 				sender: '',
@@ -262,7 +270,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				cc: '',
 				bcc: '',
 				subject: '',
-				body: ''
+				body: '',
+				time: ''
 			},
 			data = null;
 		
@@ -272,11 +281,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		mailObj.bcc = mail_bcc;
 		mailObj.subject = mail_subject;
 		mailObj.body = mail_body;
+		mailObj.time = mail_time;
 
 		console.log(mailObj);
 		
 		data = 'sender='+mailObj.sender+'&to='+mailObj.to+'&subject='+mailObj.subject+'&body='+mailObj.body+
-			'&cc='+mailObj.cc+'&body='+mailObj.bcc;
+			'&cc='+mailObj.cc+'&body='+mailObj.bcc+'&time='+mailObj.time;
 		
 		console.log(data);
 		
@@ -301,7 +311,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
-			if ((status === 'success' || status) && message === 'Mail sent Successfully') {
+			if ((status === 'success' || status) && (message === 'Mail sent Successfully' || message === 'Mail has been set' )) {
 				messageObj.sender = 'jarvis-bot';
 				messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 				messageObj.length = message.length;
@@ -316,6 +326,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.formData.To = '';
 		$scope.formData.Subject = '';
 		$scope.formData.Body = '';
+		$scope.formData.Time = '';
 	};
 
 	$scope.scrollDown = function() {
