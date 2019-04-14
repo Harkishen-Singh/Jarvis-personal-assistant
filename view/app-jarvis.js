@@ -20,6 +20,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	var recognition = new webkitSpeechRecognition();
 	var recognizing;
 
+	var reminders = [];
+
 	$scope.controlMainBanner = function() {
 		$scope.mainBanner = true;
 		setTimeout(() =>{
@@ -199,13 +201,18 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			reminderObj = {
 				title: '',
 				description: '',
-				time: ''
+				time: '',
+				cook: ''
 			},
 			data = null;
 		reminderObj.title = reminder_title;
 		reminderObj.description = reminder_description;
 		reminderObj.time = reminder_time;
-		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time;
+		document.cookie = reminderObj.title+'='+reminderObj.description+'; expires='+reminderObj.time.toUTCString();+'; path=/';
+		reminderObj.cook = document.cookie;
+		
+		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time+'&cookie='+reminderObj.cook;
+		
 		console.log(data);
 		$http({
 			url:URL+'/reminder',
@@ -317,6 +324,43 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		$scope.formData.Subject = '';
 		$scope.formData.Body = '';
 	};
+
+	function reminderNotif() {
+		var x = document.cookie;
+		var allCookie = x.split(';');
+		//console.log('cookies length');
+		//console.log(allCookie.length);
+		//console.log('reminders length');
+		//console.log(reminders.length);
+		//console.log(allCookie);		
+		if (allCookie.length > reminders.length && allCookie !== '') {
+			for (var i = reminders.length; i <allCookie.length; i++) {
+				var oneCookie = allCookie[i].split('=');
+				var rem = {
+					title: '',
+					desc: ''
+				};
+				rem.title = oneCookie[0];
+				rem.desc = oneCookie[1];
+				reminders.push(rem);
+			}
+			console.log('created');
+			console.log(reminders);
+		}
+		if ((allCookie === '' && allCookie.length-1 < reminders.length) || (allCookie !== '' && allCookie.length < reminders.length)) {
+			for (i = 0; i <allCookie.length; i++) {
+				oneCookie = allCookie[i].split('=');
+				var title = oneCookie[0];
+				if (reminders[i].title !== title) {
+					alert('\tReminder! \n\n\t'+reminders[i].title+'\n\n'+reminders[i].desc);
+					reminders.splice(i,i+1);
+				}
+			}
+			console.log('deleted');
+			console.log(reminders);
+		}		
+	}
+	setInterval(reminderNotif,10000);
 
 	$scope.scrollDown = function() {
 		var elem = document.getElementById('stackArea-parent');
