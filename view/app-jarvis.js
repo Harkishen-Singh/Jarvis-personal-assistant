@@ -208,10 +208,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		reminderObj.title = reminder_title;
 		reminderObj.description = reminder_description;
 		reminderObj.time = reminder_time;
-		document.cookie = reminderObj.title+"="+reminderObj.description+"; expires="+reminderObj.time.toUTCString();+"; path=/";
+		document.cookie = reminderObj.title+'='+reminderObj.description+'; expires='+reminderObj.time.toUTCString();+'; path=/';
 		reminderObj.cook = document.cookie;
 		
-		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time+`&cookie=`+reminderObj.cook;
+		data = 'title='+reminderObj.title+'&description='+reminderObj.description+'&time='+reminderObj.time+'&cookie='+reminderObj.cook;
 		
 		console.log(data);
 		$http({
@@ -328,13 +328,13 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	function reminderNotif() {
 		var x = document.cookie;
 		var allCookie = x.split(';');
-		console.log("cookies length");
-		console.log(allCookie.length);
-		console.log("reminders length");
-		console.log(reminders.length);
-		console.log(allCookie);		
-		if (allCookie.length > reminders.length && allCookie != "") {
-			for(var i = reminders.length; i <allCookie.length; i++) {
+		//console.log('cookies length');
+		//console.log(allCookie.length);
+		//console.log('reminders length');
+		//console.log(reminders.length);
+		//console.log(allCookie);		
+		if (allCookie.length > reminders.length && allCookie !== '') {
+			for (var i = reminders.length; i <allCookie.length; i++) {
 				var oneCookie = allCookie[i].split('=');
 				var rem = {
 					title: '',
@@ -344,19 +344,19 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				rem.desc = oneCookie[1];
 				reminders.push(rem);
 			}
-			console.log("created");
+			console.log('created');
 			console.log(reminders);
 		}
-		if ((allCookie == "" && allCookie.length-1 < reminders.length) || (allCookie != "" && allCookie.length < reminders.length)) {
-			for(var i = 0; i <allCookie.length; i++) {
-				var oneCookie = allCookie[i].split('=');
+		if ((allCookie === '' && allCookie.length-1 < reminders.length) || (allCookie !== '' && allCookie.length < reminders.length)) {
+			for (i = 0; i <allCookie.length; i++) {
+				oneCookie = allCookie[i].split('=');
 				var title = oneCookie[0];
-				if (reminders[i].title != title) {
-					alert("\tReminder! \n\n\t"+reminders[i].title+"\n\n"+reminders[i].desc);
+				if (reminders[i].title !== title) {
+					alert('\tReminder! \n\n\t'+reminders[i].title+'\n\n'+reminders[i].desc);
 					reminders.splice(i,i+1);
 				}
 			}
-			console.log("deleted");
+			console.log('deleted');
 			console.log(reminders);
 		}		
 	}
