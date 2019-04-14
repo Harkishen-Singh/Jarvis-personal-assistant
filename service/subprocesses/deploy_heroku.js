@@ -23,7 +23,7 @@ require('chromedriver');
  */
 let email = 'harkishensingh@hotmail.com',
     githubRepo = null,
-    password = 'Bbsr@131',
+    password = '',
     url = 'heroku.com';
 process.argv.forEach((val, index, array) => {
     var path = require('chromedriver').path;
@@ -99,7 +99,7 @@ process.argv.forEach((val, index, array) => {
                                                                                             driver.wait(webdriver.until.elementLocated(By.className('btn btn-default btn-sm'))).then(full => {
                                                                                                 driver.findElement(By.className('btn btn-default btn-sm')).then(elLink => {
                                                                                                     elLink.getAttribute('href').then((link) => {
-                                                                                                        console.warn('link to the hosted app -> ', link);
+                                                                                                        console.warn('link to the hosted app ', link);
                                                                                                     });
                                                                                                 });
                                                                                             })
@@ -120,7 +120,6 @@ process.argv.forEach((val, index, array) => {
                                 });
                             });
                         });
-                        
                     });
                 });
             });

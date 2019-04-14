@@ -3,6 +3,8 @@ package herokuhost
 import (
 	"fmt"
 	"os/exec"
+	"net/http"
+	"encoding/json"
 )
 
 const (
@@ -46,7 +48,7 @@ func herokuLogin() bool {
 	return false
 }
 
-type automateDeployment interface {
+type automateDeploymentContainer interface {
 	herokuLogin() bool
 	herokuContainerPush() bool
 	herokuContainerLogin() bool
@@ -120,17 +122,68 @@ func herokuOpen() bool {
 	return true
 }
 
-// DeploymentFunction facilitates autodeployment functionality of the project using docker with heroku client
-func DeploymentFunction() {
+type automateDeploymentGithub interface {
+	herokuGithubSubprocess() string
+	herokuGithubLogs() string
+}
 
-	obj := herokuDetails{
-		emailID: "harkishensingh@hotmail.com",
-		password: "Bbsr@131",
+type herokuGithubCredentials struct {
+	email, password, repoName, result string
+}
+
+func (cred herokuGithubCredentials) herokuGithubSubprocess() string {
+
+	res, err := exec.Command("node", "deploy_heroku.js", cred.repoName).Output()
+	if err != nil {
+		fmt.Printf("[JARVIS] error occurred while handling heroku deployment subprocess")
+		panic(err)
 	}
-	obj.herokuLogin()
-	herokuCreate("")
-	herokuContainerPush()
-	herokuContainerRelease()
-	herokuOpen()
-	fmt.Println("-do-")
+	cred.result = string(res)
+	return string(res)
+}
+
+func (cred herokuGithubCredentials) herokuGithubLogs() string {
+
+	logs := cred.result
+	logsLen := len(logs)
+	subs := "link to the hosted app "
+	subslen := len(subs)
+	var appLink string
+	for i:=0; i< logsLen - subslen ; i++ {
+		if logs[i: i + subslen] == subs {
+			appLink = logs[i + subslen: logsLen]
+			fmt.Printf("appLink hosted at %s", appLink)
+			return appLink
+		}
+	}
+	return "deployment at heroku containers failed!"
+}
+
+type deployResponse struct {
+	Status bool `json:"status"`
+	Message string `json:"message"`
+}
+
+// DeploymentFunction facilitates autodeployment functionality of the project using docker with heroku client
+func DeploymentFunction(repoName string,  res http.ResponseWriter) string {
+
+	credentials := herokuGithubCredentials{
+		email: "harkishensingh@hotmail.com",
+		password: "",
+		repoName: repoName,
+		result: "",
+	}
+	credentials.herokuGithubSubprocess()
+	response := credentials.herokuGithubLogs()
+	var resp deployResponse
+	if response == "deployment at heroku containers failed!" {
+		resp.Status = false
+		resp.Message = "deployment at heroku containers failed!"
+	} else {
+		resp.Status = true
+		resp.Message = response
+	}
+	unmarshall, _ := json.Marshal(resp)
+	res.Write(unmarshall)
+	return resp.Message
 }
