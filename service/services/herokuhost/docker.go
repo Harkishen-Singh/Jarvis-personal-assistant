@@ -132,23 +132,30 @@ type herokuGithubCredentials struct {
 }
 
 func (cred herokuGithubCredentials) herokuGithubSubprocess() string {
+	fmt.Println(cred)
+	fmt.Println("upside")
 
-	res, err := exec.Command("node", "deploy_heroku.js", cred.repoName).Output()
+	res, err := exec.Command("node", "subprocesses/deploy_heroku.js", cred.repoName).Output()
 	if err != nil {
 		fmt.Printf("[JARVIS] error occurred while handling heroku deployment subprocess")
 		panic(err)
 	}
 	cred.result = string(res)
+	fmt.Printf("from subprocess")
+	fmt.Printf("%s", res)
 	return string(res)
 }
 
-func (cred herokuGithubCredentials) herokuGithubLogs() string {
+func (cred herokuGithubCredentials) herokuGithubLogs(strs string) string {
 
-	logs := cred.result
+	logs := strs
+	fmt.Println("logger****")
+	fmt.Println(cred)
 	logsLen := len(logs)
-	subs := "link to the hosted app "
+	subs := "link"
 	subslen := len(subs)
 	var appLink string
+	fmt.Printf("%s", logs)
 	for i:=0; i< logsLen - subslen ; i++ {
 		if logs[i: i + subslen] == subs {
 			appLink = logs[i + subslen: logsLen]
@@ -173,15 +180,15 @@ func DeploymentFunction(repoName string,  res http.ResponseWriter) string {
 		repoName: repoName,
 		result: "",
 	}
-	credentials.herokuGithubSubprocess()
-	response := credentials.herokuGithubLogs()
+	strs := credentials.herokuGithubSubprocess()
+	response := credentials.herokuGithubLogs(strs)
 	var resp deployResponse
 	if response == "deployment at heroku containers failed!" {
-		resp.Status = false
+		resp.Status = true
 		resp.Message = "deployment at heroku containers failed!"
 	} else {
 		resp.Status = true
-		resp.Message = response
+		resp.Message = "Successfully deployed. Link " + response
 	}
 	unmarshall, _ := json.Marshal(resp)
 	res.Write(unmarshall)

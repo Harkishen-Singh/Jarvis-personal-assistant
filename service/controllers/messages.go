@@ -335,9 +335,9 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech("Here are your reminders.", 0)
 		} else if strings.HasPrefix(strings.ToLower(message),"deploy") {
 			// support for deployment functionality
-			fmt.Println("remaining string ", remainingString)
-			status := herokuhost.DeploymentFunction(remainingString, w)
-			
+			fmt.Println("remaining string ", messageArr[len(messageArr) - 1])
+			status := herokuhost.DeploymentFunction(messageArr[len(messageArr) - 1], w)
+			TextToSpeech(filterForSpeech(status), 0)
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)
