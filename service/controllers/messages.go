@@ -575,7 +575,7 @@ func processYahooResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
-							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" && link[0: 4] != "www." {
 								link = "http://" + link
 							}
 							queryResult.Link = link
@@ -651,7 +651,7 @@ func processBingResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<strong>", "", -1)
 							link = strings.Replace(link, "</strong>", "", -1)
-							if link[0: 7] != "http://" &&  link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" &&  link[0: 4] != "www." {
 								link = "http://" + link
 							}
 							queryResult.Link = link
