@@ -65,6 +65,11 @@ send email<br/>
 and fill in the necessary details to send the email.<br/>
 i.e. send email
 
+**Deploy at heroku**<br/>
+In order to deploy, the github repo should be provided with proper Procfile config,<br/>
+deploy <name of repo><br/>
+i.e. deploy move-hack-angular
+
 ## Technology used<br/>
 
 **Front-end**<br/>
