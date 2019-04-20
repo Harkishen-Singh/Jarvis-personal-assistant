@@ -19,24 +19,51 @@ As a personal assistant, Jarvis assists the end-user with day-to-day activities 
 **Queries from web**<br/>
 In order to make queries from different search engines, the given format should be adopted.
 For making queries from google
-Google your query
-Similarly for yahoo and bing.
+Google your query<br/>
+Similarly for yahoo and bing.<br/>
+i.e. google APJ Abdul Kalam
 
 **Accessing youtube videos**<br/>
 In order to access videos from youtube format is,<br/>
-Youtube “video you want to search for”
+Youtube “video you want to search for”<br/>
+i.e. youtube Sandeep Maheshwari
 
 **Get weather for a location**<br/>
 To get the weather at any location format is,<br/>
-Weather city state
+Weather city state<br/>
+i.e. weather bhubaneswar odisha
 
 **Retrieve images**<br/>
 For retrieving images format is,<br/>
-Image “image you want to search”
+Image “image you want to search”<br/>
+i.e. image "M S Dhone"
 
 **Dictionary meaning**<br/>
 For getting meaning of a word format is,<br/>
-meaning "word you are searching for"
+meaning "word you are searching for"<br/>
+i.e. meaning ecstasy
+
+**Get medicine details**</br>
+For getting details about any specific medicine, format is<br/>
+medicine "name of the medicine"<br/>
+i.e. medicine paracetamol
+
+**Retrack causes of symptoms**<br/>
+For retracking causes of symptoms, format is<br/>
+symptoms "disease/ailment"<br/>
+i.e. symptoms headache
+
+**Set Reminders**<br/>
+In order to set reminder type<br/>
+set reminder<br/>
+and fill in the necessary details.<br/>
+i.e. set reminder 
+
+**Sending Emails**<br/>
+In order to send email, format is<br/>
+send email<br/>
+and fill in the necessary details to send the email.<br/>
+i.e. send email
 
 ## Technology used<br/>
 
