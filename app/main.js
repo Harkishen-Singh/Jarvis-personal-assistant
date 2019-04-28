@@ -10,10 +10,12 @@ function MainWindow() {
         width: 400,
         height: 600,
         backgroundColor: '#fff',
-        resizable: false,
+        resizable: true,
         autoHideMenuBar: true
     });
+    Menu.setApplicationMenu(null);
     mainWindow.loadURL('file://'+__dirname+'/templates/index.html')
+    mainWindow.webContents.openDevTools();
 }
 
 App.on('ready', MainWindow);
