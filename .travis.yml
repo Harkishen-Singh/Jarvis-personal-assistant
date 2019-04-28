@@ -11,11 +11,13 @@ language:
   - node
 
 node_js:
-  - "10.15.3"
+  - "10"
 
 before_script:
   - npm install --dev
   - npm install
   - npm install -g eslint electron electron-packager
   
-
+script:
+  - eslint app/*.js app/scripts/*.js
+  - npm run build
