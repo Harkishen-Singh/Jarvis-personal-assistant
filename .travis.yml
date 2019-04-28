@@ -11,7 +11,8 @@ language:
   - node
 
 node_js:
-  - "10"
+  -  "10"
+  -  "7"
 
 before_script:
   - npm install --dev
