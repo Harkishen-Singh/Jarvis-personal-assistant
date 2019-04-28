@@ -7,14 +7,13 @@ services:
   - xvfb
   - docker
 
-language:
-  - node_js
+language: node_js
 
 node_js:
-  -  "10"
   -  "7"
 
 before_script:
+  - npm install -g npm@latest
   - npm install --dev
   - npm install
   - npm install -g eslint electron electron-packager
