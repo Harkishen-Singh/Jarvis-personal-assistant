@@ -2,9 +2,10 @@
   "name": "jarvis-desktop",
   "version": "1.0.0",
   "description": "desktop application for jarvis personal assistant",
-  "main": "index.js",
+  "main": "./app/main.js",
   "scripts": {
-    "test": "electron ./app/main.js"
+    "test": "electron ./app/main.js",
+    "build": "electron-packager . Jarvis-Desktop"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,7 @@
   "devDependencies": {
     "asar": "^2.0.0",
     "electron": "^5.0.0",
-    "electron-packager": "^13.1.1"
-  },
-  "dependencies": {
-    "angular": "^1.7.8",
-    "angular-route": "^1.7.8",
-    "jquery": "^3.4.0"
+    "electron-packager": "^13.1.1",
+    "eslint": "^5.16.0"
   }
 }

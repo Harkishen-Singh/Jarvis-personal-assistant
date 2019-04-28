@@ -1,0 +1,21 @@
+os:
+  - linux
+
+sudo: required
+
+services:
+  - xvfb
+  - docker
+
+language:
+  - node
+
+node_js:
+  - "10.15.3"
+
+before_script:
+  - npm install --dev
+  - npm install
+  - npm install -g eslint electron electron-packager
+  
+

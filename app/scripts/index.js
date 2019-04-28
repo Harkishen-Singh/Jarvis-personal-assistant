@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-console
 console.warn('index script running');
 
+// eslint-disable-next-line no-undef
 const app = angular.module('jarvis-desktop', ['ngRoute']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
+// eslint-disable-next-line no-console
 console.log('From app-jarvis.js');
 
 app.config(function($routeProvider) {
@@ -15,5 +19,4 @@ app.config(function($routeProvider) {
 });
 
 app.controller('MainController', function($scope) {
-    console.warn('angular is working')
-})
+});
