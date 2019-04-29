@@ -39,7 +39,7 @@
 
 .outer-layer {
     padding: 15px;
-    background-color: rgba(225, 225, 225, 0.65);
+    background-color: rgba(225, 225, 225, 0.45);
     border-radius: 10px;
     max-width: 70%;
 }
