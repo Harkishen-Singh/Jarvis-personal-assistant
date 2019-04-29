@@ -29,6 +29,11 @@
     align-items: center;
     font-weight: 700;
     font-size: 25px;
+    transition: all 1s ease-in-out;
+}
+
+.hide {
+    height: 0px;
 }
 
 .user-area-pre-query {
@@ -56,8 +61,6 @@
     height: 40px;
 }
 
-.align-inputs {
-}
 
 .user-input-ask-button {
     background-color: white;
@@ -80,4 +83,18 @@
     top: -30px;
     left: 40px;
     font-size: 15px;
+}
+
+.animate {
+    transition: all linear 1s;
+}
+
+.animate.ng-enter {
+    transition: all linear 0.25s;
+    opacity: 0;
+}
+
+.animate.ng-leave {
+    transition: all linear 1s;
+    opacity: 1;
 }

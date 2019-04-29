@@ -1,5 +1,17 @@
-<div data-ng-include="'components/jarvis-bot-area.html'" id="jarvis-bot-area" class="jarvis-bot-area"></div>
+<div 
+  data-ng-controller="area-controller"
+  data-ng-init="Initialize()"
+>
+    <div
+        data-ng-include="'components/jarvis-bot-area.html'"
+        id="jarvis-bot-area-id"
+        class="jarvis-bot-area"
+    ></div>
 
-<img src="../assets/images/logo.gif" class="logo-pre-query" >
+    <img src="../assets/images/logo.gif" class="logo-pre-query" >
 
-<div data-ng-include="'components/user-area.html'" class="user-area-pre-query"></div>
+    <div
+        data-ng-include="'components/user-area.html'"
+        class="user-area-pre-query"
+    ></div>
+</div>
