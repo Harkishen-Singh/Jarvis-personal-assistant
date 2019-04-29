@@ -7,8 +7,6 @@ import (
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
 	"fmt"
-	"time"
-	"github.com/PuerkitoBio/goquery"
 )
 
 type response struct {
@@ -25,6 +23,9 @@ type messageQueryBody struct {
 	Link string `json:"link"`
 }
 
+// type imageQueryBody struct{
+// 	Link string `json:"link"`
+// }
 
 type reminderResponse struct {
 	Status bool	`json:"status"`
@@ -37,6 +38,12 @@ type jsonResponseQuery struct {
 	Message string `json:"message"`
 	Result []messageQueryBody `json:"result"`
 }
+
+// type jsonResponseImage struct {
+// 	Status bool	`json:"status"`
+// 	Message string `json:"message"`
+// 	Result []imageQueryBody `json:"result"`
+// }
 
 type jsonResponseWeather struct {
 	Status bool	`json:"status"`
@@ -121,16 +128,23 @@ func routes(routeObject response, w http.ResponseWriter) {
 	}
 
 
+	// single word operations
+
+
 	if Connected() {
 
 		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "search" { // for google search
+			query := ""
 			if len(remainingString) == 0 {
-				remainingString = "google"
-			} 
+				query = "https://www.google.co.in/search?q=google"
+			} else {
+				query = "https://www.google.co.in/search?q=" + remainingString
+			}
+			result := HandlerGoogle("GET", query)
 
 			// processing
 
-			response,_ := processGoogleResponses(remainingString , "com", "en", nil, 1, 10, 5)
+			response := processGoogleResponses(result)
 			responseJSON := jsonResponseQuery {
 				Status: true,
 				Message: "here are the top search results",
@@ -163,13 +177,18 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if strings.ToLower(matchPars) == "bing" {
+			query := ""
 			if len(remainingString) == 0 {
-				remainingString = "bing"
+				query = "https://www.bing.com/search?q=bing"
+			} else {
+				query = "https://www.bing.com/search?q=" + remainingString
 			}
+
+			result := HandlerBing("GET", query)
 
 			// processing
 
-			response,_ := processBingResponses(remainingString, "com", nil, 2, 30, 10)
+			response := processBingResponses(result)
 			responseJSON := jsonResponseQuery {
 				Status: true,
 				Message: "here are the top search results",
@@ -265,7 +284,9 @@ func routes(routeObject response, w http.ResponseWriter) {
 					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
 
 				} else {
-					response,_ := processGoogleResponses(wordStr , "com", "en", nil, 1, 10, 5)
+					query := "https://www.google.co.in/search?q=" + wordStr
+					result := HandlerGoogle("GET", query)
+					response := processGoogleResponses(result)
 
 					responseJSON := jsonResponseQuery{
 					Status: true,
@@ -420,78 +441,59 @@ func stringDifference(slice1 []string, slice2 []string) []string {
     return diff
 }
 
-func buildGoogleUrls(searchTerm, countryCode, languageCode string, pages, count int) ([]string, error) {
-	toScrape := []string{}
-	searchTerm = strings.Trim(searchTerm, " ")
-	searchTerm = strings.Replace(searchTerm, " ", "+", -1)
-	if googleBase, found := googleDomains[countryCode]; found {
-		for i := 0; i < pages; i++ {
-			start := i * count
-			scrapeURL := fmt.Sprintf("%s%s&num=%d&hl=%s&start=%d&filter=0", googleBase, searchTerm, count, languageCode, start)
-			toScrape = append(toScrape, scrapeURL)
-		}
-	} else {
-		err := fmt.Errorf("country (%s) is currently not supported", countryCode)
-		return nil, err
-	}
-	return toScrape, nil
-}
+// processes google query result, scraps the required data and returns it
+func processGoogleResponses(result string) []messageQueryBody {
 
-
-func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody, error) {
-	doc, err := goquery.NewDocumentFromResponse(response)
-	if err != nil {
-		return nil, err
-	}
-	results := []messageQueryBody{}
-	sel := doc.Find("div.g")
-	rank++
-	for i := range sel.Nodes {
-		item := sel.Eq(i)
-		linkTag := item.Find("a")
-		link, _ := linkTag.Attr("href")
-		descTag := item.Find("span.st")
-		desc := descTag.Text()
-		link = strings.Trim(link, " ")
-		if desc == "" {
-			desc = link
-		}
-		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
-			result := messageQueryBody{
-				desc, 
-				link,
+	subsl := "<h3 class=\"LC20lb\">"
+	lensubsl := len(subsl)
+	subsl2 := "</h3>"
+	lensubsl2 := len(subsl2)
+	subsl3 := "<cite"
+	lensubsl3 := len(subsl3)
+	subsl4 := "</cite>"
+	lensubsl4 := len(subsl4)
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+	for i := 0; i < len(result) - lensubsl; i++ {
+		mess := ""
+		if result[i : i + lensubsl] == subsl {
+			length := i + lensubsl
+			var last int
+			for j:=1; ; j++ {
+				if result[length + j: length + j + lensubsl2] == subsl2 {
+					mess = result[length: length + j]
+					queryResult.Head = mess
+					last = length + j + lensubsl2
+					i = last
+					break
+				}
 			}
-			results = append(results, result)
-			rank++
-		}
-	}
-	return results, err
-}
 
-// processGoogleResponses scrapes the relevant Google search engine for SearchResults
-func processGoogleResponses(searchTerm, countryCode, languageCode string, proxyString interface{}, pages, count, backoff int) ([]messageQueryBody, error) {
-	results := []messageQueryBody{}
-	resultCounter := 0
-	googlePages, err := buildGoogleUrls(searchTerm, countryCode, languageCode, pages, count)
-	if err != nil {
-		return nil, err
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
+					for k:= 1; ; k++ {
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
+							i = last + j + lensubsl3 + k + lensubsl4
+							found = true
+							if link[0: 7] != "http://" &&  link[0: 4] != "www." && link[0: 8] != "https://" {
+								link = "http://" + link
+							}
+							queryResult.Link = link
+							break
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
 	}
-	for _, page := range googlePages {
-		res, err := scrapeClientRequest(page, proxyString)
-		if err != nil {
-			return nil, err
-		}
-		data, err := googleResultParsing(res, resultCounter)
-		if err != nil {
-			return nil, err
-		}
-		resultCounter += len(data)
-		for _, result := range data {
-			results = append(results, result)
-		}
-		time.Sleep(time.Duration(backoff) * time.Second)
-	}
-	return results, nil
+	return queryResultArray
+
 }
 
 func processWeather(response string) weatherStr  {
@@ -597,80 +599,79 @@ func processYahooResponses(result string) []messageQueryBody {
 
 }
 
-func buildBingUrls(searchTerm, country string, pages, count int) ([]string, error) {
-	toScrape := []string{}
-	searchTerm = strings.Trim(searchTerm, " ")
-	searchTerm = strings.Replace(searchTerm, " ", "+", -1)
-	if countryCode, found := bingDomains[country]; found {
-		for i := 0; i < pages; i++ {
-			first := firstParameter(i, count)
-			scrapeURL := fmt.Sprintf("https://bing.com/search?q=%s&first=%d&count=%d%s", searchTerm, first, count, countryCode)
-			toScrape = append(toScrape, scrapeURL)
-		}
-	} else {
-		err := fmt.Errorf("country (%s) is currently not supported", country)
-		return nil, err
-	}
-	return toScrape, nil
-}
+// processes bing query result, scraps the required data and returns it
+func processBingResponses(result string) []messageQueryBody {
 
-func firstParameter(number, count int) int {
-	if number == 0 {
-		return number + 1
-	}
-	return number*count + 1
-}
+	subsl := "<li class=\"b_algo\""
+	subsl2 := "<a"
+	subsl3 := "<cite"
+	lensubsl3 := len(subsl3)
+	subsl4 := "</cite>"
+	lensubsl4 := len(subsl4)
 
-func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, error) {
-	doc, err := goquery.NewDocumentFromResponse(response)
-	if err != nil {
-		return nil, err
-	}
-	results := []messageQueryBody{}
-	sel := doc.Find("li.b_algo")
-	rank++
-	for i := range sel.Nodes {
-		item := sel.Eq(i)
-		linkTag := item.Find("a")
-		link, _ := linkTag.Attr("href")
-		descTag := item.Find("div.b_caption p")
-		desc := descTag.Text()
-		link = strings.Trim(link, " ")
-		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
-			result := messageQueryBody{
-				desc, 
-				link,
+	var queryResult messageQueryBody
+	var queryResultArray []messageQueryBody
+
+	for i := 0; i < len(result) - len(subsl); i++ {
+		mess := ""
+		if result[i : i + len(subsl)] == subsl {
+			length := i + len(subsl)
+			var last int
+			var aStart int
+			var start int
+
+			for k := 1; ; k++ {
+				if result[length + k: length + k + 2 ] == subsl2 {
+					aStart = length + k
+					for l := 1; ; l++ {
+						if result[aStart + l: aStart + l + 1 ] == ">" {
+							start = aStart + l + 1;
+							break;
+						}
+					}
+					break;
+				}
 			}
-			results = append(results, result)
-			rank++
-		}
-	}
-	return results, err
-}
 
-// processBingResponses scrapes bing.com with desired parameters
-func processBingResponses(searchTerm, country string, proxyString interface{}, pages, count, backoff int) ([]messageQueryBody, error) {
-	results := []messageQueryBody{}
-	bingPages, err := buildBingUrls(searchTerm, country, pages, count)
-	if err != nil {
-		return nil, err
+			for j:=1; ; j++ {
+				if result[start + j: start + j + 4] == "</a>" {
+					mess = result[start: start + j]
+					fMess := strings.Replace(mess, "<strong>", "", -1)
+					finalMess := strings.Replace(fMess, "</strong>", "", -1)
+					queryResult.Head = finalMess
+					last = start + j + 4
+					i = last
+					break
+				}
+			}
+
+			found := false
+			for j:= 1; ; j++ {
+				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
+					for k:= 1; ; k++ {
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
+							link := result[last + j + lensubsl3 + 1 : last + j + lensubsl3 + k]
+
+							i = last + j + lensubsl3 + k + lensubsl4
+							found = true
+							link = strings.Replace(link, "<strong>", "", -1)
+							link = strings.Replace(link, "</strong>", "", -1)
+							if link[0: 7] != "http://" && link[0: 8] != "https://" &&  link[0: 4] != "www." {
+								link = "http://" + link
+							}
+							queryResult.Link = link
+							break
+						}
+					}
+				}
+				if found {
+					queryResultArray = append(queryResultArray, queryResult)
+					break
+				}
+			}
+		}
 	}
-	for _, page := range bingPages {
-		rank := len(results)
-		res, err := scrapeClientRequest(page, proxyString)
-		if err != nil {
-			return nil, err
-		}
-		data, err := bingResultParser(res, rank)
-		if err != nil {
-			return nil, err
-		}
-		for _, result := range data {
-			results = append(results, result)
-		}
-		time.Sleep(time.Duration(backoff) * time.Second)
-	}
-	return results, nil
+	return queryResultArray
 }
 
 // processes youtube query result, scraps the required data and returns it
