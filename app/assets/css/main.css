@@ -1,0 +1,29 @@
+.logo-pre-query {
+    height: 90px;
+    position: absolute;
+    padding: 5px;
+    top: 40%;
+    border-radius: 5px;
+    background-color: white;
+    left: 42%;
+}
+
+.jarvis-bot-area {
+    background-color: blue;
+    color: white;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+#user-area-pre-query {
+    margin-top: 60%;
+}

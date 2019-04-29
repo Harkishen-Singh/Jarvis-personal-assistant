@@ -8,7 +8,7 @@ let mainWindow;
 
 function MainWindow() {
 	mainWindow = new BrowserWindow({
-		width: 400,
+		width: 500,
 		height: 600,
 		backgroundColor: '#fff',
 		resizable: true,
