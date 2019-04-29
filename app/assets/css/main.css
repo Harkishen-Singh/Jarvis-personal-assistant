@@ -78,8 +78,8 @@
 
 #message-icon-style {
     height: 40px;
+    transition: all 1s ease-in-out;
 }
-
 
 .user-input-ask-button {
     background-color: white;
@@ -88,11 +88,25 @@
     font-size: 15px;
     margin-left: 20px;
     border-radius: 8px;
+    transition: all 1s ease-in-out;
+}
+
+.user-input-ask-button-post-query {
+    display: none; /* removing this entire class style will make the sliding proces toggleable */
 }
 
 .user-input-outer-layer {
     background-color: blue;
     margin-left: 14%;
+    border-radius: 10px;
+    padding: 0px 20px 0px 10px;
+    transition: all 1s ease-in-out;
+}
+
+.user-input-outer-layer-post-query {
+    background-color: transparent;
+    margin-left: 90%;
+    margin-top: 0;
     border-radius: 10px;
     padding: 0px 20px 0px 10px;
 }
