@@ -3,9 +3,15 @@
     position: absolute;
     padding: 5px;
     top: 40%;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: white;
     left: 42%;
+}
+
+.all-sides-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .jarvis-bot-area {
@@ -22,8 +28,43 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
+    font-size: 25px;
 }
 
-#user-area-pre-query {
-    margin-top: 60%;
+.user-area-pre-query {
+    position: absolute;
+    bottom: 20%;
+    font-size: 20px;
+}
+
+.outer-layer {
+    padding: 15px;
+    background-color: rgba(225, 225, 225, 0.65);
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.user-message-input-area {
+    line-height: 30px;
+    font-size: 20px;
+    border-color: #f8f8f8;
+    border-radius: 15px;
+    margin-left: 15px;
+}
+
+#message-icon-style {
+    height: 40px;
+}
+
+.align-inputs {
+    margin-left: 20%;
+}
+
+.user-input-ask-button {
+    background-color: #31af31;
+    color: #fff;
+    padding: 2px 10px 2px 10px;
+    font-size: 15px;
+    margin-left: 20px;
+    border-radius: 8px;
 }
