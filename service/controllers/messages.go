@@ -169,7 +169,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 			// processing
 
-			response,_ := processBingResponses(remainingString, "com", nil, 2, 30, 10)
+			response,_ := processBingResponses(remainingString, "com", nil, 1, 10, 5)
 			responseJSON := jsonResponseQuery {
 				Status: true,
 				Message: "here are the top search results",
@@ -636,6 +636,9 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 		descTag := item.Find("div.b_caption p")
 		desc := descTag.Text()
 		link = strings.Trim(link, " ")
+		if desc == "" {
+			desc = link
+		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
 				desc, 
