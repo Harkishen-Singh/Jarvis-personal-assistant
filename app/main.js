@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const electron = require('electron'),
 	BrowserWindow = electron.BrowserWindow,
 	App = electron.app,
@@ -15,7 +16,12 @@ function MainWindow() {
 	});
 	Menu.setApplicationMenu(null);
 	// eslint-disable-next-line no-undef
-	mainWindow.loadURL('file://'+__dirname+'/templates/index.html');
+	mainWindow.loadURL('file://'+__dirname+'/templates/index.html').then(success => {
+		console.warn('main configuration window found. starting the application');
+		console.warn(success);
+	}).catch(e => {
+		console.error(e);
+	});
 	mainWindow.webContents.openDevTools();
 }
 
