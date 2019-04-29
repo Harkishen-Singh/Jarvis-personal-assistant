@@ -131,3 +131,9 @@
     transition: all linear 1s;
     opacity: 1;
 }
+
+.reset-button {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
