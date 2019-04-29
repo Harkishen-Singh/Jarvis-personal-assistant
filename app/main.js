@@ -9,9 +9,9 @@ let mainWindow;
 function MainWindow() {
 	mainWindow = new BrowserWindow({
 		width: 500,
-		height: 600,
+		height: 700,
 		backgroundColor: '#fff',
-		resizable: false,
+		resizable: true,
 		autoHideMenuBar: true
 	});
 	Menu.setApplicationMenu(null);

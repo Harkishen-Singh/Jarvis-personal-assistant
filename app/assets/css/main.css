@@ -74,3 +74,10 @@
     border-radius: 10px;
     padding: 0px 20px 0px 10px;
 }
+
+#label-ask {
+    position: absolute;
+    top: -30px;
+    left: 40px;
+    font-size: 15px;
+}
