@@ -28,7 +28,11 @@ app.controller('area-controller', function ($scope) {
 	};
 	$scope.AskButtonClick = function () {
 		$scope.showJarvisBotArea = false;
-		let ele = document.getElementById('jarvis-bot-area-id');
-		ele.classList.toggle('hide');
+		let ele0 = document.getElementById('jarvis-bot-area-id'),
+			ele1 = document.getElementById('ele1-move'),
+			ele2 = document.getElementById('ele2-move');
+		ele0.classList.toggle('hide');
+		ele1.classList.toggle('logo-post-query');
+		ele2.classList.toggle('user-area-post-query');
 	};
 });

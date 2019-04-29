@@ -6,6 +6,18 @@
     border-radius: 15px;
     background-color: white;
     left: 40%;
+    transition: all 1s ease-in-out;
+}
+
+.logo-post-query {
+    height: 90px;
+    position: absolute;
+    padding: 5px;
+    top: 0%;
+    border-radius: 15px;
+    background-color: white;
+    left: 40%;
+    
 }
 
 .all-sides-centering {
@@ -38,7 +50,14 @@
 
 .user-area-pre-query {
     position: absolute;
-    bottom: 20%;
+    top: 80%;
+    font-size: 20px;
+    transition: all 1s ease-in-out;
+}
+
+.user-area-post-query {
+    position: absolute;
+    top: 20%;
     font-size: 20px;
 }
 
