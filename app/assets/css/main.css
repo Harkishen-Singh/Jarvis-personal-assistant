@@ -46,7 +46,7 @@
 
 .user-message-input-area {
     line-height: 30px;
-    font-size: 20px;
+    font-size: 13px;
     border-color: #f8f8f8;
     border-radius: 15px;
     margin-left: 15px;
@@ -57,7 +57,6 @@
 }
 
 .align-inputs {
-    margin-left: 20%;
 }
 
 .user-input-ask-button {
@@ -67,4 +66,11 @@
     font-size: 15px;
     margin-left: 20px;
     border-radius: 8px;
+}
+
+.user-input-outer-layer {
+    background-color: rgba(51, 165, 225, 0.65);
+    margin-left: 14%;
+    border-radius: 10px;
+    padding: 0px 20px 0px 10px;
 }
