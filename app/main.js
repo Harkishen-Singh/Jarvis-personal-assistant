@@ -11,7 +11,7 @@ function MainWindow() {
 		width: 500,
 		height: 700,
 		backgroundColor: '#fff',
-		resizable: true,
+		resizable: false,
 		autoHideMenuBar: true
 	});
 	Menu.setApplicationMenu(null);
