@@ -9,6 +9,9 @@ const app = angular.module('jarvis-desktop', ['ngRoute', 'ngAnimate']),
 	USER = 'default';
 // eslint-disable-next-line no-console
 console.log('From app-jarvis.js');
+let imported0 = document.createElement('script');
+imported0.src = '../scripts/connect.js';
+document.head.appendChild(imported0);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -22,7 +25,7 @@ app.config(function($routeProvider) {
 app.controller('MainController', function($scope) {
 });
 
-app.controller('area-controller', function ($scope) {
+app.controller('area-controller', function ($scope, $http) {
 	$scope.Initialize = function () {
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
@@ -47,5 +50,38 @@ app.controller('area-controller', function ($scope) {
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele5.style.display = 'none';
 		ele6.classList.toggle('message-jarvis-bot-post-query');
+		// eslint-disable-next-line no-undef
+		// let connn = new Connect('google harkishen');
+		// connn.setQuery('hi');
+		// connn.send().then((resolve, reject) => {
+		// 	console.warn('resolving');
+		// 	console.warn(resolve);
+		// });
+		$http({
+			url:URL+'/message',
+			method:'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data:'username=harkishen&message=hi'
+		}).then(resp => {
+			let res = (resp.data),
+				message = res['message'],
+				status = res['status'],
+				result = res['result'],
+				show = res['show'],
+				hrs2 = new Date().getHours(),
+				mins2 = new Date().getMinutes(),
+				messageObj = {
+					message: '',
+					sender: '',
+					time: '',
+					result: '',
+					show: false,
+					length: null
+				};
+			console.log(res);
+
+		});
 	};
 });
