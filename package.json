@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Harkishen-Singh/Jarvis-Desktop#readme",
   "devDependencies": {
-    "asar": "2.0.0",
+    "asar": "2.0.1",
     "electron": "5.0.0",
     "electron-packager": "13.1.1",
     "eslint": "5.16.0"
