@@ -3,28 +3,30 @@
         Type below to ask Jarvis any of your queries!
     </span>
     <div class="user-input-outer-layer" id="ele4-move">
-        <label class="all-sides-centering align-inputs">
-            <img
-                src="../assets/images/message-icon.png"
-                id="message-icon-style"
-                alt="input message to ask Jarvis"
-            >
-            &nbsp; &nbsp;
-            <input
-                type="text"
-                maxlength="300"
-                size="35"
-                class="user-message-input-area"
-                placeholder="Type a Message .. "
-            >
-            <button
-                class="user-input-ask-button"
-                data-ng-click="AskButtonClick()"
-                id="userButton"
-                type="submit"
-            >
-                Ask
-            </button>
-        </label>
+        <form>
+            <label class="all-sides-centering align-inputs">
+                <img
+                        src="../assets/images/message-icon.png"
+                        id="message-icon-style"
+                        alt="input message to ask Jarvis"
+                >
+                &nbsp; &nbsp;
+                <input
+                        type="text"
+                        size="35"
+                        class="user-message-input-area"
+                        data-ng-model="query"
+                        placeholder="Type a message .."
+                />
+                <button
+                        class="user-input-ask-button"
+                        data-ng-click="AskButtonClick(query)"
+                        id="userButton"
+                        type="submit"
+                >
+                    Ask
+                </button>
+            </label>
+        </form>
     </div>
 </div>

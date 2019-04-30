@@ -31,7 +31,7 @@ app.controller('area-controller', function ($scope, $http) {
 		$scope.showLabel = true;
 		$scope.showReset = false;
 	};
-	$scope.AskButtonClick = function () {
+	$scope.AskButtonClick = function (query) {
 		$scope.showJarvisBotArea = false;
 		$scope.showLabel = !$scope.showLabel;
 		$scope.showReset = !$scope.showReset;
@@ -50,20 +50,14 @@ app.controller('area-controller', function ($scope, $http) {
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele5.style.display = 'none';
 		ele6.classList.toggle('message-jarvis-bot-post-query');
-		// eslint-disable-next-line no-undef
-		// let connn = new Connect('google harkishen');
-		// connn.setQuery('hi');
-		// connn.send().then((resolve, reject) => {
-		// 	console.warn('resolving');
-		// 	console.warn(resolve);
-		// });
+		let data = 'username=' + USER + '&message=' + query;
 		$http({
 			url:URL+'/message',
 			method:'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			data:'username=harkishen&message=hi'
+			data: data
 		}).then(resp => {
 			let res = (resp.data),
 				message = res['message'],
@@ -81,7 +75,6 @@ app.controller('area-controller', function ($scope, $http) {
 					length: null
 				};
 			console.log(res);
-
 		});
 	};
 });
