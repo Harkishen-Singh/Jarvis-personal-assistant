@@ -4,8 +4,9 @@
   "description": "desktop application for jarvis personal assistant",
   "main": "./app/main.js",
   "scripts": {
-    "test": "electron ./app/main.js",
-    "build": "electron-packager . Jarvis-Desktop"
+    "start": "electron ./app/main.js",
+    "build": "electron-packager . Jarvis-Desktop",
+    "test": "tests/travis.sh"
   },
   "repository": {
     "type": "git",

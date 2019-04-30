@@ -1,9 +1,8 @@
 which eslint
-eslint ../app/*.js ../app/scripts/*.js
+eslint /app/*.js app/scripts/*.js
 
 echo "building Jarvis-Desktop package"
 
-cd ..
 npm run build
 echo "successfully build Jarvis-Desktop"
 
