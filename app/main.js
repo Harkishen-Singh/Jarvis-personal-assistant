@@ -8,8 +8,8 @@ let mainWindow;
 
 function MainWindow() {
 	mainWindow = new BrowserWindow({
-		width: 500,
-		height: 700,
+		width: 400,
+		height: 560,
 		backgroundColor: '#fff',
 		resizable: true,
 		autoHideMenuBar: true
