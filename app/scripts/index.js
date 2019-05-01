@@ -41,14 +41,12 @@ app.controller('area-controller', function ($scope, $http) {
 			ele2 = document.getElementById('ele2-move'),
 			ele3 = document.getElementById('userButton'),
 			ele4 = document.getElementById('ele4-move'),
-			ele5 = document.getElementById('message-icon-style'),
 			ele6 = document.getElementById('jarvis-message-id');
 		ele0.classList.toggle('hide');
 		ele1.classList.toggle('logo-post-query');
 		ele2.classList.toggle('user-area-post-query');
 		ele3.classList.toggle('user-input-ask-button-post-query');
 		ele4.classList.toggle('user-input-outer-layer-post-query');
-		ele5.style.display = 'none';
 		ele6.classList.toggle('message-jarvis-bot-post-query');
 		let data = 'username=' + USER + '&message=' + query;
 		$http({
