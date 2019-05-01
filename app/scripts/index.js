@@ -1,8 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-console
-console.warn('index script running');
-
 // eslint-disable-next-line no-undef
 const app = angular.module('jarvis-desktop', ['ngRoute', 'ngAnimate']),
 	URL = 'http://127.0.0.1:3000',
@@ -48,8 +43,7 @@ app.factory('weatherResponseService', function () {
 });
 
 // controllers
-
-app.controller('MainController', function($scope) {
+app.controller('MainController', function() {
 });
 
 app.controller('area-controller', function ($scope, $http, weatherResponseService) {
@@ -62,7 +56,6 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 		$scope.showJarvisBotArea = false;
 		$scope.showLabel = !$scope.showLabel;
 		$scope.showReset = !$scope.showReset;
-		console.warn($scope);
 		let ele0 = document.getElementById('jarvis-bot-area-id'),
 			ele1 = document.getElementById('ele1-move'),
 			ele2 = document.getElementById('ele2-move'),
@@ -88,19 +81,8 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 				let res = (resp.data),
 					message = res['message'],
 					status = res['status'],
-					result = res['result'],
-					show = res['show'],
-					hrs2 = new Date().getHours(),
-					mins2 = new Date().getMinutes(),
-					messageObj = {
-						message: '',
-						sender: '',
-						time: '',
-						result: '',
-						show: false,
-						length: null
-					};
-				console.log(res);
+					result = res['result'];
+
 				// $scope types for handling different response types
 				$scope.showWeatherScope = false;
 
@@ -121,51 +103,35 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 });
 
 app.controller('weather-view-controller', function ($scope, weatherResponseService) {
-	console.warn('weather-view-controller called');
-	let response = {},
-		serviceStore = {};
-	response = weatherResponseService.getServerResponse();
-	serviceStore = weatherResponseService.getStore();
+	let serviceStore = weatherResponseService.getStore();
 	let temperature = serviceStore.temperature;
-	console.log('temperta is ', temperature);
 	switch (true) {
 	case temperature > 50 :
 		$scope.tempTag = 'head-weather-data-extreme';
 		break;
-
 	case temperature > 40:
 		$scope.tempTag = 'head-weather-data-very-high';
 		break;
-
 	case temperature > 30:
 		$scope.tempTag = 'head-weather-data-high';
 		break;
-
 	case temperature > 20:
-		console.log('hereeee');
 		$scope.tempTag = 'head-weather-data-mild';
 		break;
-
 	case temperature > 15:
 		$scope.tempTag = 'head-weather-data-cool';
 		break;
-
 	case temperature > 10:
 		$scope.tempTag = 'head-weather-data-cooler';
 		break;
-
 	case temperature > 0:
 		$scope.tempTag = 'head-weather-data-cold';
 		break;
-
 	case temperature < 0:
 		$scope.tempTag = 'head-weather-data-extreme-cold ';
 		break;
 	default:
 		// eslint-disable-next-line no-mixed-spaces-and-tabs
  	}
-	console.warn('from weather controller');
-	console.warn(serviceStore);
-	console.warn(response);
 	$scope.weatherData = serviceStore;
 });
