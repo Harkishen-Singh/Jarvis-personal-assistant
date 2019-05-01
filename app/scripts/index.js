@@ -22,10 +22,37 @@ app.config(function($routeProvider) {
 		});
 });
 
+// services
+
+app.factory('weatherResponseService', function () {
+	let serverResponse = {};
+	let updateServiceStore = function (object, response = {}) {
+		serverResponse = response;
+		console.warn('from service');
+		console.warn(object);
+		return object;
+	};
+	let getStore = function () {
+		return updateServiceStore;
+	};
+	let getServerResponse = function () {
+		if (serverResponse)
+			return serverResponse;
+		return null;
+	};
+	return {
+		updateServiceStore: updateServiceStore,
+		getStore: getStore,
+		getServerResponse : getServerResponse
+	};
+});
+
+// controllers
+
 app.controller('MainController', function($scope) {
 });
 
-app.controller('area-controller', function ($scope, $http) {
+app.controller('area-controller', function ($scope, $http, weatherResponseService) {
 	$scope.Initialize = function () {
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
@@ -73,6 +100,22 @@ app.controller('area-controller', function ($scope, $http) {
 					length: null
 				};
 			console.log(res);
+			// $scope types for handling different response types
+			$scope.showWeatherScope = false;
+
+			// response checks
+			if (status && message.includes('current weather conditions')) {
+				$scope.showWeatherScope = true;
+				weatherResponseService.updateServiceStore(JSON.parse(result), res);
+			}
 		});
 	};
 });
+
+app.controller('weather-view-controller', function ($scope, weatherResponseService) {
+	console.warn('weather-view-controller called');
+	let response = {},
+		serviceStore = {};
+	response = weatherResponseService.getServerResponse();
+	serviceStore = weatherResponseService.getStore();
+})
