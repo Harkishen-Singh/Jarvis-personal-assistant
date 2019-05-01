@@ -25,15 +25,15 @@ app.config(function($routeProvider) {
 // services
 
 app.factory('weatherResponseService', function () {
-	let serverResponse = {};
+	let serverResponse = {},
+		serviceStore = {};
 	let updateServiceStore = function (object, response = {}) {
 		serverResponse = response;
-		console.warn('from service');
-		console.warn(object);
-		return object;
+		serviceStore = JSON.parse(object);
+		return true;
 	};
 	let getStore = function () {
-		return updateServiceStore;
+		return serviceStore;
 	};
 	let getServerResponse = function () {
 		if (serverResponse)
@@ -106,7 +106,7 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 			// response checks
 			if (status && message.includes('current weather conditions')) {
 				$scope.showWeatherScope = true;
-				weatherResponseService.updateServiceStore(JSON.parse(result), res);
+				weatherResponseService.updateServiceStore(result, res);
 			}
 		});
 	};
@@ -118,4 +118,7 @@ app.controller('weather-view-controller', function ($scope, weatherResponseServi
 		serviceStore = {};
 	response = weatherResponseService.getServerResponse();
 	serviceStore = weatherResponseService.getStore();
+	console.warn('from weather controller');
+	console.warn(serviceStore);
+	console.warn(response);
 })

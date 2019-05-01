@@ -2,7 +2,7 @@
     <div id="jarvis-message-id">
         Hi, I am Jarvis! How can I help you?
     </div>
-    <div data-ng-show="showWeatherScope">
-        <div data-ng-include="components/weather-view.html"></div>
+    <div data-ng-if="showWeatherScope">
+        <div data-ng-include="'components/weather-view.html'"></div>
     </div>
 </div>
