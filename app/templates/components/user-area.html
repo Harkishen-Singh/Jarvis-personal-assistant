@@ -18,6 +18,7 @@
                             class="user-message-input-area"
                             data-ng-model="query"
                             placeholder="Type a message .."
+                            id="user-input-area"
                     />
                     <button
                             class="user-input-ask-button"
@@ -31,6 +32,9 @@
             </form>
         </div>
     </div>
+
+    <!--  response routing  -->
+
     <div
             data-ng-include="'components/response-routes.html'"
     ></div>

@@ -151,3 +151,100 @@
     bottom: 5%;
     right: 5%;
 }
+
+/* response styles */
+
+.outer-layer-response {
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #EFF0F1;
+}
+
+.head-weather-data-high {
+    background-color: yellow;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-very-high {
+    background-color: #F4C62B;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-extreme {
+    background-color: #E82828;
+    color: white;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-mild {
+    background-color: #F0F893;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cool {
+    background-color: #F8FBD9;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cooler {
+    background-color: #FEFFEF;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cold {
+    background-color: #FFFFFE;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-extreme-cold {
+    background-color: #FFFFFF;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+#head-weather-data-text {
+    font-size: 50px;
+}
+
+#tail-weather-data {
+    font-size: 15px;
+    margin: 10px 0 15px 15px;
+}

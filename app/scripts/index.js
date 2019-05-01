@@ -75,40 +75,48 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 		ele3.classList.toggle('user-input-ask-button-post-query');
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele6.classList.toggle('message-jarvis-bot-post-query');
-		let data = 'username=' + USER + '&message=' + query;
-		$http({
-			url:URL+'/message',
-			method:'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			data: data
-		}).then(resp => {
-			let res = (resp.data),
-				message = res['message'],
-				status = res['status'],
-				result = res['result'],
-				show = res['show'],
-				hrs2 = new Date().getHours(),
-				mins2 = new Date().getMinutes(),
-				messageObj = {
-					message: '',
-					sender: '',
-					time: '',
-					result: '',
-					show: false,
-					length: null
-				};
-			console.log(res);
-			// $scope types for handling different response types
+		if (query) {
+			let data = 'username=' + USER + '&message=' + query;
+			$http({
+				url:URL+'/message',
+				method:'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				data: data
+			}).then(resp => {
+				let res = (resp.data),
+					message = res['message'],
+					status = res['status'],
+					result = res['result'],
+					show = res['show'],
+					hrs2 = new Date().getHours(),
+					mins2 = new Date().getMinutes(),
+					messageObj = {
+						message: '',
+						sender: '',
+						time: '',
+						result: '',
+						show: false,
+						length: null
+					};
+				console.log(res);
+				// $scope types for handling different response types
+				$scope.showWeatherScope = false;
+
+				// response checks
+				if (status && message.includes('current weather conditions')) {
+					$scope.showWeatherScope = true;
+					weatherResponseService.updateServiceStore(result, res);
+				}
+			});
+		} else {
+			document.getElementById('user-input-area').value = '';
 			$scope.showWeatherScope = false;
 
-			// response checks
-			if (status && message.includes('current weather conditions')) {
-				$scope.showWeatherScope = true;
-				weatherResponseService.updateServiceStore(result, res);
-			}
-		});
+			// re-initialize services
+			weatherResponseService.updateServiceStore(null, null);
+		}
 	};
 });
 
@@ -118,6 +126,44 @@ app.controller('weather-view-controller', function ($scope, weatherResponseServi
 		serviceStore = {};
 	response = weatherResponseService.getServerResponse();
 	serviceStore = weatherResponseService.getStore();
+	let temperature = serviceStore.temperature;
+	console.log('temperta is ', temperature);
+	switch (true) {
+	case temperature > 50 :
+		$scope.tempTag = 'head-weather-data-extreme';
+		break;
+
+	case temperature > 40:
+		$scope.tempTag = 'head-weather-data-very-high';
+		break;
+
+	case temperature > 30:
+		$scope.tempTag = 'head-weather-data-high';
+		break;
+
+	case temperature > 20:
+		console.log('hereeee');
+		$scope.tempTag = 'head-weather-data-mild';
+		break;
+
+	case temperature > 15:
+		$scope.tempTag = 'head-weather-data-cool';
+		break;
+
+	case temperature > 10:
+		$scope.tempTag = 'head-weather-data-cooler';
+		break;
+
+	case temperature > 0:
+		$scope.tempTag = 'head-weather-data-cold';
+		break;
+
+	case temperature < 0:
+		$scope.tempTag = 'head-weather-data-extreme-cold ';
+		break;
+	default:
+		// eslint-disable-next-line no-mixed-spaces-and-tabs
+ 	}
 	console.warn('from weather controller');
 	console.warn(serviceStore);
 	console.warn(response);
