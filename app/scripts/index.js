@@ -121,4 +121,5 @@ app.controller('weather-view-controller', function ($scope, weatherResponseServi
 	console.warn('from weather controller');
 	console.warn(serviceStore);
 	console.warn(response);
-})
+	$scope.weatherData = serviceStore;
+});
