@@ -14,6 +14,16 @@ app.config(function($routeProvider) {
 
 });
 
+app.filter('unsafe', function($sce) {
+
+	return function(val) {
+
+		return $sce.trustAsHtml(val);
+
+	};
+
+});
+
 // services
 
 app.factory('responseService', function () {
