@@ -322,3 +322,10 @@ html, body {
 #recent-usage-inner-layer {
     padding: 10px;
 }
+
+.video-link {
+    width: 350px;
+    height: 250px;
+    margin: 0px 15px 10px 15px;
+}
+
