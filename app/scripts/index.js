@@ -179,7 +179,6 @@ app.controller('weather-view-controller', function ($scope, responseService) {
 		$scope.tempTag = 'head-weather-data-extreme-cold ';
 		break;
 	default:
-		// eslint-disable-next-line no-mixed-spaces-and-tabs
 
 	}
 	$scope.weatherData = serviceStore;
@@ -194,5 +193,5 @@ app.controller('medicine-view-controller', function ($scope, responseService) {
 
 });
 
-app.controller('recent-usage-controller', function ($scope) {
+app.controller('recent-usage-controller', function () {
 });

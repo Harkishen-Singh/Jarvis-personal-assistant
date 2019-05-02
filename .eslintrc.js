@@ -94,7 +94,6 @@ module.exports = {
 		"radix": 2,
 		"vars-on-top": 2,
 		"wrap-iife": 0,
-		"yoda": [2, "always", {}],
 		"strict": 0,
 		"init-declarations": [2, "always"],
 		"no-catch-shadow": 0,
