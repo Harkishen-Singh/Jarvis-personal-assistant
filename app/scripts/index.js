@@ -58,6 +58,26 @@ app.factory('responseService', function () {
 
 });
 
+app.factory('$recentlyUsed', function () {
+
+	let usageArray = [];
+	let updateUsageStore = function (tag, plainQuery, message) {
+
+		let usageObject = {
+			tag       : tag,
+			plainQuery: plainQuery,
+			message   : message,
+		};
+
+	};
+	let resetUsageStore = function () {
+
+		usageArray = [];
+
+	};
+
+});
+
 // controllers
 app.controller('MainController', function() {
 });
@@ -151,7 +171,8 @@ app.controller('area-controller', function ($scope, $http, responseService) {
 app.controller('weather-view-controller', function ($scope, responseService) {
 
 	let serviceStore = responseService.getStore();
-	let temperature = serviceStore.temperature;
+	const { temperature: temperature1, } = serviceStore;
+	let temperature = temperature1;
 	switch (true) {
 
 	case 50 < temperature :
