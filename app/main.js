@@ -23,6 +23,9 @@ function MainWindow() {
 		console.error(e);
 	});
 	mainWindow.webContents.openDevTools();
+	mainWindow.on('closed', () => {
+		mainWindow = null;
+	});
 }
 
 App.on('ready', MainWindow);
