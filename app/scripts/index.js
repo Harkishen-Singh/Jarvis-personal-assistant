@@ -14,30 +14,7 @@ app.config(function($routeProvider) {
 
 // services
 
-app.factory('weatherResponseService', function () {
-	let serverResponse = {},
-		serviceStore = {};
-	let updateServiceStore = function (object, response = {}) {
-		serverResponse = response;
-		serviceStore = JSON.parse(object);
-		return true;
-	};
-	let getStore = function () {
-		return serviceStore;
-	};
-	let getServerResponse = function () {
-		if (serverResponse)
-			return serverResponse;
-		return null;
-	};
-	return {
-		updateServiceStore: updateServiceStore,
-		getStore: getStore,
-		getServerResponse : getServerResponse
-	};
-});
-
-app.factory('medicineResponseService', function () {
+app.factory('responseService', function () {
 	let serverResponse = {},
 		serviceStore = {};
 	let updateServiceStore = function (object, response = {}) {
@@ -69,7 +46,7 @@ app.factory('medicineResponseService', function () {
 app.controller('MainController', function() {
 });
 
-app.controller('area-controller', function ($scope, $http, weatherResponseService, medicineResponseService) {
+app.controller('area-controller', function ($scope, $http, responseService) {
 	$scope.Initialize = function () {
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
@@ -110,12 +87,13 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 
 				// $scope types for handling different response types
 				$scope.showWeatherScope = false;
+				$scope.showQueryScope = false;
 				$scope.showMedicine_HealthScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
 					$scope.showWeatherScope = true;
-					weatherResponseService.updateServiceStore(result, res);
+					responseService.updateServiceStore(result, res);
 				} else if (
 					(status === 'success' || status) &&
 					(
@@ -124,7 +102,7 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 					)
 				) {
 					$scope.showMedicine_HealthScope = true;
-					medicineResponseService.updateServiceStore(res, res);
+					responseService.updateServiceStore(res, res);
 				}
 			});
 		} else {
@@ -133,14 +111,14 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 			$scope.showMedicine_HealthScope = false;
 
 			// re-initialize services
-			weatherResponseService.updateServiceStore(null, null);
-			medicineResponseService.updateServiceStore(null, null);
+			responseService.updateServiceStore(null, null);
 		}
 	};
 });
 
-app.controller('weather-view-controller', function ($scope, weatherResponseService) {
-	let serviceStore = weatherResponseService.getStore();
+
+app.controller('weather-view-controller', function ($scope, responseService) {
+	let serviceStore = responseService.getStore();
 	let temperature = serviceStore.temperature;
 	switch (true) {
 	case temperature > 50 :
@@ -173,8 +151,8 @@ app.controller('weather-view-controller', function ($scope, weatherResponseServi
 	$scope.weatherData = serviceStore;
 });
 
-app.controller('medicine-view-controller', function ($scope, medicineResponseService) {
-	let serviceStore = medicineResponseService.getStore();
+app.controller('medicine-view-controller', function ($scope, responseService) {
+	let serviceStore = responseService.getStore();
 	$scope.messageInfo = serviceStore.message;
 	$scope.messageResult = serviceStore.result;
 });
