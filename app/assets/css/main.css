@@ -254,23 +254,38 @@ html, body {
     margin: 10px 0 15px 15px;
 }
 
-.query-response-outer-layer {
-    background-color: #F0F893;
-}
-
-#queried-data {
-    border: 2px balck solid;
-}
-
 .head-query-data {
-    font-size: 12px
+    font-size: 12px;
+    margin-bottom: -10 px;
+    line-height: 1.5;
+    font-weight: 900;
+    color: blue
 }
 
 .link-query-data {
     font-size: 12px;
+    color: green
     /* display: none; */
 }
 
+.desc-query-data {
+    font-size: 12px;
+    margin-bottom: 0 rem;
+}
+
+.card {
+    border: 1px solid white;
+    border-radius: 10px; 
+    margin: 0px 10px 10px 10px;
+}
+
+.card:hover {
+    background-color: #FFF9C4;
+}
+
+.card-body {
+    padding: 1 rem;
+}
 
 .data-grow {
     border: 2px solid black;
