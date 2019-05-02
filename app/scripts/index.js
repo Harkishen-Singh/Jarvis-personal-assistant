@@ -42,11 +42,39 @@ app.factory('weatherResponseService', function () {
 	};
 });
 
+app.factory('medicineResponseService', function () {
+	let serverResponse = {},
+		serviceStore = {};
+	let updateServiceStore = function (object, response = {}) {
+		serverResponse = response;
+		try {
+			serviceStore = JSON.parse(object);
+		} catch (e) {
+			serviceStore = object;
+		}
+
+		return true;
+	};
+	let getStore = function () {
+		return serviceStore;
+	};
+	let getServerResponse = function () {
+		if (serverResponse)
+			return serverResponse;
+		return null;
+	};
+	return {
+		updateServiceStore: updateServiceStore,
+		getStore: getStore,
+		getServerResponse : getServerResponse
+	};
+});
+
 // controllers
 app.controller('MainController', function() {
 });
 
-app.controller('area-controller', function ($scope, $http, weatherResponseService) {
+app.controller('area-controller', function ($scope, $http, weatherResponseService, medicineResponseService) {
 	$scope.Initialize = function () {
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
@@ -82,22 +110,36 @@ app.controller('area-controller', function ($scope, $http, weatherResponseServic
 					message = res['message'],
 					status = res['status'],
 					result = res['result'];
+				// eslint-disable-next-line no-console
+				console.warn(res);
 
 				// $scope types for handling different response types
 				$scope.showWeatherScope = false;
+				$scope.showMedicine_HealthScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
 					$scope.showWeatherScope = true;
 					weatherResponseService.updateServiceStore(result, res);
+				} else if (
+					(status === 'success' || status) &&
+					(
+						message === 'Information about the medicine : ' ||
+						message === 'Help on the given symptoms : '
+					)
+				) {
+					$scope.showMedicine_HealthScope = true;
+					medicineResponseService.updateServiceStore(res, res);
 				}
 			});
 		} else {
 			document.getElementById('user-input-area').value = '';
 			$scope.showWeatherScope = false;
+			$scope.showMedicine_HealthScope = false;
 
 			// re-initialize services
 			weatherResponseService.updateServiceStore(null, null);
+			medicineResponseService.updateServiceStore(null, null);
 		}
 	};
 });
@@ -134,4 +176,10 @@ app.controller('weather-view-controller', function ($scope, weatherResponseServi
 		// eslint-disable-next-line no-mixed-spaces-and-tabs
  	}
 	$scope.weatherData = serviceStore;
+});
+
+app.controller('medicine-view-controller', function ($scope, medicineResponseService) {
+	let serviceStore = medicineResponseService.getStore();
+	$scope.messageInfo = serviceStore.message;
+	$scope.messageResult = serviceStore.result;
 });
