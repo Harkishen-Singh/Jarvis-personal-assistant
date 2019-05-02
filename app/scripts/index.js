@@ -128,7 +128,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 			// for supporting recently used functionality
 			for (let v in supportedTags) {
 
-				if (v === query) {
+				if (supportedTags[ v ] === query.substring(0, query.indexOf(' ', 0))) {
 
 					$recentlyUsed.updateUsageStore(
 						query.substring(
