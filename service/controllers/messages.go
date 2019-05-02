@@ -21,6 +21,7 @@ type statusCode struct {
 type messageQueryBody struct {
 	Head string `json:"head"`
 	Link string `json:"link"`
+	Desc string `json:"desc"`
 }
 
 // type imageQueryBody struct{
@@ -452,9 +453,13 @@ func processGoogleResponses(result string) []messageQueryBody {
 	lensubsl3 := len(subsl3)
 	subsl4 := "</cite>"
 	lensubsl4 := len(subsl4)
+	subsl5 := "\"st\""
+	lensubsl5 := len(subsl5)
+	lenresult := len(result)
+
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
-	for i := 0; i < len(result) - lensubsl; i++ {
+	for i := 0; i < lenresult - lensubsl; i++ {
 		mess := ""
 		if result[i : i + lensubsl] == subsl {
 			length := i + lensubsl
@@ -473,15 +478,37 @@ func processGoogleResponses(result string) []messageQueryBody {
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
 					for k:= 1; ; k++ {
-						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
-							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
-							i = last + j + lensubsl3 + k + lensubsl4
-							found = true
-							if link[0: 7] != "http://" &&  link[0: 4] != "www." && link[0: 8] != "https://" {
-								link = "http://" + link
-							}
-							queryResult.Link = link
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + 1] == ">" { // finding index for ">"
+							mid := last + j + lensubsl3 + k + 1
+							for l := 1; ; l++ {
+								if result[mid + l: mid + l + lensubsl4] == subsl4 {
+									last = mid + l + lensubsl4
+									link := result[mid : mid +l]
+									i = last 
+									found = true
+									if link[0: 7] != "http://" && link[0: 8] != "https://" {
+										link = "http://" + link
+									}
+									queryResult.Link = link
+									break
+								}
+							} 
 							break
+						}
+					}
+
+					for l := 1; i + l + lensubsl5 < len(result) ;l++ {
+						if result[i + l: i + l + lensubsl5] == subsl5 {
+							length = i + lensubsl5 + l + 1
+							for m := 1; ; m++ {
+								if result[length + m: length + m +7] == "</span>" {
+									desc := result[length : length + m]
+									queryResult.Desc = desc
+									i = length + m + 6
+									break;
+								}
+							}
+							break;
 						}
 					}
 				}
@@ -543,6 +570,8 @@ func processYahooResponses(result string) []messageQueryBody {
 	lensubsl3 := len(subsl3)
 	subsl4 := "</span>"
 	lensubsl4 := len(subsl4)
+	subsl5 := "<p class=\"lh-16\""
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -580,14 +609,29 @@ func processYahooResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
-							if link[0: 7] != "http://" && link[0: 8] != "https://" && link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" {
 								link = "http://" + link
 							}
 							queryResult.Link = link
 							break
 						}
 					}
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl5] == subsl5 {
+							length = i + k + lensubsl5 + 1;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + 4] == "</p>" {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
+					}
 				}
+
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break
@@ -608,6 +652,8 @@ func processBingResponses(result string) []messageQueryBody {
 	lensubsl3 := len(subsl3)
 	subsl4 := "</cite>"
 	lensubsl4 := len(subsl4)
+	subsl5 := "<p>"
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -636,9 +682,7 @@ func processBingResponses(result string) []messageQueryBody {
 			for j:=1; ; j++ {
 				if result[start + j: start + j + 4] == "</a>" {
 					mess = result[start: start + j]
-					fMess := strings.Replace(mess, "<strong>", "", -1)
-					finalMess := strings.Replace(fMess, "</strong>", "", -1)
-					queryResult.Head = finalMess
+					queryResult.Head = mess
 					last = start + j + 4
 					i = last
 					break
@@ -656,14 +700,29 @@ func processBingResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<strong>", "", -1)
 							link = strings.Replace(link, "</strong>", "", -1)
-							if link[0: 7] != "http://" && link[0: 8] != "https://" &&  link[0: 4] != "www." {
+							if link[0: 7] != "http://" && link[0: 8] != "https://" {
 								link = "http://" + link
 							}
 							queryResult.Link = link
 							break
 						}
 					}
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl5] == subsl5 {
+							length = i + k + lensubsl5;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + 4] == "</p>" {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
+					}
 				}
+
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break
@@ -681,6 +740,10 @@ func processYoutubeResponses(result string) []messageQueryBody {
 	subsl2 := "href=\""
 	subsl3 := "</a>"
 	lensubsl3 := len(subsl3)
+	subsl4 := "<yt-formatted-string id=\"description-text\" class=\"style-scope ytd-video-renderer\">"
+	lensubsl4 := len(subsl4)
+	subsl5 := "</yt-formatted-string>"
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -695,12 +758,18 @@ func processYoutubeResponses(result string) []messageQueryBody {
 				if result[length + j: length + j + len(subsl2)] == subsl2 {
 					mid = length + j + len(subsl2)
 					for k := 1; ; k++ {
-						if result[mid + k: mid + k + 2] == "\">" {
+						if result[mid + k: mid + k + 1] == "\"" {
 							link := result[mid: mid + k]
 							flink := "https://www.youtube.com" + link
 							queryResult.Link = flink
-							last = mid + k + 2
-							i = last
+							last = mid + k + 1
+							for l := 1; ; l++ {
+								if result[last + l: last+ l +2] == "\">" {
+									last = last + l +2
+									i = last + l + 2
+									break;
+								}
+							}
 							break
 						}
 					}
@@ -711,11 +780,25 @@ func processYoutubeResponses(result string) []messageQueryBody {
 			found := false
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
-						mess = result[last: last + j]
-						i = last + j + lensubsl3
-						found = true
-						queryResult.Head = mess
+					mess = result[last: last + j]
+					i = last + j + lensubsl3
+					found = true
+					queryResult.Head = mess
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl4] == subsl4 {
+							length = i + k + lensubsl4;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + lensubsl5] == subsl5 {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
 					}
+				}
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break

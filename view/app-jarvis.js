@@ -14,6 +14,13 @@ app.config(function($routeProvider) {
 		});
 });
 
+app.filter('unsafe', function($sce) {
+	return function(val) {
+		return $sce.trustAsHtml(val);
+	};
+});
+
+
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	// eslint-disable-next-line no-undef
@@ -118,6 +125,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					$scope.messageStack.push(messageObj);
 					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
+				} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
 					messageObj.length = message.length;

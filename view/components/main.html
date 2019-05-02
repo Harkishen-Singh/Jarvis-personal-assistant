@@ -46,7 +46,28 @@
                                 <br>
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
                                     <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
-                                    <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the top search videos">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
                                 </div>
                             </div>
                         </div>
