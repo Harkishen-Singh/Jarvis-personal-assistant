@@ -18,7 +18,7 @@ html, body {
     height: 90px;
     position: absolute;
     padding: 5px;
-    top: 0%;
+    top: 0;
     border-radius: 15px;
     background-color: white;
     left: 40%;
@@ -29,7 +29,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .jarvis-bot-area {
@@ -51,7 +51,7 @@ html, body {
 }
 
 .hide {
-    height: 0px;
+    height: 0;
 }
 
 .user-area-pre-query {
@@ -131,7 +131,7 @@ html, body {
     margin-left: 25%;
     margin-top: 0;
     border-radius: 10px;
-    padding: 0px 20px 0px 10px;
+    padding: 0 20px 0 10px;
 }
 
 #label-ask {
@@ -176,7 +176,7 @@ html, body {
     width: 100%;
     padding-top: 50px;
     padding-left: 20%;
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 20px 20px 0 0;
 }
 
 .head-weather-data-very-high {
@@ -321,4 +321,19 @@ html, body {
 
 #recent-usage-inner-layer {
     padding: 10px;
+}
+
+.recent-usage-tag {
+    background-color: white;
+    color: blue;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.recent-usage-query {
+    margin-left: 5%;
+}
+
+.recent-usage-outer-loop-layer {
+    overflow-y: scroll;
 }
