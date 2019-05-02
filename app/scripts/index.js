@@ -2,11 +2,6 @@
 const app = angular.module('jarvis-desktop', ['ngRoute', 'ngAnimate']),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-// eslint-disable-next-line no-console
-console.log('From app-jarvis.js');
-let imported0 = document.createElement('script');
-imported0.src = '../scripts/connect.js';
-document.head.appendChild(imported0);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -183,3 +178,7 @@ app.controller('medicine-view-controller', function ($scope, medicineResponseSer
 	$scope.messageInfo = serviceStore.message;
 	$scope.messageResult = serviceStore.result;
 });
+
+app.controller('recent-usage-controller', function ($scope) {
+	console.log('recent uasd');
+})
