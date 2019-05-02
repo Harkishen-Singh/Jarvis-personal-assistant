@@ -621,8 +621,6 @@ func processYahooResponses(result string) []messageQueryBody {
 							for l := 1; ; l++ {
 								if result[length + l: length + l + 4] == "</p>" {
 									desc := result[length: length + l]
-									desc = strings.Replace(desc, "<b>", "", -1)
-									desc = strings.Replace(desc, "</b>", "", -1)
 									queryResult.Desc = desc;
 									i = length + l +4;
 									break;
@@ -683,9 +681,7 @@ func processBingResponses(result string) []messageQueryBody {
 			for j:=1; ; j++ {
 				if result[start + j: start + j + 4] == "</a>" {
 					mess = result[start: start + j]
-					fMess := strings.Replace(mess, "<strong>", "", -1)
-					finalMess := strings.Replace(fMess, "</strong>", "", -1)
-					queryResult.Head = finalMess
+					queryResult.Head = mess
 					last = start + j + 4
 					i = last
 					break

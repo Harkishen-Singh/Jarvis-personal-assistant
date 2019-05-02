@@ -14,6 +14,13 @@ app.config(function($routeProvider) {
 		});
 });
 
+app.filter('unsafe', function($sce) {
+	return function(val) {
+		return $sce.trustAsHtml(val);
+	};
+});
+
+
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	// eslint-disable-next-line no-undef
