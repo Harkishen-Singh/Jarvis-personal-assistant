@@ -477,14 +477,21 @@ func processGoogleResponses(result string) []messageQueryBody {
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<cite"
 					for k:= 1; ; k++ {
-						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</cite>"
-							link := result[last + j + lensubsl3 + 15 : last + j + lensubsl3 + k]
-							i = last + j + lensubsl3 + k + lensubsl4
-							found = true
-							if link[0: 7] != "http://" && link[0: 8] != "https://" {
-								link = "http://" + link
-							}
-							queryResult.Link = link
+						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + 1] == ">" { // finding index for ">"
+							mid := last + j + lensubsl3 + k + 1
+							for l := 1; ; l++ {
+								if result[mid + l: mid + l + lensubsl4] == subsl4 {
+									last = mid + l + lensubsl4
+									link := result[mid : mid +l]
+									i = last 
+									found = true
+									if link[0: 7] != "http://" && link[0: 8] != "https://" {
+										link = "http://" + link
+									}
+									queryResult.Link = link
+									break
+								}
+							} 
 							break
 						}
 					}

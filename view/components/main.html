@@ -47,7 +47,7 @@
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
                                     <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
                                     <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
-                                    <p class="desc-query-data">{{objectQuery.desc}}</p>
+                                    <p class="desc-query-data" ng:bind="objectQuery.desc"></p>
                                 </div>
                             </div>
                         </div>
