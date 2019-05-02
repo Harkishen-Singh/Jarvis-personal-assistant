@@ -1,50 +1,61 @@
 // eslint-disable-next-line no-undef
-const app = angular.module('jarvis-desktop', ['ngRoute', 'ngAnimate']),
+const app = angular.module('jarvis-desktop', [ 'ngRoute', 'ngAnimate', ]),
 	URL = 'http://127.0.0.1:3000',
 	USER = 'default';
-// eslint-disable-next-line no-console
-console.log('From app-jarvis.js');
-let imported0 = document.createElement('script');
-imported0.src = '../scripts/connect.js';
-document.head.appendChild(imported0);
 
 app.config(function($routeProvider) {
+
 	$routeProvider
 		.when('/', {
 			templateUrl: '../templates/components/main-screen.html',
-			controller: 'MainController',
-			title: 'Jarvis - personal assistant',
+			controller : 'MainController',
+			title      : 'Jarvis - personal assistant',
 		});
+
 });
 
 // services
 
 app.factory('responseService', function () {
+
 	let serverResponse = {},
 		serviceStore = {};
 	let updateServiceStore = function (object, response = {}) {
+
 		serverResponse = response;
 		try {
-			serviceStore = JSON.parse(object);
-		} catch (e) {
-			serviceStore = object;
-		}
 
+			serviceStore = JSON.parse(object);
+
+		} catch (e) {
+
+			serviceStore = object;
+
+		}
 		return true;
+
 	};
 	let getStore = function () {
+
 		return serviceStore;
+
 	};
 	let getServerResponse = function () {
-		if (serverResponse)
+
+		if (serverResponse) {
+
 			return serverResponse;
+
+		}
 		return null;
+
 	};
 	return {
 		updateServiceStore: updateServiceStore,
-		getStore: getStore,
-		getServerResponse : getServerResponse
+		getStore          : getStore,
+		getServerResponse : getServerResponse,
 	};
+
 });
 
 // controllers
@@ -52,12 +63,16 @@ app.controller('MainController', function() {
 });
 
 app.controller('area-controller', function ($scope, $http, responseService) {
+
 	$scope.Initialize = function () {
+
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
 		$scope.showReset = false;
+
 	};
 	$scope.AskButtonClick = function (query) {
+
 		$scope.showJarvisBotArea = false;
 		$scope.showLabel = !$scope.showLabel;
 		$scope.showReset = !$scope.showReset;
@@ -74,99 +89,122 @@ app.controller('area-controller', function ($scope, $http, responseService) {
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele6.classList.toggle('message-jarvis-bot-post-query');
 		if (query) {
+
 			let data = 'username=' + USER + '&message=' + query;
 			$http({
-				url:URL+'/message',
-				method:'POST',
+				url    : URL + '/message',
+				method : 'POST',
 				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
+					'Content-Type': 'application/x-www-form-urlencoded',
 				},
-				data: data
-			}).then(resp => {
-				let res = (resp.data),
-					message = res['message'],
-					status = res['status'],
-					result = res['result'];
+				data: data,
+			}).then((resp) => {
+
+				let res = resp.data,
+					message = res[ 'message' ],
+					status = res[ 'status' ],
+					result = res[ 'result' ];
 				// eslint-disable-next-line no-console
 				console.warn(res);
 
 				// $scope types for handling different response types
 				$scope.showWeatherScope = false;
 				$scope.showQueryScope = false;
-				$scope.showMedicine_HealthScope = false;
+				$scope.showMedicineHealthScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
+
 					$scope.showWeatherScope = true;
 					responseService.updateServiceStore(result, res);
+
 				} else if (status && message.includes('top search results')) {
+
 					$scope.showQueryScope = true;
 					responseService.updateServiceStore(result, res);
+
 				} else if (
-					(status === 'success' || status) &&
+					('success' === status || status) &&
 					(
-						message === 'Information about the medicine : ' ||
-						message === 'Help on the given symptoms : '
+						'Information about the medicine : ' === message ||
+						'Help on the given symptoms : ' === message
 					)
 				) {
-					$scope.showMedicine_HealthScope = true;
+
+					$scope.showMedicineHealthScope = true;
 					responseService.updateServiceStore(res, res);
+
 				}
+
 			});
+
 		} else {
+
 			document.getElementById('user-input-area').value = '';
+			$scope.showQueryScope = false;
 			$scope.showWeatherScope = false;
-			$scope.showQueryScope = false; 
-			$scope.showMedicine_HealthScope = false;
+			$scope.showMedicineHealthScope = false;
 
 			// re-initialize services
 			responseService.updateServiceStore(null, null);
+
 		}
+
 	};
+
 });
 
-
 app.controller('weather-view-controller', function ($scope, responseService) {
+
 	let serviceStore = responseService.getStore();
 	let temperature = serviceStore.temperature;
 	switch (true) {
-	case temperature > 50 :
+
+	case 50 < temperature :
 		$scope.tempTag = 'head-weather-data-extreme';
 		break;
-	case temperature > 40:
+	case 40 < temperature:
 		$scope.tempTag = 'head-weather-data-very-high';
 		break;
-	case temperature > 30:
+	case 30 < temperature:
 		$scope.tempTag = 'head-weather-data-high';
 		break;
-	case temperature > 20:
+	case 20 < temperature:
 		$scope.tempTag = 'head-weather-data-mild';
 		break;
-	case temperature > 15:
+	case 15 < temperature:
 		$scope.tempTag = 'head-weather-data-cool';
 		break;
-	case temperature > 10:
+	case 10 < temperature:
 		$scope.tempTag = 'head-weather-data-cooler';
 		break;
-	case temperature > 0:
+	case 0 < temperature:
 		$scope.tempTag = 'head-weather-data-cold';
 		break;
-	case temperature < 0:
+	case 0 > temperature:
 		$scope.tempTag = 'head-weather-data-extreme-cold ';
 		break;
 	default:
-		// eslint-disable-next-line no-mixed-spaces-and-tabs
- 	}
+
+	}
 	$scope.weatherData = serviceStore;
+
 });
 
 app.controller('query-view-controller', function ($scope, responseService) {
+
 	let serviceStore = responseService.getStore();
 	$scope.queryData = serviceStore;
+
 });
 
 app.controller('medicine-view-controller', function ($scope, responseService) {
+
 	let serviceStore = responseService.getStore();
 	$scope.messageInfo = serviceStore.message;
 	$scope.messageResult = serviceStore.result;
+
+});
+
+app.controller('recent-usage-controller', function () {
 });
