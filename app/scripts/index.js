@@ -1,8 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-console
-console.warn('index script running');
-
 // eslint-disable-next-line no-undef
 const app = angular.module('jarvis-desktop', ['ngRoute', 'ngAnimate']),
 	URL = 'http://127.0.0.1:3000',
@@ -22,10 +17,36 @@ app.config(function($routeProvider) {
 		});
 });
 
-app.controller('MainController', function($scope) {
+// services
+
+app.factory('weatherResponseService', function () {
+	let serverResponse = {},
+		serviceStore = {};
+	let updateServiceStore = function (object, response = {}) {
+		serverResponse = response;
+		serviceStore = JSON.parse(object);
+		return true;
+	};
+	let getStore = function () {
+		return serviceStore;
+	};
+	let getServerResponse = function () {
+		if (serverResponse)
+			return serverResponse;
+		return null;
+	};
+	return {
+		updateServiceStore: updateServiceStore,
+		getStore: getStore,
+		getServerResponse : getServerResponse
+	};
 });
 
-app.controller('area-controller', function ($scope, $http) {
+// controllers
+app.controller('MainController', function() {
+});
+
+app.controller('area-controller', function ($scope, $http, weatherResponseService) {
 	$scope.Initialize = function () {
 		$scope.showJarvisBotArea = true;
 		$scope.showLabel = true;
@@ -35,7 +56,6 @@ app.controller('area-controller', function ($scope, $http) {
 		$scope.showJarvisBotArea = false;
 		$scope.showLabel = !$scope.showLabel;
 		$scope.showReset = !$scope.showReset;
-		console.warn($scope);
 		let ele0 = document.getElementById('jarvis-bot-area-id'),
 			ele1 = document.getElementById('ele1-move'),
 			ele2 = document.getElementById('ele2-move'),
@@ -48,31 +68,70 @@ app.controller('area-controller', function ($scope, $http) {
 		ele3.classList.toggle('user-input-ask-button-post-query');
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele6.classList.toggle('message-jarvis-bot-post-query');
-		let data = 'username=' + USER + '&message=' + query;
-		$http({
-			url:URL+'/message',
-			method:'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			data: data
-		}).then(resp => {
-			let res = (resp.data),
-				message = res['message'],
-				status = res['status'],
-				result = res['result'],
-				show = res['show'],
-				hrs2 = new Date().getHours(),
-				mins2 = new Date().getMinutes(),
-				messageObj = {
-					message: '',
-					sender: '',
-					time: '',
-					result: '',
-					show: false,
-					length: null
-				};
-			console.log(res);
-		});
+		if (query) {
+			let data = 'username=' + USER + '&message=' + query;
+			$http({
+				url:URL+'/message',
+				method:'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				data: data
+			}).then(resp => {
+				let res = (resp.data),
+					message = res['message'],
+					status = res['status'],
+					result = res['result'];
+
+				// $scope types for handling different response types
+				$scope.showWeatherScope = false;
+
+				// response checks
+				if (status && message.includes('current weather conditions')) {
+					$scope.showWeatherScope = true;
+					weatherResponseService.updateServiceStore(result, res);
+				}
+			});
+		} else {
+			document.getElementById('user-input-area').value = '';
+			$scope.showWeatherScope = false;
+
+			// re-initialize services
+			weatherResponseService.updateServiceStore(null, null);
+		}
 	};
+});
+
+app.controller('weather-view-controller', function ($scope, weatherResponseService) {
+	let serviceStore = weatherResponseService.getStore();
+	let temperature = serviceStore.temperature;
+	switch (true) {
+	case temperature > 50 :
+		$scope.tempTag = 'head-weather-data-extreme';
+		break;
+	case temperature > 40:
+		$scope.tempTag = 'head-weather-data-very-high';
+		break;
+	case temperature > 30:
+		$scope.tempTag = 'head-weather-data-high';
+		break;
+	case temperature > 20:
+		$scope.tempTag = 'head-weather-data-mild';
+		break;
+	case temperature > 15:
+		$scope.tempTag = 'head-weather-data-cool';
+		break;
+	case temperature > 10:
+		$scope.tempTag = 'head-weather-data-cooler';
+		break;
+	case temperature > 0:
+		$scope.tempTag = 'head-weather-data-cold';
+		break;
+	case temperature < 0:
+		$scope.tempTag = 'head-weather-data-extreme-cold ';
+		break;
+	default:
+		// eslint-disable-next-line no-mixed-spaces-and-tabs
+ 	}
+	$scope.weatherData = serviceStore;
 });
