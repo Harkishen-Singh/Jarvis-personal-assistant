@@ -1,0 +1,12 @@
+<!-- Handles query requests -->
+<div class="query-view-class" >
+    <div class="query-response-outer-layer" data-ng-controller="query-view-controller" style>
+        <div id="queried-data" data-ng-if="queryData.length !== 0">
+            <br>
+            <div data-ng-repeat="objectQuery in queryData" class="data-grow">
+                <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                <a class = "link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -248,3 +248,44 @@
     font-size: 15px;
     margin: 10px 0 15px 15px;
 }
+
+.query-response-outer-layer {
+    background-color: #F0F893;
+}
+
+#queried-data {
+    border: 2px balck solid;
+}
+
+.head-query-data {
+    font-size: 12px
+}
+
+.link-query-data {
+    font-size: 12px;
+    /* display: none; */
+}
+
+
+.data-grow {
+    border: 2px solid black;
+    /* background-color: #F0F893; */
+    padding: 5px 5px 5px 5px;
+    border-radius: 10px;
+    height: 40px;
+    width: 90%;
+    margin: 5px 0% 5px 1%;
+    float: left;
+    position: relative;
+    transition: height 0.5s;
+    -webkit-transition: height 0.5s;
+    text-align: center;
+    overflow: hidden;
+}
+
+.data-grow:hover {
+    /* background-color: blue; */
+    height: 100px;
+    width: 90%;
+    overflow: hidden;
+}
