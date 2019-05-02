@@ -132,6 +132,14 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.result = result;
 					$scope.messageStack.push(messageObj);
 					$scope.showLoading = false;
+				} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
 					messageObj.sender = 'jarvis-bot';
 					messageObj.time = String(hrs2 + ':' + mins2);

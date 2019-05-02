@@ -455,10 +455,11 @@ func processGoogleResponses(result string) []messageQueryBody {
 	lensubsl4 := len(subsl4)
 	subsl5 := "\"st\""
 	lensubsl5 := len(subsl5)
+	lenresult := len(result)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
-	for i := 0; i < len(result) - lensubsl; i++ {
+	for i := 0; i < lenresult - lensubsl; i++ {
 		mess := ""
 		if result[i : i + lensubsl] == subsl {
 			length := i + lensubsl
@@ -496,8 +497,8 @@ func processGoogleResponses(result string) []messageQueryBody {
 						}
 					}
 
-					for l := 1; ;l++ {
-						if result[i + l: i +l + lensubsl5] == subsl5 {
+					for l := 1; i + l + lensubsl5 < len(result) ;l++ {
+						if result[i + l: i + l + lensubsl5] == subsl5 {
 							length = i + lensubsl5 + l + 1
 							for m := 1; ; m++ {
 								if result[length + m: length + m +7] == "</span>" {
