@@ -736,6 +736,10 @@ func processYoutubeResponses(result string) []messageQueryBody {
 	subsl2 := "href=\""
 	subsl3 := "</a>"
 	lensubsl3 := len(subsl3)
+	subsl4 := "<yt-formatted-string id=\"description-text\" class=\"style-scope ytd-video-renderer\">"
+	lensubsl4 := len(subsl4)
+	subsl5 := "</yt-formatted-string>"
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -772,11 +776,25 @@ func processYoutubeResponses(result string) []messageQueryBody {
 			found := false
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
-						mess = result[last: last + j]
-						i = last + j + lensubsl3
-						found = true
-						queryResult.Head = mess
+					mess = result[last: last + j]
+					i = last + j + lensubsl3
+					found = true
+					queryResult.Head = mess
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl4] == subsl4 {
+							length = i + k + lensubsl4;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + lensubsl5] == subsl5 {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
 					}
+				}
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break
