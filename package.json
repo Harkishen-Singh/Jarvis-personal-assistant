@@ -31,7 +31,6 @@
     "eslint": "5.16.0"
   },
   "dependencies": {
-    "angular-electron": "^0.2.1",
     "node-json-db": "^0.11.0"
   }
 }
