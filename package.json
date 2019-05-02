@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ./app/main.js",
     "build": "electron-packager . Jarvis-Desktop",
-    "test": "tests/travis.sh"
+    "test": "shell/travis.sh"
   },
   "repository": {
     "type": "git",

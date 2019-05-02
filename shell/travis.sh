@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 which eslint
 eslint app/*.js app/scripts/*.js
 
