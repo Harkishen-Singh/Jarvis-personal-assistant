@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-undef
-const app = angular.module('jarvis-desktop', [ 'ngRoute', 'ngAnimate', ]),
+const app = angular.module('jarvis-desktop', [ 'ngRoute', 'ngAnimate', 'ngStorage', ]),
 	URL = 'http://127.0.0.1:3000',
+	// eslint-disable-next-line no-unused-vars
 	USER = 'default';
 
 app.config(function($routeProvider) {
@@ -68,12 +69,25 @@ app.factory('$recentlyUsed', function () {
 			plainQuery: plainQuery,
 			message   : message,
 		};
+		usageArray.push(usageObject);
+		// eslint-disable-next-line no-console
+		console.log(usageArray);
 
 	};
 	let resetUsageStore = function () {
 
 		usageArray = [];
 
+	};
+	let getUsageStore = function () {
+
+		return usageArray;
+
+	};
+	return {
+		updateUsageStore: updateUsageStore,
+		resetUsageStore : resetUsageStore,
+		getUsageStore   : getUsageStore,
 	};
 
 });
@@ -82,8 +96,9 @@ app.factory('$recentlyUsed', function () {
 app.controller('MainController', function() {
 });
 
-app.controller('area-controller', function ($scope, $http, responseService) {
+app.controller('area-controller', function ($scope, $http, responseService, $recentlyUsed) {
 
+	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', ];
 	$scope.Initialize = function () {
 
 		$scope.showJarvisBotArea = true;
@@ -109,6 +124,26 @@ app.controller('area-controller', function ($scope, $http, responseService) {
 		ele4.classList.toggle('user-input-outer-layer-post-query');
 		ele6.classList.toggle('message-jarvis-bot-post-query');
 		if (query) {
+
+			// for supporting recently used functionality
+			for (let v in supportedTags) {
+
+				if (v === query) {
+
+					$recentlyUsed.updateUsageStore(
+						query.substring(
+							0, query.indexOf(" ", 0)
+						),
+						query.substring(
+							query.indexOf(" ", 0) + 1,
+							query.length
+						),
+						query,
+					);
+
+				}
+
+			}
 
 			let data = 'username=' + USER + '&message=' + query;
 			$http({
@@ -214,8 +249,7 @@ app.controller('weather-view-controller', function ($scope, responseService) {
 
 app.controller('query-view-controller', function ($scope, responseService) {
 
-	let serviceStore = responseService.getStore();
-	$scope.queryData = serviceStore;
+	$scope.queryData = responseService.getStore();
 
 });
 
@@ -227,5 +261,8 @@ app.controller('medicine-view-controller', function ($scope, responseService) {
 
 });
 
-app.controller('recent-usage-controller', function () {
+app.controller('recent-usage-controller', function ($scope, $recentlyUsed) {
+
+	$scope.recentUsageArray = $recentlyUsed.getUsageStore();
+
 });
