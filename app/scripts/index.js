@@ -24,7 +24,6 @@ app.factory('responseService', function () {
 		} catch (e) {
 			serviceStore = object;
 		}
-
 		return true;
 	};
 	let getStore = function () {
@@ -158,5 +157,4 @@ app.controller('medicine-view-controller', function ($scope, responseService) {
 });
 
 app.controller('recent-usage-controller', function ($scope) {
-	console.log('recent uasd');
-})
+});
