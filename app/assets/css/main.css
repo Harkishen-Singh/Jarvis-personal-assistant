@@ -1,3 +1,8 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .logo-pre-query {
     height: 110px;
     position: absolute;
@@ -147,7 +152,7 @@
 }
 
 .reset-button {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
     right: 5%;
 }
@@ -247,4 +252,23 @@
 #tail-weather-data {
     font-size: 15px;
     margin: 10px 0 15px 15px;
+}
+
+.medicine-view-main {
+    border-radius: 20px;
+}
+
+.medicine-health-main-body {
+    white-space: pre-wrap;
+    font-size: 12px;
+    margin: 10px;
+    background-color: #FFF9C4;
+    font-weight: 400;
+}
+
+.medicine-health-main-head {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 200;
+    margin: 20px 0 10px 0;
 }
