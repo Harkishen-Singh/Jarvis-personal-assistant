@@ -4,14 +4,14 @@
 echo "installing prerequisites"
 platform = ./platform.sh
 
-if [[ platform == *_RedHat_* ]]; then
+if [[ ${platform} == *_RedHat_* ]]; then
     # tested
     dnf install golang nodejs -y
     mkdir -p $HOME/go
     echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
     source $HOME/.bashrc
     go env GOPATH
-elif [[ platform == *_Debian_* ]]; then
+elif [[ ${platform} == *_Debian_* ]]; then
     # untested
     wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
