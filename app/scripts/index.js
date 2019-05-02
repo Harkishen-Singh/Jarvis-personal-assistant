@@ -138,6 +138,11 @@ app.controller('area-controller', function ($scope, $http, responseService) {
 					$scope.showWeatherScope = true;
 					responseService.updateServiceStore(result, res);
 
+				} else if (status && message.includes('top search results')) {
+
+					$scope.showQueryScope = true;
+					responseService.updateServiceStore(result, res);
+
 				} else if (
 					('success' === status || status) &&
 					(
@@ -156,6 +161,7 @@ app.controller('area-controller', function ($scope, $http, responseService) {
 		} else {
 
 			document.getElementById('user-input-area').value = '';
+			$scope.showQueryScope = false;
 			$scope.showWeatherScope = false;
 			$scope.showMedicineHealthScope = false;
 
@@ -203,6 +209,13 @@ app.controller('weather-view-controller', function ($scope, responseService) {
 
 	}
 	$scope.weatherData = serviceStore;
+
+});
+
+app.controller('query-view-controller', function ($scope, responseService) {
+
+	let serviceStore = responseService.getStore();
+	$scope.queryData = serviceStore;
 
 });
 
