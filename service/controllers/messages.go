@@ -22,6 +22,7 @@ type messageQueryBody struct {
 	Head string `json:"head"`
 	Link string `json:"link"`
 	Desc string `json:"desc"`
+	DescLink string `json:"dlink"`
 }
 
 // type imageQueryBody struct{
@@ -824,6 +825,10 @@ func processImageResponses(result string) []messageQueryBody {
 	lensubsl := len(subsl)
 	subsl2 := "\"ou\":\""
 	lensubsl2 := len(subsl2)
+	subsl3 := "\"pt\":"
+	lensubsl3 := len(subsl3)
+	subsl4 := "\"rh\":"
+	lensubsl4 := len(subsl4)
 	count := 0
 
 	var queryResult messageQueryBody
@@ -844,6 +849,38 @@ func processImageResponses(result string) []messageQueryBody {
 							queryResult.Link = link
 							found = true
 							i = mid + k + 1;
+							break;
+						}
+					}
+
+					for a := 1; ; a++ {
+						if result[i + a: i + a + lensubsl3] == subsl3 {
+							mid = i + a + lensubsl3 + 1
+							for k := 1; ; k++ {
+								if result[mid + k: mid + k + 1] == "\"" {
+									desc := result[mid: mid + k]
+									queryResult.Desc = desc
+									found = true
+									i = mid + k + 1;
+									break;
+								}
+							}
+							break;
+						}
+					}
+
+					for a := 1; ; a++ {
+						if result[i + a: i + a + lensubsl4] == subsl4 {
+							mid = i + a + lensubsl4 + 1
+							for k := 1; ; k++ {
+								if result[mid + k: mid + k + 1] == "\"" {
+									dlink := result[mid: mid + k]
+									queryResult.DescLink = dlink
+									found = true
+									i = mid + k + 1;
+									break;
+								}
+							}
 							break;
 						}
 					}
