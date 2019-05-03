@@ -1,5 +1,4 @@
 const electron = require('electron'),
-	path = require('path'),
 	BrowserWindow = electron.BrowserWindow,
 	App = electron.app,
 	Menu = electron.Menu;
