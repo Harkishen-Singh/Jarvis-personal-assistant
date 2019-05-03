@@ -4,13 +4,13 @@ html, body {
 }
 
 .logo-pre-query {
-    height: 110px;
+    height: 100px;
     position: absolute;
     padding: 5px;
-    top: 43%;
+    top: 40%;
     border-radius: 15px;
     background-color: white;
-    left: 37%;
+    left: 40%;
     transition: all 1s ease-in-out;
 }
 
@@ -63,7 +63,7 @@ html, body {
 
 .user-area-post-query {
     position: absolute;
-    top: 20%;
+    top: 13%;
     font-size: 20px;
 }
 
@@ -336,4 +336,32 @@ html, body {
 
 .recent-usage-outer-loop-layer {
     overflow-y: scroll;
+}
+
+.image-style {
+    display:block;
+    border-radius: 10px;
+    width:200px;
+    height: 150px;
+}
+
+.image-zoom {
+    transition: transform 0.5s;
+    width:250px;
+    height: 250px;
+}
+
+.image-zoom:hover {
+    transform: scale(1.5);
+}
+
+.image .card {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0px 10px 10px 10px;
+    width: 200px;
+}
+
+.image .card-body {
+    padding: 0rem;
 }

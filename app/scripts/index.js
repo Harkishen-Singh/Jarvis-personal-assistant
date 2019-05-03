@@ -166,6 +166,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				$scope.showWeatherScope = false;
 				$scope.showQueryScope = false;
 				$scope.showMedicineHealthScope = false;
+				$scope.showImageScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
@@ -176,6 +177,11 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				} else if (status && message.includes('top search results')) {
 
 					$scope.showQueryScope = true;
+					responseService.updateServiceStore(result, res);
+
+				} else if (status && message.includes('the searched images')) {
+
+					$scope.showImageScope = true;
 					responseService.updateServiceStore(result, res);
 
 				} else if (
@@ -199,6 +205,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 			$scope.showQueryScope = false;
 			$scope.showWeatherScope = false;
 			$scope.showMedicineHealthScope = false;
+			$scope.showImageScope = false;
 
 			// re-initialize services
 			responseService.updateServiceStore(null, null);
