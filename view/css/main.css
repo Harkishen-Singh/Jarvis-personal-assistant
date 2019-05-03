@@ -150,8 +150,16 @@ header {
 
 .head-query-data {
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
+}
+
+.link-query-data {
+    font-size: 13px;
+}
+
+.desc-query-data {
+    font-size: 14px;
 }
 
 /* hr { */

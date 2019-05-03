@@ -23,7 +23,7 @@ require('chromedriver');
  */
 let email = 'harkishensingh@hotmail.com',
     githubRepo = null,
-    password = 'Bbsr@131',
+    password = '',
     url = 'heroku.com';
 process.argv.forEach((val, index, array) => {
     var path = require('chromedriver').path;
@@ -49,12 +49,12 @@ process.argv.forEach((val, index, array) => {
                             .build();
 
         driver.get('https://id.heroku.com/login').then(() => {
-            console.warn('opened1')
+            console.log('opened1')
             driver.findElement(By.xpath('//*[@id="email"]')).sendKeys(email).then(() => {
                 driver.findElement(By.xpath('//*[@id="password"]')).sendKeys(password).then(() => {
                     driver.findElement(By.xpath('//*[@id="login"]/form/button')).click().then(() => {
                         driver.get('https://id.heroku.com/login').then(() => {
-            console.warn('opened2')
+            console.log('opened2')
             driver.findElement(By.xpath('//*[@id="email"]')).sendKeys(email).then(() => {
                 driver.findElement(By.xpath('//*[@id="password"]')).sendKeys(password).then(() => { 
                     driver.findElement(By.xpath('//*[@id="login"]/form/button')).click().then(() => {
@@ -89,7 +89,7 @@ process.argv.forEach((val, index, array) => {
                                                             driver.findElement(By.className('br--right bl-0 async-button default hk-button--primary ember-view')).click().then(() => {
                                                                 driver.sleep(4000).then(() => {
                                                                     driver.findElement(By.className('async-button default hk-button-sm--secondary ember-view')).click().then(() => {
-                                                                        console.warn('connectd to github repo!');
+                                                                        console.log('connectd to github repo!');
                                                                         driver.sleep(5000).then(() => {
                                                                             driver.findElements(By.className('btn btn-primary btn-github')).then(eleLoop => {
                                                                                 eleLoop.forEach((item, index) => {
@@ -99,7 +99,8 @@ process.argv.forEach((val, index, array) => {
                                                                                             driver.wait(webdriver.until.elementLocated(By.className('btn btn-default btn-sm'))).then(full => {
                                                                                                 driver.findElement(By.className('btn btn-default btn-sm')).then(elLink => {
                                                                                                     elLink.getAttribute('href').then((link) => {
-                                                                                                        console.warn('link to the hosted app -> ', link);
+                                                                                                        console.log('link to the hosted app ', link);
+                                                                                                        driver.quit();
                                                                                                     });
                                                                                                 });
                                                                                             })
@@ -120,7 +121,6 @@ process.argv.forEach((val, index, array) => {
                                 });
                             });
                         });
-                        
                     });
                 });
             });
