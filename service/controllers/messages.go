@@ -341,8 +341,6 @@ func routes(routeObject response, w http.ResponseWriter) {
 			TextToSpeech(filterForSpeech(status), 0)
 		} else if strings.HasPrefix(strings.ToLower(message),"send mail") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
-		} else if strings.HasPrefix(strings.ToLower(message),"set send mail") {
-			w.Write([]byte(`{"status": "success", "message": "Enter Mail details with time : ", "result": ""}`))
 		} else {
 			// general conversation
 			speech := messages.GeneralConvHandler(routeObject.message, routeObject.username, w)

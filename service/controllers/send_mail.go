@@ -3,25 +3,20 @@ package controllers
 import (
 	"net/http"
 	"crypto/tls"
-	"database/sql"
 	"fmt"
 	"log"
 	"net/smtp"
 	"strings"
-	_"github.com/mattn/go-sqlite3"
-	"time"
 )
 
 // Mail ....
 type Mail struct {
-	ID      int       `json:"id"`
-	Sender  string    `json: "sender"`
-	To      []string  `json: "to"`
-	Cc      []string  `json: "cc"`	
-	Bcc     []string  `json: "bcc"`
-	Subject string	  `json: "subject"`
-	Body    string    `json: "body"`
-	Time    string	  `json: "time"`
+	Sender  string
+	To      []string
+	Cc      []string
+	Bcc     []string
+	Subject string
+	Body    string
 }
 
 // SMTPServer ...
@@ -56,18 +51,10 @@ func EmailController(w http.ResponseWriter, r *http.Request) {
 		Bcc: bccArr,
 		Subject: r.FormValue("subject"),
 		Body: r.FormValue("body"),
-		Time: r.FormValue("time"),
 	}
-
 	fmt.Println("request: ", request)
 
-	if request.Time == "" {
-		fmt.Println("Sending Mail")
-		send(request, w)
-	} else {
-		fmt.Println("Sending Mail1111")
-		addMail(request, w)
-	}
+	send(request, w)
 
 }
 
@@ -155,91 +142,4 @@ func send(mailObject Mail, w http.ResponseWriter) {
 	log.Println("Mail sent successfully")
 	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`))
 
-}
-
-func addMail(mailObject Mail,  w http.ResponseWriter) {
-
-	db, err := sql.Open("sqlite3", "./mail.db")
-	checkErr(err)
-	defer db.Close()
-
-	// sqlStmt := `CREATE TABLE IF NOT EXISTS mail (id INTEGER PRIMARY KEY AUTOINCREMENT, sender TEXT, to TEXT, cc TEXT, bcc TEXT, subject TEXT, body TEXT, time TEXT);`
-	sqlStmt := `CREATE TABLE IF NOT EXISTS mail (id INTEGER PRIMARY KEY AUTOINCREMENT, sender TEXT, time TEXT);`
-	_, err = db.Exec(sqlStmt)
-	if err != nil {
-		log.Printf("%q: %s\n", err, sqlStmt)
-		return
-	}
-
-	tx, err := db.Begin()
-	checkErr(err)
-
-	stmt, err := tx.Prepare("insert into mail(sender, time) values(?, ?)")
-	checkErr(err)
-	defer stmt.Close()
-
-	_, err = stmt.Exec(mailObject.Sender, mailObject.Time )
-	checkErr(err)
-	tx.Commit()
-	
-	w.Write([]byte(`{"status": "success", "message": "Mail has been set !"}`))
-}
-
-// CheckMail to check the pending mails in the database
-func CheckMail() []Mail{
-	var result []Mail
-	
-	db, err := sql.Open("sqlite3", "./mail.db")
-	checkErr(err)
-	defer db.Close()
-
-	sqlStmt := `CREATE TABLE IF NOT EXISTS mail (id INTEGER PRIMARY KEY AUTOINCREMENT, sender TEXT, time TEXT);`
-	_, err = db.Exec(sqlStmt)
-	if err != nil {
-		log.Printf("%q: %s\n", err, sqlStmt)
-		return result
-	}
-
-	rows, err := db.Query("select id, sender, time from mail")
-	checkErr(err)
-
-	defer rows.Close()
-	for rows.Next() {
-		var id int
-		var sender string
-		var time string
-		err = rows.Scan(&id, &sender, &time)
-		checkErr(err)
-
-		r := Mail {
-			ID: id,
-			Sender: sender,
-			Time: time,
-		}
-		result = append(result, r) 
-	}
-	err = rows.Err()
-	checkErr(err)
-
-	fmt.Println("result:", result )
-	return result
-}
-
-// CheckTime to check the time of the pending mails
-func CheckTime(n time.Duration, data []Mail) bool {
-	// fmt.Println("data: ", data)
-	// fmt.Println("data.Time", data[0].Time)
-
-	// timestamp := time.Now().Local()
-	// count := 0
-	// fmt.Println(strings.timestamp)
-
-	for range time.Tick(n *time.Second) {
-		// str := "Polling remote terminal data at <some remote terminal name> at "+ timestamp.String()
-		//  fmt.Println(str, "count: ", count)
-		//  count ++
-		// for 
-	} 
-
-	return false
 }
