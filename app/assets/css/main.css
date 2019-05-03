@@ -277,6 +277,11 @@ html, body {
     margin-bottom: 0 rem;
 }
 
+.dlink-query-data {
+    font-size: 12px;
+    margin-bottom: 0 rem;
+}
+
 .card {
     border: 1px solid white;
     border-radius: 10px; 
