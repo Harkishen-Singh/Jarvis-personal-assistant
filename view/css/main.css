@@ -239,3 +239,9 @@ header {
 h5 {
     font-size: 15px;
 }
+
+.video-link {
+    width: 350px;
+    height: 250px;
+    margin: 0px 15px 10px 15px;
+}

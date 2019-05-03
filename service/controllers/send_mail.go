@@ -227,12 +227,12 @@ func CheckMail() []Mail{
 
 // CheckTime to check the time of the pending mails
 func CheckTime(n time.Duration, data []Mail) bool {
-	fmt.Println("data: ", data)
-	fmt.Println("data.Time", data[0].Time)
+	// fmt.Println("data: ", data)
+	// fmt.Println("data.Time", data[0].Time)
 
-	timestamp := time.Now().Local()
+	// timestamp := time.Now().Local()
 	// count := 0
-	fmt.Println(strings.timestamp)
+	// fmt.Println(strings.timestamp)
 
 	for range time.Tick(n *time.Second) {
 		// str := "Polling remote terminal data at <some remote terminal name> at "+ timestamp.String()

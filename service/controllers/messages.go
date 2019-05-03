@@ -214,7 +214,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			response := processYoutubeResponses(result)
 			responseJSON := jsonResponseQuery {
 				Status: true,
-				Message: "here are the top search results",
+				Message: "here are the top search videos",
 				Result: response,
 			}
 			jData, _ := json.Marshal(responseJSON)
@@ -488,8 +488,10 @@ func processGoogleResponses(result string) []messageQueryBody {
 									link := result[mid : mid +l]
 									i = last 
 									found = true
-									if link[0: 7] != "http://" && link[0: 8] != "https://" {
-										link = "http://" + link
+									if len(link) >= 7 {
+										if link[0: 7] != "http://" && link[0: 8] != "https://" {
+											link = "http://" + link
+										}
 									}
 									queryResult.Link = link
 									break
@@ -611,8 +613,10 @@ func processYahooResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
-							if link[0: 7] != "http://" && link[0: 8] != "https://" {
-								link = "http://" + link
+							if len(link) >= 7 {
+								if link[0: 7] != "http://" && link[0: 8] != "https://" {
+									link = "http://" + link
+								}
 							}
 							queryResult.Link = link
 							break
@@ -702,9 +706,12 @@ func processBingResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<strong>", "", -1)
 							link = strings.Replace(link, "</strong>", "", -1)
-							if link[0: 7] != "http://" && link[0: 8] != "https://" {
-								link = "http://" + link
+							if len(link) >= 7 {
+								if link[0: 7] != "http://" && link[0: 8] != "https://" {
+									link = "http://" + link
+								}
 							}
+							
 							queryResult.Link = link
 							break
 						}

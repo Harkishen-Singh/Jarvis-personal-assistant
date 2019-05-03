@@ -62,12 +62,12 @@
                                     </sub>
                                 </span>
                             </div>
-                            <div id="queried-data" data-ng-if="message.result.length !== 0">
-                                <br>
-                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
-                                    <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
-                                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
-                                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
+                            <div data-ng-controller="video-view-controller">
+                                <div id="queried-data" data-ng-if="url.length !== 0 ">
+                                    <br>
+                                    <div data-ng-repeat="urls in url">
+                                        <iframe ng-src="{{urls}}" class="video-link"></iframe>
+                                    </div>
                                 </div>
                             </div>
                         </div>
