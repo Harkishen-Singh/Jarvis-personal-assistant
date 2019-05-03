@@ -370,3 +370,23 @@ html, body {
 .image .card-body {
     padding: 0rem;
 }
+
+.meaning {
+    font-size: 12px;
+    line-height: normal;
+}
+
+.example {
+    font-size: 10px;
+    padding: 10px;
+}
+
+.submeaning {
+    font-size: 12px;
+    padding: 10px;
+}
+
+.subexample {
+    font-size: 10px;
+    padding: 14px;
+}
