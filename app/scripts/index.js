@@ -98,7 +98,7 @@ app.controller('MainController', function() {
 
 app.controller('area-controller', function ($scope, $http, responseService, $recentlyUsed) {
 
-	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', ];
+	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', 'youtube', 'medicine', 'symptoms', 'images', 'image', 'videos', 'watch', 'meaning', 'search', ];
 	$scope.Initialize = function () {
 
 		$scope.showJarvisBotArea = true;
