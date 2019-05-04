@@ -380,19 +380,25 @@ html, body {
 .meaning {
     font-size: 12px;
     line-height: normal;
+    margin-bottom: 0rem; 
 }
 
 .example {
     font-size: 10px;
-    padding: 10px;
+    padding-left: 10px;
+    margin-bottom: 0rem; 
+    color: grey;
 }
 
 .submeaning {
     font-size: 12px;
-    padding: 10px;
+    padding-left: 10px;
+    margin-bottom: 0rem; 
 }
 
 .subexample {
     font-size: 10px;
-    padding: 14px;
+    padding-left: 14px;
+    margin-bottom: 0rem; 
+    color: grey;
 }

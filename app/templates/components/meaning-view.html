@@ -18,11 +18,11 @@
         <div data-ng-repeat="objectQuery in queryData" >
             <div class="card">
                 <div class = "card-body">
-                    <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
-                    <span class="example"><i>Example: {{objectQuery.example}}</i></span><br>
+                    <p class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</p>
+                    <p class="example"><i>Example: {{objectQuery.example}}</i></p>
                     <div data-ng-repeat="sub in objectQuery.submeaning" id="submean">
-                        <span class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</span><br>
-                        <span class="subexample"><i>Example: {{sub.Subexample}}</i></span><br>
+                        <p class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</p>
+                        <p class="subexample"><i>Example: {{sub.Subexample}}</i></p>
                     </div>
                 </div>
             </div>

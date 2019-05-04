@@ -305,8 +305,20 @@ app.controller('medicine-view-controller', function ($scope, responseService) {
 
 });
 
-app.controller('recent-usage-controller', function ($scope, $recentlyUsed) {
+app.controller('recent-usage-controller', function ($scope, $recentlyUsed, $localStorage) {
 
 	$scope.recentUsageArray = $recentlyUsed.getUsageStore();
+
+	let recent = $recentlyUsed.getUsageStore();
+	let recentQuery = {
+		tag       : recent.tag,
+		plainQuery: recent.plainQuery,
+		message   : recent.message,
+	}
+
+	$localStorage = recentQuery;
+
+	// eslint-disable-next-line no-console
+	console.log("$localStorage: ", $localStorage)
 
 });
