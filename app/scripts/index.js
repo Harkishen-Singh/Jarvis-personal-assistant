@@ -108,7 +108,7 @@ app.controller('MainController', function() {
 
 app.controller('area-controller', function ($scope, $http, responseService, $recentlyUsed) {
 
-	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', ];
+	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', 'youtube', 'medicine', 'symptoms', 'images', 'image', 'videos', 'watch', 'meaning', 'search', ];
 	$scope.Initialize = function () {
 
 		$scope.showJarvisBotArea = true;
@@ -177,6 +177,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				$scope.showQueryScope = false;
 				$scope.showVideoScope = false;
 				$scope.showMedicineHealthScope = false;
+				$scope.showImageScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
@@ -188,6 +189,10 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 
 					$scope.showQueryScope = true;
 					responseService.updateServiceStore(result, res);
+
+				} else if (status && message.includes('the searched images')) {
+
+					$scope.showImageScope = true;
 
 				} else if (status && message.includes('top search videos')) {
 
@@ -217,6 +222,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 			$scope.showVideoScope = false;
 			$scope.showWeatherScope = false;
 			$scope.showMedicineHealthScope = false;
+			$scope.showImageScope = false;
 
 			// re-initialize services
 			responseService.updateServiceStore(null, null);
