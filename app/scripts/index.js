@@ -15,6 +15,16 @@ app.config(function($routeProvider) {
 
 });
 
+app.filter('unsafe', function($sce) {
+
+	return function(val) {
+
+		return $sce.trustAsHtml(val);
+
+	};
+
+});
+
 // services
 
 app.factory('responseService', function () {
@@ -165,6 +175,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				// $scope types for handling different response types
 				$scope.showWeatherScope = false;
 				$scope.showQueryScope = false;
+				$scope.showVideoScope = false;
 				$scope.showMedicineHealthScope = false;
 
 				// response checks
@@ -176,6 +187,12 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				} else if (status && message.includes('top search results')) {
 
 					$scope.showQueryScope = true;
+					responseService.updateServiceStore(result, res);
+
+				} else if (status && message.includes('top search videos')) {
+
+					$scope.showVideoScope = true;
+					$scope.queryData = result;
 					responseService.updateServiceStore(result, res);
 
 				} else if (
@@ -197,6 +214,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 
 			document.getElementById('user-input-area').value = '';
 			$scope.showQueryScope = false;
+			$scope.showVideoScope = false;
 			$scope.showWeatherScope = false;
 			$scope.showMedicineHealthScope = false;
 
@@ -252,6 +270,19 @@ app.controller('query-view-controller', function ($scope, responseService) {
 	$scope.queryData = responseService.getStore();
 
 });
+
+app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $sce) {
+
+	let length = $scope.queryData.length;
+	$scope.url = {}
+	for (let i = 0; i < length; i ++ ) {
+
+		let urlData = $scope.queryData[ i ].link.replace("watch?v=", "embed/");
+		$scope.url[ i ] = $sce.trustAsResourceUrl(urlData);
+
+	}
+
+}, ]);
 
 app.controller('medicine-view-controller', function ($scope, responseService) {
 

@@ -8,7 +8,7 @@
                     <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
                     <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
                     <hr>
-                    <p class="desc-query-data">{{objectQuery.desc}}</p>
+                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
                 </div>
             </div>
         </div>
