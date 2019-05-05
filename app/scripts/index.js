@@ -193,11 +193,12 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				} else if (status && message.includes('the searched images')) {
 
 					$scope.showImageScope = true;
+					responseService.updateServiceStore(result, res);
 
 				} else if (status && message.includes('top search videos')) {
 
 					$scope.showVideoScope = true;
-					$scope.queryData = result;
+					$scope.videoData = result;
 					responseService.updateServiceStore(result, res);
 
 				} else if (
@@ -279,11 +280,11 @@ app.controller('query-view-controller', function ($scope, responseService) {
 
 app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $sce) {
 
-	let length = $scope.queryData.length;
+	let length = $scope.videoData.length;
 	$scope.url = {}
 	for (let i = 0; i < length; i ++ ) {
 
-		let urlData = $scope.queryData[ i ].link.replace("watch?v=", "embed/");
+		let urlData = $scope.videoData[ i ].link.replace("watch?v=", "embed/");
 		$scope.url[ i ] = $sce.trustAsResourceUrl(urlData);
 
 	}
