@@ -18,8 +18,8 @@ function MainWindow() {
 			label: 'Exit',
 			click: function () {
 
+				mainWindow.close();
 				App.quit();
-				App = null;
 
 			},
 		},
@@ -86,5 +86,7 @@ function MainWindow() {
 
 App.on('ready', MainWindow);
 App.on('quit', function () {
+
 	App.quit();
+
 });
