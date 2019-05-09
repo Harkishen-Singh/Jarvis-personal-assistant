@@ -18,9 +18,8 @@ function MainWindow() {
 			label: 'Exit',
 			click: function () {
 
-				mainWindow.show();
-				App.isQuitting = true;
 				App.quit();
+				App = null;
 
 			},
 		},
@@ -62,8 +61,9 @@ function MainWindow() {
 
 	});
 	mainWindow.webContents.openDevTools();
-	mainWindow.on('closed', () => {
+	mainWindow.on('closed', (event) => {
 
+		event.preventDefault();
 		mainWindow.hide();
 
 	});
@@ -77,16 +77,14 @@ function MainWindow() {
 
 	mainWindow.on('close', (event) => {
 
-		// eslint-disable-next-line no-undef
-		if (!App.isQuitting) {
-
-			event.preventDefault();
-			mainWindow.hide();
-
-		}
+		event.preventDefault();
+		mainWindow.hide();
 
 	});
 
 }
 
 App.on('ready', MainWindow);
+App.on('quit', function () {
+	App.quit();
+});
