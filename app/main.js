@@ -1,12 +1,46 @@
 const electron = require('electron'),
 	BrowserWindow = electron.BrowserWindow,
 	App = electron.app,
+	Tray = electron.Tray,
 	Menu = electron.Menu;
 
-let mainWindow = null;
+let mainWindow = null,
+	tray = null;
 
 function MainWindow() {
 
+	// initialise system tray
+	// eslint-disable-next-line no-undef
+	tray = new Tray(__dirname + '/assets/images/icon-jarvis1.png');
+	tray.setToolTip('Jarvis - The personal assistant');
+	const trayMenu = Menu.buildFromTemplate([
+		{
+			label: 'Exit',
+			click: function () {
+
+				mainWindow.close();
+				App.quit();
+
+			},
+		},
+		{
+			label: 'Show App',
+			click: function () {
+
+				mainWindow.show();
+
+			},
+		},
+		{
+			label: 'Minimize',
+			click: function () {
+
+				mainWindow.hide();
+
+			},
+		},
+	]);
+	tray.setContextMenu(trayMenu);
 	mainWindow = new BrowserWindow({
 		width          : 400,
 		height         : 560,
@@ -27,12 +61,32 @@ function MainWindow() {
 
 	});
 	mainWindow.webContents.openDevTools();
-	mainWindow.on('closed', () => {
+	mainWindow.on('closed', (event) => {
 
-		mainWindow = null;
+		event.preventDefault();
+		mainWindow.hide();
+
+	});
+
+	mainWindow.on('minimize', (event) => {
+
+		event.preventDefault();
+		mainWindow.hide();
+
+	});
+
+	mainWindow.on('close', (event) => {
+
+		event.preventDefault();
+		mainWindow.hide();
 
 	});
 
 }
 
 App.on('ready', MainWindow);
+App.on('quit', function () {
+
+	App.quit();
+
+});
