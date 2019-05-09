@@ -65,13 +65,14 @@ html, body {
     position: absolute;
     top: 13%;
     font-size: 20px;
+    /* margin-left: 3px; */
 }
 
 .outer-layer {
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    background-color: rgba(225, 225, 225, 0.45);
+    /* background-color: rgba(225, 225, 225, 0.45); */
     border-radius: 5px;
     width: 100%;
     height: 80%;
@@ -156,15 +157,20 @@ html, body {
 }
 
 .reset-button {
+    height: 50px;
     position: fixed;
     bottom: 5%;
     right: 5%;
 }
 
+.reset-button:hover {
+    height: 55px;
+}
+
 /* response styles */
 
 .outer-layer-response {
-    margin: 10px;
+    margin: 10px 20px 10px 5px;
     border-radius: 20px;
     background-color: #EFF0F1;
 }
@@ -268,7 +274,8 @@ html, body {
 
 .link-query-data {
     font-size: 12px;
-    color: green
+    color: green;
+    margin-bottom: 0 rem
     /* display: none; */
 }
 
