@@ -180,6 +180,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				$scope.showMedicineHealthScope = false;
 				$scope.showImageScope = false;
 				$scope.showGeneralScope = false;
+				$scope.showMeaningScope = false;
 
 				// response checks
 				if (status && message.includes('current weather conditions')) {
@@ -201,6 +202,11 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 
 					$scope.showVideoScope = true;
 					$scope.videoData = result;
+					responseService.updateServiceStore(result, res);
+
+				} else if (status && message.includes('meaning of the searched word')) {
+
+					$scope.showMeaningScope = true;
 					responseService.updateServiceStore(result, res);
 
 				} else if (
@@ -232,6 +238,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 			$scope.showMedicineHealthScope = false;
 			$scope.showImageScope = false;
 			$scope.showGeneralScope = false;
+			$scope.showMeaningScope = false;
 
 			// re-initialize services
 			responseService.updateServiceStore(null, null);
@@ -307,9 +314,21 @@ app.controller('medicine-view-controller', function ($scope, responseService) {
 
 });
 
-app.controller('recent-usage-controller', function ($scope, $recentlyUsed) {
+app.controller('recent-usage-controller', function ($scope, $recentlyUsed, $localStorage) {
 
 	$scope.recentUsageArray = $recentlyUsed.getUsageStore();
+
+	let recent = $recentlyUsed.getUsageStore();
+	let recentQuery = {
+		tag       : recent.tag,
+		plainQuery: recent.plainQuery,
+		message   : recent.message,
+	}
+
+	$localStorage = recentQuery;
+
+	// eslint-disable-next-line no-console
+	console.log("$localStorage: ", $localStorage)
 
 });
 
