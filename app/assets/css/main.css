@@ -376,3 +376,15 @@ html, body {
 .image .card-body {
     padding: 0rem;
 }
+
+.general-message-outer-layer {
+    text-align: center;
+}
+
+.general-message-style {
+    color: black;
+    font-size: 15px;
+    background-color: #FFF9C4;
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+}
