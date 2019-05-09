@@ -168,6 +168,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				let res = resp.data,
 					message = res[ 'message' ],
 					status = res[ 'status' ],
+					show = res[ 'show' ],
 					result = res[ 'result' ];
 				// eslint-disable-next-line no-console
 				console.warn(res);
@@ -178,6 +179,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				$scope.showVideoScope = false;
 				$scope.showMedicineHealthScope = false;
 				$scope.showImageScope = false;
+				$scope.showGeneralScope = false;
 				$scope.showMeaningScope = false;
 
 				// response checks
@@ -218,6 +220,11 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 					$scope.showMedicineHealthScope = true;
 					responseService.updateServiceStore(res, res);
 
+				} else if (status || show) {
+
+					$scope.showGeneralScope = true;
+					responseService.updateServiceStore(res, res);
+
 				}
 
 			});
@@ -230,6 +237,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 			$scope.showWeatherScope = false;
 			$scope.showMedicineHealthScope = false;
 			$scope.showImageScope = false;
+			$scope.showGeneralScope = false;
 			$scope.showMeaningScope = false;
 
 			// re-initialize services
@@ -288,7 +296,7 @@ app.controller('query-view-controller', function ($scope, responseService) {
 app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $sce) {
 
 	let length = $scope.videoData.length;
-	$scope.url = {}
+	$scope.url = {};
 	for (let i = 0; i < length; i ++ ) {
 
 		let urlData = $scope.videoData[ i ].link.replace("watch?v=", "embed/");
@@ -323,3 +331,10 @@ app.controller('recent-usage-controller', function ($scope, $recentlyUsed, $loca
 	console.log("$localStorage: ", $localStorage)
 
 });
+
+app.controller('general-controller', function ($scope, responseService) {
+
+	$scope.message = responseService.getStore()[ 'message' ];
+
+});
+
