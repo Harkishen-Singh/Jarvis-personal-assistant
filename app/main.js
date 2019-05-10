@@ -18,7 +18,6 @@ function MainWindow() {
 			label: 'Exit',
 			click: function () {
 
-				mainWindow.close();
 				App.quit();
 
 			},
@@ -35,7 +34,7 @@ function MainWindow() {
 			label: 'Minimize',
 			click: function () {
 
-				mainWindow.hide();
+				mainWindow.minimize();
 
 			},
 		},
@@ -71,7 +70,7 @@ function MainWindow() {
 	mainWindow.on('minimize', (event) => {
 
 		event.preventDefault();
-		mainWindow.hide();
+		mainWindow.minimize();
 
 	});
 
