@@ -20,4 +20,5 @@ before_script:
   
 script:
   - eslint app/*.js app/scripts/*.js
+  - htmlhint app/templates/components/*.html app/templates/*.html
   - npm run build
