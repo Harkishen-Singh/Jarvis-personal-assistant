@@ -4,9 +4,9 @@ Remove the fields that are not appropriate
 Please include:
 -->
 
-**This PR solves issue #**
+This PR solves issue #
 
-**What's this PR do?**
+**What does this PR do?**
 
 **Any background context you want to provide?**
 
