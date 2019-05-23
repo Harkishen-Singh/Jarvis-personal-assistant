@@ -20,6 +20,18 @@ app.filter('unsafe', function($sce) {
 	};
 });
 
+app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $sce) {
+
+	let length = $scope.videoDetails.length;
+	$scope.url = {};
+	for (let i = 0; i < length; i ++ ) {
+
+		let urlData = $scope.videoDetails[ i ].link.replace('watch?v=', 'embed/');
+		$scope.url[ i ] = $sce.trustAsResourceUrl(urlData);
+
+	}
+
+}, ]);
 
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
@@ -138,6 +150,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.result = result;
+					$scope.videoDetails = result;
 					$scope.messageStack.push(messageObj);
 					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
