@@ -467,7 +467,7 @@ func processGoogleResponses(result string) []messageQueryBody {
 			var last int
 			for j:=1; ; j++ {
 				if result[length + j: length + j + lensubsl2] == subsl2 {
-					mess = result[length: length + j]
+					mess = result[length+21: length + j-7]
 					queryResult.Head = mess
 					last = length + j + lensubsl2
 					i = last
