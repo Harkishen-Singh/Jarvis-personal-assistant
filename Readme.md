@@ -33,12 +33,12 @@ i.e. youtube Sandeep Maheshwari
 **Get weather for a location**<br/>
 To get the weather at any location format is,<br/>
 Weather city state<br/>
-i.e. weather bhubaneswar odisha
+i.e. weather Bhubaneswar Odisha
 
 **Retrieve images**<br/>
 For retrieving images format is,<br/>
 Image “image you want to search”<br/>
-i.e. image "M S Dhone"
+i.e. image "M S Dhoni"
 
 **Dictionary meaning**<br/>
 For getting meaning of a word format is,<br/>
@@ -92,6 +92,6 @@ List your noticed symptoms and get immediate help on the medicines that could be
 ## Technology used<br/>
 
 **Front-end**<br/>
-For front-end AngularJS is used.<br/>
+For front-end [AngularJS] is used.<br/>
 **Back-end**<br/>
-For backend GoLang is used.
+For back-end [GoLang] is used.
