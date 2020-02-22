@@ -31,30 +31,29 @@ func TestGoogleSearch(t *testing.T) {
 	}
 
 }
-//TODO
 
-// func TestYahooSearch(t *testing.T) {
+func TestYahooSearch(t *testing.T) {
 
-// 	form := url.Values{}
-// 	form.Add("username", "default")
-// 	form.Add("message", "yahoo CET bhubaneswar")
-// 	resp, err := http.PostForm("http://localhost:3000/message", form)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	body, _ := ioutil.ReadAll(resp.Body)
-// 	fmt.Println(string(body))
-// 	// success check
-// 	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
-// 		t.Errorf("Yahoo Response didnt match as required")
-// 	}
+	form := url.Values{}
+	form.Add("username", "default")
+	form.Add("message", "yahoo CET bhubaneswar")
+	resp, err := http.PostForm("http://localhost:3000/message", form)
+	if err != nil {
+		panic(err)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+	// success check
+	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
+		t.Errorf("Yahoo Response didnt match as required")
+	}
 
-// 	// incoming data checks
-// 	if !strings.Contains(string(body), "here are the top search results") {
-// 		t.Errorf("Yahoo functionality response didn't match as required!")
-// 	}
+	// incoming data checks
+	if !strings.Contains(string(body), "here are the top search results") {
+		t.Errorf("Yahoo functionality response didn't match as required!")
+	}
 
-// }
+}
 
 func TestBingSearch(t *testing.T) {
 
@@ -121,7 +120,7 @@ func TestYoutube(t *testing.T) {
 	}
 
 	// incoming data checks
-	if !strings.Contains(string(body), "here are the top search results") {
+	if !strings.Contains(string(body), "here are the top search videos") {
 		t.Errorf("Youtube functionality response didn't match as required!")
 	}
 
