@@ -108,7 +108,7 @@ func TestYoutube(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("username", "default")
-	form.Add("message", "youtube palazzo song")
+	form.Add("message", "youtube palazzo")
 	resp, err := http.PostForm("http://localhost:3000/message", form)
 	if err != nil {
 		panic(err)
