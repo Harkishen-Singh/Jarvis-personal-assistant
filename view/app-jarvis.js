@@ -14,6 +14,25 @@ app.config(function($routeProvider) {
 		});
 });
 
+app.filter('unsafe', function($sce) {
+	return function(val) {
+		return $sce.trustAsHtml(val);
+	};
+});
+
+app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $sce) {
+
+	let length = $scope.videoDetails.length;
+	$scope.url = {};
+	for (let i = 0; i < length; i ++ ) {
+
+		let urlData = $scope.videoDetails[ i ].link.replace('watch?v=', 'embed/');
+		$scope.url[ i ] = $sce.trustAsResourceUrl(urlData);
+
+	}
+
+}, ]);
+
 app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	// eslint-disable-next-line no-undef
@@ -123,6 +142,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					messageObj.length = message.length;
 					messageObj.message = message;
 					messageObj.result = result;
+					$scope.messageStack.push(messageObj);
+					$scope.showLoading = false;
+				} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
+					messageObj.sender = 'jarvis-bot';
+					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+					messageObj.length = message.length;
+					messageObj.message = message;
+					messageObj.result = result;
+					$scope.videoDetails = result;
 					$scope.messageStack.push(messageObj);
 					$scope.showLoading = false;
 				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {

@@ -46,7 +46,28 @@
                                 <br>
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
                                     <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
-                                    <a href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the top search videos">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div data-ng-controller="video-view-controller">
+                                <div id="queried-data" data-ng-if="url.length !== 0 ">
+                                    <br>
+                                    <div data-ng-repeat="urls in url">
+                                        <iframe ng-src="{{urls}}" class="video-link"></iframe>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +117,7 @@
                                             <a href="{{objectQuery.link}}" target="_blank">
                                                 <img ng-src="{{objectQuery.link}}"
                                                     style="display:block;margin-left: 20px;
-                                                            margin-right:20px;padding-right: 10px;width:424.66px;height: 318.48px;" />
+                                                            margin-right:20px;padding: 10px;width:424.66px;height: 318.48px;" />
                                             </a>
                                         </div>
                                     </div>

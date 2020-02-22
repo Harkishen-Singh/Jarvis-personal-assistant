@@ -150,8 +150,16 @@ header {
 
 .head-query-data {
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
+}
+
+.link-query-data {
+    font-size: 13px;
+}
+
+.desc-query-data {
+    font-size: 14px;
 }
 
 /* hr { */
@@ -230,4 +238,10 @@ header {
 
 h5 {
     font-size: 15px;
+}
+
+.video-link {
+    width: 350px;
+    height: 250px;
+    margin: 0px 15px 10px 15px;
 }

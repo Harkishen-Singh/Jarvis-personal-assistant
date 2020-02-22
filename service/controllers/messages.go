@@ -23,6 +23,8 @@ type statusCode struct {
 type messageQueryBody struct {
 	Head string `json:"head"`
 	Link string `json:"link"`
+	Desc string `json:"desc"`
+	DescLink string `json:"dlink"`
 }
 
 
@@ -194,7 +196,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 			response := processYoutubeResponses(result)
 			responseJSON := jsonResponseQuery {
 				Status: true,
-				Message: "here are the top search results",
+				Message: "here are the top search videos",
 				Result: response,
 			}
 			jData, _ := json.Marshal(responseJSON)
@@ -458,8 +460,8 @@ func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody,
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				desc, 
-				link,
+				Desc: desc, 
+				Link: link,
 			}
 			results = append(results, result)
 			rank++
@@ -541,6 +543,8 @@ func processYahooResponses(result string) []messageQueryBody {
 	lensubsl3 := len(subsl3)
 	subsl4 := "</span>"
 	lensubsl4 := len(subsl4)
+	subsl5 := "<p class=\"lh-16\""
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -578,14 +582,31 @@ func processYahooResponses(result string) []messageQueryBody {
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
-							if link[0: 7] != "http://" && link[0: 8] != "https://" && link[0: 4] != "www." {
-								link = "http://" + link
+							if len(link) >= 7 {
+								if link[0: 7] != "http://" && link[0: 8] != "https://" {
+									link = "http://" + link
+								}
 							}
 							queryResult.Link = link
 							break
 						}
 					}
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl5] == subsl5 {
+							length = i + k + lensubsl5 + 1;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + 4] == "</p>" {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
+					}
 				}
+
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break
@@ -641,8 +662,8 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				desc, 
-				link,
+				Desc: desc, 
+				Link: link,
 			}
 			results = append(results, result)
 			rank++
@@ -660,6 +681,7 @@ func processBingResponses(searchTerm, country string, proxyString interface{}, p
 	}
 	for _, page := range bingPages {
 		rank := len(results)
+		fmt.Println("page:: ", page)
 		res, err := scrapeClientRequest(page, proxyString)
 		if err != nil {
 			return nil, err
@@ -683,6 +705,10 @@ func processYoutubeResponses(result string) []messageQueryBody {
 	subsl2 := "href=\""
 	subsl3 := "</a>"
 	lensubsl3 := len(subsl3)
+	subsl4 := "<yt-formatted-string id=\"description-text\" class=\"style-scope ytd-video-renderer\">"
+	lensubsl4 := len(subsl4)
+	subsl5 := "</yt-formatted-string>"
+	lensubsl5 := len(subsl5)
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
@@ -697,12 +723,18 @@ func processYoutubeResponses(result string) []messageQueryBody {
 				if result[length + j: length + j + len(subsl2)] == subsl2 {
 					mid = length + j + len(subsl2)
 					for k := 1; ; k++ {
-						if result[mid + k: mid + k + 2] == "\">" {
+						if result[mid + k: mid + k + 1] == "\"" {
 							link := result[mid: mid + k]
 							flink := "https://www.youtube.com" + link
 							queryResult.Link = flink
-							last = mid + k + 2
-							i = last
+							last = mid + k + 1
+							for l := 1; ; l++ {
+								if result[last + l: last+ l +2] == "\">" {
+									last = last + l +2
+									i = last + l + 2
+									break;
+								}
+							}
 							break
 						}
 					}
@@ -713,11 +745,25 @@ func processYoutubeResponses(result string) []messageQueryBody {
 			found := false
 			for j:= 1; ; j++ {
 				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
-						mess = result[last: last + j]
-						i = last + j + lensubsl3
-						found = true
-						queryResult.Head = mess
+					mess = result[last: last + j]
+					i = last + j + lensubsl3
+					found = true
+					queryResult.Head = mess
+					for k := 1; ; k++ {
+						if result[i + k : i + k + lensubsl4] == subsl4 {
+							length = i + k + lensubsl4;
+							for l := 1; ; l++ {
+								if result[length + l: length + l + lensubsl5] == subsl5 {
+									desc := result[length: length + l]
+									queryResult.Desc = desc;
+									i = length + l +4;
+									break;
+								}
+							}
+							break;
+						}
 					}
+				}
 				if found {
 					queryResultArray = append(queryResultArray, queryResult)
 					break
@@ -736,6 +782,10 @@ func processImageResponses(result string) []messageQueryBody {
 	lensubsl := len(subsl)
 	subsl2 := "\"ou\":\""
 	lensubsl2 := len(subsl2)
+	subsl3 := "\"pt\":"
+	lensubsl3 := len(subsl3)
+	subsl4 := "\"rh\":"
+	lensubsl4 := len(subsl4)
 	count := 0
 
 	var queryResult messageQueryBody
@@ -756,6 +806,38 @@ func processImageResponses(result string) []messageQueryBody {
 							queryResult.Link = link
 							found = true
 							i = mid + k + 1;
+							break;
+						}
+					}
+
+					for a := 1; ; a++ {
+						if result[i + a: i + a + lensubsl3] == subsl3 {
+							mid = i + a + lensubsl3 + 1
+							for k := 1; ; k++ {
+								if result[mid + k: mid + k + 1] == "\"" {
+									desc := result[mid: mid + k]
+									queryResult.Desc = desc
+									found = true
+									i = mid + k + 1;
+									break;
+								}
+							}
+							break;
+						}
+					}
+
+					for a := 1; ; a++ {
+						if result[i + a: i + a + lensubsl4] == subsl4 {
+							mid = i + a + lensubsl4 + 1
+							for k := 1; ; k++ {
+								if result[mid + k: mid + k + 1] == "\"" {
+									dlink := result[mid: mid + k]
+									queryResult.DescLink = dlink
+									found = true
+									i = mid + k + 1;
+									break;
+								}
+							}
 							break;
 						}
 					}
