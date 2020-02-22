@@ -460,7 +460,7 @@ func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody,
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				Desc: desc, 
+				Head: desc, 
 				Link: link,
 			}
 			results = append(results, result)
@@ -662,7 +662,7 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				Desc: desc, 
+				Head: desc, 
 				Link: link,
 			}
 			results = append(results, result)
