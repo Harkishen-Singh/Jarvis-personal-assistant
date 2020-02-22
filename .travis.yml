@@ -40,7 +40,6 @@ before-install:
   - go get -u github.com/op/go-logging
   - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
   - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
-  - cd tests/
   - cd tests/ && npm install && npm install chromedriver
   - npm install chromedriver
 
