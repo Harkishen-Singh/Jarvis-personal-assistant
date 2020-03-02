@@ -1,5 +1,6 @@
 os:
   - linux
+  - osx
 
 sudo: required
 
@@ -42,6 +43,5 @@ script:
   - eslint view/web/app-jarvis.js
   - cd view/web/ && npm start && cd ..
   - go test ./...
-  - cd tests/
-  - npm install
-  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
+  - cd tests/ && npm install
+  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests/test.js
