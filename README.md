@@ -7,7 +7,12 @@
 ## Introduction
 
 The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands. Users can interact with the assistant either through ***voice commands or using a keyboard input***.
-To know the steps to install and run the project click [here](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
+
+## Getting Started
+
+To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
+
+To get started with your contributions for Jarvis-personal-assistant see [CONTRBUTING.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/CONTRIBUTING.md)
 
 ### Explanatory Video
 [![Jarvis explanatory video](https://files.gitter.im/Harkishen-Singh/QIzs/Screenshot-_38_.png)](https://youtu.be/jztI_iN82RY)
@@ -16,7 +21,7 @@ To know the steps to install and run the project click [here](https://github.com
 
 As a personal assistant, Jarvis assists the end-user with day-to-day activities like *general human conversation, searching queries in google, bing or yahoo, searching for videos, retrieving images, live weather conditions, word meanings, searching for medicine details, health recommendations based on symptoms and reminding the user about the scheduled events and tasks*. The user statements/commands are analysed with the help of **machine learning** to give an optimal solution.
 
-## Features 
+## :rocket: Features 
 
 **Queries from web**<br/>
 In order to make queries from different search engines, the given format should be adopted.
@@ -89,9 +94,7 @@ List your noticed symptoms and get immediate help on the medicines that could be
 ### DFD explaining the data flow in the software:<br>
 ![DFd expalining data flow](https://files.gitter.im/muskankhedia/inED/moqup-_1_.png)
 
-## Technology used<br/>
+## :wrench: Tech Stack
 
-**Front-end**<br/>
-For front-end [AngularJS] is used.<br/>
-**Back-end**<br/>
-For back-end [GoLang] is used.
+* **Front-end:**  Web: AngularJS, Desktop App: Electron + AngularJS
+* **Back-end:** GoLang
