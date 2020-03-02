@@ -20,7 +20,7 @@ function MainWindow() {
 
 				App.quit();
 
-			},
+			}
 		},
 		{
 			label: 'Show App',
@@ -28,7 +28,7 @@ function MainWindow() {
 
 				mainWindow.show();
 
-			},
+			}
 		},
 		{
 			label: 'Minimize',
@@ -36,8 +36,8 @@ function MainWindow() {
 
 				mainWindow.minimize();
 
-			},
-		},
+			}
+		}
 	]);
 	tray.setContextMenu(trayMenu);
 	mainWindow = new BrowserWindow({
@@ -47,7 +47,7 @@ function MainWindow() {
 		// eslint-disable-next-line no-undef
 		icon      		   : __dirname + '/assets/images/icon-jarvis1.png',
 		resizable      : true,
-		autoHideMenuBar: true,
+		autoHideMenuBar: true
 	});
 	Menu.setApplicationMenu(null);
 	// eslint-disable-next-line no-undef

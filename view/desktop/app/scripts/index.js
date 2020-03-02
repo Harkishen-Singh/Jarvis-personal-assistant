@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-undef
-const app = angular.module('jarvis-desktop', [ 'ngRoute', 'ngAnimate', 'ngStorage', ]),
+const app = angular.module('jarvis-desktop', [ 'ngRoute', 'ngAnimate', 'ngStorage' ]),
 	URL = 'http://127.0.0.1:3000',
 	// eslint-disable-next-line no-unused-vars
 	USER = 'default';
@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
 		.when('/', {
 			templateUrl: '../templates/components/main-screen.html',
 			controller : 'MainController',
-			title      : 'Jarvis - personal assistant',
+			title      : 'Jarvis - personal assistant'
 		});
 
 });
@@ -64,7 +64,7 @@ app.factory('responseService', function () {
 	return {
 		updateServiceStore: updateServiceStore,
 		getStore          : getStore,
-		getServerResponse : getServerResponse,
+		getServerResponse : getServerResponse
 	};
 
 });
@@ -77,7 +77,7 @@ app.factory('$recentlyUsed', function () {
 		let usageObject = {
 			tag       : tag,
 			plainQuery: plainQuery,
-			message   : message,
+			message   : message
 		};
 		usageArray.push(usageObject);
 		// eslint-disable-next-line no-console
@@ -97,7 +97,7 @@ app.factory('$recentlyUsed', function () {
 	return {
 		updateUsageStore: updateUsageStore,
 		resetUsageStore : resetUsageStore,
-		getUsageStore   : getUsageStore,
+		getUsageStore   : getUsageStore
 	};
 
 });
@@ -108,7 +108,7 @@ app.controller('MainController', function() {
 
 app.controller('area-controller', function ($scope, $http, responseService, $recentlyUsed) {
 
-	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', 'youtube', 'medicine', 'symptoms', 'images', 'image', 'videos', 'watch', 'meaning', 'search', ];
+	let supportedTags = [ 'weather', 'google', 'bing', 'yahoo', 'youtube', 'medicine', 'symptoms', 'images', 'image', 'videos', 'watch', 'meaning', 'search' ];
 	$scope.Initialize = function () {
 
 		$scope.showJarvisBotArea = true;
@@ -148,7 +148,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 							query.indexOf(" ", 0) + 1,
 							query.length
 						),
-						query,
+						query
 					);
 
 				}
@@ -160,9 +160,9 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 				url    : URL + '/message',
 				method : 'POST',
 				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
+					'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				data: data,
+				data: data
 			}).then((resp) => {
 
 				let res = resp.data,
@@ -252,7 +252,7 @@ app.controller('area-controller', function ($scope, $http, responseService, $rec
 app.controller('weather-view-controller', function ($scope, responseService) {
 
 	let serviceStore = responseService.getStore();
-	const { temperature: temperature1, } = serviceStore;
+	const { temperature: temperature1 } = serviceStore;
 	let temperature = temperature1;
 	switch (true) {
 
@@ -304,7 +304,7 @@ app.controller('video-view-controller', [ '$scope', '$sce', function ($scope, $s
 
 	}
 
-}, ]);
+} ]);
 
 app.controller('medicine-view-controller', function ($scope, responseService) {
 
@@ -322,7 +322,7 @@ app.controller('recent-usage-controller', function ($scope, $recentlyUsed, $loca
 	let recentQuery = {
 		tag       : recent.tag,
 		plainQuery: recent.plainQuery,
-		message   : recent.message,
+		message   : recent.message
 	}
 
 	$localStorage = recentQuery;

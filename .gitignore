@@ -10,3 +10,6 @@ package-lock.json
 service/subprocesses/node_modules/
 service/jarvis.db
 node_modules/
+service/go.mod
+service/go.sum
+jarvis

@@ -36,12 +36,12 @@ before-install:
   - go get -u -v -d ./...
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
   - npm install chromedriver
+  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
 
 script:
-  - cd service && go run maintut.go &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
-  - eslint view/web/app-jarvis.js
-  - cd view/web/ && npm start && cd ../..
-  - cd service/ && go test ./... && cd ..
-  - cd tests/ && npm install
+  # - cd service && go run maintut.go &
+  # - eslint view/web/app-jarvis.js
+  # - cd view/web/ && npm start && cd ../..
+  # - cd service/ && go test ./... && cd ..
+  - ./test-runner.sh
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests/test.js

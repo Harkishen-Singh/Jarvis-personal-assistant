@@ -14,7 +14,7 @@ module.exports = {
 		'ecmaVersion': 2018
 	},
 	"rules": {
-		"comma-dangle": [2, "always"],
+		"comma-dangle": [2, "never"],
 		"no-cond-assign": [2, "always"],
 		"no-console": 2,
 		"no-constant-condition": 2,
