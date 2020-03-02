@@ -41,7 +41,7 @@ script:
   - cd service && go run maintut.go &
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/web/app-jarvis.js
-  - cd view/web/ && npm start && cd ..
-  - go test ./...
+  - cd view/web/ && npm start && cd ../..
+  - cd service/ && go test ./... && cd ..
   - cd tests/ && npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests/test.js

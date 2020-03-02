@@ -21,6 +21,19 @@ To get started with your contributions for Jarvis-personal-assistant see [CONTRB
 
 As a personal assistant, Jarvis assists the end-user with day-to-day activities like *general human conversation, searching queries in google, bing or yahoo, searching for videos, retrieving images, live weather conditions, word meanings, searching for medicine details, health recommendations based on symptoms and reminding the user about the scheduled events and tasks*. The user statements/commands are analysed with the help of **machine learning** to give an optimal solution.
 
+# Desktop Application
+
+## Introduction
+
+The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands.
+
+This is the desktop version of jarvis personal assistant. Click [here](http://github.com/Harkishen-Singh/Jarvis-Personal-Assistant) to view the repository of server.
+
+[Installation Instructions](https://github.com/muskankhedia/Jarvis-Desktop/blob/master/INSTALL.md)
+
+## :wrench: Techology stack
+* **Frontend** AngularJS,ElectronJS
+
 ## :rocket: Features 
 
 **Queries from web**<br/>
