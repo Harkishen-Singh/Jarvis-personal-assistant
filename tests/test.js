@@ -41,14 +41,12 @@ describe("Chrome Environments", function() {
 
     describe("Jarvis assistant operations", function() {
         this.timeout(30000);
-
         it("Search for message bar", done => {
             driver.findElement(By.xpath('//*[@id="message-input"]')).then(() => {
                 driver.manage().window().maximize();
                 done();
             });
         });
-
         it("Insert message", done => {
             driver.findElement(By.xpath('//*[@id="message-input"]')).click();
             driver.findElement(By.xpath('//*[@id="message-input"]')).then(vals => {
@@ -58,22 +56,13 @@ describe("Chrome Environments", function() {
                 });
             });
         });
-
         it("Show message in chat screen", done => {
             driver.findElement(By.xpath('//*[@id="stackArea"]/div')).then(() => {
                 done();
             });
         });
-
         it("Google website", (done) => {
             driver.get("https://www.google.co.in/search?q=github+harkishen+singh").then(()=>{
-                // driver.findElements(By.className('LC20lb')).then(r => {
-                //     r.forEach(rr => {
-                //         rr.getAttribute("innerHTML").then(cc => {
-                //             console.log(cc)
-                //         })
-                //     })
-                // })
                 driver.findElement(By.tagName('body')).then(a => {
                     a.getAttribute("innerHTML").then(cc => {
                         done();
@@ -81,20 +70,15 @@ describe("Chrome Environments", function() {
                 })
             });
         });
-
         // always keep this in last
         it("Preventing messages for empty mesages, using alert warning check", done => {
             driver.get('http://localhost:8080');
-            driver.findElement(By.xpath('//*[@id="message-bar-send"]')).click().then( rr => {
-                // driver.switchTo().alert().then(() => {
-                    done();
-                // });
+            driver.findElement(By.xpath('//*[@id="message-bar-send"]')).click().then(() => {
+                done();
             });
         });
-
         it("Closing browser", () => {
             driver.quit();
         });
-
     });
 });
