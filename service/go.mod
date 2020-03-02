@@ -3,6 +3,7 @@ module github.com/Harkishen-Singh/Jarvis-personal-assistant/service
 go 1.12
 
 require (
+	github.com/PuerkitoBio/goquery v1.5.1
 	github.com/extrame/ole2 v0.0.0-20160812065207-d69429661ad7 // indirect
 	github.com/extrame/xls v0.0.1
 	github.com/gin-gonic/gin v0.0.0-20150626140855-4cc2de6207f4
@@ -14,6 +15,5 @@ require (
 	github.com/mattn/go-sqlite3 v2.0.1+incompatible
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7
 	github.com/stretchr/testify v1.3.0 // indirect
-	golang.org/x/net v0.0.0-20150629084131-d9558e5c97f8 // indirect
 	gopkg.in/bluesuncorp/validator.v5 v5.9.1 // indirect
 )

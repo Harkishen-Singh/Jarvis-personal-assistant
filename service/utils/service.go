@@ -2,6 +2,7 @@ package utils
 
 import (
 	"net/http"
+
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers"
 	// "../controllers"
 )
@@ -16,5 +17,6 @@ func routes() {
 // Server service server for Jarvis
 func Server(port string) {
 	routes()
-	http.ListenAndServe(":" + port, nil)
+	// for logging the server status
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
