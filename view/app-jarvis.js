@@ -58,6 +58,136 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		}
 	});
 
+	$scope.getResponse = function(messageObj) {
+		const	data = 'username='+USER+'&message='+messageObj.message;
+		const index = $scope.messageStack.findIndex(obj => messageObj.fullDate === obj.fullDate && messageObj.text === obj.text);
+		$http({
+			url:URL+'/message',
+			method:'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			data: data
+		}).then(resp => {
+			let res = (resp.data),
+				message = res['message'],
+				status = res['status'],
+				result = res['result'],
+				show = res['show'],
+				hrs2 = new Date().getHours(),
+				mins2 = new Date().getMinutes();
+			let resSuccess = false;
+			const resMessageObj = {
+				message: '',
+				sender: '',
+				time: '',
+				result: '',
+				show: false,
+				length: null
+			};
+			console.log(resMessageObj);
+			
+			if (status && message === 'here are the current weather conditions') {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = JSON.parse(result);
+				resSuccess = true;
+			} else if (status && message === 'here is the meaning of the searched word') {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				$scope.videoDetails = result;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(hrs2 + ':' + mins2);
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'Enter Reminder details : ') {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				resSuccess = true;
+			} else if ((status === 'success' || status) && message === 'Enter Mail Details : ') {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				console.log(resMessageObj);
+				resSuccess = true;
+			} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(hrs2 + ':' + mins2);
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.result = result;
+				resSuccess = true;
+				
+			} else if ((status === 'success' || status) && !show) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resSuccess = true;
+			} else if (show) {
+				resMessageObj.sender = 'jarvis-bot';
+				resMessageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
+				resMessageObj.length = message.length;
+				resMessageObj.message = message;
+				resMessageObj.show = show;
+				resSuccess = true;
+			} else {
+				console.error('[JARVIS] error fetching from service.');
+				messageObj.hasError = true;
+			}
+
+			if (resSuccess) {
+				setTimeout(() => {
+					$scope.scrollDown();
+				}, 100);
+				if (index !== -1) {
+					$scope.messageStack.splice(index+1, 0, resMessageObj);
+				}
+				else {
+					$scope.messageStack.push(resMessageObj);
+				}
+			}
+			messageObj.isLoading = false;
+		}).catch(e => {
+			messageObj.isLoading = false;
+			messageObj.hasError = true;
+			throw e;
+		});
+	};
+
 	$scope.addMessagesToStack = function() {
 		if ($scope.message.length) {
 
@@ -77,9 +207,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					message: '',
 					sender: '',
 					time: '',
-					length: null
-				},
-				data = null;
+					length: null,
+					isLoading: true,
+					fullDate: date
+				};
 
 			messageObj.message = message;
 			messageObj.length = message.length;
@@ -91,125 +222,8 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			setTimeout(() => {
 				$scope.scrollDown();
 			}, 100);
-			data = 'username='+USER+'&message='+messageObj.message;
 
-			$http({
-				url:URL+'/message',
-				method:'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-				},
-				data:data
-			}).then(resp => {
-				let res = (resp.data),
-					message = res['message'],
-					status = res['status'],
-					result = res['result'],
-					show = res['show'],
-					hrs2 = new Date().getHours(),
-					mins2 = new Date().getMinutes();
-				messageObj = {
-					message: '',
-					sender: '',
-					time: '',
-					result: '',
-					show: false,
-					length: null
-				};
-				console.log(messageObj);
-				setTimeout(() => {
-					$scope.scrollDown();
-				}, 100);
-				if (status && message === 'here are the current weather conditions') {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = JSON.parse(result);
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if (status && message === 'here is the meaning of the searched word') {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.videoDetails = result;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && message === 'Enter Reminder details : ') {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					$scope.messageStack.push(messageObj);
-				} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.messageStack.push(messageObj);
-				} else if ((status === 'success' || status) && message === 'Enter Mail Details : ') {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					console.log(messageObj);
-					$scope.messageStack.push(messageObj);
-				} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(hrs2 + ':' + mins2);
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.result = result;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if ((status === 'success' || status) && !show) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else if (show) {
-					messageObj.sender = 'jarvis-bot';
-					messageObj.time = String(new Date().getHours() + ':' + new Date().getMinutes());
-					messageObj.length = message.length;
-					messageObj.message = message;
-					messageObj.show = show;
-					$scope.messageStack.push(messageObj);
-					$scope.showLoading = false;
-				} else {
-					console.error('[JARVIS] error fetching from service.');
-				}
-			}).catch(e => {
-				throw e;
-			});
+			$scope.getResponse(messageObj);
 			$scope.message = '';
 			// if (!recognizing) {
 			// 	setTimeout(() => {
@@ -218,6 +232,12 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 			// }
 
 		}
+	};
+
+	$scope.retryMessage = function(message) {
+		message.hasError = false;
+		message.isLoading = true;
+		$scope.getResponse(message);
 	};
 
 	$scope.formData = {};
