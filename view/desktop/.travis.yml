@@ -1,0 +1,24 @@
+os:
+  - linux
+
+sudo: required
+
+services:
+  - xvfb
+  - docker
+
+language: node_js
+
+node_js:
+  -  "7"
+
+before_script:
+  - npm install -g npm@latest
+  - npm install --dev
+  - npm install
+  - npm install -g eslint electron electron-packager
+  
+script:
+  - eslint app/*.js app/scripts/*.js
+  - htmlhint app/templates/components/*.html app/templates/*.html
+  - npm run build

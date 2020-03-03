@@ -128,7 +128,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "search" { // for google search
 			if len(remainingString) == 0 {
 				remainingString = "google"
-			} 
+			}
 
 			// processing
 
