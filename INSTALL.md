@@ -9,7 +9,7 @@ The prerequisites for installing the project :
 2. [nodejs with npm](https://nodejs.org/en/download/ )
 3. [python v2](https://www.python.org/)
 
-## Installation
+## Installation and executing web-app
 1. Clone the repository in your GOPATH
    
     ```bash
@@ -36,7 +36,7 @@ The prerequisites for installing the project :
     ```
 5. Start the HTTP server. *Do not close this terminal*
     ```bash
-        cd view && http-server
+        cd view/web && http-server
     ```
 6. Start the GoLang server. *Do not close this terminal*
     ```bash
@@ -44,7 +44,33 @@ The prerequisites for installing the project :
     ```
 7. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
 
+8. On running the service, it will occupy the port `:3000` and the front-end will run at port `:8080`
+
 ### for executing tests
 
 8. `eslint view/app-jarvis.js` # for linting checks
 9. `cd tests && npm install && mocha tests.js`
+
+## Running the Desktop-app
+
+***prerequisite :***
+1. ```golang``` with path as global
+2. ```node version >= 7.0.0``` & corresponding ```npm```
+3. ```python version >= 2.5 and < 3.0```
+
+
+
+*copy the following instructions in your terminal :*
+
+1. Move to the desktop app folder
+    ```bash
+    cd view/desktop
+    ```
+2. execute the command in the terminal
+    ```bash
+    npm install
+    ```
+3. Then run to locally execute jarvis-desktop
+    ```bash
+     npm start
+     ```

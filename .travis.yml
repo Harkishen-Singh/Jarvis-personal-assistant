@@ -39,9 +39,11 @@ before-install:
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
 
 script:
-  # - cd service && go run maintut.go &
-  # - eslint view/web/app-jarvis.js
-  # - cd view/web/ && npm start && cd ../..
-  # - cd service/ && go test ./... && cd ..
-  - ./test-runner.sh
+  - cd service && go run maintut.go &
+  - eslint view/web/app-jarvis.js
+  - cd view/web/ && npm start && cd ../..
+  - go test service/controllers/messages_test.go
+  - go test service/utils/service_test.go
+  - cd tests/
+  - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha tests/test.js
