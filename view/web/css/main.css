@@ -245,3 +245,7 @@ h5 {
     height: 250px;
     margin: 0px 15px 10px 15px;
 }
+
+.svg.svg-danger {
+    fill: #dc3545;
+}
