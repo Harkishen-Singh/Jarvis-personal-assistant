@@ -15,8 +15,8 @@ type Configuration struct {
 
 var config Configuration
 
-// Init reads and stores data from config.json
-func Init() {
+// init reads and stores data from config.json
+func init() {
 	jsonFile, err := os.Open("config.json")
 	if err != nil {
 		panic(err)
