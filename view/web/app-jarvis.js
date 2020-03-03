@@ -41,7 +41,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 	var reminders = [];
 
-	$scope.controlMainBanner = function() {
+	$scope.controlMainBanner = () => {
 		$scope.mainBanner = true;
 		setTimeout(() =>{
 			$scope.mainBanner = false;
@@ -51,15 +51,15 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	$scope.showLoaderListening = false;
 
 	var input = document.getElementById('message-input');
-	input.addEventListener('keyup', function(event) {
+	input.addEventListener('keyup', (event) => {
 		if (event.keyCode === 13) {
 			event.preventDefault();
 			document.getElementById('message-bar-send').click();
 		}
 	});
 
-	$scope.getResponse = function(messageObj) {
-		const	data = `username=${USER}&message=${messageObj.message}`;
+	$scope.getResponse = (messageObj) => {
+		const data = `username=${USER}&message=${messageObj.message}`;
 		const index = $scope.messageStack.findIndex(obj => messageObj.fullDate === obj.fullDate && messageObj.text === obj.text);
 		$http({
 			url:`${URL}/message`,
@@ -83,28 +83,19 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				show: false,
 				length: message.length
 			};
-
+			const successMessageList = [
+				'here are the top search results',
+				'here are the top search videos',
+				'here are the searched images',
+				'Enter Reminder details : ',
+				'Enter Mail Details : ',
+				'Information about the medicine : ',
+				'Help on the given symptoms : '
+			];
 			if (status && message === 'here are the current weather conditions') {
 				resMessageObj.result = JSON.parse(result);
 				resSuccess = true;
-			} else if (status && message === 'here is the meaning of the searched word') {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'here are the top search results' ) {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'here are the top search videos' ) {
-				$scope.videoDetails = result;
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'here are the searched images' ) {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'Enter Reminder details : ') {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'Here are your reminders : ') {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && message === 'Enter Mail Details : ') {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && (message === 'Information about the medicine : ' || message === 'Help on the given symptoms : ')) {
-				resSuccess = true;
-			} else if ((status === 'success' || status) && !show) {
+			} else if ((status === 'success' || status) && (successMessageList.includes(message) || !show)) {
 				resSuccess = true;
 			} else if (show) {
 				resMessageObj.show = show;
@@ -133,7 +124,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 		});
 	};
 
-	$scope.addMessagesToStack = function() {
+	$scope.addMessagesToStack = () => {
 		if ($scope.message.length) {
 
 			if ($scope.showLoaderListening) {
@@ -170,23 +161,17 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 
 			$scope.getResponse(messageObj);
 			$scope.message = '';
-			// if (!recognizing) {
-			// 	setTimeout(() => {
-			// 		$scope.toggleStartStop(0);
-			// 	}, 2000);
-			// }
-
 		}
 	};
 
-	$scope.retryMessage = function(message) {
+	$scope.retryMessage = (message) => {
 		message.hasError = false;
 		message.isLoading = true;
 		$scope.getResponse(message);
 	};
 
 	$scope.formData = {};
-	$scope.setReminder = function() {
+	$scope.setReminder = () => {
 		$scope.messageStack.pop();
 		let reminder_title = $scope.formData.remTitle,
 			reminder_description = $scope.formData.remDescription,
@@ -247,7 +232,7 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	};
 
 	$scope.formData = {};
-	$scope.sendMail = function() {
+	$scope.sendMail = () => {
 		$scope.messageStack.pop();
 		let mail_sender = $scope.formData.Sender,
 			mail_to = $scope.formData.To,
@@ -321,11 +306,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	function reminderNotif() {
 		var x = document.cookie;
 		var allCookie = x.split(';');
-		//console.log('cookies length');
-		//console.log(allCookie.length);
-		//console.log('reminders length');
-		//console.log(reminders.length);
-		//console.log(allCookie);		
 		if (allCookie.length > reminders.length && allCookie !== '') {
 			for (var i = reminders.length; i <allCookie.length; i++) {
 				var oneCookie = allCookie[i].split('=');
@@ -355,55 +335,22 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 	}
 	setInterval(reminderNotif,10000);
 
-	$scope.scrollDown = function() {
+	$scope.scrollDown = () => {
 		var elem = document.getElementById('stackArea-parent');
 		elem.scrollTop = elem.scrollHeight;
 	};
 
-	$scope.initStack = function() {
+	$scope.initStack = () => {
 		$scope.message = '';
-		// $scope.toggleStartStop(0);
 	};
 
-	$scope.toggleStartStop = function () {
+	$scope.toggleStartStop = () => {
 		recognition.continuous = true;
 
-		recognition.onresult = function (event) {
+		recognition.onresult = (event) => {
 			var i, n, submessage;
-			// var m, text;
 			var mess = document.getElementById('message-input');
 			mess.value = '';
-			// text = '';
-			// if (check === 0) {
-			// 	for (i = 0; i < event.results.length; i++) {
-			// 		if (event.results[i].isFinal) {
-			// 			text += event.results[i][0].transcript;
-			// 			console.log(text);
-			// 			if (text.includes('start Jarvis')) {
-			// 				m = text.lastIndexOf('start Jarvis');
-			// 				submessage = text.substring(m+12);
-			// 				mess.value = submessage;
-			// 				$scope.message = submessage;
-			// 				if (text.endsWith('send')) {
-			// 					mess.value = text;
-			// 					n = mess.value.lastIndexOf('send');
-			// 					submessage =  mess.value.substring(m+12,n);
-			// 					$scope.message = submessage;
-			// 					$scope.addMessagesToStack();
-			// 				}
-			// 			}
-			// 		} else {
-			// 			text += event.results[i][0].transcript;
-			// 			if (mess.value.includes('start jarvis')) {
-			// 				mess.value += event.results[i][0].transcript;
-			// 				n = mess.value.lastIndexOf('start jarvis');
-			// 				submessage = mess.value.substring(n+12);
-			// 				$scope.message = submessage;
-			// 			}
-			// 		}
-			// 	}
-			// } else if (check === 1) {
-			// if (check === 0) {
 			for (i = 0; i < event.results.length; i++) {
 				if (event.results[i].isFinal) {
 					mess.value += event.results[i][0].transcript;
@@ -420,8 +367,6 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 					$scope.message = mess.value;
 				}
 			}
-			// }
-			// }
 		};
 
 		if (recognizing) {
@@ -440,10 +385,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 app.controller('sidebarController', function($scope) {
 
 	console.warn('sidebar controller');
-	$scope.initSidebar = function() {
+	$scope.initSidebar = () => {
 		$scope.showHelp = false;
 	};
-	$scope.toggleHelp = function() {
+	$scope.toggleHelp = () => {
 		$scope.showHelp = !$scope.showHelp;
 	};
 
