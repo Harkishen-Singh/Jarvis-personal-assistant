@@ -1,0 +1,9 @@
+<!-- Handles query requests -->
+<div class="outer-layer-response" data-ng-controller="video-view-controller">
+    <div id="queried-data" data-ng-if="url.length !== 0 ">
+        <br/>
+        <div data-ng-repeat="urls in url">
+            <iframe ng-src = "{{urls}}" class ="video-link"></iframe>
+         </div>
+    </div>
+</div>

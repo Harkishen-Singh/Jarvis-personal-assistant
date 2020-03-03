@@ -47,8 +47,8 @@ before-install:
 script:
   - cd service && go run maintut.go &
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
-  - eslint view/app-jarvis.js
-  - cd view/ && npm start && cd ..
+  - eslint view/web/app-jarvis.js
+  - cd view/web/ && npm start && cd ../..
   - go test service/controllers/messages_test.go
   - go test service/utils/service_test.go
   - cd tests/

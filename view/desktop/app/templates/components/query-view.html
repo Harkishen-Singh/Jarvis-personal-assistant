@@ -1,0 +1,16 @@
+<!-- Handles query requests -->
+<div class="outer-layer-response" data-ng-controller="query-view-controller">
+    <div id="queried-data" data-ng-if="queryData.length !== 0 ">
+        <br/>
+        <div data-ng-repeat="objectQuery in queryData" >
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                    <hr/>
+                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

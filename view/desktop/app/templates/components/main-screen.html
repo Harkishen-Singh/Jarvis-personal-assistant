@@ -1,0 +1,32 @@
+<div 
+  data-ng-controller="area-controller"
+  data-ng-init="Initialize()"
+>
+    <div
+        data-ng-include="'components/jarvis-bot-area.html'"
+        id="jarvis-bot-area-id"
+        class="jarvis-bot-area"
+    ></div>
+
+    <img src="../assets/images/logo-jarvis.gif" class="logo-pre-query" id="ele1-move"/>
+
+    <div
+        data-ng-include="'components/user-area.html'"
+        class="user-area-pre-query"
+        id="ele2-move"
+    ></div>
+
+    <!-- <button
+        data-ng-show="showReset" 
+        class="btn btn-primary reset-button" 
+        data-ng-click="AskButtonClick()"
+    >
+        Ask me another question
+    </button> -->
+
+    <img src="../assets/images/right-arrow.png"
+        data-ng-show="showReset" 
+        class="reset-button" 
+        data-ng-click="AskButtonClick()" />
+
+</div>

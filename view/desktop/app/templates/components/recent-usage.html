@@ -1,0 +1,18 @@
+<div data-ng-controller="recent-usage-controller">
+    <div id="recent-usage-inner-layer">
+        <span id="recent-usage-heading">
+            Recent Queries
+        </span>
+        <div class="recent-usage-outer-loop-layer">
+            <div data-ng-repeat="query in recentUsageArray">
+                <!-- tag -->
+                <span class="recent-usage-tag">
+                    {{query.tag}}
+                </span>
+                <span class="recent-usage-query">
+                    {{query.plainQuery}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
