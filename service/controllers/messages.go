@@ -1,13 +1,14 @@
 package controllers
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
-	"encoding/json"
+	"time"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
-	"fmt"
-	"time"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -95,8 +96,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 	message = strings.ToLower(message)
 	messageArr := strings.Fields(message)
 	var a []string
-	priority := []string{"images", "image", "video", "videos", "watch", "youtube", "symptoms", "medicine", "weather", 
-						 "meaning", "google", "yahoo", "bing", "search"}
+	priority := config.Get().KeywordPriority
 	for i := 0; i < len(messageArr); i++ {
 		for _, prior := range priority {
 			if (messageArr[i] == prior) {
