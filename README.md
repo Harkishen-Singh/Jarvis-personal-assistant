@@ -111,3 +111,23 @@ List your noticed symptoms and get immediate help on the medicines that could be
 
 * **Front-end:**  Web: AngularJS, Desktop App: Electron + AngularJS
 * **Back-end:** GoLang
+
+#  :trophy: Achievements
+  ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
+  
+ ## KWoC-2019 (Kharagpur Winter of Code)
+ 
+ [![Kharagpur Winter of Code](https://miro.medium.com/max/585/1*IyO7IeMmLgTe0sgwR0Koeg.jpeg)](https://wiki.metakgp.org/w/Kharagpur_Winter_of_Code)
+
+
+## JMoC-2019 (JIIT Month of Code)
+[![JIIT Month of Code](https://jmoc.jodc.tech/logo.png)](https://jmoc.jodc.tech/)
+
+
+## GSSoC-2020 (GirlScript Summer of Code)
+[![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)](https://www.gssoc.tech/index.html)
+
+
+
+
+
