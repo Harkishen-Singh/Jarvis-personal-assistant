@@ -90,12 +90,10 @@ app.controller('MainController', function($scope,$location,$rootScope,$http) {
 				'Enter Reminder details : ',
 				'Enter Mail Details : ',
 				'Information about the medicine : ',
-				'Help on the given symptoms : '
+				'Help on the given symptoms : ',
+				'here are the current weather conditions'
 			];
-			if (status && message === 'here are the current weather conditions') {
-				resMessageObj.result = JSON.parse(result);
-				resSuccess = true;
-			} else if ((status === 'success' || status) && (successMessageList.includes(message) || !show)) {
+			if ((status === 'success' || status) && (successMessageList.includes(message) || !show)) {
 				resSuccess = true;
 			} else if (show) {
 				resMessageObj.show = show;

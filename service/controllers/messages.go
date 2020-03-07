@@ -44,7 +44,7 @@ type jsonResponseQuery struct {
 type jsonResponseWeather struct {
 	Status bool	`json:"status"`
 	Message string `json:"message"`
-	Result string `json:"result"`
+	Result weatherStr `json:"result"`
 }
 
 type weatherStr struct {
@@ -226,17 +226,16 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 		} else if strings.ToLower(matchPars) == "weather" {
 
-			if len(messageArr) == 1 || len(messageArr) < 3 {
+			if len(messageArr) < 3 {
 				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
 			} else {
 				city := messageArr[len(messageArr)-2]
 				state := messageArr[len(messageArr)-1]
-				result := HandlerWeather(city, state)
-				stringified, _ := json.Marshal(processWeather(result))
+				weatherData := getWeather(city, state)
 				response := jsonResponseWeather{
 					Status: true,
 					Message: "here are the current weather conditions",
-					Result: string(stringified),
+					Result: weatherData,
 				}
 				jData, _ := json.Marshal(response)
 				w.Write(jData)
@@ -493,42 +492,6 @@ func processGoogleResponses(searchTerm, countryCode, languageCode string, proxyS
 		time.Sleep(time.Duration(backoff) * time.Second)
 	}
 	return results, nil
-}
-
-func processWeather(response string) weatherStr  {
-
-	fmt.Println("this is the response")
-	fmt.Println(response)
-	subl := "in json format"
-	sublLen := len(subl)
-	found := false
-	var weather []byte
-	var weatherInJSON weatherStr
-	for i:=0; i< len(response) - sublLen; i++ {
-		if response[i: i + sublLen] == subl {
-			for j:=1; ; j++ {
-				if response[i+sublLen+j: i+sublLen+j + 1] == "}" {
-					weather = []byte(response[i+sublLen+1: i+sublLen+j+1])
-					found = true
-					break
-				}
-			}
-			if found {
-				break
-			}
-		}
-	}
-	if !found {
-		fmt.Println("corrupted logging!")
-	}
-	fmt.Println(string(weather))
-	err := json.Unmarshal(weather, &weatherInJSON)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(weatherInJSON)
-	return weatherInJSON
-
 }
 
 // processes yahoo query result, scraps the required data and returns it
@@ -924,6 +887,61 @@ func getMeaning(word string) []meaningStr {
 			if meaning.Meaning != "" {
 				resultObj = append(resultObj, meaning)
 			}
+		}
+	}
+	return resultObj
+}
+
+func getWeather(city string, state string) weatherStr {
+	var resultObj weatherStr
+	resultObj.City = city
+	resultObj.Time = time.Now().Format("02-01-2006 3:4 PM")
+
+	country := "india"
+	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C" 
+	res, err := scrapeClientRequest(url, nil)
+	if err != nil {
+		panic(err)
+	}
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		panic(err)
+	}
+	currentSectionArray := doc.Find("section.curcond")
+	if len(currentSectionArray.Nodes) <= 0 {
+		panic(err)
+	}
+	currentSection := currentSectionArray.Eq(0)
+	tempSpanArray := currentSection.Find("span.current")
+	if len(tempSpanArray.Nodes) <= 0 {
+		panic(err)
+	}
+	tempSpan := tempSpanArray.Eq(0)
+	resultObj.Temperature = tempSpan.Text() + "°C"
+
+	locationArray := doc.Find("div.mylocations > div.header > span")
+	if len(locationArray.Nodes) > 0 {
+		resultObj.City = locationArray.Eq(0).Text()
+	}
+
+	conditionsArray := currentSection.Find("div.weather-info>ul>li")
+	for conditionIndex := range conditionsArray.Nodes {
+		conditionSection := conditionsArray.Eq(conditionIndex)
+		conditionChildrens := conditionSection.Contents()
+		if len(conditionChildrens.Nodes) <= 0 {
+			continue
+		}
+		conditionName := strings.TrimSpace(conditionChildrens.First().Text()) 
+		conditionVal := strings.TrimSpace(conditionChildrens.Last().Text())
+		switch strings.ToLower(conditionName) {
+			case "feels like": 
+				resultObj.FeelsLike = conditionVal + "C"
+			case "humidity": 
+				resultObj.Humidity = conditionVal
+			case "dew point": 
+				resultObj.DewPoint = conditionVal
+			case "visibility": 
+				resultObj.Visibility = conditionVal
 		}
 	}
 	return resultObj
