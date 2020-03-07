@@ -125,7 +125,7 @@ List your noticed symptoms and get immediate help on the medicines that could be
 
 
 ## GSSoC-2020 (GirlScript Summer of Code)
-[![GirlScript Summer of Code](https://www.gssoc.tech/images/gslogo.png)](https://www.gssoc.tech/index.html)
+[![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)](https://www.gssoc.tech/index.html)
 
 
 
