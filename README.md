@@ -111,3 +111,25 @@ List your noticed symptoms and get immediate help on the medicines that could be
 
 * **Front-end:**  Web: AngularJS, Desktop App: Electron + AngularJS
 * **Back-end:** GoLang
+
+#  :trophy: Achievements
+  ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
+  
+ ## KWoC-2019 (Kharagpur Winter of Code)
+ ![Kharagpur Winter of Code](https://miro.medium.com/max/957/1*gqkf7jD-6bxXTIHq4DaT_Q.png)
+
+The Kharagpur Winter of Code, often abbreviated as KWoC, is an annual five week long program where students new or unknown to free and open-source software contribute to coding projects registered in the program by experienced mentors or project owners and gain experience in contributing to open source software.The program is hosted by Kharagpur Open Source Society, an independent student group at IIT Kharagpur, but is open to students of any university
+
+## JMoC-2019 (JIIT Month of Code)
+ ![JIIT Month of Code](https://pbs.twimg.com/media/EEV5nWSUwAYr2eU.jpg:large)
+
+JIIT Month of Code is an online programme by the open-source club of Jaypee Institute of Information Technology, JIIT Noida-128, the JODC, focused on introducing students to open source software development and documentation writing. Students will collaborate and contribute to open-source projects under the guidance of mentor(s) for a month during the winter.
+
+## GSSoC-2020 (GirlScript Summer of Code)
+ ![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)
+
+GirlScript Summer of Code is the 3 month long Open Source program during summers conducted by GirlScript Foundation, started in 2018, with an aim to help beginners get started with Open Source Development while encouraging diversity. Throughout the program, participants contribute to different projects under guidance of experienced mentors. Top participants get exciting goodies and opportunities.
+
+
+
+
