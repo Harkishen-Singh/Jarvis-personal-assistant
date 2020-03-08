@@ -1,4 +1,4 @@
-package controllers
+package scrapper
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func getScrapeClient(proxyString interface{}) *http.Client {
 	}
 }
 
-func scrapeClientRequest(searchURL string, proxyString interface{}) (*http.Response, error) {
+func ScrapeClientRequest(searchURL string, proxyString interface{}) (*http.Response, error) {
 
 	baseClient := getScrapeClient(proxyString)
 	req, _ := http.NewRequest("GET", searchURL, nil)

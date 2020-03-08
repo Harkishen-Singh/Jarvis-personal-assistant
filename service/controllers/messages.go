@@ -9,6 +9,7 @@ import (
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -477,7 +478,7 @@ func processGoogleResponses(searchTerm, countryCode, languageCode string, proxyS
 		return nil, err
 	}
 	for _, page := range googlePages {
-		res, err := scrapeClientRequest(page, proxyString)
+		res, err := scrapper.ScrapeClientRequest(page, proxyString)
 		if err != nil {
 			return nil, err
 		}
@@ -644,7 +645,7 @@ func processBingResponses(searchTerm, country string, proxyString interface{}, p
 	for _, page := range bingPages {
 		rank := len(results)
 		fmt.Println("page:: ", page)
-		res, err := scrapeClientRequest(page, proxyString)
+		res, err := scrapper.ScrapeClientRequest(page, proxyString)
 		if err != nil {
 			return nil, err
 		}
@@ -821,7 +822,7 @@ func processImageResponses(result string) []messageQueryBody {
 
 func getMeaning(word string) []meaningStr {
 	url := "https://en.oxforddictionaries.com/definition/" + word
-	res, err := scrapeClientRequest(url, nil)
+	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -899,7 +900,7 @@ func getWeather(city string, state string) weatherStr {
 
 	country := "india"
 	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C" 
-	res, err := scrapeClientRequest(url, nil)
+	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		panic(err)
 	}
