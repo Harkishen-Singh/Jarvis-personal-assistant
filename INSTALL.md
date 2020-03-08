@@ -7,7 +7,6 @@ To run this project, the system should have the following prerequisites, if not 
 The prerequisites for installing the project :
 1. [golang](https://golang.org/dl/ "Install GOLang")
 2. [nodejs with npm](https://nodejs.org/en/download/ )
-3. [python v2](https://www.python.org/)
 
 ## Installation and executing web-app
 1. Clone the repository in your GOPATH
@@ -30,21 +29,17 @@ The prerequisites for installing the project :
         $ go get -v -u -d ./...
     ```
 3. Install Python 2.*.* . To verify if its installed, `python --version`.
-4. Install python dependencies.  Use `sudo` if required!
-    ```bash
-        pip install -r service/subprocesses/requirements.txt
-    ```
-5. Start the HTTP server. *Do not close this terminal*
+4. Start the HTTP server. *Do not close this terminal*
     ```bash
         cd view/web && http-server
     ```
-6. Start the GoLang server. *Do not close this terminal*
+5. Start the GoLang server. *Do not close this terminal*
     ```bash
         cd service && go run maintut.go
     ```
-7. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
+6. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
 
-8. On running the service, it will occupy the port `:3000` and the front-end will run at port `:8080`
+7. On running the service, it will occupy the port `:3000` and the front-end will run at port `:8080`
 
 ### for executing tests
 
@@ -56,9 +51,6 @@ The prerequisites for installing the project :
 ***prerequisite :***
 1. ```golang``` with path as global
 2. ```node version >= 7.0.0``` & corresponding ```npm```
-3. ```python version >= 2.5 and < 3.0```
-
-
 
 *copy the following instructions in your terminal :*
 
