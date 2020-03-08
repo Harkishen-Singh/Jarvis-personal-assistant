@@ -1,0 +1,50 @@
+<!-- Handles email requests -->
+<div class="outer-layer-response" data-ng-controller="email-controller">
+
+    <div class="container" id = "email-form">
+        <form>
+            <br />
+            <div class="form-group">
+                <label for="sender">Sender:</label>
+                <input type="text" class="form-control" id="sender" data-ng-model="formData.Sender" required>
+            </div>
+
+            <div class="form-group">
+                <label for="to">TO:</label>
+                <input type="text" class="form-control" id="to" data-ng-model="formData.To" required>
+            </div>
+
+            <div class="form-group">
+                <label for="to">CC:</label>
+                <input type="text" class="form-control" id="cc" data-ng-model="formData.CC">
+            </div>
+
+            <div class="form-group">
+                <label for="to">BCC:</label>
+                <input type="text" class="form-control" id="bcc" data-ng-model="formData.BCC">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" data-ng-model="formData.Subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea class="form-control" id="body" data-ng-model="formData.Body"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success" data-ng-click="sendMail()">
+                Send Mail
+            </button>
+
+        </form>
+    </div>
+
+    <div id="email-message-outer-layer">
+        <p id="email-message">
+            {{message}}
+        </p>
+    </div>
+
+</div> 
