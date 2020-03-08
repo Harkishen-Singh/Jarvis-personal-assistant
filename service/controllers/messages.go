@@ -250,8 +250,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 				wordStr := remainingString
 
-				result := HandlerMeaning(wordStr)
-				response := processMeaning(result)
+				response := getMeaning(wordStr)
 				fmt.Println(len(response))
 
 				if len(response) > 0 {
@@ -857,93 +856,75 @@ func processImageResponses(result string) []messageQueryBody {
 
 }
 
-func processMeaning(response string) []meaningStr {
-
-	fmt.Println("this is the response")
-
-	found := false
-	
-	subs1, subs2, subs3, subs4  := "meaning", "example", "subMeaning", "subExample"
-	subsLen1, subsLen2, subsLen3, subsLen4 := len(subs1), len(subs2), len(subs3), len(subs4)
-	var mid, last = 0, 0
-
-	var meaningBody meaningStr
-	var meaningBodyArray []meaningStr
-	var subMeaningBody submeanStr
-	var subMeaningBodyArray []submeanStr
-
-	for i:=0; i< len(response) - subsLen1; i++ {
-		found = false
-		if response[i: i + subsLen1] == subs1 {
-			subMeaningBodyArray = nil
-			mid = i + subsLen1 + 4
-			last = mid
-			for j:=1; j< len(response) - last - 1 ; j++ {
-				if response[last+j: last + j + 1] == "*" {
-					meaningBody.Meaning = response[mid: mid + j]
-					found = true
-					last = mid + j +1
-
-					for k:=1; k < len(response) - last - subsLen2 ; k++ {
-						if response[last + k: last + k + subsLen2] == subs2 {
-							v := mid + j + k + subsLen2 + 4
-							last = v
-							for l:= 1; l < len(response) - last - 1; l++ {
-								if response[v + l: v + l + 1] == "*" {
-									meaningBody.Example = response[v + 1 : v + l]
-									last = v + l +1
-									break;
-								}
-							}
-							break;
-						}
-					}
-					
-					for k := 1;k < len(response) - last -subsLen3 ; k++ {
-						check := false
-						if response[last + k: last + k + subsLen3] == subs3 {
-							v := last + k + subsLen3 + 4
-							last := v
-							for l:= 1; l < len(response) - last - 1; l++ {
-								if response[v +l: v + l + 1] == "*" {
-									subMeaningBody.Smean = response[v : v + l]
-									last = v + l + 1
-									check = true
-									break;
-								}
-							}
-							if check {
-								for m:= 1; m < len(response) - last - subsLen4 ; m++ {
-									if response[last + m: last + m + subsLen4] == subs4 {
-										v := last + m + subsLen4 + 4
-										last = v
-										for l:= 1; l < len(response) - last - 1 ; l++ {
-											if response[v +l: v + l + 1] == "*" {
-												subMeaningBody.Subexample = response[v : v + l]
-												last = v + l + 1
-												break;
-											}
-										}
-										subMeaningBodyArray = append(subMeaningBodyArray, subMeaningBody)
-										meaningBody.Submeaning = subMeaningBodyArray
-										break;
-									}
-								}
-							}
-							break;
-						}
-					}
-					break;	
+func getMeaning(word string) []meaningStr {
+	url := "https://en.oxforddictionaries.com/definition/" + word
+	res, err := scrapeClientRequest(url, nil)
+	if err != nil {
+		panic(err)
+	}
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		panic(err)
+	}
+	var resultObj []meaningStr
+	sel := doc.Find("section.gramb")
+	for sectionIndex := range sel.Nodes {
+		fmt.Println(sectionIndex)
+		section := sel.Eq(sectionIndex)
+		typArray := section.Find("span.pos")
+		for typIndex := range typArray.Nodes {
+			fmt.Println(typArray.Eq(typIndex).Text())
+		}
+		trgArray := section.Find("div.trg")
+		for trgIndex := range trgArray.Nodes {
+			var meaning meaningStr
+			trg := trgArray.Eq(trgIndex)
+			paraArray := trg.Find("p")
+			for paraIndex := range paraArray.Nodes {
+				para := paraArray.Eq(paraIndex)
+				meaningArray := para.Find("span.ind")
+				for meaningIndex := range meaningArray.Nodes {
+					meaning.Meaning = (meaningArray.Eq(meaningIndex).Text())
 				}
 			}
-			if found {
-				meaningBodyArray = append(meaningBodyArray, meaningBody)
-				i = last
+
+			exampleArray := trg.Find("li.ex")
+			if len(exampleArray.Nodes) > 0 {
+				meaning.Example = exampleArray.Eq(0).Text()
+			} else {
+				exampleArray := trg.Find("div.ex")
+				if len(exampleArray.Nodes) > 0 {
+					meaning.Example = exampleArray.Eq(0).Text()
+				}
+			}
+
+			subMeaningArray := trg.Find("li.subSense")
+			var extractedSubMean []submeanStr
+			for subMeaningIndex := range subMeaningArray.Nodes {
+				var subMeaningObj submeanStr
+				subMeaningBlock := subMeaningArray.Eq(subMeaningIndex)
+				meaningArray := subMeaningBlock.Find("span.ind")
+				if len(meaningArray.Nodes) > 0 {
+					subMeaningObj.Smean = meaningArray.Eq(0).Text()
+				}
+
+				exampleArray := subMeaningBlock.Find("li.ex")
+				if len(exampleArray.Nodes) > 0 {
+					subMeaningObj.Subexample = exampleArray.Eq(0).Text()
+				} else {
+					exampleArray := subMeaningBlock.Find("div.ex")
+					if len(exampleArray.Nodes) > 0 {
+						subMeaningObj.Subexample = exampleArray.Eq(0).Text()
+					}
+				}
+
+				extractedSubMean = append(extractedSubMean, subMeaningObj)
+			}
+			meaning.Submeaning = extractedSubMean
+			if meaning.Meaning != "" {
+				resultObj = append(resultObj, meaning)
 			}
 		}
 	}
-	fmt.Println("meaningBodyArray : ", meaningBodyArray)
-	
-	return meaningBodyArray
-
+	return resultObj
 }
