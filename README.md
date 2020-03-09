@@ -111,6 +111,9 @@ List your noticed symptoms and get immediate help on the medicines that could be
 
 * **Front-end:**  Web: AngularJS, Desktop App: Electron + AngularJS
 * **Back-end:** GoLang
+## :computer: Postman Documentation
+Postman is a powerful HTTP client for testing web services. Postman makes it easy to test, develop and document APIs by allowing users to quickly put together both simple and complex HTTP requests. <br/>
+Test the current APIs of Jarvis mentioned here on Postman - [Postman Link](https://documenter.getpostman.com/view/6521254/SzKZrvTu?version=latest)
 
 # Postman Documentation for Jarvis
 
