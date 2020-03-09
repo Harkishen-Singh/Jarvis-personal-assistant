@@ -8,6 +8,9 @@ import (
 	"os/exec"
 	"io/ioutil"
 	"strings"
+	"errors"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
+	"github.com/PuerkitoBio/goquery"
 )
 
 type medicineResponse struct {
@@ -252,7 +255,7 @@ func HealthMedController(medicine string,  res http.ResponseWriter) (speech stri
 	return
 }
 
-func scrapMedicineLog(medicine *string) string {
+func scrapMedicineLog(medicine *string) []string {
 
 	directory, _ := os.Getwd()
 	fmt.Println("health-medicine request")
@@ -260,13 +263,41 @@ func scrapMedicineLog(medicine *string) string {
 	*medicine = strings.Replace(*medicine, ",", "_", -1)
 	*medicine = strings.Replace(*medicine, "_ ", "_", -1)
 	*medicine = strings.Replace(*medicine, " ", "_", -1)
-	result, err := exec.Command("node", "subprocesses/health_medicine.js", *medicine).Output()
+	url := "https://druginfo.nlm.nih.gov/drugportal/name/" + *medicine
+	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		panic(err)
 	}
-	stringified := string(result)
-	fmt.Println("result is" , stringified)
-	return processScrapLog(&stringified)
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		panic(err)
+	}
+	var result string
+	resultFould := false
+	contentArray := doc.Find("table.search-results")
+	if len(contentArray.Nodes) <= 0 {
+		panic(errors.New("Search result table not found."))
+	}
+	content := contentArray.Eq(0)
+	tableRowArray := content.Find("tr")
+	for tableRowIndex := range tableRowArray.Nodes {
+		tableRow := tableRowArray.Eq(tableRowIndex)
+		tableDataLabelArray := tableRow.Find("td.label")
+		if len(tableDataLabelArray.Nodes) > 0 {
+			tableDataLabel := tableDataLabelArray.Eq(0)
+			if strings.ToLower(tableDataLabel.Text()) == "description:" {
+				tableData := tableRow.Find("td").Last()
+				result = tableData.Text()
+				resultFould = true
+				break
+			}
+		}
+	}
+
+	if !resultFould {
+		panic(errors.New("Cannot find description"))
+	}
+	return []string{result, *medicine}
 }
 
 func processScrapLog(log *string) (data string) {
@@ -285,28 +316,28 @@ func processScrapLog(log *string) (data string) {
 	return
 }
 
-func handleResponse(ctr int, data string, res http.ResponseWriter) string {
+func handleResponse(ctr int, data []string, res http.ResponseWriter) string {
 	var resp medicineResponse
 	if ctr == 1 {
 		resp = medicineResponse{
 			Status: true,
 			Message: "Information about the medicine : ",
-			Result: data,
+			Result: data[0],
 		}
 	} else {
 		resp = medicineResponse{
 			Status: true,
 			Message: "Help on the given symptoms : ",
-			Result: data,
+			Result: data[0],
 		}
 	}
 	
 	send, _ := json.Marshal(resp)
 	res.Write(send)
-	return "generic " + data[0: 20]
+	return "generic " + data[1]
 }
 
-func scrapSymptomsLog(sypm *string) string {
+func scrapSymptomsLog(sypm *string) []string {
 
 	directory, _ := os.Getwd()
 	fmt.Println("health-symptoms request")
@@ -320,7 +351,7 @@ func scrapSymptomsLog(sypm *string) string {
 	}
 	stringified := string(result)
 	fmt.Println("result is" , stringified)
-	return processScrapLog(&stringified)
+	return []string{processScrapLog(&stringified), *sypm}
 }
 
 // HealthSympController controls tasks related to health symptoms
