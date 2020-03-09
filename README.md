@@ -127,6 +127,12 @@ List your noticed symptoms and get immediate help on the medicines that could be
 ## GSSoC-2020 (GirlScript Summer of Code)
 [![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)](https://www.gssoc.tech/index.html)
 
+# Postman Documentation for Jarvis
+
+### Jarvis-personal-assistant is currently using Postman,one of the most popular tools used in API testing
+Have a look at the [Postman-Documentation-Link](https://documenter.getpostman.com/view/6521254/SzKZrvTu?version=latest)
+
+
 
 
 
