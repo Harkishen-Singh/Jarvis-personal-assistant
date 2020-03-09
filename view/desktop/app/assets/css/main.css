@@ -420,3 +420,18 @@ html, body {
     margin-bottom: 0rem; 
     color: grey;
 }
+
+#email-form {
+    display: block;
+}
+
+
+#email-message {
+    display: none;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    background-color: #FFF9C4;
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+}
