@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"os"
-	"os/exec"
 	"io/ioutil"
 	"strings"
 	"errors"
@@ -338,20 +337,28 @@ func handleResponse(ctr int, data []string, res http.ResponseWriter) string {
 }
 
 func scrapSymptomsLog(sypm *string) []string {
-
 	directory, _ := os.Getwd()
 	fmt.Println("health-symptoms request")
 	fmt.Println(" medicine-name -> " + *sypm + " direc -> " + directory)
 	*sypm = strings.Replace(*sypm, ",", "_", -1)
 	*sypm = strings.Replace(*sypm, "_ ", "_", -1)
 	*sypm = strings.Replace(*sypm, " ", "_", -1)
-	result, err := exec.Command("node", "subprocesses/health_symptoms.js", *sypm).Output()
+	url := "https://www.medindia.net/drugs/medical-condition/" + *sypm
+	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		panic(err)
 	}
-	stringified := string(result)
-	fmt.Println("result is" , stringified)
-	return []string{processScrapLog(&stringified), *sypm}
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		panic(err)
+	}
+	result := ""
+	articlesArray := doc.Find("article")
+	for articleIndex := range articlesArray.Nodes {
+		result = result + articlesArray.Eq(articleIndex).Text() + "\n"
+	}
+	fmt.Println("result is" , result)
+	return []string{result, *sypm}
 }
 
 // HealthSympController controls tasks related to health symptoms
