@@ -115,30 +115,16 @@ List your noticed symptoms and get immediate help on the medicines that could be
 Postman is a powerful HTTP client for testing web services. Postman makes it easy to test, develop and document APIs by allowing users to quickly put together both simple and complex HTTP requests. <br/>
 Test the current APIs of Jarvis mentioned here on Postman - [Postman Link](https://documenter.getpostman.com/view/6521254/SzKZrvTu?version=latest)
 
-# Postman Documentation for Jarvis
-
-### Jarvis-personal-assistant is currently using Postman,one of the most popular tools used in API testing
-Have a look at the [Postman-Documentation-Link](https://documenter.getpostman.com/view/6521254/SzKZrvTu?version=latest)
-
 #  :trophy: Achievements
-  ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
+ ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
   
- ## KWoC-2019 (Kharagpur Winter of Code)
- 
- [![Kharagpur Winter of Code](https://miro.medium.com/max/585/1*IyO7IeMmLgTe0sgwR0Koeg.jpeg)](https://wiki.metakgp.org/w/Kharagpur_Winter_of_Code)
+ #### KWoC-2019 (Kharagpur Winter of Code)
+[<img src="https://miro.medium.com/max/585/1*IyO7IeMmLgTe0sgwR0Koeg.jpeg" width="100" height="100" />](https://wiki.metakgp.org/w/Kharagpur_Winter_of_Code)
 
 
-## JMoC-2019 (JIIT Month of Code)
-[![JIIT Month of Code](https://jmoc.jodc.tech/logo.png)](https://jmoc.jodc.tech/)
+#### JMoC-2019 (JIIT Month of Code)
+[<img src="https://jmoc.jodc.tech/logo.png"/>](https://jmoc.jodc.tech/)
 
 
-## GSSoC-2020 (GirlScript Summer of Code)
-[![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)](https://www.gssoc.tech/index.html)
-
-
-
-
-
-
-
-
+#### GSSoC-2020 (GirlScript Summer of Code)
+[<img src="https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png" width="400" height="100" />](https://www.gssoc.tech/index.html)
