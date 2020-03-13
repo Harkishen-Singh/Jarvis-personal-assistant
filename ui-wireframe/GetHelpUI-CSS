@@ -1,0 +1,100 @@
+/* Utilities Hub */
+
+
+position: absolute;
+width: 118px;
+height: 22px;
+left: 89px;
+top: 42px;
+
+font-family: Sofia Pro;
+font-style: normal;
+font-weight: 300;
+font-size: 22px;
+line-height: 22px;
+
+color: #0F6FE0;
+
+
+
+/* Rectangle 1 */
+
+
+position: absolute;
+width: 252px;
+height: 36px;
+left: 22px;
+top: 117px;
+
+border: 1px solid #0F6FE0;
+box-sizing: border-box;
+border-radius: 20px;
+
+
+/* Get Help on Pre-Defined Statements */
+
+
+position: absolute;
+width: 216px;
+height: 13px;
+left: 40px;
+top: 129px;
+
+font-family: Sofia Pro;
+font-style: normal;
+font-weight: 300;
+font-size: 13px;
+line-height: 13px;
+
+color: #0F6FE0;
+
+
+
+/* Ellipse 1 */
+
+
+position: absolute;
+width: 117px;
+height: 117px;
+left: -19px;
+top: 436px;
+
+border: 12px solid rgba(15, 111, 224, 0.75);
+box-sizing: border-box;
+
+
+/* Ellipse 2 */
+
+
+position: absolute;
+width: 47px;
+height: 44px;
+left: -16px;
+top: 487px;
+
+border: 8px solid rgba(0, 0, 0, 0.73);
+box-sizing: border-box;
+
+
+/* Ellipse 3 */
+
+
+position: absolute;
+width: 199px;
+height: 210px;
+left: 98px;
+top: 436px;
+
+background: rgba(15, 111, 224, 0.52);
+
+
+/* Ellipse 4 */
+
+
+position: absolute;
+width: 21px;
+height: 20px;
+left: 98px;
+top: 454px;
+
+background: rgba(2, 6, 20, 0.47);
