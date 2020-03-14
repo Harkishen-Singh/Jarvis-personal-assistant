@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"errors"
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
@@ -209,19 +210,17 @@ func routes(routeObject response, w http.ResponseWriter) {
 		} else if strings.ToLower(matchPars) == "images" || strings.ToLower(matchPars) =="image"  {
 			query := ""
 			if len(remainingString) == 0 {
-				query = "https://www.google.co.in/search?q="+"images"+"&source=lnms&tbm=isch"
+				query = "images"
 			} else {
-				query = "https://www.google.co.in/search?q="+remainingString+"&source=lnms&tbm=isch"
+				query = remainingString
 			}
 
-			result := HandlerImage("GET", query)
-			// processing
+			result := scrapeImage(query)
 
-			response := processImageResponses(result)
 			responseJSON := jsonResponseQuery {
 				Status: true,
 				Message: "here are the searched images",
-				Result: response,
+				Result: result,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -740,88 +739,6 @@ func processYoutubeResponses(result string) []messageQueryBody {
 
 }
 
-// processes image query result, scraps the required data and returns it
-func processImageResponses(result string) []messageQueryBody {
-
-	subsl := "<div class=\"rg_meta notranslate\">"
-	lensubsl := len(subsl)
-	subsl2 := "\"ou\":\""
-	lensubsl2 := len(subsl2)
-	subsl3 := "\"pt\":"
-	lensubsl3 := len(subsl3)
-	subsl4 := "\"rh\":"
-	lensubsl4 := len(subsl4)
-	count := 0
-
-	var queryResult messageQueryBody
-	var queryResultArray []messageQueryBody
-
-	for i := 0; i < len(result) - len(subsl); i++ {
-		link := ""
-		if result[i : i + lensubsl] == subsl {
-			length := i + lensubsl
-			var mid int
-			for j := 1; ; j++ {
-				found := false
-				if result[length + j: length + j + lensubsl2] == subsl2 {
-					mid = length + j + lensubsl2
-					for k := 1; ; k++ {
-						if result[mid + k: mid + k + 1] == "\"" {
-							link = result[mid: mid + k]
-							queryResult.Link = link
-							found = true
-							i = mid + k + 1;
-							break;
-						}
-					}
-
-					for a := 1; ; a++ {
-						if result[i + a: i + a + lensubsl3] == subsl3 {
-							mid = i + a + lensubsl3 + 1
-							for k := 1; ; k++ {
-								if result[mid + k: mid + k + 1] == "\"" {
-									desc := result[mid: mid + k]
-									queryResult.Desc = desc
-									found = true
-									i = mid + k + 1;
-									break;
-								}
-							}
-							break;
-						}
-					}
-
-					for a := 1; ; a++ {
-						if result[i + a: i + a + lensubsl4] == subsl4 {
-							mid = i + a + lensubsl4 + 1
-							for k := 1; ; k++ {
-								if result[mid + k: mid + k + 1] == "\"" {
-									dlink := result[mid: mid + k]
-									queryResult.DescLink = dlink
-									found = true
-									i = mid + k + 1;
-									break;
-								}
-							}
-							break;
-						}
-					}
-				}
-				if found {
-					queryResultArray = append(queryResultArray, queryResult)
-					count ++
-					break;
-				}
-			}
-		}
-		if count == 10 {
-			break;
-		}
-	}
-	return queryResultArray
-
-}
-
 func getMeaning(word string) []meaningStr {
 	url := "https://en.oxforddictionaries.com/definition/" + word
 	res, err := scrapper.ScrapeClientRequest(url, nil)
@@ -945,6 +862,54 @@ func getWeather(city string, state string) weatherStr {
 				resultObj.DewPoint = conditionVal
 			case "visibility": 
 				resultObj.Visibility = conditionVal
+		}
+	}
+	return resultObj
+}
+
+func scrapeImage(query string) []messageQueryBody {
+	url := "https://www.google.co.in/search?q=" + query + "&source=lnms&tbm=isch&gbv=1"
+	res, err := scrapper.ScrapeClientRequest(url, nil)
+	if err != nil {
+		logger.Error(err)
+	}
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		logger.Error(err)
+	}
+	var resultObj []messageQueryBody
+	tableArray := doc.Find("table")
+	if len(tableArray.Nodes) <= 5 {
+		logger.Error(errors.New("Unable to find image Table."))
+	}
+	table := tableArray.Eq(4)
+	rowsArray := table.Find("td")
+	count := 0
+	for rowIndex := range rowsArray.Nodes {
+		var resultElement messageQueryBody
+		row := rowsArray.Eq(rowIndex)
+		textArray := row.Find("font") 
+		text := ""
+		if len(textArray.Nodes) > 0 {
+			text = textArray.Eq(0).Text()
+		}
+		imgArray := row.Find("img")
+		if len(imgArray.Nodes) <= 0 {
+			continue
+		}
+		imgTag := imgArray.Eq(0)
+		imgLink, doLinkExist := imgTag.Attr("src")
+
+		if !doLinkExist {
+			continue
+		}
+
+		resultElement.Link = imgLink
+		resultElement.Head = text
+		resultObj = append(resultObj, resultElement)
+		count = count+1
+		if count >= 10 {
+			break
 		}
 	}
 	return resultObj
