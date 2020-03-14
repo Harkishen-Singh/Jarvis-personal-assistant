@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"crypto/tls"
 	"fmt"
-	"log"
 	"net/smtp"
 	"strings"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // Mail ....
@@ -95,51 +95,51 @@ func send(mailObject Mail, w http.ResponseWriter) {
 
 	conn, err := tls.Dial("tcp", smtpServer.ServerName(), smtpServer.TLSConfig)
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	client, err := smtp.NewClient(conn, smtpServer.Host)
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	// step 1: Use Auth
 	if err = client.Auth(auth); err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	// step 2: add all from and to
 	if err = client.Mail(mail.Sender); err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 	receivers := append(mail.To, mail.Cc...)
 	receivers = append(receivers, mail.Bcc...)
 	for _, k := range receivers {
-		log.Println("sending to: ", k)
+		logger.Info("sending to: " + k)
 		if err = client.Rcpt(k); err != nil {
-			log.Panic(err)
+			logger.Error(err)
 		}
 	}
 
 	// Data
 	wr, err := client.Data()
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	_, err = wr.Write([]byte(messageBody))
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	err = wr.Close()
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	client.Quit()
 
-	log.Println("Mail sent successfully")
+	logger.Info("Mail sent successfully")
 	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`))
 
 }

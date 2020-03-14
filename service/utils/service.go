@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	// "../controllers"
 )
 
@@ -18,5 +19,5 @@ func routes() {
 func Server(port string) {
 	routes()
 	// for logging the server status
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	logger.Critic(http.ListenAndServe(":"+port, nil))
 }

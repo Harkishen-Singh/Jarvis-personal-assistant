@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 type medicineResponse struct {
@@ -67,22 +68,22 @@ func init() {
 	medicineFile, err := os.Open("store/medicine_database.json")
 	bytvalMF, _ := ioutil.ReadAll(medicineFile)
 	if err != nil   {
-		panic(err)
+		logger.Error(err)
 	}
 	err1 := json.Unmarshal(bytvalMF, &medicineParser)
 	if err1 != nil {
-		panic(err1)
+		logger.Error(err1)
 	}
 
 	fmt.Println("Loading health-symptoms JSON parsers....")
 	medicineFileSymp, err := os.Open("store/health_symptoms.json")
 	bytvalMF2, _ := ioutil.ReadAll(medicineFileSymp)
 	if err != nil   {
-		panic(err)
+		logger.Error(err)
 	}
 	err1 = json.Unmarshal(bytvalMF2, &symptomParser.symp)
 	if err1 != nil {
-		panic(err1)
+		logger.Error(err1)
 	}
 }
 
@@ -265,17 +266,17 @@ func scrapMedicineLog(medicine *string) []string {
 	url := "https://druginfo.nlm.nih.gov/drugportal/name/" + *medicine
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	doc, err := goquery.NewDocumentFromResponse(res)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	var result string
 	resultFould := false
 	contentArray := doc.Find("table.search-results")
 	if len(contentArray.Nodes) <= 0 {
-		panic(errors.New("Search result table not found."))
+		logger.Error(errors.New("Search result table not found."))
 	}
 	content := contentArray.Eq(0)
 	tableRowArray := content.Find("tr")
@@ -294,7 +295,7 @@ func scrapMedicineLog(medicine *string) []string {
 	}
 
 	if !resultFould {
-		panic(errors.New("Cannot find description"))
+		logger.Error(errors.New("Cannot find description"))
 	}
 	return []string{result, *medicine}
 }
@@ -346,11 +347,11 @@ func scrapSymptomsLog(sypm *string) []string {
 	url := "https://www.medindia.net/drugs/medical-condition/" + *sypm
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	doc, err := goquery.NewDocumentFromResponse(res)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	result := ""
 	articlesArray := doc.Find("article")
