@@ -12,4 +12,5 @@ service/jarvis.db
 node_modules/
 service/go.mod
 service/go.sum
+service/logs/*
 jarvis

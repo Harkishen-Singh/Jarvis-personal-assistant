@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // HandlerYahoo handles the subprocesses related to fetchdata_query.js for yahoo search operations
@@ -22,7 +23,7 @@ func HandlerYahoo(method string, url string) string {
 	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
 	// result, err := exec.Command("pwd").Output()
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	return string(result)
 
@@ -38,7 +39,7 @@ func HandlerYoutube(method string, url string) string {
 	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
 	// result, err := exec.Command("pwd").Output()
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	return string(result)
 
@@ -53,7 +54,7 @@ func HandlerImage(method string, url string) string {
 	fmt.Println("method -> " + method + " url -> " + url + " direc -> " + directory)
 	result, err := exec.Command("node", "subprocesses/fetchdata_query.js", method, url).Output()
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	return string(result)
 

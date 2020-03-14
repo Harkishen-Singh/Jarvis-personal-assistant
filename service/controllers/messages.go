@@ -6,10 +6,12 @@ import (
 	"net/http"
 	"strings"
 	"time"
+
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -824,11 +826,11 @@ func getMeaning(word string) []meaningStr {
 	url := "https://en.oxforddictionaries.com/definition/" + word
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	doc, err := goquery.NewDocumentFromResponse(res)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	var resultObj []meaningStr
 	sel := doc.Find("section.gramb")
@@ -902,20 +904,20 @@ func getWeather(city string, state string) weatherStr {
 	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C" 
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	doc, err := goquery.NewDocumentFromResponse(res)
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	currentSectionArray := doc.Find("section.curcond")
 	if len(currentSectionArray.Nodes) <= 0 {
-		panic(err)
+		logger.Error(err)
 	}
 	currentSection := currentSectionArray.Eq(0)
 	tempSpanArray := currentSection.Find("span.current")
 	if len(tempSpanArray.Nodes) <= 0 {
-		panic(err)
+		logger.Error(err)
 	}
 	tempSpan := tempSpanArray.Eq(0)
 	resultObj.Temperature = tempSpan.Text() + "°C"

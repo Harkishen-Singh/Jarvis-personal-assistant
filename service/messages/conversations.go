@@ -9,6 +9,7 @@ import (
 	"math/rand"
 	"strings"
 	"time"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 type response struct {
@@ -60,19 +61,19 @@ func init() {
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
 	if err != nil   {
-		panic(err)
+		logger.Error(err)
 	}
 	if err2 != nil   {
-		panic(err2)
+		logger.Error(err2)
 	}
 
 	err1 := json.Unmarshal(bytvalMF, &messagesParser)
 	err2 = json.Unmarshal(bytvalMRF, &messagesRepliesParser)
 	if err1 != nil {
-		panic(err1)
+		logger.Error(err1)
 	}
 	if err2 != nil {
-		panic(err2)
+		logger.Error(err2)
 	}
 
 }
