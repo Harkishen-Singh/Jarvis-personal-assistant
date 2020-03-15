@@ -81,18 +81,19 @@ func AST(routeObject response, w http.ResponseWriter) {
 		} else if matchPars == "yahoo" {
 			// Yahoo search (planned to be deprecated in future releases)
 
-			var query string
+			query := ""
 			if len(remainingString) == 0 {
-				query = "https://in.search.yahoo.com/search?p=yahoo"
+				query = "yahoo"
 			} else {
-				query = "https://in.search.yahoo.com/search?p=" + remainingString
+				query = remainingString
 			}
 
-			result := HandlerYahoo("GET", query)
+			result := scrapeYahoo(query)
+
 			responseJSON := jsonResponseQuery{
 				Status:  true,
 				Message: "here are the top search results",
-				Result:  processYahooResponses(result),
+				Result:  result,
 			}
 
 			jData, _ := json.Marshal(responseJSON)
