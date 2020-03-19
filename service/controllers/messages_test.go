@@ -32,7 +32,7 @@ func TestGoogleSearch(t *testing.T) {
 
 }
 
-func TestYahooSearch(t *testing.T) {
+func disableTestYahooSearch(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("username", "default")
