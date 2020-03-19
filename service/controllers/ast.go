@@ -7,8 +7,10 @@ import (
 	"strings"
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
-	utils "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/services/herokuhost"
+	utils "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
 )
 
 // AST controls the basic conversation flow
@@ -103,10 +105,16 @@ func AST(routeObject response, w http.ResponseWriter) {
 			if len(remainingString) == 0 {
 				remainingString = "bing"
 			}
+
+			response, err := processBingResponses(remainingString, "com", nil, 1, 10, 5)
+			if err != nil {
+				logger.Error(err)
+			}
+
 			responseJSON := jsonResponseQuery{
 				Status:  true,
 				Message: "here are the top search results",
-				Result:  processBingResponses(remainingString, "com", nil, 1, 10, 5),
+				Result:  response,
 			}
 
 			jData, _ := json.Marshal(responseJSON)
@@ -178,7 +186,9 @@ func AST(routeObject response, w http.ResponseWriter) {
 			} else {
 
 				wordStr := remainingString
-				if len(response) > 0 {
+
+				// Confirm the below.
+				if len(wordStr) > 0 {
 
 					responseJSON := jsonResponseMeaning{
 						Status:  true,
@@ -191,10 +201,14 @@ func AST(routeObject response, w http.ResponseWriter) {
 					TextToSpeech(responseJSON.Message+" "+filterForSpeech(wordStr), 0)
 
 				} else {
+					response, err := processGoogleResponses(wordStr, "com", "en", nil, 1, 10, 5)
+					if err != nil {
+						logger.Error(err)
+					}
 					responseJSON := jsonResponseQuery{
 						Status:  true,
 						Message: "here are the top search results",
-						Result:  processGoogleResponses(wordStr, "com", "en", nil, 1, 10, 5),
+						Result:  response,
 					}
 
 					jData, _ := json.Marshal(responseJSON)
