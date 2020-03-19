@@ -124,7 +124,7 @@ func herokuOpen() bool {
 func DeploymentFunction() {
 
 	obj := herokuDetails{
-		emailID: "harkishensingh@hotmail.com",
+		emailID:  "harkishensingh@hotmail.com",
 		password: "Bbsr@131",
 	}
 	obj.herokuLogin()

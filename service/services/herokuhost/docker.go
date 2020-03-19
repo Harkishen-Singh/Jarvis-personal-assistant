@@ -1,10 +1,10 @@
 package herokuhost
 
 import (
-	"fmt"
-	"os/exec"
-	"net/http"
 	"encoding/json"
+	"fmt"
+	"net/http"
+	"os/exec"
 )
 
 const (
@@ -156,9 +156,9 @@ func (cred herokuGithubCredentials) herokuGithubLogs(strs string) string {
 	subslen := len(subs)
 	var appLink string
 	fmt.Printf("%s", logs)
-	for i:=0; i< logsLen - subslen ; i++ {
-		if logs[i: i + subslen] == subs {
-			appLink = logs[i + subslen: logsLen]
+	for i := 0; i < logsLen-subslen; i++ {
+		if logs[i:i+subslen] == subs {
+			appLink = logs[i+subslen : logsLen]
 			fmt.Printf("appLink hosted at %s", appLink)
 			return appLink
 		}
@@ -167,18 +167,18 @@ func (cred herokuGithubCredentials) herokuGithubLogs(strs string) string {
 }
 
 type deployResponse struct {
-	Status bool `json:"status"`
+	Status  bool   `json:"status"`
 	Message string `json:"message"`
 }
 
 // DeploymentFunction facilitates autodeployment functionality of the project using docker with heroku client
-func DeploymentFunction(repoName string,  res http.ResponseWriter) string {
+func DeploymentFunction(repoName string, res http.ResponseWriter) string {
 
 	credentials := herokuGithubCredentials{
-		email: "harkishensingh@hotmail.com",
+		email:    "harkishensingh@hotmail.com",
 		password: "",
 		repoName: repoName,
-		result: "",
+		result:   "",
 	}
 	strs := credentials.herokuGithubSubprocess()
 	response := credentials.herokuGithubLogs(strs)
