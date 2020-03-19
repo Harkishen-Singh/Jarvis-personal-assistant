@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
+	scrapper "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
 	"github.com/PuerkitoBio/goquery"
 )
 

@@ -1,10 +1,7 @@
 package controllers
 
 import (
-	"encoding/json"
-	"errors"
 	"fmt"
-	"net/http"
 	"strings"
 	"time"
 )
@@ -119,7 +116,6 @@ func processYahooResponses(result string) []messageQueryBody {
 	}
 	return queryResultArray
 }
-
 
 // processes youtube query result, scraps the required data and returns it
 func processYoutubeResponses(result string) []messageQueryBody {

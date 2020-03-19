@@ -8,6 +8,7 @@ import (
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	utils "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages"
 )
 
 // AST controls the basic conversation flow
@@ -21,7 +22,7 @@ func AST(routeObject response, w http.ResponseWriter) {
 
 	var (
 		matchPars, remainingString string
-		a []string
+		a                          []string
 	)
 
 	message := routeObject.message
@@ -290,7 +291,6 @@ func AST(routeObject response, w http.ResponseWriter) {
 func low(s *string) {
 	*s = strings.ToLower(*s)
 }
-
 
 // customSort() to sort an array according to the order defined by another array
 func customSort(arr1 []string, arr2 []string, m, n int) []string {

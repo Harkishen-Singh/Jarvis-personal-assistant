@@ -18,3 +18,6 @@ build:
 
 clean:
 	rm -R bin
+
+fix:
+	go fmt ./...
