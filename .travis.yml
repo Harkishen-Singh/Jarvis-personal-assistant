@@ -33,19 +33,14 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
-  - go get -u github.com/hegedustibor/htgo-tts
-  - go get -u github.com/mattn/go-sqlite3
-  - go get -u github.com/op/go-logging
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
+  - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
   - npm install chromedriver
 
 
 script:
-  - cd service && go run maintut.go &
+  - make build
+  - ./bin/service &
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/web/app-jarvis.js
   - cd view/web/ && npm start && cd ../..
