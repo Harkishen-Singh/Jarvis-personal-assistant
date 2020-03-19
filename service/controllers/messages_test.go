@@ -103,7 +103,7 @@ func TestBingSearch(t *testing.T) {
 
 // }
 
-func TestYoutube(t *testing.T) {
+func disableTestYoutube(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("username", "default")
