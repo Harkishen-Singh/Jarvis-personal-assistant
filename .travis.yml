@@ -33,7 +33,7 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - cd service/ && go get -u -v -d
+  - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
   - npm install chromedriver
 
