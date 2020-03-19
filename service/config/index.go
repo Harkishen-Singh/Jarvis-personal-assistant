@@ -18,7 +18,7 @@ var config Configuration
 
 // init reads and stores data from config.json
 func init() {
-	jsonFile, err := os.Open("config.json")
+	jsonFile, err := os.Open("../static/config.json")
 	if err != nil {
 		logger.Error(err)
 	}
