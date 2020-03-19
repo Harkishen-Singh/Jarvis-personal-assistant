@@ -20,6 +20,8 @@ Installation:
 
 Update dependencies: `make update`
 
+Run Jarvis:
+
 1. Run service: `make run`
 2. Run the desktop app: `make views`
 
