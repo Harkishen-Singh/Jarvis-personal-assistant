@@ -1,1 +1,5 @@
 2020/03/19 19:14:40 open config.json: no such file or directory
+2020/03/19 20:28:21 open ../static/config.json: no such file or directory
+2020/03/19 20:28:38 open ../static/config.json: no such file or directory
+2020/03/19 20:28:59 open messages/messages.json: no such file or directory
+2020/03/19 20:32:25 open messages/messages.json: no such file or directory

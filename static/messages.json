@@ -1,0 +1,82 @@
+{
+    "initial-greetings-plain": [
+        "hi",
+        "hello",
+        "hey",
+        "whats up",
+        "yo",
+        "hey there"
+    ],
+    "initial-greetings-name": [
+        "hi jarvis",
+        "hello jarvis",
+        "hey jarvis",
+        "yo jarvis",
+        "hi",
+        "hello",
+        "hey",
+        "whats up",
+        "yo"
+    ],
+    "help": [
+        "help",
+        "help me",
+        "how can you help me",
+        "please help me",
+        "please help",
+        "help me get started",
+        "get started",
+        "tell about you",
+        "about you",
+        "what all can you do",
+        "what can you do",
+        "whats your work",
+        "what is your work",
+        "your work",
+        "work",
+        "i need your help",
+	    "i need your help please help me",
+        "how you work",
+        "how you work please guide me",
+        "how you work let me know"
+
+    ],
+    "about": [
+        "whats your name",
+        "tell me your name",
+        "name",
+        "who are you",
+        "tell me about yourself",
+        "about you",
+        "about",
+        "may i know something about you",
+	    "can you say something about you",
+        "would you bother to introduce yourself",
+        "would you please bother to introduce yourself",
+	    "introduce yourself",
+	    "can you please introduce yourself",
+	    "i wanna know something about you can you introduce yourself",
+        "i would like to know something about you can you introduce yourself",
+        "i would like to know something about you would you please bother to introduce yourself"
+
+    ],
+    "age": [
+        "how old are you",
+        "your age",
+        "how long have a been",
+        "jarvis age",
+        "jarvis years",
+        "whats your age",
+        "whats your age, jarvis",
+        "hey jarvis whats your age now",
+        "hey jarvis whats your age",
+        "hey jarvis how old are you",
+        "hey whats your age"
+
+    ],
+    "birthday": [
+        "when is your birthday",
+        "your birthday",
+        "jarvis birthday"
+    ]
+}

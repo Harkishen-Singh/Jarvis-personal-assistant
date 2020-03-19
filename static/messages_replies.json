@@ -1,0 +1,47 @@
+{
+    "initial-greetings-plain": [
+        "hi! I am jarvis. How can I help you?",
+        "hello! I am jarvis. What can i help you with?",
+        "hi! whats up?",
+        "hello! whats up?",
+        "hey there!",
+        "hey there! Anything I can help you with?",
+        "Hey! I am Jarvis here. Anything I may help you with?",
+	    "Hello! I am very excited to talk with you. Is there anything I may serve you with?"
+
+    ],
+    "initial-greetings-name": [
+        "hi %s! How can i help you?",
+        "hi %s! How can i help you?",
+        "hey %s! What can i help you with?",
+        "hey %s! What can i help you with?",
+        "hey %s!",
+        "hi %s!",
+        "hello %s!",
+        "hey %s! I am ready here. Anything I may help you with?"
+    ],
+    "help": [
+        "I can do lots of things! You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "You can ask for web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "I can help you with web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!",
+        "My work is to help you with the web search, specific google/yahoo/bing search, images, videos, search for medicines specifications, set reminder, tasklist and also find answers for any of your queries!"
+    ],
+    "about": [
+        "I am Jarvis, your personal assistant. How can I help you?",
+        "Jarvis is my name",
+        "My name is jarvis! Anything I can help you with?",
+        "I am your assistant, Jarvis. Anything I can help you with?",
+        "I am Jarvis, your personal assistant. Feels great to talk with you. May I help you with anything?",
+        "I am Jarvis, your personal assistant. Nice to talk with you. May I serve you with anything?"
+    ],
+    "age": [
+        "I am 2 months old",
+        "I was born on 17th of march, 2019. So, according to math, I am 2 months old",
+        "I am only 2 months of age"
+    ],
+    "birthday": [
+        "I was born on 17th of march, 2019",
+        "I was born on 17th of march, 2019. So, according to math, I am 2 months old",
+        "My birthday is on 17th of march"
+    ]
+}
