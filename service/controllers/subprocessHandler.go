@@ -8,9 +8,9 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"os"
 	"os/exec"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // HandlerYahoo handles the subprocesses related to fetchdata_query.js for yahoo search operations

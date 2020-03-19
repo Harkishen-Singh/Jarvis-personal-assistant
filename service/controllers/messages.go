@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strings"
 	"time"
-	"errors"
 
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
@@ -18,7 +18,7 @@ import (
 
 type response struct {
 	username string
-	message string
+	message  string
 }
 
 type statusCode struct {
@@ -26,67 +26,67 @@ type statusCode struct {
 }
 
 type messageQueryBody struct {
-	Head string `json:"head"`
-	Link string `json:"link"`
-	Desc string `json:"desc"`
+	Head     string `json:"head"`
+	Link     string `json:"link"`
+	Desc     string `json:"desc"`
 	DescLink string `json:"dlink"`
 }
 
-
 type reminderResponse struct {
-	Status bool	`json:"status"`
-	Message string `json:"message"`
-	Result []reminder `json:"result"`
+	Status  bool       `json:"status"`
+	Message string     `json:"message"`
+	Result  []reminder `json:"result"`
 }
 
 type jsonResponseQuery struct {
-	Status bool	`json:"status"`
-	Message string `json:"message"`
-	Result []messageQueryBody `json:"result"`
+	Status  bool               `json:"status"`
+	Message string             `json:"message"`
+	Result  []messageQueryBody `json:"result"`
 }
 
 type jsonResponseWeather struct {
-	Status bool	`json:"status"`
-	Message string `json:"message"`
-	Result weatherStr `json:"result"`
+	Status  bool       `json:"status"`
+	Message string     `json:"message"`
+	Result  weatherStr `json:"result"`
 }
 
 type weatherStr struct {
-	Time string `json:"time"`
-	City string `json:"city"`
+	Time        string `json:"time"`
+	City        string `json:"city"`
 	Temperature string `json:"temperature"`
-	DewPoint string `json:"dew_point"`
-	Humidity string `json:"humidity"`
-	Visibility string `json:"visibility"`
-	FeelsLike string `json:"feels_like"`
+	DewPoint    string `json:"dew_point"`
+	Humidity    string `json:"humidity"`
+	Visibility  string `json:"visibility"`
+	FeelsLike   string `json:"feels_like"`
 }
 
 type meaningStr struct {
-	Meaning string `json:"meaning"`
-	Example string `json:"example"`
+	Meaning    string       `json:"meaning"`
+	Example    string       `json:"example"`
 	Submeaning []submeanStr `json:"submeaning"`
 }
 
 type submeanStr struct {
-	Smean string
+	Smean      string
 	Subexample string
 }
 
 type jsonResponseMeaning struct {
-	Status bool	`json:"status"`
-	Message string `json:"message"`
-	Result []meaningStr `json:"result"`
+	Status  bool         `json:"status"`
+	Message string       `json:"message"`
+	Result  []meaningStr `json:"result"`
 }
+
 // MessagesController controls messages handling
 func MessagesController(w http.ResponseWriter, r *http.Request) {
-	
+
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	r.ParseForm()
 
 	request := response{
 		username: r.FormValue("username"),
-		message: r.FormValue("message"),
+		message:  r.FormValue("message"),
 	}
 	fmt.Println(request)
 
@@ -103,7 +103,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 	priority := config.Get().KeywordPriority
 	for i := 0; i < len(messageArr); i++ {
 		for _, prior := range priority {
-			if (messageArr[i] == prior) {
+			if messageArr[i] == prior {
 				a = append(a, messageArr[i])
 				if i < len(messageArr) {
 					messageArr = append(messageArr[:i], messageArr[i+1:]...)
@@ -111,7 +111,7 @@ func routes(routeObject response, w http.ResponseWriter) {
 				} else {
 					fmt.Println("Position Invalid")
 				}
-				break;
+				break
 			}
 		}
 	}
@@ -120,12 +120,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 	if len(a) > 0 {
 		sort := customSort(a, priority, len(a), len(priority))
 		matchPars = sort[0]
-		remainingString = strings.Join(messageArr[:]," ")
+		remainingString = strings.Join(messageArr[:], " ")
 		messageArr = append([]string{matchPars}, messageArr...)
 	} else {
 		remainingString = strings.Join(messageArr[:], " ")
 	}
-
 
 	if Connected() {
 
@@ -136,11 +135,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 			// processing
 
-			response,_ := processGoogleResponses(remainingString , "com", "en", nil, 1, 10, 5)
-			responseJSON := jsonResponseQuery {
-				Status: true,
+			response, _ := processGoogleResponses(remainingString, "com", "en", nil, 1, 10, 5)
+			responseJSON := jsonResponseQuery{
+				Status:  true,
 				Message: "here are the top search results",
-				Result: response,
+				Result:  response,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -159,10 +158,10 @@ func routes(routeObject response, w http.ResponseWriter) {
 			// processing
 
 			response := processYahooResponses(result)
-			responseJSON := jsonResponseQuery {
-				Status: true,
+			responseJSON := jsonResponseQuery{
+				Status:  true,
 				Message: "here are the top search results",
-				Result: response,
+				Result:  response,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -175,11 +174,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 			// processing
 
-			response,_ := processBingResponses(remainingString, "com", nil, 1, 10, 5)
-			responseJSON := jsonResponseQuery {
-				Status: true,
+			response, _ := processBingResponses(remainingString, "com", nil, 1, 10, 5)
+			responseJSON := jsonResponseQuery{
+				Status:  true,
 				Message: "here are the top search results",
-				Result: response,
+				Result:  response,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -198,16 +197,16 @@ func routes(routeObject response, w http.ResponseWriter) {
 			// processing
 
 			response := processYoutubeResponses(result)
-			responseJSON := jsonResponseQuery {
-				Status: true,
+			responseJSON := jsonResponseQuery{
+				Status:  true,
 				Message: "here are the top search videos",
-				Result: response,
+				Result:  response,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
 			TextToSpeech(responseJSON.Message, 0)
 
-		} else if strings.ToLower(matchPars) == "images" || strings.ToLower(matchPars) =="image"  {
+		} else if strings.ToLower(matchPars) == "images" || strings.ToLower(matchPars) == "image" {
 			query := ""
 			if len(remainingString) == 0 {
 				query = "images"
@@ -217,10 +216,10 @@ func routes(routeObject response, w http.ResponseWriter) {
 
 			result := scrapeImage(query)
 
-			responseJSON := jsonResponseQuery {
-				Status: true,
+			responseJSON := jsonResponseQuery{
+				Status:  true,
 				Message: "here are the searched images",
-				Result: result,
+				Result:  result,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -235,13 +234,13 @@ func routes(routeObject response, w http.ResponseWriter) {
 				state := messageArr[len(messageArr)-1]
 				weatherData := getWeather(city, state)
 				response := jsonResponseWeather{
-					Status: true,
+					Status:  true,
 					Message: "here are the current weather conditions",
-					Result: weatherData,
+					Result:  weatherData,
 				}
 				jData, _ := json.Marshal(response)
 				w.Write(jData)
-				TextToSpeech(response.Message + city + " " + state, 0)
+				TextToSpeech(response.Message+city+" "+state, 0)
 			}
 		} else if strings.ToLower(matchPars) == "meaning" {
 
@@ -257,27 +256,27 @@ func routes(routeObject response, w http.ResponseWriter) {
 				if len(response) > 0 {
 
 					responseJSON := jsonResponseMeaning{
-					Status: true,
-					Message: "here is the meaning of the searched word",
-					Result: response,
+						Status:  true,
+						Message: "here is the meaning of the searched word",
+						Result:  response,
 					}
 
 					jData, _ := json.Marshal(responseJSON)
 					w.Write(jData)
-					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
+					TextToSpeech(responseJSON.Message+" "+filterForSpeech(wordStr), 0)
 
 				} else {
-					response,_ := processGoogleResponses(wordStr , "com", "en", nil, 1, 10, 5)
+					response, _ := processGoogleResponses(wordStr, "com", "en", nil, 1, 10, 5)
 
 					responseJSON := jsonResponseQuery{
-					Status: true,
-					Message: "here are the top search results",
-					Result: response,
+						Status:  true,
+						Message: "here are the top search results",
+						Result:  response,
 					}
 
 					jData, _ := json.Marshal(responseJSON)
 					w.Write(jData)
-					TextToSpeech(responseJSON.Message + " " + filterForSpeech(wordStr), 0)
+					TextToSpeech(responseJSON.Message+" "+filterForSpeech(wordStr), 0)
 
 				}
 			}
@@ -301,25 +300,25 @@ func routes(routeObject response, w http.ResponseWriter) {
 				result := messages.HealthSympController(symp, w)
 				TextToSpeech(result, 0)
 			}
-		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
+		} else if strings.HasPrefix(strings.ToLower(message), "set reminder") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
-		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
+		} else if strings.HasPrefix(strings.ToLower(message), "show reminder") {
 			result := ShowReminder()
 			fmt.Println(result)
-			responseJSON := reminderResponse {
-				Status: true,
+			responseJSON := reminderResponse{
+				Status:  true,
 				Message: "Here are your reminders : ",
-				Result: result,
+				Result:  result,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
 			TextToSpeech("Here are your reminders.", 0)
-		} else if strings.HasPrefix(strings.ToLower(message),"deploy") {
+		} else if strings.HasPrefix(strings.ToLower(message), "deploy") {
 			// support for deployment functionality
-			fmt.Println("remaining string ", messageArr[len(messageArr) - 1])
-			status := herokuhost.DeploymentFunction(messageArr[len(messageArr) - 1], w)
+			fmt.Println("remaining string ", messageArr[len(messageArr)-1])
+			status := herokuhost.DeploymentFunction(messageArr[len(messageArr)-1], w)
 			TextToSpeech(filterForSpeech(status), 0)
-		} else if strings.HasPrefix(strings.ToLower(message),"send mail") {
+		} else if strings.HasPrefix(strings.ToLower(message), "send mail") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
 		} else {
 			// general conversation
@@ -328,22 +327,22 @@ func routes(routeObject response, w http.ResponseWriter) {
 		}
 	} else {
 
-		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" || 
+		if strings.ToLower(matchPars) == "google" || strings.ToLower(matchPars) == "yahoo" || strings.ToLower(matchPars) == "bing" || strings.ToLower(matchPars) == "youtube" ||
 			strings.ToLower(matchPars) == "image" || strings.ToLower(matchPars) == "weather" || strings.ToLower(matchPars) == "medicine" || strings.ToLower(matchPars) == "symptoms" ||
-			strings.HasPrefix(strings.ToLower(message), "send mail"){
+			strings.HasPrefix(strings.ToLower(message), "send mail") {
 
 			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
 			TextToSpeech("Services unavailable at the moment!", 0)
 
-		} else if strings.HasPrefix(strings.ToLower(message),"set reminder") {
+		} else if strings.HasPrefix(strings.ToLower(message), "set reminder") {
 			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
-		} else if strings.HasPrefix(strings.ToLower(message),"show reminder") {
+		} else if strings.HasPrefix(strings.ToLower(message), "show reminder") {
 			result := ShowReminder()
 			fmt.Println(result)
-			responseJSON := reminderResponse {
-				Status: true,
+			responseJSON := reminderResponse{
+				Status:  true,
 				Message: "Here are your reminders : ",
-				Result: result,
+				Result:  result,
 			}
 			jData, _ := json.Marshal(responseJSON)
 			w.Write(jData)
@@ -358,11 +357,11 @@ func routes(routeObject response, w http.ResponseWriter) {
 }
 
 // customSort() to sort an array according to the order defined by another array
-func customSort(arr1 []string, arr2 []string, m,n int) []string{
+func customSort(arr1 []string, arr2 []string, m, n int) []string {
 	freq := make(map[string]int)
 
 	for i := 0; i < m; i++ {
-		freq[arr1[i]]++;
+		freq[arr1[i]]++
 	}
 
 	index := 0
@@ -395,31 +394,31 @@ func filterForSpeech(s string) string {
 
 // gives the difference of two string arrays as an array of the differed element
 func stringDifference(slice1 []string, slice2 []string) []string {
-    var diff []string
+	var diff []string
 
-    // Loop two times, first to find slice1 strings not in slice2,
-    // second loop to find slice2 strings not in slice1
-    for i := 0; i < 2; i++ {
-        for _, s1 := range slice1 {
-            found := false
-            for _, s2 := range slice2 {
-                if s1 == s2 {
-                    found = true
-                    break
-                }
-            }
-            // String not found. We add it to return slice
-            if !found {
-                diff = append(diff, s1)
-            }
-        }
-        // Swap the slices, only if it was the first loop
-        if i == 0 {
-            slice1, slice2 = slice2, slice1
-        }
-    }
+	// Loop two times, first to find slice1 strings not in slice2,
+	// second loop to find slice2 strings not in slice1
+	for i := 0; i < 2; i++ {
+		for _, s1 := range slice1 {
+			found := false
+			for _, s2 := range slice2 {
+				if s1 == s2 {
+					found = true
+					break
+				}
+			}
+			// String not found. We add it to return slice
+			if !found {
+				diff = append(diff, s1)
+			}
+		}
+		// Swap the slices, only if it was the first loop
+		if i == 0 {
+			slice1, slice2 = slice2, slice1
+		}
+	}
 
-    return diff
+	return diff
 }
 
 func buildGoogleUrls(searchTerm, countryCode, languageCode string, pages, count int) ([]string, error) {
@@ -438,7 +437,6 @@ func buildGoogleUrls(searchTerm, countryCode, languageCode string, pages, count 
 	}
 	return toScrape, nil
 }
-
 
 func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody, error) {
 	doc, err := goquery.NewDocumentFromResponse(response)
@@ -460,7 +458,7 @@ func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody,
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				Head: desc, 
+				Head: desc,
 				Link: link,
 			}
 			results = append(results, result)
@@ -499,7 +497,7 @@ func processGoogleResponses(searchTerm, countryCode, languageCode string, proxyS
 // processes yahoo query result, scraps the required data and returns it
 func processYahooResponses(result string) []messageQueryBody {
 
-	subsl := "<a class=\" ac-algo fz-l ac-21th lh-24\"";
+	subsl := "<a class=\" ac-algo fz-l ac-21th lh-24\""
 	lensubsl := len(subsl)
 	subsl2 := "</a>"
 	lensubsl2 := len(subsl2)
@@ -512,23 +510,23 @@ func processYahooResponses(result string) []messageQueryBody {
 
 	var queryResult messageQueryBody
 	var queryResultArray []messageQueryBody
-	for i := 0; i < len(result) - lensubsl; i++ {
+	for i := 0; i < len(result)-lensubsl; i++ {
 		mess := ""
-		if result[i : i + lensubsl] == subsl {
+		if result[i:i+lensubsl] == subsl {
 			length := i + lensubsl
 			var last int
 			var start int
 
 			for k := 1; ; k++ {
-				if result[length + k: length+k+1 ] == ">" {
-					start =  length + k + 1;
-					break;
+				if result[length+k:length+k+1] == ">" {
+					start = length + k + 1
+					break
 				}
 			}
 
-			for j:=1; ; j++ {
-				if result[start + j: start + j + lensubsl2] == subsl2 {
-					mess = result[start: start + j]
+			for j := 1; ; j++ {
+				if result[start+j:start+j+lensubsl2] == subsl2 {
+					mess = result[start : start+j]
 					queryResult.Head = mess
 					last = start + j + lensubsl2
 					i = last
@@ -537,17 +535,17 @@ func processYahooResponses(result string) []messageQueryBody {
 			}
 
 			found := false
-			for j:= 1; ; j++ {
-				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
-					for k:= 1; ; k++ {
-						if result[last + j + lensubsl3 + k: last + j + lensubsl3 + k + lensubsl4] == subsl4 { // finding index for "</span>"
-							link := result[last + j + lensubsl3 : last + j + lensubsl3 + k]
+			for j := 1; ; j++ {
+				if result[last+j:last+j+lensubsl3] == subsl3 { // matched found for "<span class=\" fz-ms fw-m fc-12th wr-bw lh-17\">"
+					for k := 1; ; k++ {
+						if result[last+j+lensubsl3+k:last+j+lensubsl3+k+lensubsl4] == subsl4 { // finding index for "</span>"
+							link := result[last+j+lensubsl3 : last+j+lensubsl3+k]
 							i = last + j + lensubsl3 + k + lensubsl4
 							found = true
 							link = strings.Replace(link, "<b>", "", -1)
 							link = strings.Replace(link, "</b>", "", -1)
 							if len(link) >= 7 {
-								if link[0: 7] != "http://" && link[0: 8] != "https://" {
+								if link[0:7] != "http://" && link[0:8] != "https://" {
 									link = "http://" + link
 								}
 							}
@@ -556,17 +554,17 @@ func processYahooResponses(result string) []messageQueryBody {
 						}
 					}
 					for k := 1; ; k++ {
-						if result[i + k : i + k + lensubsl5] == subsl5 {
-							length = i + k + lensubsl5 + 1;
+						if result[i+k:i+k+lensubsl5] == subsl5 {
+							length = i + k + lensubsl5 + 1
 							for l := 1; ; l++ {
-								if result[length + l: length + l + 4] == "</p>" {
-									desc := result[length: length + l]
-									queryResult.Desc = desc;
-									i = length + l +4;
-									break;
+								if result[length+l:length+l+4] == "</p>" {
+									desc := result[length : length+l]
+									queryResult.Desc = desc
+									i = length + l + 4
+									break
 								}
 							}
-							break;
+							break
 						}
 					}
 				}
@@ -626,7 +624,7 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 		}
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
-				Head: desc, 
+				Head: desc,
 				Link: link,
 			}
 			results = append(results, result)
@@ -678,25 +676,25 @@ func processYoutubeResponses(result string) []messageQueryBody {
 	var queryResultArray []messageQueryBody
 	var mid int
 
-	for i := 0; i < len(result) - len(subsl); i++ {
+	for i := 0; i < len(result)-len(subsl); i++ {
 		mess := ""
-		if result[i : i + len(subsl)] == subsl {
+		if result[i:i+len(subsl)] == subsl {
 			length := i + len(subsl)
 			var last int
-			for j:=1; ; j++ {
-				if result[length + j: length + j + len(subsl2)] == subsl2 {
+			for j := 1; ; j++ {
+				if result[length+j:length+j+len(subsl2)] == subsl2 {
 					mid = length + j + len(subsl2)
 					for k := 1; ; k++ {
-						if result[mid + k: mid + k + 1] == "\"" {
-							link := result[mid: mid + k]
+						if result[mid+k:mid+k+1] == "\"" {
+							link := result[mid : mid+k]
 							flink := "https://www.youtube.com" + link
 							queryResult.Link = flink
 							last = mid + k + 1
 							for l := 1; ; l++ {
-								if result[last + l: last+ l +2] == "\">" {
-									last = last + l +2
+								if result[last+l:last+l+2] == "\">" {
+									last = last + l + 2
 									i = last + l + 2
-									break;
+									break
 								}
 							}
 							break
@@ -707,24 +705,24 @@ func processYoutubeResponses(result string) []messageQueryBody {
 			}
 
 			found := false
-			for j:= 1; ; j++ {
-				if result[last + j: last + j + lensubsl3] == subsl3 { // matched found for "</a>"
-					mess = result[last: last + j]
+			for j := 1; ; j++ {
+				if result[last+j:last+j+lensubsl3] == subsl3 { // matched found for "</a>"
+					mess = result[last : last+j]
 					i = last + j + lensubsl3
 					found = true
 					queryResult.Head = mess
 					for k := 1; ; k++ {
-						if result[i + k : i + k + lensubsl4] == subsl4 {
-							length = i + k + lensubsl4;
+						if result[i+k:i+k+lensubsl4] == subsl4 {
+							length = i + k + lensubsl4
 							for l := 1; ; l++ {
-								if result[length + l: length + l + lensubsl5] == subsl5 {
-									desc := result[length: length + l]
-									queryResult.Desc = desc;
-									i = length + l +4;
-									break;
+								if result[length+l:length+l+lensubsl5] == subsl5 {
+									desc := result[length : length+l]
+									queryResult.Desc = desc
+									i = length + l + 4
+									break
 								}
 							}
-							break;
+							break
 						}
 					}
 				}
@@ -818,7 +816,7 @@ func getWeather(city string, state string) weatherStr {
 	resultObj.Time = time.Now().Format("02-01-2006 3:4 PM")
 
 	country := "india"
-	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C" 
+	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C"
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		logger.Error(err)
@@ -851,17 +849,17 @@ func getWeather(city string, state string) weatherStr {
 		if len(conditionChildrens.Nodes) <= 0 {
 			continue
 		}
-		conditionName := strings.TrimSpace(conditionChildrens.First().Text()) 
+		conditionName := strings.TrimSpace(conditionChildrens.First().Text())
 		conditionVal := strings.TrimSpace(conditionChildrens.Last().Text())
 		switch strings.ToLower(conditionName) {
-			case "feels like": 
-				resultObj.FeelsLike = conditionVal + "C"
-			case "humidity": 
-				resultObj.Humidity = conditionVal
-			case "dew point": 
-				resultObj.DewPoint = conditionVal
-			case "visibility": 
-				resultObj.Visibility = conditionVal
+		case "feels like":
+			resultObj.FeelsLike = conditionVal + "C"
+		case "humidity":
+			resultObj.Humidity = conditionVal
+		case "dew point":
+			resultObj.DewPoint = conditionVal
+		case "visibility":
+			resultObj.Visibility = conditionVal
 		}
 	}
 	return resultObj
@@ -888,7 +886,7 @@ func scrapeImage(query string) []messageQueryBody {
 	for rowIndex := range rowsArray.Nodes {
 		var resultElement messageQueryBody
 		row := rowsArray.Eq(rowIndex)
-		textArray := row.Find("font") 
+		textArray := row.Find("font")
 		text := ""
 		if len(textArray.Nodes) > 0 {
 			text = textArray.Eq(0).Text()
@@ -907,7 +905,7 @@ func scrapeImage(query string) []messageQueryBody {
 		resultElement.Link = imgLink
 		resultElement.Head = text
 		resultObj = append(resultObj, resultElement)
-		count = count+1
+		count = count + 1
 		if count >= 10 {
 			break
 		}

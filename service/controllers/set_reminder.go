@@ -1,20 +1,20 @@
 package controllers
 
 import (
-	"net/http"
-    "database/sql"
-    "fmt"
+	"database/sql"
+	"fmt"
 	"log"
+	"net/http"
 
-    _ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type reminder struct {
-	Id int `json:"id"`
-	Title string `json:"title"`
+	Id          int    `json:"id"`
+	Title       string `json:"title"`
 	Description string `json:"description"`
-	Time string `json:"time"`
-	Cookie string `json:"cookie"`
+	Time        string `json:"time"`
+	Cookie      string `json:"cookie"`
 }
 
 // ReminderController controls reminder operations
@@ -24,10 +24,10 @@ func ReminderController(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	request := reminder{
-		Title: r.FormValue("title"),
+		Title:       r.FormValue("title"),
 		Description: r.FormValue("description"),
-		Time: r.FormValue("time"),
-		Cookie: r.FormValue("cookie"),
+		Time:        r.FormValue("time"),
+		Cookie:      r.FormValue("cookie"),
 	}
 	fmt.Println(request)
 
@@ -35,7 +35,7 @@ func ReminderController(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func addReminder(reminderObject reminder,  w http.ResponseWriter) {
+func addReminder(reminderObject reminder, w http.ResponseWriter) {
 
 	db, err := sql.Open("sqlite3", "./jarvis.db")
 	checkErr(err)
@@ -58,13 +58,13 @@ func addReminder(reminderObject reminder,  w http.ResponseWriter) {
 	_, err = stmt.Exec(reminderObject.Title, reminderObject.Description, reminderObject.Time, reminderObject.Cookie)
 	checkErr(err)
 	tx.Commit()
-	
+
 	w.Write([]byte(`{"status": "success", "message": "Reminder has been set !"}`))
 }
 
-func ShowReminder() []reminder{
+func ShowReminder() []reminder {
 	var result []reminder
-	
+
 	db, err := sql.Open("sqlite3", "./jarvis.db")
 	checkErr(err)
 	defer db.Close()
@@ -82,14 +82,14 @@ func ShowReminder() []reminder{
 		err = rows.Scan(&id, &title, &description, &time, &cookie)
 		checkErr(err)
 
-		r := reminder {
-			Id: id,
-			Title: title,
+		r := reminder{
+			Id:          id,
+			Title:       title,
 			Description: description,
-			Time: time,
-			Cookie: cookie,
+			Time:        time,
+			Cookie:      cookie,
 		}
-		result = append(result, r) 
+		result = append(result, r)
 	}
 	err = rows.Err()
 	checkErr(err)

@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"net/http"
 	"crypto/tls"
 	"fmt"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
+	"net/http"
 	"net/smtp"
 	"strings"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // Mail ....
@@ -45,12 +45,12 @@ func EmailController(w http.ResponseWriter, r *http.Request) {
 	bccArr := strings.Split(bcc, ";")
 
 	request := Mail{
-		Sender: r.FormValue("sender"),
-		To: toArr,
-		Cc: ccArr,
-		Bcc: bccArr,
+		Sender:  r.FormValue("sender"),
+		To:      toArr,
+		Cc:      ccArr,
+		Bcc:     bccArr,
 		Subject: r.FormValue("subject"),
-		Body: r.FormValue("body"),
+		Body:    r.FormValue("body"),
 	}
 	fmt.Println("request: ", request)
 
