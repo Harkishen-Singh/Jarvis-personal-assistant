@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-// Configuration : Struct to contain all configuration
+// Configuration to contain all configuration
 type Configuration struct {
 	KeywordPriority []string `json:"keywordPriority"`
 	UserAgents      []string `json:"userAgents"`
@@ -27,11 +27,11 @@ func init() {
 		logger.Error(ioError)
 	}
 	json.Unmarshal(byteValue, &config)
-	fmt.Println("[JARVIS] config.json read successfully")
+	fmt.Println("loaded configuration")
 	defer jsonFile.Close()
 }
 
-// Get : It returns the configuration
+// Get returns the configuration
 func Get() Configuration {
 	return config
 }

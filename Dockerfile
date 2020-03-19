@@ -34,4 +34,4 @@ RUN go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service
 
 RUN cd root/go/src/github.com/Harkishen-Singh/Jarvis-personal-assistant/service && go get -u -v -d ./...
 WORKDIR /root/go/src/github.com/Harkishen-Singh/Jarvis-personal-assistant/service
-CMD go run maintut.go
+CMD go run main.go
