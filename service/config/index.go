@@ -3,9 +3,10 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"io/ioutil"
 	"os"
+
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // Configuration to contain all configuration
@@ -18,8 +19,9 @@ var config Configuration
 
 // init reads and stores data from config.json
 func init() {
-	jsonFile, err := os.Open("static/config.json")
+	jsonFile, err := os.Open("../static/config.json")
 	if err != nil {
+		fmt.Print("I am here")
 		logger.Error(err)
 	}
 	byteValue, ioError := ioutil.ReadAll(jsonFile)

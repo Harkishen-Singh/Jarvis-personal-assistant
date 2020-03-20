@@ -80,7 +80,7 @@ func TestBingSearch(t *testing.T) {
 
 // TODO
 
-func TestImagesSearch(t *testing.T) {
+func disableTestImagesSearch(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("username", "default")
@@ -126,7 +126,7 @@ func disableTestYoutube(t *testing.T) {
 
 }
 
-func TestWeather_1(t *testing.T) {
+func disableTestWeather_1(t *testing.T) {
 
 	form := url.Values{}
 	form.Add("username", "default")
