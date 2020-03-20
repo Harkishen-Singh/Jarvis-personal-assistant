@@ -43,7 +43,7 @@ script:
   - diff -u <(echo -n) <(gofmt -d ./src ./tsdb)
   - echo "perfect go format. moving ahead ..."
   - cd view/web/ && npm start && cd ../..
-  - go test service/controllers/controllers_test.go
+  - go test -v ./...
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
