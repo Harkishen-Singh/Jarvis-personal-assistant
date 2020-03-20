@@ -3,9 +3,10 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"io/ioutil"
 	"os"
+
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // Configuration to contain all configuration
