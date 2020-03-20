@@ -27,14 +27,13 @@ before-install:
   - nvm use stable
   - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
-  - npm install chromedriver
 
 
 script:
-  - export ENV=test
   - make build
   - ./bin/service &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
+  - export ENV=test
+  - npm install -g http-server mocha eslint
   - eslint view/web/app-jarvis.js
   - echo "checking go format ..."
   - diff -u <(echo -n) <(gofmt -d ./src ./tsdb)
