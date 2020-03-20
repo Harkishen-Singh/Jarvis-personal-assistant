@@ -12,6 +12,19 @@ The project aims to develop a personal-assistant for Linux-based systems. Jarvis
 
 To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
 
+**Starting Jarvis in development mode**
+
+Installation:
+
+1. Install all dependencies: `make install-all`
+
+Update dependencies: `make update`
+
+Run Jarvis:
+
+1. Run service: `make run`
+2. Run the desktop app: `make views`
+
 To get started with your contributions for Jarvis-personal-assistant see [CONTRBUTING.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/CONTRIBUTING.md)
 
 ### Explanatory Video

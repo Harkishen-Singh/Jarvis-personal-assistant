@@ -10,7 +10,7 @@ The prerequisites for installing the project :
 
 ## Installation and executing web-app
 1. Clone the repository in your GOPATH
-   
+
     ```bash
         $ mkdir -p $GOPATH/src/github.com/Harkishen-Singh/
         $ cd $GOPATH/src/github.com/Harkishen-Singh/

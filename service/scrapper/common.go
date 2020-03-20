@@ -2,11 +2,11 @@ package scrapper
 
 import (
 	"fmt"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 	"math/rand"
 	"net/http"
 	"net/url"
 	"time"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/config"
 )
 
 func randomUserAgent() string {

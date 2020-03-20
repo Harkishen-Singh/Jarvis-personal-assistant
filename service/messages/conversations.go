@@ -1,69 +1,68 @@
 package messages
 
 import (
-	"fmt"
-	"net/http"
 	"encoding/json"
-	"os"
+	"fmt"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 	"io/ioutil"
 	"math/rand"
+	"net/http"
+	"os"
 	"strings"
 	"time"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 type response struct {
 	username string
-	message string
+	message  string
 }
 
 type jsonResponse struct {
-	Status bool `json:"status"`
-	Message string `json:"message"`
-	Show bool `json:"show"`
-	Result []string `json:"result"`
+	Status  bool     `json:"status"`
+	Message string   `json:"message"`
+	Show    bool     `json:"show"`
+	Result  []string `json:"result"`
 }
 
 // Messages json parser for default string types
 type Messages struct {
-	InitialGreetingsName []string `json:"initial-greetings-name"`
+	InitialGreetingsName  []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
-	Help []string `json:"help"`
-	About []string `json:"about"`
-	Age []string `json:"age"`
-	Birthday []string `json:"birthday"`
+	Help                  []string `json:"help"`
+	About                 []string `json:"about"`
+	Age                   []string `json:"age"`
+	Birthday              []string `json:"birthday"`
 }
 
 // Messagesreplies json parser for default reply string types
 type Messagesreplies struct {
-	InitialGreetingsName []string `json:"initial-greetings-name"`
+	InitialGreetingsName  []string `json:"initial-greetings-name"`
 	InitialGreetingsPlain []string `json:"initial-greetings-plain"`
-	Help []string `json:"help"`
-	About []string `json:"about"`
-	Age []string `json:"age"`
-	Birthday []string `json:"birthday"`
+	Help                  []string `json:"help"`
+	About                 []string `json:"about"`
+	Age                   []string `json:"age"`
+	Birthday              []string `json:"birthday"`
 }
 
 var (
-	messagesParser Messages
+	messagesParser        Messages
 	messagesRepliesParser Messagesreplies
-	resp jsonResponse
-	username, speak string
-	countMessage int16
+	resp                  jsonResponse
+	username, speak       string
+	countMessage          int16
 )
-
 
 func init() {
 
 	fmt.Println("Loading messages JSON parsers....")
-	messagesFile, err := os.Open("messages/messages.json")
-	messagesRepliesFile, err2 := os.Open("messages/messages_replies.json")
+	messagesFile, err := os.Open("static/messages.json")
+	messagesRepliesFile, err2 := os.Open("static/messages_replies.json")
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
-	if err != nil   {
+	if err != nil {
 		logger.Error(err)
 	}
-	if err2 != nil   {
+	if err2 != nil {
 		logger.Error(err2)
 	}
 
@@ -78,7 +77,7 @@ func init() {
 
 }
 
-func filterForMessagesComparision(s string) (sr string)  {
+func filterForMessagesComparision(s string) (sr string) {
 
 	sr = strings.Replace(s, "?", " ", -1)
 	sr = strings.Replace(sr, "%", " ", -1)
@@ -92,7 +91,7 @@ func filterForMessagesComparision(s string) (sr string)  {
 }
 
 // GeneralConvHandler handles stuff related to general conversation
-func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
+func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 
 	fmt.Println("General conversation...")
 	rand.Seed(time.Now().UnixNano())
@@ -103,7 +102,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	// determine type of message
 	if !match {
 		isGreetingPlain := func(s string) bool {
-			for i:=0; i< len(messagesParser.InitialGreetingsPlain); i++ {
+			for i := 0; i < len(messagesParser.InitialGreetingsPlain); i++ {
 				if strings.ToLower(s) == messagesParser.InitialGreetingsPlain[i] {
 					match = true
 					return true
@@ -121,10 +120,9 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 		}
 	}
 
-
 	if !match {
 		isGreetingName := func(s string) bool {
-			for i:=0; i< len(messagesParser.InitialGreetingsName); i++ {
+			for i := 0; i < len(messagesParser.InitialGreetingsName); i++ {
 				if strings.ToLower(s) == messagesParser.InitialGreetingsName[i] {
 					fmt.Println("contains ", strings.ToLower(s), " ", messagesParser.InitialGreetingsName[i])
 					match = true
@@ -145,7 +143,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	if !match {
 		isHelp := func(s string) bool {
-			for i:=0; i< len(messagesParser.Help); i++ {
+			for i := 0; i < len(messagesParser.Help); i++ {
 				if strings.ToLower(s) == messagesParser.Help[i] {
 					match = true
 					return true
@@ -165,7 +163,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	if !match {
 		isAbout := func(s string) bool {
-			for i:=0; i< len(messagesParser.About); i++ {
+			for i := 0; i < len(messagesParser.About); i++ {
 				if strings.ToLower(s) == messagesParser.About[i] {
 					match = true
 					return true
@@ -186,7 +184,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 	if !match {
 		fmt.Println("inside")
 		isAge := func(s string) bool {
-			for i:=0; i< len(messagesParser.Age); i++ {
+			for i := 0; i < len(messagesParser.Age); i++ {
 				if strings.ToLower(s) == messagesParser.Age[i] {
 					match = true
 					return true
@@ -207,7 +205,7 @@ func GeneralConvHandler(req, name string,  res http.ResponseWriter) string {
 
 	if !match {
 		isBirthday := func(s string) bool {
-			for i:=0; i< len(messagesParser.Birthday); i++ {
+			for i := 0; i < len(messagesParser.Birthday); i++ {
 				if strings.ToLower(s) == messagesParser.Birthday[i] {
 					match = true
 					return true
