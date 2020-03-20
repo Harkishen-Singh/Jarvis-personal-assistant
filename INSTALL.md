@@ -39,8 +39,8 @@ The prerequisites for installing the project :
 
 ### for executing tests
 
-8. `eslint view/web/app-jarvis.js` # for linting checks
-9. `cd tests && npm install && mocha tests.js`
+7. `eslint view/web/app-jarvis.js` # for linting checks
+8. `cd tests && npm install && mocha tests.js`
 
 ## Running the Desktop-app
 
