@@ -1,1 +1,4 @@
 2020/03/20 20:29:37 open static/config.json: no such file or directory
+2020/03/20 20:34:38 open ../static/config.json: no such file or directory
+2020/03/20 20:34:54 open ../static/messages.json: no such file or directory
+2020/03/20 20:35:38 open ../static/medicine_database.json: no such file or directory

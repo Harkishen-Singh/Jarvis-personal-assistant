@@ -22,7 +22,7 @@ func init() {
 	ENV := os.Getenv("ENV")
 	prefix := ""
 	if ENV == "test" {
-		prefix = "../"
+		prefix = "../../"
 	}
 
 	jsonFile, err := os.Open(fmt.Sprintf("%sstatic/config.json", prefix))

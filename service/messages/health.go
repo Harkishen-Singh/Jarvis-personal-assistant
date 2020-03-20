@@ -66,7 +66,7 @@ var (
 func init() {
 	prefix := ""
 	if os.Getenv("ENV") == "test" {
-		prefix = "../"
+		prefix = "../../"
 	}
 	fmt.Println("Loading health-medicine JSON parsers....")
 	medicineFile, err := os.Open(fmt.Sprintf("%sstatic/medicine_database.json", prefix))

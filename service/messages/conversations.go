@@ -49,7 +49,7 @@ var (
 func init() {
 	prefix := ""
 	if os.Getenv("ENV") == "test" {
-		prefix = "../"
+		prefix = "../../"
 	}
 
 	fmt.Println("Loading messages JSON parsers....")
