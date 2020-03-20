@@ -19,7 +19,14 @@ var config Configuration
 
 // init reads and stores data from config.json
 func init() {
-	jsonFile, err := os.Open("../static/config.json")
+	ENV := os.Getenv("ENV")
+	fmt.Println("env is ", ENV)
+	prefix := ""
+	if ENV == "test" {
+		prefix = "../../"
+	}
+
+	jsonFile, err := os.Open(fmt.Sprintf("%sstatic/config.json", prefix))
 	if err != nil {
 		fmt.Print("I am here")
 		logger.Error(err)

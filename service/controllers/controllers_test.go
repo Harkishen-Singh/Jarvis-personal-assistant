@@ -5,12 +5,13 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"testing"
 )
 
 func TestGoogleSearch(t *testing.T) {
-
+	os.Setenv("ENV", "test")
 	form := url.Values{}
 	form.Add("username", "default")
 	form.Add("message", "google CET bhubaneswar")
@@ -56,7 +57,7 @@ func disableTestYahooSearch(t *testing.T) {
 }
 
 func TestBingSearch(t *testing.T) {
-
+	os.Setenv("ENV", "test")
 	form := url.Values{}
 	form.Add("username", "default")
 	form.Add("message", "bing CET bhubaneswar")

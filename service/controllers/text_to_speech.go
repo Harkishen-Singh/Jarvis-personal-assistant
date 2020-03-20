@@ -15,7 +15,7 @@ func TextToSpeech(message string, waitInSeconds int32) bool {
 	fmt.Println("Speaking -> ", message)
 	speech := htgotts.Speech{Folder: "audio", Language: "en"}
 	err := speech.Speak(message)
-	if (err != nil) {
+	if err != nil {
 		logger.Error(err)
 	}
 	return true

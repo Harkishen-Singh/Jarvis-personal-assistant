@@ -5,26 +5,18 @@ sudo: required
 
 services:
   - xvfb
-  - docker
 
 language:
   - go
-  - python
 
 go:
   - 1.11.x
-
-python:
-  - "2.7"
 
 addons:
   chrome: stable
   apt:
     packages:
       - chromium-chromedriver
-
-notifications:
-  email: truemac
 
 cache:
   - tests/node_modules/
@@ -39,6 +31,7 @@ before-install:
 
 
 script:
+  - export ENV=test
   - make build
   - ./bin/service &
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
