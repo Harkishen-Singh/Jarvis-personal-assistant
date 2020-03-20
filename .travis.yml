@@ -30,6 +30,10 @@ before-install:
 
 
 script:
+  - curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s -- -b $(go env GOPATH)/bin v1.18.0
+  - echo "checking linting in golang ..."
+  - golangci-lint run
+  - echo "perfect linting standards! moving ahead ..."
   - make build
   - ./bin/service &
   - export ENV=test

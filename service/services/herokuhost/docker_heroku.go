@@ -6,100 +6,10 @@
 package herokuhost
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"os/exec"
 )
-
-const (
-	// auto-deployment is disabled for now.
-	// shouldbe done in future versions if required.
-	herokuMailID string = ""
-)
-
-func herokuLogin() bool {
-	return false
-}
-
-type automateDeploymentContainer interface {
-	herokuLogin() bool
-	herokuContainerPush() bool
-	herokuContainerLogin() bool
-	herokuCreate() string
-	herokuContainerRelease() bool
-	herokuOpen() bool
-}
-
-type herokuDetails struct {
-	emailID, password string
-}
-
-func (dep herokuDetails) herokuLogin() bool {
-
-	res, err := exec.Command("heroku login").Output()
-	if err != nil {
-		fmt.Println("heroku login error")
-		panic(err)
-	}
-	fmt.Printf("heroku login \n %s", res)
-	return true
-}
-
-func herokuContainerPush() bool {
-	res, err := exec.Command("heroku container:push web").Output()
-	if err != nil {
-		fmt.Println("heroku container push error")
-		panic(err)
-	}
-	fmt.Printf("heroku container push \n %s", res)
-	return true
-}
-
-func herokuContainerLogin() bool {
-	res, err := exec.Command("heroku container:login").Output()
-	if err != nil {
-		fmt.Println("heroku container login error")
-		panic(err)
-	}
-	fmt.Printf("heroku container login \n %s", res)
-	return true
-}
-
-func herokuCreate(expectedName string) string {
-	res, err := exec.Command("heroku create", expectedName).Output()
-	if err != nil {
-		fmt.Println("heroku create error")
-		panic(err)
-	}
-	fmt.Printf("heroku create \n %s", res)
-	return string(res)
-}
-
-func herokuContainerRelease() bool {
-	res, err := exec.Command("heroku container:release web").Output()
-	if err != nil {
-		fmt.Println("heroku container release error")
-		panic(err)
-	}
-	fmt.Printf("heroku container release \n %s", res)
-	return true
-}
-
-func herokuOpen() bool {
-	res, err := exec.Command("heroku open").Output()
-	if err != nil {
-		fmt.Println("heroku container release error")
-		panic(err)
-	}
-	fmt.Printf("heroku container release \n %s", res)
-	return true
-}
-
-type automateDeploymentGithub interface {
-	herokuGithubSubprocess() string
-	herokuGithubLogs() string
-}
 
 type herokuGithubCredentials struct {
 	email, password, repoName, result string
@@ -161,7 +71,6 @@ func DeploymentFunction(repoName string, res http.ResponseWriter) string {
 		resp.Status = true
 		resp.Message = "Successfully deployed. Link " + response
 	}
-	unmarshall, _ := json.Marshal(resp)
-	res.Write(unmarshall)
+
 	return resp.Message
 }

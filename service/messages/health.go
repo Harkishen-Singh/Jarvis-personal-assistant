@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
-	scrapper "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
-	"github.com/PuerkitoBio/goquery"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
+	scrapper "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
+	"github.com/PuerkitoBio/goquery"
 )
 
 type medicineResponse struct {
@@ -271,7 +272,8 @@ func scrapMedicineLog(medicine *string) []string {
 	if err != nil {
 		logger.Error(err)
 	}
-	doc, err := goquery.NewDocumentFromResponse(res)
+	doc, err := goquery.NewDocumentFromReader(res.Body)
+
 	if err != nil {
 		logger.Error(err)
 	}
@@ -279,7 +281,7 @@ func scrapMedicineLog(medicine *string) []string {
 	resultFould := false
 	contentArray := doc.Find("table.search-results")
 	if len(contentArray.Nodes) <= 0 {
-		logger.Error(errors.New("Search result table not found."))
+		logger.Error(errors.New("RESULT_NOT_FOUND"))
 	}
 	content := contentArray.Eq(0)
 	tableRowArray := content.Find("tr")
@@ -303,22 +305,6 @@ func scrapMedicineLog(medicine *string) []string {
 	return []string{result, *medicine}
 }
 
-func processScrapLog(log *string) (data string) {
-	logStr := string(*log)
-	llogStr := len(logStr)
-	subl := "data ->"
-	lsubl := len(subl)
-	for i := 0; i < llogStr-lsubl; i++ {
-		if subl == logStr[i:i+lsubl] {
-			data = logStr[i+lsubl : llogStr]
-			break
-		}
-	}
-	fmt.Println("scrapped is -> ", data)
-	data = strings.Replace(data, "undefined", "", 1)
-	return
-}
-
 func handleResponse(ctr int, data []string, res http.ResponseWriter) string {
 	var resp medicineResponse
 	if ctr == 1 {
@@ -336,7 +322,10 @@ func handleResponse(ctr int, data []string, res http.ResponseWriter) string {
 	}
 
 	send, _ := json.Marshal(resp)
-	res.Write(send)
+	if _, err := res.Write(send); err != nil {
+		panic(err)
+	}
+
 	return "generic " + data[1]
 }
 
@@ -352,7 +341,7 @@ func scrapSymptomsLog(sypm *string) []string {
 	if err != nil {
 		logger.Error(err)
 	}
-	doc, err := goquery.NewDocumentFromResponse(res)
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		logger.Error(err)
 	}
