@@ -80,28 +80,28 @@ func TestBingSearch(t *testing.T) {
 
 // TODO
 
-// func TestImagesSearch(t *testing.T) {
+func disableTestImagesSearch(t *testing.T) {
 
-// 	form := url.Values{}
-// 	form.Add("username", "default")
-// 	form.Add("message", "image CET bhubaneswar")
-// 	resp, err := http.PostForm("http://localhost:3000/message", form)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	body, _ := ioutil.ReadAll(resp.Body)
-// 	fmt.Println(string(body))
-// 	// success check
-// 	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
-// 		t.Errorf("Google Image Response didnt match as required")
-// 	}
+	form := url.Values{}
+	form.Add("username", "default")
+	form.Add("message", "image CET bhubaneswar")
+	resp, err := http.PostForm("http://localhost:3000/message", form)
+	if err != nil {
+		panic(err)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+	// success check
+	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
+		t.Errorf("Google Image Response didnt match as required")
+	}
 
-// 	// incoming data checks
-// 	if !strings.Contains(string(body), "here are the searched images") {
-// 		t.Errorf("Google image functionality response didn't match as required!")
-// 	}
+	// incoming data checks
+	if !strings.Contains(string(body), "here are the searched images") {
+		t.Errorf("Google image functionality response didn't match as required!")
+	}
 
-// }
+}
 
 func disableTestYoutube(t *testing.T) {
 
@@ -126,28 +126,28 @@ func disableTestYoutube(t *testing.T) {
 
 }
 
-// func TestWeather_1(t *testing.T) {
+func disableTestWeather_1(t *testing.T) {
 
-// 	form := url.Values{}
-// 	form.Add("username", "default")
-// 	form.Add("message", "weather bhubaneswar odisha")
-// 	resp, err := http.PostForm("http://localhost:3000/message", form)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	body, _ := ioutil.ReadAll(resp.Body)
-// 	fmt.Println(string(body))
-// 	// success check
-// 	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
-// 		t.Errorf("Weather Response 1 didnt match as required")
-// 	}
+	form := url.Values{}
+	form.Add("username", "default")
+	form.Add("message", "weather bhubaneswar odisha")
+	resp, err := http.PostForm("http://localhost:3000/message", form)
+	if err != nil {
+		panic(err)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+	// success check
+	if !(strings.Contains(string(body), "{\"status\":\"success\"") || strings.Contains(string(body), "{\"status\":true")) {
+		t.Errorf("Weather Response 1 didnt match as required")
+	}
 
-// 	// incoming data checks
-// 	if !strings.Contains(string(body), "here are the current weather conditions") {
-// 		t.Errorf("Weather functionality 1 response didn't match as required!")
-// 	}
+	// incoming data checks
+	if !strings.Contains(string(body), "here are the current weather conditions") {
+		t.Errorf("Weather functionality 1 response didn't match as required!")
+	}
 
-// }
+}
 
 // func TestWeather_2(t *testing.T) {
 

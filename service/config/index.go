@@ -19,8 +19,9 @@ var config Configuration
 
 // init reads and stores data from config.json
 func init() {
-	jsonFile, err := os.Open("static/config.json")
+	jsonFile, err := os.Open("../static/config.json")
 	if err != nil {
+		fmt.Print("I am here")
 		logger.Error(err)
 	}
 	byteValue, ioError := ioutil.ReadAll(jsonFile)

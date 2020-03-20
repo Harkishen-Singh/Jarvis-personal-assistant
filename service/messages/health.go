@@ -65,7 +65,7 @@ var (
 func init() {
 
 	fmt.Println("Loading health-medicine JSON parsers....")
-	medicineFile, err := os.Open("static/medicine_database.json")
+	medicineFile, err := os.Open("../static/medicine_database.json")
 	bytvalMF, _ := ioutil.ReadAll(medicineFile)
 	if err != nil {
 		logger.Error(err)
@@ -76,7 +76,7 @@ func init() {
 	}
 
 	fmt.Println("Loading health-symptoms JSON parsers....")
-	medicineFileSymp, err := os.Open("static/health_symptoms.json")
+	medicineFileSymp, err := os.Open("../static/health_symptoms.json")
 	bytvalMF2, _ := ioutil.ReadAll(medicineFileSymp)
 	if err != nil {
 		logger.Error(err)
