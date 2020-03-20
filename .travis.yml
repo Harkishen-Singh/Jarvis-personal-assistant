@@ -44,7 +44,7 @@ script:
   - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
   - eslint view/web/app-jarvis.js
   - cd view/web/ && npm start && cd ../..
-  - go test ./...
+  - go test service/controllers/controllers_test.go
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
