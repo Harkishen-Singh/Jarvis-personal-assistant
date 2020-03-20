@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// Mail ....
+// Mail sets the mailing options.
 type Mail struct {
 	Sender  string
 	To      []string
@@ -19,19 +19,19 @@ type Mail struct {
 	Body    string
 }
 
-// SMTPServer ...
+// SMTPServer sets SMTP server options.
 type SMTPServer struct {
 	Host      string
 	Port      string
 	TLSConfig *tls.Config
 }
 
-// ServerName ...
+// ServerName returns the name of the server.
 func (s *SMTPServer) ServerName() string {
 	return s.Host + ":" + s.Port
 }
 
-// EmailController controls reminder operations
+// EmailController controls reminder operations.
 func EmailController(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -52,13 +52,12 @@ func EmailController(w http.ResponseWriter, r *http.Request) {
 		Subject: r.FormValue("subject"),
 		Body:    r.FormValue("body"),
 	}
-	fmt.Println("request: ", request)
 
 	send(request, w)
 
 }
 
-// BuildMessage ...
+// BuildMessage returns the resultant message built.
 func (mail *Mail) BuildMessage() string {
 	header := ""
 	header += fmt.Sprintf("From: %s\r\n", mail.Sender)

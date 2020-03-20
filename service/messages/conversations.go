@@ -53,10 +53,14 @@ var (
 )
 
 func init() {
+	prefix := ""
+	if os.Getenv("ENV") == "test" {
+		prefix = "../"
+	}
 
 	fmt.Println("Loading messages JSON parsers....")
-	messagesFile, err := os.Open("static/messages.json")
-	messagesRepliesFile, err2 := os.Open("static/messages_replies.json")
+	messagesFile, err := os.Open(fmt.Sprintf("%sstatic/messages.json", prefix))
+	messagesRepliesFile, err2 := os.Open(fmt.Sprintf("%sstatic/messages_replies.json", prefix))
 	bytvalMF, _ := ioutil.ReadAll(messagesFile)
 	bytvalMRF, _ := ioutil.ReadAll(messagesRepliesFile)
 	if err != nil {

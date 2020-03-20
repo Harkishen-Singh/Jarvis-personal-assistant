@@ -6,15 +6,18 @@ install-all || update:
 	cd view/desktop/ && npm install
 
 run:
-	go run service/maintut.go
+	go run service/main.go
 
 views:
 	cd view/desktop/ && npm start
 
 build:
 	mkdir bin
-	cd service/ && go build maintut.go
-	mv service/maintut bin/service
+	cd service/ && go build main.go
+	mv service/main bin/service
 
 clean:
 	rm -R bin
+
+fix:
+	go fmt ./...
