@@ -1,5 +1,5 @@
 # run the service as a background process
-cd service/ && go run maintut.go &
+cd service/ && go run main.go &
 # cd ..
 
 # run js linting checks
@@ -17,6 +17,6 @@ htmlhint view/desktop/app/templates/components/*.html view/desktop/app/templates
 # application build
 cd service/ && go build *.go
 cd ..
-mv service/maintut jarvis
+mv service/main jarvis
 # cd view/desktop/ && npm run build
 # cd ../..

@@ -5,26 +5,18 @@ sudo: required
 
 services:
   - xvfb
-  - docker
 
 language:
   - go
-  - python
 
 go:
   - 1.11.x
-
-python:
-  - "2.7"
 
 addons:
   chrome: stable
   apt:
     packages:
       - chromium-chromedriver
-
-notifications:
-  email: truemac
 
 cache:
   - tests/node_modules/
@@ -35,17 +27,19 @@ before-install:
   - nvm use stable
   - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
-  - npm install chromedriver
 
 
 script:
   - make build
   - ./bin/service &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
+  - export ENV=test
+  - npm install -g http-server mocha eslint
   - eslint view/web/app-jarvis.js
+  - echo "checking go format ..."
+  - diff -u <(echo -n) <(gofmt -d ./src ./tsdb)
+  - echo "perfect go format. moving ahead ..."
   - cd view/web/ && npm start && cd ../..
-  - go test service/controllers/messages_test.go
-  - go test service/utils/service_test.go
+  - go test service/controllers/controllers_test.go
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js

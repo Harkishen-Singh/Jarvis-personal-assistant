@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
-	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/scrapper"
+	scrapper "github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils"
 	"github.com/PuerkitoBio/goquery"
 	"io/ioutil"
 	"net/http"
@@ -63,9 +63,12 @@ var (
 )
 
 func init() {
-
+	prefix := ""
+	if os.Getenv("ENV") == "test" {
+		prefix = "../"
+	}
 	fmt.Println("Loading health-medicine JSON parsers....")
-	medicineFile, err := os.Open("static/medicine_database.json")
+	medicineFile, err := os.Open(fmt.Sprintf("%sstatic/medicine_database.json", prefix))
 	bytvalMF, _ := ioutil.ReadAll(medicineFile)
 	if err != nil {
 		logger.Error(err)
@@ -76,7 +79,7 @@ func init() {
 	}
 
 	fmt.Println("Loading health-symptoms JSON parsers....")
-	medicineFileSymp, err := os.Open("static/health_symptoms.json")
+	medicineFileSymp, err := os.Open(fmt.Sprintf("%sstatic/health_symptoms.json", prefix))
 	bytvalMF2, _ := ioutil.ReadAll(medicineFileSymp)
 	if err != nil {
 		logger.Error(err)

@@ -35,7 +35,7 @@ The prerequisites for installing the project :
     ```
 5. Start the GoLang server. *Do not close this terminal*
     ```bash
-        cd service && go run maintut.go
+        cd service && go run main.go
     ```
 6. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
 
