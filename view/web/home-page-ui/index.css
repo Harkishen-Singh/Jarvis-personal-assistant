@@ -6,13 +6,13 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-::placeholder {
-    color: black;
-}
-
 ::selection {
     background: black;
     color: white;
+}
+
+.btn-dark:focus {
+    box-shadow: none;
 }
 
 .container-fluid {
@@ -38,6 +38,7 @@ body {
     width: 28%;
     height: 100vh;
     background: #F1F0F0;
+    transition: all 0.3s ease-in;
 }
 
 .right-side-wrapper {
@@ -51,6 +52,7 @@ body {
     width: 72%;
     height: 100vh;
     background: #F8F8F8;
+    transition: all 0.3s ease-in;
 }
   
 .settings-ico, .chat-ico {
@@ -92,6 +94,7 @@ body {
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    transition: all 0.3s ease-in;
 }
 
 .help-btn:hover, .help-btn:focus {
@@ -99,6 +102,12 @@ body {
     background-color: #01b3fe;
     border-color: #01b3fe;
     outline: none;
+}
+
+.btn-dark-mode {
+    border-color: #5300FF;
+    color: white;
+    background: #5300FF;
 }
 
 .bottom-frame {
@@ -115,7 +124,8 @@ body {
     height: 100%;
     width: 100%;
     padding-top: 1rem;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .conversation-wrapper::-webkit-scrollbar { width: 0 !important; }
@@ -145,6 +155,12 @@ textarea:focus {
     outline: none;
     box-shadow: none;
     background-color: transparent;
+}
+
+.message-textbox { transition: all 0.3s ease-in; }
+
+.message-textbox::-webkit-input-placeholder {
+    color: black;
 }
 
 .message-send-btn, .voice-send-btn {
@@ -213,6 +229,7 @@ textarea:focus {
     position: relative;
     top: 2px;
     font-size: 12px;
+    transition: all 0.3s ease-in;
 }
 
 .p-chat-rec-date-time {
@@ -224,6 +241,67 @@ textarea:focus {
     text-align: right;
     right: 14px;
     margin-bottom: 0;
+}
+
+/* ----------------- light-dark-switch ------------------ */
+.dark-mode { background: #1d1d1d; }
+
+.txt-dark-mode { color: white; }
+
+.m-txtbox-darkmode::-webkit-input-placeholder {
+    color: white;
+}
+
+.moon-ico { 
+    height: 30px;
+    position: relative;
+    bottom: 5px;
+}
+
+.sun-ico {
+    height: 32px;
+    position: relative;
+    right: 40px;
+    bottom: 4px;
+}
+
+.custom-switch {
+    position: fixed;
+    right: 50px;
+}
+
+.custom-switch .custom-control-label::before {
+    left: -2.25rem;
+    width: 1.75rem;
+    pointer-events: all;
+    cursor: pointer;
+    border-radius: .5rem;
+    border: none;
+    background: black;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #5300FF;
+    background: #5300FF;
+}
+
+.custom-control-label::before, .custom-file-label, .custom-select {
+    transition: background-color .2s ease-in,border-color .2s ease-in,box-shadow .2s ease-in;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none;
+}
+
+.custom-control-input:focus~.custom-control-label::after {
+    box-shadow: none;
+}
+
+
+.custom-switch .custom-control-label::after {
+    cursor: pointer;
+    transition: transform .2s ease-in,background-color .2s ease-in,border-color .2s ease-in,box-shadow .2s ease-in,-webkit-transform .2s ease-in;
 }
 
 @media only screen and (max-width: 1024px) {
