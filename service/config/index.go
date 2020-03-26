@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
 )
 
 // Configuration : Struct to contain all configuration
@@ -19,11 +20,11 @@ var config Configuration
 func init() {
 	jsonFile, err := os.Open("config.json")
 	if err != nil {
-		panic(err)
+		logger.Error(err)
 	}
 	byteValue, ioError := ioutil.ReadAll(jsonFile)
 	if ioError != nil {
-		panic(ioError)
+		logger.Error(ioError)
 	}
 	json.Unmarshal(byteValue, &config)
 	fmt.Println("[JARVIS] config.json read successfully")
