@@ -14,10 +14,8 @@
         "ecmaVersion": 2018
     },
     "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent": ["error", 2],
+        "max-len": ["error", { "code": 127 }],
         "linebreak-style": [
             "error",
             "unix"
