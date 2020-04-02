@@ -5,7 +5,7 @@ class Routes {
     this.server = restify.createServer({
       name: 'myapp',
       version: '0.0.1',
-      log: logger
+      log: logger,
     });
     this.PORT = port;
     this.log = logger;
@@ -40,7 +40,7 @@ const handlers = {
   echo: (req, res, next) => {
     res.send(req.params);
     return next();
-  }
-}
+  },
+};
 
-module.exports = { Routes };
+module.exports = {Routes};

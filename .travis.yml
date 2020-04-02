@@ -25,6 +25,7 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
+  - npm install -g http-server mocha eslint yarn
   - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
 
@@ -33,11 +34,9 @@ script:
   - make build
   - ./bin/service &
   - export ENV=test
-  - npm install -g http-server mocha eslint
   - eslint view/web/app-jarvis.js
-  - echo "checking go format ..."
-  - diff -u <(echo -n) <(gofmt -d ./src ./tsdb)
-  - echo "perfect go format. moving ahead ..."
+  - echo "checking js format ..."
+  - yarn ci-lint
   - cd view/web/ && npm start && cd ../..
   - go test service/controllers/controllers_test.go
   - cd tests/

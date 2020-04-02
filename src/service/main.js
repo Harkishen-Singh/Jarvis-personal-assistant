@@ -1,29 +1,18 @@
-const bunyan = require('bunyan'),
-  JsonDB = require('node-json-db').JsonDB,
-  Config = require('node-json-db/dist/lib/JsonDBConfig').Config;
+const bunyan = require('bunyan');
+const JsonDB = require('node-json-db').JsonDB;
+const Config = require('node-json-db/dist/lib/JsonDBConfig').Config;
 
-const PORT = process.env.PORT || 5000,
-  bunyanLogger = bunyan.createLogger({ name: 'Jarvis' }),
-  Routes = require('./routes').Routes;
+const PORT = process.env.PORT || 5000;
+const bunyanLogger = bunyan.createLogger({name: 'Jarvis'});
+const Configurations = require('./utils/configurations').configurations;
+Routes = require('./routes').Routes;
 
+const db = new JsonDB(new Config('database', true, true, '/'));
+const server = new Routes(PORT, bunyanLogger);
 
-const db = new JsonDB(new Config('database', true, true, '/')),
-  server = new Routes(PORT, bunyanLogger);
-
-db.push('/init', configurationOnFirstStart());
-db.push('/store', )
+// Initialize database.
+db.push('/init', Configurations.onFirstStart);
+db.push('/store', Configurations.store);
 
 // Run service.
 server.listen();
-
-function configurationOnFirstStart() {
-  const date = new Date();
-
-  return {
-    timeFirstStart: {
-      date: date.getDate(),
-      month: date.getMonth(),
-      year: date.getFullYear()
-    }
-  };
-}
