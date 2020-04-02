@@ -1,0 +1,12 @@
+{
+  "name": "service",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts" : {
+    "start": "node main.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "restify": "^8.5.1"
+  }
+}

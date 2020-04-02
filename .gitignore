@@ -14,3 +14,4 @@ service/go.mod
 service/go.sum
 service/logs/*
 jarvis
+service/yarn.lock
