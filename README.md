@@ -10,17 +10,15 @@ The project aims to develop a personal-assistant for Linux-based systems. Jarvis
 
 ## Getting Started
 
-To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
-
-**Starting Jarvis in development mode**
+**Starting Jarvis in development mode (nodeJS)**
 
 Installation:
 
-1. Install all dependencies: `make install-all`
+Assuming `yarn` is installed. If not, install yarn with `npm i g yarn`
 
-Update dependencies: `make update`
+1. Install all dependencies: `yarn install`
 
-Run Jarvis:
+Run Jarvis-service:
 
 1. Run service: `make run`
 2. Run the desktop app: `make views`
