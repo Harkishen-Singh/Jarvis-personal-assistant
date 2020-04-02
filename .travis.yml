@@ -17,3 +17,4 @@ script:
   - eslint view/web/app-jarvis.js
   - echo "checking js format in service ..."
   - yarn ci-lint
+  - yarn serve &
