@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="mediumpurple">
+        <!-- Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="mediumpurple">
+        <!-- iOS Safari -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="mediumpurple">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body data-gr-c-s-loaded="true">
+        <div class="container-fluid">
+            <div class="home-page-wrapper">
+                <div class="left-side-wrapper">
+                    <img class="img-fluid settings-ico" src="icons/settings.png" />
+                    <div class="border-1"></div>
+                    <div class="left-side-body"></div>
+                    <button class="btn btn-dark help-btn">Get help on pre-defined statements</button>
+                    <img class="img-fluid bottom-frame" src="img/frame.png"/>
+                </div>
+                <div class="right-side-wrapper">
+                    <img class="img-fluid chat-ico" src="icons/chat.png"/>
+                    <div class="border-1"></div>
+                    <div class="conversation-wrapper">
+                        <!-- Demo chat (DEMO PURPOSE ONLY) -->
+                        <div class="animate-txt-wrap user-msg">
+                            <div class="wrap-p-chat-txt send-txt-wrapper">
+                                <h6 class="p-chat-sent-txt">Hello there! How are you?</h6>
+                            </div>
+                        </div>
+                        <h6 class="p-chat-snd-date-time">you <strong>now</strong></h6>
+                        <div class="animate-txt-wrap jarvis-msg">
+                            <div class="wrap-p-chat-txt">
+                                <h6 class="p-chat-rec-txt">Hey! I'm fine, thanks. What's up?</h6>
+                            </div>
+                        </div>
+                        <h6 class="p-chat-rec-date-time">jarvis-bot <strong>now</strong></h6> 
+                    </div>
+                    <div class="message-utility-wrapper">
+                        <textarea class="message-textbox" id="message-box" name="msg_box" placeholder="Type a message . . ." autocomplete="off"></textarea>
+                        <a href="#" class="btn btn-dark message-send-btn" id="message-send">
+                            <img class="img-fluid send-ico" src="icons/send.png"/>
+                        </a>
+                        <a href="#" class="btn btn-dark voice-send-btn" id="voice-send">
+                            <img class="img-fluid voice-send-ico" src="icons/mic.png"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
