@@ -1,6 +1,5 @@
 os:
   - linux
-  - mac
 
 sudo: required
 
@@ -11,10 +10,14 @@ cache:
   - tests/node_modules/
 
 before-install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
   - npm install -g yarn eslint eslint-config-google
+  - yarn install
+
 
 script:
-  - eslint view/web/app-jarvis.js
+  - eslint src/view/web/app-jarvis.js
   - echo "checking js format in service ..."
   - yarn ci-lint
-  - yarn serve &
