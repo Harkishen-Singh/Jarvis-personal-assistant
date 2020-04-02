@@ -1,1 +1,1 @@
-web: service
+web: node src/service/main.js
