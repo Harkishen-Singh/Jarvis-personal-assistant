@@ -1,30 +1,25 @@
-<div data-ng-init="initStack()"> 
-    <div class="conversation-wrapper">
-        <div class="animate-txt-wrap user-msg">
-            <div class="wrap-p-chat-txt send-txt-wrapper">
-                <h6 class="p-chat-sent-txt">Hello there! How are you?</h6>
-            </div>
-        </div>
-        <h6 class="p-chat-snd-date-time">you <strong>now</strong></h6>
-        <div class="animate-txt-wrap jarvis-msg">
-            <div class="wrap-p-chat-txt">
-                <h6 class="p-chat-rec-txt">Hey! I'm fine, thanks. What's up?</h6>
-            </div>
-        </div>
-        <h6 class="p-chat-rec-date-time">jarvis-bot <strong>now</strong></h6> 
+<div>
+    <img src="../assets/icons/main_banner.gif" alt="" id="main-banner" data-ng-show="mainBanner"
+        data-ng-init="controlMainBanner()" />
+    <div data-ng-init="initStack()">
+        <span id="chat-screen" style="color:black;">
+            Chat Screen
+            <hr>
+        </span>
         <!-- chat screen -->
 
         <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
             <div data-ng-repeat="message in messageStack" id="stackArea">
                 <div data-ng-if="message.sender === 'you'">
-
-                    <div class="animate-txt-wrap user-msg">
-                        <div class="wrap-p-chat-txt send-txt-wrapper">
-                            <h6 class="p-chat-sent-txt">{{message.message}}</h6>
-                        </div>
+                    <div class="chat-screen-messages-you" class="clearfix">
+                        {{message.message}}
+                        <span>
+                            <sub class="show-user-creds">
+                                {{message.sender}}
+                                {{message.time}}
+                            </sub>
+                        </span>
                     </div>
-                    <h6 class="p-chat-snd-date-time"> {{message.sender}} <strong>{{message.time}}</strong></h6>
-
                     <div data-ng-if="message.isLoading" class="loader">
                         <div class="loader"></div>
                         <img src="../assets/icons/loader.gif" alt="" style="height:50px;float: right;margin-right: -0.5%">
@@ -50,7 +45,7 @@
                         <!-- for specific messages -->
 
                         <div ng-switch-when="here are the top search results">
-                            <!-- <div class="message-style">
+                            <div class="message-style">
                                 {{message.message}}
                                 <span>
                                     <sub class="show-user-creds">
@@ -58,13 +53,7 @@
                                         {{message.time}}
                                     </sub>
                                 </span>
-                            </div> -->
-                            <div class="animate-txt-wrap jarvis-msg">
-                                <div class="wrap-p-chat-txt">
-                                    <h6 class="p-chat-rec-txt">[{message.message}}</h6>
-                                </div>
                             </div>
-                            <h6 class="p-chat-rec-date-time">{{message.sender}} <strong>{{message.time}}</strong></h6> 
                             <div id="queried-data" data-ng-if="message.result.length !== 0">
                                 <br>
                                 <div data-ng-repeat="objectQuery in message.result" id="queried-info">
@@ -73,7 +62,6 @@
                                     <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
                                 </div>
                             </div>
-                            
                         </div>
 
                         <div ng-switch-when="here are the top search videos">
@@ -320,18 +308,23 @@
                 <br />
             </div>
         </div>
+        <!-- message field -->
+        <div id="message-bar">
+            <div id="message-input-parent">
+                <input type="text" name="" id="message-input" data-ng-model="message" placeholder="Type a message"
+                    autofocus>
+                <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
+                    Send
+                </button>
+                <!-- banner -->
+                <div id="banner-listen" data-ng-show="showLoaderListening">
+                    <span>Listening ... </span>
+                    <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader"
+                        srcset="">
+                </div>
+                <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button"
+                    data-ng-click="toggleStartStop()" />
+            </div>
+        </div>
     </div>
-
-
-    <div class="message-utility-wrapper">
-        <textarea class="message-textbox" id="message-box" name="msg_box" placeholder="Type a message . . ." autocomplete="off"></textarea>
-        <a class="btn btn-dark message-send-btn" id="button message-send"  data-ng-click="addMessagesToStack()">
-            <img class="img-fluid send-ico" src="assets/icons/send.png"/>
-        </a>
-        <a class="btn btn-dark voice-send-btn" id="button voice-send" data-ng-click="toggleStartStop()">
-            <img class="img-fluid voice-send-ico" src="assets/icons/mic.png"/>
-        </a>
-    </div>
-
 </div>
-    

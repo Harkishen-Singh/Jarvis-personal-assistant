@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line no-undef
 const app = angular.module('jarvis', ['ngRoute']),
-	URL = 'http://127.0.0.1:3000',
+	URL = 'https://assistant-jarvis.herokuapp.com/',
 	USER = 'default';
 console.log('From app-jarvis.js');
 app.config(function($routeProvider) {

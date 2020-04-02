@@ -1,69 +1,41 @@
-<div id="sidebar" data-ng-controller="sidebarController" data-ng-init="initSidebar()">
-    <br>
-    <span id="sidebar-header">
-        Utilities Hub
-    </span>
-    <br>
-    <br>
-    <br>
-    <!-- <form action="" style="padding:3.5%;">
-        <div class="form-group">
-          <label for="text">Github-Email:</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Github Password:</label>
-          <input type="password" class="form-control" id="pwd">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Root Password:</label>
-          <input type="password" class="form-control" id="pwdroot">
-        </div>
-        <div class="checkbox">
-          <label><input type="checkbox"> Remember me</label>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form> -->
+<div data-ng-controller="sidebarController" data-ng-init="initSidebar()">
 
-    <div>
-      <button class="btn btn-primary" data-ng-click="toggleHelp()" style="margin-left: 12%; margin-bottom: 10%;">
-        Get Help on pre-defined Statements
-      </button>
-      <div data-ng-show="showHelp" style="padding: 10px; text-align: center; max-height: 60vh; overflow-y: scroll;">
-
-        <!-- web queries -->
-        <div class="descrp-sidebar">
-          <h5 id="webHead" >
-            Web Queries
-          </h5>
-          <div id="webQueries" class="descrp-body">
-            <p>
-              Search the web for specific query. Currently supported search engines: <br>
-              <ol>
-                <li>
-                  Google (keyword: <i>google</i>)
-                </li>
-                <li>
-                  Bing (keyword: <i>bing</i>)
-                </li>
-                <li>
-                  Yahoo (keyword: <i>yahoo</i>)
-                </li>
-                <li>
-                  search &mdash; for general searches, irrespective of the search engine.
-                </li>
-              </ol>
-              <br>
-              <span>Syntax: <br></span>
-              <code>
-                <i><b>keyword {query string}</b></i>
-              </code>
-            </p>
-          </div>
+    <img class="settings-ico" src="assets/icons/settings.png" />
+    <div class="border-1"></div>
+    <!-- <div class="left-side-body"></div> -->
+    <button data-ng-click="toggleHelp()" class="btn btn-dark help-btn">Get help on pre-defined statements</button>
+    <div data-ng-show="showHelp" style="padding: 10px; text-align: center; max-height: 60vh; overflow-y: scroll;">
+    <div class="descrp-sidebar">
+        <h5 id="webHead" >
+          Web Queries
+        </h5>
+        <div id="webQueries" class="descrp-body">
+          <p>
+            Search the web for specific query. Currently supported search engines: <br>
+            <ol>
+              <li>
+                Google (keyword: <i>google</i>)
+              </li>
+              <li>
+                Bing (keyword: <i>bing</i>)
+              </li>
+              <li>
+                Yahoo (keyword: <i>yahoo</i>)
+              </li>
+              <li>
+                search &mdash; for general searches, irrespective of the search engine.
+              </li>
+            </ol>
+            <br>
+            <span>Syntax: <br></span>
+            <code>
+              <i><b>keyword {query string}</b></i>
+            </code>
+          </p>
         </div>
+      </div>
 
-        <!-- videos / youtube -->
+      <!-- videos / youtube -->
         <div class="descrp-sidebar">
             <h5 id="videoHead">
               Videos on Youtube
@@ -180,8 +152,7 @@
               </p>
             </div>
         </div>
-
-      </div>
     </div>
-</div>
 
+    <img class="bottom-frame" src="assets/Background/frame.png"/>
+</div>

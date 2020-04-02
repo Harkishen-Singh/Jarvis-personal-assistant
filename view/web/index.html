@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html data-ng-app="jarvis">
-<head>
+<head lang="en">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Jarvis - Personal Assistant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="mediumpurple">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="mediumpurple">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="mediumpurple">
+
+    <!-------------------CSS ------------------>
     <link rel="stylesheet" href="./css/services/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./home-page-ui/index.css">
+
+    <!-------------------JS -------------------->
     <script src="./js/services/angular.min.js"></script>
     <script src="./js/services/angular-route.js"></script>
     <script src="./js/services/jquery-3.2.1.min.js"></script>
     <script src="./app-jarvis.js"></script>
     <script src="./js/services/d3.v4.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <header data-ng-include="'components/header.html'" ></header>
+</head>
+<body data-gr-c-s-loaded="true">
+
+    <div class="container-fluid">
+        <div class="home-page-wrapper">
+            <!---------Sidebar-------------->
+            <div class="left-side-wrapper">
+                <div data-ng-include="'components/sidebar.html'"></div>
+            </div>
+           <div class="right-side-wrapper">
+                <header style="width: 100%;" data-ng-include="'components/header.html'" ></header>
+                <main data-ng-view id='mainContent' style="width: 100%; height: 100;"></main>
+            </div>
+        </div>
+    </div>
+
+    
 
     <!-- sidebar -->
-    <div data-ng-include="'components/sidebar.html'"></div>
+    
 
     <!-- main layout -->
-    <main data-ng-view id='mainContent' style="margin-left: 27%; margin-top:10px;"></main>
+    <!-- <main data-ng-view id='mainContent' style="margin-left: 27%; margin-top:10px;"></main> -->
 
 </body>
 </html>
