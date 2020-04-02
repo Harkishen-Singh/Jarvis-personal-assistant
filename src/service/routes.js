@@ -1,4 +1,8 @@
 const restify = require('restify');
+const Default = require('./handlers/default').Handler;
+const Handlers = {
+  default: new Default()
+};
 
 class Routes {
   constructor(port, logger) {
@@ -21,8 +25,8 @@ class Routes {
   }
 
   applyRoutes() {
-    this.server.get('/', handlers.default);
-    this.server.get('/echo/:name', handlers.echo);
+    this.server.get('/', Handlers.default.default);
+    this.server.get('/echo/:name', Handlers.default.echo);
   }
 
   listen() {
@@ -32,15 +36,4 @@ class Routes {
   }
 }
 
-const handlers = {
-  default: (req, res, next) => {
-    res.send('hello user');
-    return next();
-  },
-  echo: (req, res, next) => {
-    res.send(req.params);
-    return next();
-  }
-}
-
-module.exports = { Routes };
+module.exports = {Routes};

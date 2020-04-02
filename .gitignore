@@ -18,3 +18,5 @@ service/yarn.lock
 src/service/*.json
 src/service/*.lock
 *.lock
+database.json
+db.json

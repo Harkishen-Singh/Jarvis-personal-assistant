@@ -1,22 +1,11 @@
 os:
   - linux
+  - mac
 
 sudo: required
 
-services:
-  - xvfb
-
 language:
-  - go
-
-go:
-  - 1.11.x
-
-addons:
-  chrome: stable
-  apt:
-    packages:
-      - chromium-chromedriver
+  - node
 
 cache:
   - tests/node_modules/
@@ -25,21 +14,12 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - cd service/ && go get -u -v -d && cd ..
-  - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
+  - npm install -g yarn eslint eslint-config-google
+  - yarn install
 
 
 script:
-  - make build
-  - ./bin/service &
-  - export ENV=test
-  - npm install -g http-server mocha eslint
-  - eslint view/web/app-jarvis.js
-  - echo "checking go format ..."
-  - diff -u <(echo -n) <(gofmt -d ./src ./tsdb)
-  - echo "perfect go format. moving ahead ..."
-  - cd view/web/ && npm start && cd ../..
-  - go test service/controllers/controllers_test.go
-  - cd tests/
-  - npm install
-  - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js
+  - eslint src/view/web/app-jarvis.js
+  - echo "checking js format in service ..."
+  - yarn ci-lint
+  - yarn serve &

@@ -20,7 +20,7 @@ Assuming `yarn` is installed. If not, install yarn with `npm i g yarn`
 
 Run Jarvis-service:
 
-1. Run service: `make run`
+1. Run service: `yarn serve` or `make run`
 2. Run the desktop app: `make views`
 
 To get started with your contributions for Jarvis-personal-assistant see [CONTRBUTING.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/CONTRIBUTING.md)
