@@ -1,6 +1,7 @@
 os:
   - linux
   - mac
+  - windows
 
 sudo: required
 
