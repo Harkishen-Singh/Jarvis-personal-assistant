@@ -1,0 +1,41 @@
+<div>
+    <div class="all-sides-centering">
+        <span id="label-ask" data-ng-show="showLabel">
+            Type below to ask Jarvis any of your queries!
+        </span>
+        <div class="user-input-outer-layer" id="ele4-move">
+            <form>
+                <label class="all-sides-centering align-inputs">
+                    <img
+                            src="../assets/images/message-icon.png"
+                            class="message-icon-style"
+                            alt="input message to ask Jarvis"
+                    />
+                    &nbsp; &nbsp;
+                    <input
+                            type="text"
+                            size="35"
+                            class="user-message-input-area"
+                            data-ng-model="query"
+                            placeholder="Type a message .."
+                            id="user-input-area"
+                    />
+                    <button
+                            class="user-input-ask-button"
+                            data-ng-click="AskButtonClick(query)"
+                            id="userButton"
+                            type="submit"
+                    >
+                        Ask
+                    </button>
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <!--  response routing  -->
+
+    <div
+            data-ng-include="'components/response-routes.html'"
+    ></div>
+</div>

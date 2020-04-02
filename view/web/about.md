@@ -1,1 +1,0 @@
-front-end serving with angularJS

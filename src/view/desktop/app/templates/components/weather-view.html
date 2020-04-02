@@ -1,0 +1,30 @@
+<!-- Handles weather requests -->
+<div class="weather-view-class" data-ng-controller="weather-view-controller">
+    <div class="outer-layer-response">
+        <!-- upper region -->
+        <div data-ng-class="tempTag">
+            <span id="head-weather-data-text">
+                {{weatherData.temperature}}
+            </span>
+            <span style="font-size: 18px;">
+                feels like {{weatherData.feels_like}}
+            </span>
+            <br/><br/>
+            <span style="text-align: center; margin-left: 20%;">
+                at <strong>{{weatherData.city | uppercase}}</strong>
+            </span>
+        </div>
+        <!-- bottom region -->
+        <div id="tail-weather-data">
+            <span>
+                <strong>Humidity :</strong> {{weatherData.humidity}}
+            </span> <br/>
+            <span>
+                <strong>Visibility :</strong> {{weatherData.visibility}}
+            </span> <br/>
+            <span>
+                <strong>Dew Point :</strong> {{weatherData.dew_point}}
+            </span> <br/>
+        </div>
+    </div>
+</div>

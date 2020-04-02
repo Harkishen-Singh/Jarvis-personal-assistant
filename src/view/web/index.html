@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="jarvis">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jarvis - Personal Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/services/bootstrap.min.css">
+    <script src="./js/services/angular.min.js"></script>
+    <script src="./js/services/angular-route.js"></script>
+    <script src="./js/services/jquery-3.2.1.min.js"></script>
+    <script src="./app-jarvis.js"></script>
+    <script src="./js/services/d3.v4.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <header data-ng-include="'components/header.html'" ></header>
+
+    <!-- sidebar -->
+    <div data-ng-include="'components/sidebar.html'"></div>
+
+    <!-- main layout -->
+    <main data-ng-view id='mainContent' style="margin-left: 27%; margin-top:10px;"></main>
+
+</body>
+</html>

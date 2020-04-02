@@ -1,0 +1,187 @@
+<div id="sidebar" data-ng-controller="sidebarController" data-ng-init="initSidebar()">
+    <br>
+    <span id="sidebar-header">
+        Utilities Hub
+    </span>
+    <br>
+    <br>
+    <br>
+    <!-- <form action="" style="padding:3.5%;">
+        <div class="form-group">
+          <label for="text">Github-Email:</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Github Password:</label>
+          <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Root Password:</label>
+          <input type="password" class="form-control" id="pwdroot">
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form> -->
+
+    <div>
+      <button class="btn btn-primary" data-ng-click="toggleHelp()" style="margin-left: 12%; margin-bottom: 10%;">
+        Get Help on pre-defined Statements
+      </button>
+      <div data-ng-show="showHelp" style="padding: 10px; text-align: center; max-height: 60vh; overflow-y: scroll;">
+
+        <!-- web queries -->
+        <div class="descrp-sidebar">
+          <h5 id="webHead" >
+            Web Queries
+          </h5>
+          <div id="webQueries" class="descrp-body">
+            <p>
+              Search the web for specific query. Currently supported search engines: <br>
+              <ol>
+                <li>
+                  Google (keyword: <i>google</i>)
+                </li>
+                <li>
+                  Bing (keyword: <i>bing</i>)
+                </li>
+                <li>
+                  Yahoo (keyword: <i>yahoo</i>)
+                </li>
+                <li>
+                  search &mdash; for general searches, irrespective of the search engine.
+                </li>
+              </ol>
+              <br>
+              <span>Syntax: <br></span>
+              <code>
+                <i><b>keyword {query string}</b></i>
+              </code>
+            </p>
+          </div>
+        </div>
+
+        <!-- videos / youtube -->
+        <div class="descrp-sidebar">
+            <h5 id="videoHead">
+              Videos on Youtube
+            </h5>
+            <div id="videosYoutube" class="descrp-body">
+              <p>
+                Search youtube for videos <br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>youtube {query string}</b></i> <br>
+                  OR <br>
+                  <i><b>vidoes on {query string}</b></i>
+                </code>
+              </p>
+            </div>
+        </div>
+
+        <!-- images -->
+        <div class="descrp-sidebar">
+            <h5 id="imageHead">
+              Images
+            </h5>
+            <div id="imagesBody" class="descrp-body">
+              <p>
+                Search images on the web <br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>image {query string}</b></i> <br>
+                  OR <br>
+                  <i><b>images {query string}</b></i>
+                </code>
+              </p>
+            </div>
+        </div>
+
+        <!-- weather -->
+        <div class="descrp-sidebar">
+            <h5 id="weatherHead">
+              Live Weather Conditions
+            </h5>
+            <div id="weatherBody" class="descrp-body">
+              <p>
+                Get live weather condition updates about any place. <br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>weather {city name} {state name}</b></i>
+                </code>
+              </p>
+            </div>
+        </div>
+
+        <!-- meaning -->
+        <div class="descrp-sidebar">
+            <h5 id="meaningHead">
+              Word meanings
+            </h5>
+            <div id="meaningBody" class="descrp-body">
+              <p>
+                Accurate word meanings from oxford <br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>meaning {query word}</b></i>
+                </code>
+              </p>
+            </div>
+        </div>
+
+        <!-- medicine -->
+        <div class="descrp-sidebar">
+            <h5 id="medicineHead">
+              Details on medicine
+            </h5>
+            <div id="medicineBody" class="descrp-body">
+              <p>
+                Get complete details about the medicine <br> by quering the generic name of the medicine.<br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>medicine {generic name}</b></i>
+                </code>
+                <br>
+                <span>Example: <br></span>
+                <code>
+                    <i><b>medicine paracetamol</b></i> <br>
+                    <i><b>medicine Rebamipide</b></i> <br>
+                </code>
+              </p>
+            </div>
+        </div>
+
+        <!-- symptoms -->
+        <div class="descrp-sidebar">
+            <h5 id="symptomsHead">
+              Symptoms based medicine advice
+            </h5>
+            <div id="symptomsBody" class="descrp-body">
+              <p>
+                Get medicine advice based on the symptoms or condition of the patient.<br>
+                <br>
+                <span>Syntax: <br></span>
+                <code>
+                  <i><b>symptoms {symptom name}</b></i>
+                </code>
+                <br>
+                <span>Example: <br></span>
+                <code>
+                    <i><b>symptoms headache</b></i> <br>
+                    <i><b>symptoms cramps</b></i> <br>
+                </code>
+              </p>
+            </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+

@@ -1,18 +1,14 @@
 {
-  "name": "jarvis-personal-assistant",
+  "name": "service",
   "version": "1.0.0",
-  "description": "for lints",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js"
   },
-  "author": "codeZero",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "selenium-webdriver": "^4.0.0-alpha.5"
+    "bunyan": "^1.8.12",
+    "node-json-db": "^1.0.3",
+    "restify": "^8.5.1"
   }
 }

@@ -6,15 +6,10 @@ install-all || update:
 	cd view/desktop/ && npm install
 
 run:
-	go run service/main.go
+	node src/service/main.js
 
-views:
-	cd view/desktop/ && npm start
-
-build:
-	mkdir bin
-	cd service/ && go build main.go
-	mv service/main bin/service
+app:
+	cd src/view/desktop/ && npm start
 
 clean:
 	rm -R bin

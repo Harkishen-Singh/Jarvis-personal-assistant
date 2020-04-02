@@ -1,0 +1,29 @@
+<!-- Handles query requests -->
+<div class="outer-layer-response" data-ng-controller="query-view-controller" style>
+    <!-- <div id="queried-data" data-ng-if="message.result.length !== 0">
+        <div data-ng-repeat="objectQuery in queryData">
+            <div class = "image-zoom">
+                <a href="{{objectQuery.link}}" target="_blank">
+                    <img ng-src="{{objectQuery.link}}" class = "image-style" />
+                </a>
+            </div>
+        </div>
+    </div> -->
+    <div id="queried-data" data-ng-if="queryData.length !== 0 ">
+        <br />
+        <div data-ng-repeat="objectQuery in queryData">
+            <div class = "image">
+                <div class="card ">
+                    <div class="card-body">
+                        <a href="{{objectQuery.link}}" target="_blank">
+                            <img ng-src="{{objectQuery.link}}" class="image-style" />
+                        </a>
+                        <hr />
+                        <p class="desc-query-data">{{objectQuery.desc}}</p>
+                        <p class="dlink-query-data">{{objectQuery.dlink}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

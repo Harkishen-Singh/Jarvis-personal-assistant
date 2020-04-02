@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-dupe-args": "error",
+        "no-dupe-keys": "error",
+        "no-empty": "error",
+        "no-extra-semi": "error",
+        "no-func-assign": "error",
+        "no-irregular-whitespace": "error",
+        "no-sparse-arrays": "error",
+        "no-unexpected-multiline": "error",
+       "no-unreachable": "error",
+        "class-methods-use-this": "error",
+        "curly": "error",
+        "eqeqeq": "error",
+        "no-invalid-this": "error",
+        "keyword-spacing": "error",
+        "space-before-blocks": "error"
+    }
+}

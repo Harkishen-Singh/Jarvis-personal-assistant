@@ -1,0 +1,330 @@
+<div>
+    <img src="../assets/icons/main_banner.gif" alt="" id="main-banner" data-ng-show="mainBanner"
+        data-ng-init="controlMainBanner()" />
+    <div data-ng-init="initStack()">
+        <span id="chat-screen" style="color:black;">
+            Chat Screen
+            <hr>
+        </span>
+        <!-- chat screen -->
+
+        <div data-ng-show="messageStack.length !== 0" id="stackArea-parent">
+            <div data-ng-repeat="message in messageStack" id="stackArea">
+                <div data-ng-if="message.sender === 'you'">
+                    <div class="chat-screen-messages-you" class="clearfix">
+                        {{message.message}}
+                        <span>
+                            <sub class="show-user-creds">
+                                {{message.sender}}
+                                {{message.time}}
+                            </sub>
+                        </span>
+                    </div>
+                    <div data-ng-if="message.isLoading" class="loader">
+                        <div class="loader"></div>
+                        <img src="../assets/icons/loader.gif" alt="" style="height:50px;float: right;margin-right: -0.5%">
+                    </div>
+                    <div data-ng-if="message.hasError" class="loader">
+                        <div class="loader"></div>
+                        <div style="height:50px;float: right;margin-right: -0.5%">
+                            <div class="d-flex h-100 align-items-center">
+                                <button data-ng-click="retryMessage(message)" class="btn btn-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                                </button>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path class="svg svg-danger" d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+                <div data-ng-if="message.sender === 'jarvis-bot'" class="chat-screen-messages-jarvis-bot"
+                    class="clearfix">
+                    <div ng-switch="message.message">
+                        <!-- for specific messages -->
+
+                        <div ng-switch-when="here are the top search results">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <h4 class="head-query-data">{{$index + 1}}. {{objectQuery.head}}</h4>
+                                    <a class="link-query-data" href="{{objectQuery.link}}" target="_blank">{{objectQuery.link}}</a>
+                                    <p class="desc-query-data" ng-bind-html="objectQuery.desc | unsafe"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the top search videos">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div data-ng-controller="video-view-controller">
+                                <div id="queried-data" data-ng-if="url.length !== 0 ">
+                                    <br>
+                                    <div data-ng-repeat="urls in url">
+                                        <iframe ng-src="{{urls}}" class="video-link"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="Information about the medicine : ">
+                            <div class="message-style">
+                                <b>{{message.message}}</b>
+                                <br>
+                                <p style="white-space: pre-wrap">{{message.result}}</p>
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="Help on the given symptoms : ">
+                            <div class="message-style">
+                                <b>{{message.message}}</b>
+                                <br>
+                                <p style="white-space: pre-wrap">{{message.result}}</p>
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the searched images">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <div class="images-searched">
+                                    <div data-ng-repeat="objectQuery in message.result" id="queried-image">
+                                        <div class="item">
+                                            <a href="{{objectQuery.link}}" target="_blank">
+                                                <img ng-src="{{objectQuery.link}}"
+                                                    style="display:block;margin-left: 20px;
+                                                            margin-right:20px;padding: 10px;width:424.66px;height: 318.48px;" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here are the current weather conditions">
+                            <div class="message-style">
+                                {{message.message}} at {{message.result.city}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div>
+                                    <span class="head-query-data">Currently {{message.result.temperature}}</span><br>
+                                    <span class="head-query-data">Feels like {{message.result.feels_like}}</span><br>
+                                    <span class="head-query-data">Humidity being {{message.result.humidity}}</span><br>
+                                    <span class="head-query-data">Visibility {{message.result.visibility}}</span><br>
+                                    <span class="head-query-data">Dew Point {{message.result.dew_point}}</span><br>
+                                    <span class="head-query-data">At time {{message.result.time}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="Enter Reminder details : " id="rem-msg">
+                            <div class="message-style">
+                                {{message.message}}
+                               <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div class="container">
+                                <form>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" class="form-control" id="title" data-ng-model="formData.remTitle" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" id="description" data-ng-model="formData.remDescription"></textarea>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <label for="time">Date and Time</label>
+                                        <input type="datetime-local" class="form-control" id="time" data-ng-model="formData.remTime" required>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-success" data-ng-click="setReminder()">
+                                        Set Reminder
+                                    </button>
+                                
+                                </form>
+                            </div>
+                        </div>
+                        <div ng-switch-when="Here are your reminders : ">
+                            <div class="message-style">
+                                {{message.message}}
+                                   <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <h4 class="head-query-data">{{objectQuery.id}}. {{objectQuery.title}}</h4>
+                                    <p>{{objectQuery.description}}</p>
+                                    <br/>
+                                    <p><b>Due: </b>{{objectQuery.time}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="here is the meaning of the searched word">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div id="queried-data" data-ng-if="message.result.length !== 0">
+                                <br>
+                                <div data-ng-repeat="objectQuery in message.result" id="queried-info">
+                                    <span class="meaning">{{$index + 1}}. {{objectQuery.meaning}}</span><br>
+                                    <span class="example"><i>Example: {{objectQuery.example}}</i></span><br>
+                                    <div data-ng-repeat="sub in objectQuery.submeaning" id="submean">
+                                        <span class="submeaning">{{$parent.$index + 1}}.{{$index+1}}. {{sub.Smean}}</span><br>
+                                        <span class="subexample"><i>Example: {{sub.Subexample}}</i></span><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-when="Enter Mail details : " id="mail-msg">
+                            <div class="message-style">
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                            <div class="container">
+                                <form>
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="sender">Sender:</label>
+                                        <input type="text" class="form-control" id="sender" data-ng-model="formData.Sender" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="to">TO:</label>
+                                        <input type="text" class="form-control" id="to" data-ng-model="formData.To" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="to">CC:</label>
+                                        <input type="text" class="form-control" id="cc" data-ng-model="formData.CC">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="to">BCC:</label>
+                                        <input type="text" class="form-control" id="bcc" data-ng-model="formData.BCC">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" class="form-control" id="subject" data-ng-model="formData.Subject" required>
+                                    </div>
+                        
+                                    <div class="form-group">
+                                        <label for="body">Body</label>
+                                        <textarea class="form-control" id="body" data-ng-model="formData.Body"></textarea>
+                                    </div>
+                        
+                                    <button type="submit" class="btn btn-success" data-ng-click="sendMail()">
+                                        Send Mail
+                                    </button>
+                        
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- for general messages -->
+                        <div ng-switch-default>
+                            <div>
+                                {{message.message}}
+                                <span>
+                                    <sub class="show-user-creds">
+                                        {{message.sender}}
+                                        {{message.time}}
+                                    </sub>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <!-- message field -->
+        <div id="message-bar">
+            <div id="message-input-parent">
+                <input type="text" name="" id="message-input" data-ng-model="message" placeholder="Type a message"
+                    autofocus>
+                <button id="message-bar-send" class="btn btn-danger" data-ng-click="addMessagesToStack()">
+                    Send
+                </button>
+                <!-- banner -->
+                <div id="banner-listen" data-ng-show="showLoaderListening">
+                    <span>Listening ... </span>
+                    <img src="../assets/icons/load.gif" alt="listening to you. Please keep speaking.." id="loader"
+                        srcset="">
+                </div>
+                <img src="../assets/icons/mic.png" alt="Click to Start/Stop speaking" id="button"
+                    data-ng-click="toggleStartStop()" />
+            </div>
+        </div>
+    </div>
+</div>

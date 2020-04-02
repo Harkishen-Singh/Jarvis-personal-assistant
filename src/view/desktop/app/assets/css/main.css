@@ -1,0 +1,437 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.logo-pre-query {
+    height: 100px;
+    position: absolute;
+    padding: 5px;
+    top: 40%;
+    border-radius: 15px;
+    background-color: white;
+    left: 40%;
+    transition: all 1s ease-in-out;
+}
+
+.logo-post-query {
+    height: 90px;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    border-radius: 15px;
+    background-color: white;
+    left: 40%;
+    
+}
+
+.all-sides-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.jarvis-bot-area {
+    background-color: blue;
+    color: white;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    vertical-align: center;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 25px;
+    transition: all 1s ease-in-out;
+}
+
+.hide {
+    height: 0;
+}
+
+.user-area-pre-query {
+    position: absolute;
+    top: 80%;
+    font-size: 16px;
+    transition: all 1s ease-in-out;
+}
+
+.user-area-post-query {
+    position: absolute;
+    top: 13%;
+    font-size: 20px;
+    /* margin-left: 3px; */
+}
+
+.outer-layer {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* background-color: rgba(225, 225, 225, 0.45); */
+    border-radius: 5px;
+    width: 100%;
+    height: 80%;
+}
+
+#jarvis-message-id {
+    font-size: 12px;
+    text-align: left;
+}
+
+.user-message-input-area {
+    line-height: 25px;
+    font-size: 13px;
+    border-color: #f8f8f8;
+    border-radius: 5px;
+    width: 230px;
+    /* margin-left: 15px; */
+}
+
+.message-icon-style {
+    height: 30px;
+    transition: all 1s ease-in-out;
+    /* margin-left: 30px; */
+}
+
+/* .message-icon-style-post-query {
+    height: 30px;
+    transition: all 1s ease-in-out;
+    /* margin-left: 30px; 
+} */
+
+.user-input-ask-button {
+    background-color: blue;
+    color: white;
+    padding: 2px 10px 2px 10px;
+    font-size: 15px;
+    margin-left: 10px;
+    border-radius: 8px;
+    transition: all 1s ease-in-out;
+}
+
+.user-input-ask-button-post-query {
+    display: none; /* removing this entire class style will make the sliding proces toggleable */
+}
+
+.user-input-outer-layer {
+    /* background-color: blue; */
+    margin-left: 10%;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    transition: all 1s ease-in-out;
+    width: 400px;
+}
+
+.user-input-outer-layer-post-query {
+    background-color: transparent;
+    margin-left: 25%;
+    margin-top: 0;
+    border-radius: 10px;
+    padding: 0 20px 0 10px;
+}
+
+#label-ask {
+    position: absolute;
+    top: -30px;
+    left: 40px;
+    font-size: 15px;
+}
+
+.animate {
+    transition: all linear 1s;
+}
+
+.animate.ng-enter {
+    transition: all linear 0.25s;
+    opacity: 0;
+}
+
+.animate.ng-leave {
+    transition: all linear 1s;
+    opacity: 1;
+}
+
+.reset-button {
+    height: 50px;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+.reset-button:hover {
+    height: 55px;
+}
+
+/* response styles */
+
+.outer-layer-response {
+    margin: 10px 20px 10px 5px;
+    border-radius: 20px;
+    background-color: #EFF0F1;
+}
+
+.head-weather-data-high {
+    background-color: yellow;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0 0;
+}
+
+.head-weather-data-very-high {
+    background-color: #F4C62B;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-extreme {
+    background-color: #E82828;
+    color: white;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-mild {
+    background-color: #F0F893;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cool {
+    background-color: #F8FBD9;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cooler {
+    background-color: #FEFFEF;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-cold {
+    background-color: #FFFFFE;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.head-weather-data-extreme-cold {
+    background-color: #FFFFFF;
+    color: black;
+    height: 200px;
+    width: 100%;
+    padding-top: 50px;
+    padding-left: 20%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+#head-weather-data-text {
+    font-size: 50px;
+}
+
+#tail-weather-data {
+    font-size: 15px;
+    margin: 10px 0 15px 15px;
+}
+
+.head-query-data {
+    font-size: 12px;
+    margin-bottom: -10 px;
+    line-height: 1.5;
+    font-weight: 900;
+    color: blue
+}
+
+.link-query-data {
+    font-size: 12px;
+    color: green;
+    margin-bottom: 0 rem
+    /* display: none; */
+}
+
+.desc-query-data {
+    font-size: 12px;
+    margin-bottom: 0 rem;
+}
+
+.dlink-query-data {
+    font-size: 12px;
+    margin-bottom: 0 rem;
+}
+
+.card {
+    border: 1px solid white;
+    border-radius: 10px; 
+    margin: 0px 10px 10px 10px;
+}
+
+.card:hover {
+    background-color: #FFF9C4;
+}
+
+.card-body {
+    padding: 1 rem;
+}
+
+.medicine-view-main {
+    border-radius: 20px;
+}
+
+.medicine-health-main-body {
+    white-space: pre-wrap;
+    font-size: 12px;
+    margin: 10px;
+    background-color: #FFF9C4;
+    font-weight: 400;
+}
+
+.medicine-health-main-head {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 200;
+    margin: 20px 0 10px 0;
+}
+
+/* recent usage */
+
+#recent-usage-heading {
+    font-weight: 300;
+    font-size: 13px;
+    border-bottom: 1px solid white;
+    width: 100%;
+}
+
+#recent-usage-inner-layer {
+    padding: 10px;
+}
+
+.video-link {
+    width: 350px;
+    height: 250px;
+    margin: 0px 15px 10px 15px;
+}
+
+.recent-usage-tag {
+    background-color: white;
+    color: blue;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.recent-usage-query {
+    margin-left: 5%;
+}
+
+.recent-usage-outer-loop-layer {
+    overflow-y: scroll;
+}
+
+.image-style {
+    display:block;
+    border-radius: 10px;
+    width:200px;
+    height: 150px;
+}
+
+.image-zoom {
+    transition: transform 0.5s;
+    width:250px;
+    height: 250px;
+}
+
+.image-zoom:hover {
+    transform: scale(1.5);
+}
+
+.image .card {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0px 10px 10px 10px;
+    width: 200px;
+}
+
+.image .card-body {
+    padding: 0rem;
+}
+
+.general-message-outer-layer {
+    text-align: center;
+}
+
+.general-message-style {
+    color: black;
+    font-size: 15px;
+    background-color: #FFF9C4;
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+}
+.meaning {
+    font-size: 12px;
+    line-height: normal;
+    margin-bottom: 0rem; 
+}
+
+.example {
+    font-size: 10px;
+    padding-left: 10px;
+    margin-bottom: 0rem; 
+    color: grey;
+}
+
+.submeaning {
+    font-size: 12px;
+    padding-left: 10px;
+    margin-bottom: 0rem; 
+}
+
+.subexample {
+    font-size: 10px;
+    padding-left: 14px;
+    margin-bottom: 0rem; 
+    color: grey;
+}
+
+#email-form {
+    display: block;
+}
+
+
+#email-message {
+    display: none;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    background-color: #FFF9C4;
+    border-radius: 5px;
+    padding: 15px 10px 15px 10px;
+}
