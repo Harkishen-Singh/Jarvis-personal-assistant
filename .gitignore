@@ -15,3 +15,6 @@ service/go.sum
 service/logs/*
 jarvis
 service/yarn.lock
+src/service/*.json
+src/service/*.lock
+*.lock
