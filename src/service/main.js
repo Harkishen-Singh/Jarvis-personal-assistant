@@ -7,7 +7,7 @@ const bunyanLogger = bunyan.createLogger({name: 'Jarvis'});
 const Configurations = require('./utils/configurations').configurations;
 Routes = require('./routes').Routes;
 
-const db = new JsonDB(new Config('database', true, true, '/'));
+const db = new JsonDB(new Config('db', true, true, '/'));
 const server = new Routes(PORT, bunyanLogger);
 
 // Initialize database.

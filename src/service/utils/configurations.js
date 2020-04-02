@@ -3,11 +3,11 @@ const configurations = {
   onFirstStart: {
     date: date.getDate(),
     month: date.getMonth(),
-    year: date.getFullYear(),
+    year: date.getFullYear()
   },
   store: {
-    gc: {},
-  },
+    gc: {}
+  }
 };
 
 module.exports = {configurations};
