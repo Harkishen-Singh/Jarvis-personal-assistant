@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "bunyan": "^1.8.12",
+    "lock": "^1.1.0",
     "node-json-db": "^1.0.3",
     "restify": "^8.5.1"
   },
