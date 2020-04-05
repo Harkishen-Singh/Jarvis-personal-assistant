@@ -20,7 +20,6 @@ class Task {
 
   weather(location) {
     // Do weather operation
-    return new Promise(())
   }
 
   meaning(entity) {

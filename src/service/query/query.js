@@ -2,7 +2,6 @@ const fs = require('fs');
 const _lock = require('lock').Lock;
 const Sentence = require('./sentence').Sentence;
 const exceptionsAST = require('./constance').exceptionsAST;
-const db = require('../utils/db-manager').DBService;
 const Task = require('./tasks').Task;
 
 let features;

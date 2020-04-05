@@ -65,7 +65,7 @@ class Weather {
 
 // module.exports = { Weather };
 const obj = new Weather('bhubaneswar', 'orissa', 'india');
-obj.fetch().then(result => {
+obj.fetch().then((result) => {
   console.warn('the result is ');
   console.warn(result);
-})
+});
