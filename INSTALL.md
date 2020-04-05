@@ -19,32 +19,28 @@ The prerequisites for installing the project :
     ```
 2. Install Go and npm packages.
     ```
-        $ sudo npm install -g http-server selenium-webdriver mocha mochawesome eslint
+        $ sudo npm install -g http-server mocha mochawesome eslint
     ```
     Important, execute separately: 
     ```
-        $ npm install chromedriver
-    ```
-    ```
         $ go get -v -u -d ./...
     ```
-3. Install Python 2.*.* . To verify if its installed, `python --version`.
-4. Start the HTTP server. *Do not close this terminal*
+3. Start the HTTP server. *Do not close this terminal*
     ```bash
         cd view/web && http-server
     ```
-5. Start the GoLang server. *Do not close this terminal*
+4. Start the GoLang server. *Do not close this terminal*
     ```bash
         cd service && go run main.go
     ```
-6. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
+5. [optional but recommended] For listening to the jarvis voice download and install **mplayer** in linux or windows, and set the **path** so that it responds when typed `mplayer` in the terminal or command prompt.
 
-7. On running the service, it will occupy the port `:3000` and the front-end will run at port `:8080`
+6. On running the service, it will occupy the port `:3000` and the front-end will run at port `:8080`
 
 ### for executing tests
 
-8. `eslint view/app-jarvis.js` # for linting checks
-9. `cd tests && npm install && mocha tests.js`
+7. `eslint view/web/app-jarvis.js` # for linting checks
+8. `cd tests && npm install && mocha tests.js`
 
 ## Running the Desktop-app
 

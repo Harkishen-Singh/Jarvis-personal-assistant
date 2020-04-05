@@ -11,9 +11,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "bunyan": "^1.8.12",
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.0",
     "lock": "^1.1.0",
     "node-json-db": "^1.0.3",
+    "request": "^2.88.2",
     "restify": "^8.5.1"
   },
   "devDependencies": {
