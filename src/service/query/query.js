@@ -1,6 +1,8 @@
 const fs = require('fs');
 const _lock = require('lock').Lock;
 const Sentence = require('./sentence').Sentence;
+const exceptionsAST = require('./constance').exceptionsAST;
+const db = require('../utils/db-manager').DBService;
 
 class QueryEngine {
   constructor() {
@@ -53,6 +55,7 @@ class QueryEngine {
     lock('ops', (release) => {
       const sentence = new Sentence(query);
       sentence.tokenize();
+      const stopwords = sentence.stopwords();
 
       const featurePositions = this.getFeaturesAlongWithPositions(
           this.featuresList,
@@ -69,6 +72,32 @@ class QueryEngine {
       const lexer = sentence.getLexerInstance();
       const featurePosition = featurePositions[0].position;
       lexer.setHeadPosition(featurePosition);
+
+      const ast = (feature) => {
+        if (feature in this.features.weather) {
+          let location = db.fetch('/personal/location');
+          if (location === undefined) {
+            // fetch the location. for now, "bhubaneswar"
+            location = 'bhubaneswar';
+          }
+
+          // TODO: launch service for fetching weather.
+        } else if (feature in this.features.meaning) {
+          let entity;
+
+          while (true) {
+            const { value } = lexer.next();
+            if (value in stopwords) {
+              continue;
+            }
+
+            // first count
+            if (value in exceptionsAST.meaning.continueFirstCount) {
+              lexer.getIterValue();
+            }
+          }
+        }
+      };
     });
   }
 }

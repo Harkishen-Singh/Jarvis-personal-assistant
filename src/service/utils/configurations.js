@@ -1,5 +1,5 @@
 const date = new Date();
-const configurations = {
+const data = {
   onFirstStart: {
     date: date.getDate(),
     month: date.getMonth(),
@@ -7,7 +7,10 @@ const configurations = {
   },
   store: {
     gc: {}
+  },
+  personal: {
+    location: 'delhi'
   }
 };
 
-module.exports = { configurations };
+module.exports = { data };

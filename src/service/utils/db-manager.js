@@ -28,6 +28,11 @@ class DBManager {
     };
   }
 
+  fetch(path) {
+    this.stack.push(this.format('fetch', path, null));
+    return this.db.getData(path);
+  }
+
   commit(path, data) {
     const lock = _lock();
 
