@@ -1,7 +1,9 @@
 const restify = require('restify');
 const Default = require('./handlers/default').Handler;
+const Message = require('./handlers/messages').Message;
 const Handlers = {
-  default: new Default()
+  default: new Default(),
+  messages: new Message()
 };
 
 class Routes {
@@ -27,6 +29,7 @@ class Routes {
   applyRoutes() {
     this.server.get('/', Handlers.default.default);
     this.server.get('/echo/:name', Handlers.default.echo);
+    this.server.get('/messages', Handlers.messages.recMessage )
   }
 
   listen() {
