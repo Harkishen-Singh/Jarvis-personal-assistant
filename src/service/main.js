@@ -1,18 +1,16 @@
 const bunyan = require('bunyan');
-const JsonDB = require('node-json-db').JsonDB;
-const Config = require('node-json-db/dist/lib/JsonDBConfig').Config;
 
 const PORT = process.env.PORT || 5000;
-const bunyanLogger = bunyan.createLogger({name: 'Jarvis'});
+const bunyanLogger = bunyan.createLogger({ name: 'Jarvis' });
 const Configurations = require('./utils/configurations').configurations;
-Routes = require('./routes').Routes;
-
-const db = new JsonDB(new Config('db', true, true, '/'));
-const server = new Routes(PORT, bunyanLogger);
+const WebManager = require('./routes').WebManager;
+const db = require('./utils/db-manager').DBService;
 
 // Initialize database.
-db.push('/init', Configurations.onFirstStart);
-db.push('/store', Configurations.store);
+db.commit('/init', Configurations.onFirstStart);
+db.commit('/store', Configurations.store);
+
+const server = new WebManager(PORT, bunyanLogger);
 
 // Run service.
 server.listen();

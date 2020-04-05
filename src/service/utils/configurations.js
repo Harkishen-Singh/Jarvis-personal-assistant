@@ -10,4 +10,4 @@ const configurations = {
   }
 };
 
-module.exports = {configurations};
+module.exports = { configurations };

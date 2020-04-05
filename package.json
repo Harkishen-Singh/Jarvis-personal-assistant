@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "serve": "node src/service/main.js",
-    "lint": "eslint src/service/**/*.js src/view/web/*.js --fix",
-    "ci-lint": "eslint src/service/**/*.js"
+    "ci-lint": "eslint src/service/**/*.js",
+    "ci-pretty": "prettier src/service/**/*.js -c",
+    "lint": "eslint src/service/*.js src/service/**/*.js src/view/web/*.js --fix",
+    "pretty": "prettier src/service/**/*.js --write --single-quote --arrow-parens always",
+    "serve": "node src/service/main.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -13,6 +15,7 @@
     "bunyan": "^1.8.12",
     "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0",
+    "lock": "^1.1.0",
     "node-json-db": "^1.0.3",
     "request": "^2.88.2",
     "restify": "^8.5.1"

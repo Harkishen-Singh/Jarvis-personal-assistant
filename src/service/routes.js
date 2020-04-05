@@ -6,7 +6,7 @@ const Handlers = {
   messages: new Message()
 };
 
-class Routes {
+class WebManager {
   constructor(port, logger) {
     this.server = restify.createServer({
       name: 'myapp',
@@ -39,4 +39,4 @@ class Routes {
   }
 }
 
-module.exports = {Routes};
+module.exports = { WebManager };
