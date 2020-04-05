@@ -3,28 +3,28 @@ const _lock = require('lock').Lock;
 const Sentence = require('./sentence').Sentence;
 const exceptionsAST = require('./constance').exceptionsAST;
 const db = require('../utils/db-manager').DBService;
+const Task = require('./tasks').Task;
 
-class QueryEngine {
-  constructor() {
-    this.query = '';
-    this.features = {}; // parsing-priority-1
+let features;
+
+(() => {
+  features = JSON.parse(fs.readFileSync('data/features.json'));
+})();
+
+class Query {
+  constructor(query) {
+    this.query = query;
+    this.features = features; // parsing-priority-1
     this.featuresList = [];
-
-    this.initializeFeatures();
-  }
-
-  initializeFeatures() {
-    const raw = fs.readFileSync('data/features.json');
-    this.features = JSON.parse(raw);
+    this.taskInstance = new Task('qe-main');
 
     for (const value of Object.values(this.features)) {
       this.featuresList.push(value);
     }
-  }
 
-  insertQuery(query) {
     const sentence = new Sentence(query);
     sentence.tokenize();
+
     this.process(sentence, sentence.sentenceTokenized);
   }
 
@@ -48,6 +48,20 @@ class QueryEngine {
 
     return features;
   };
+
+  /**
+   * Formats the input into an acceptable form for
+   * the task service.
+   * @param {string} task
+   * @param  {...any} args
+   * @return {Promise}
+   */
+  taskFormat(task, ...args) {
+    return {
+      task,
+      ...args
+    };
+  }
 
   run(query) {
     const lock = _lock();
@@ -75,33 +89,57 @@ class QueryEngine {
 
       const ast = (feature) => {
         if (feature in this.features.weather) {
-          let location = db.fetch('/personal/location');
+          // weather task
+
+          let location;
           if (location === undefined) {
-            // fetch the location. for now, "bhubaneswar"
+            // if not found, set localtion to "bhubaneswar"
             location = 'bhubaneswar';
           }
 
-          // TODO: launch service for fetching weather.
+          return this.taskFormat('weather', location);
         } else if (feature in this.features.meaning) {
-          let entity;
+          // meaning task
 
+          let entity;
           while (true) {
-            const { value } = lexer.next();
+            const { status, value } = lexer.next();
+            if (!status) {
+              lexer.initReverseHEAD();
+              continue;
+            }
+
             if (value in stopwords) {
               continue;
             }
 
             // first count
             if (value in exceptionsAST.meaning.continueFirstCount) {
-              lexer.getIterValue();
+              if (lexer.getIterValue() === 1) {
+                continue;
+              }
+
+              // since first skip is already done,
+              // the user wants to know the meaning
+              // of the word in exception.
+              entity = value;
+              break;
             }
+
+            entity = value;
+            break;
           }
+
+          return this.taskFormat('meaning', entity);
         }
       };
+
+      return new Promise((resolve, reject) => {
+        resolve(1);
+        reject(new Error('a temporary rejection'));
+      });
     });
   }
 }
 
-const QueryService = new QueryEngine();
-
-module.exports = { QueryService };
+module.exports = { Query };
