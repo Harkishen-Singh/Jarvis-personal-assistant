@@ -10,7 +10,7 @@ class Task {
   run(task, ...args) {
     switch (task) {
       case 'weather':
-        this.weather(args[0]);
+        return this.weather(args[0]);
         break;
 
       case 'meaning':
@@ -20,6 +20,7 @@ class Task {
 
   weather(location) {
     // Do weather operation
+    return new Promise(())
   }
 
   meaning(entity) {

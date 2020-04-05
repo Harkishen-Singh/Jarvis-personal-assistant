@@ -83,9 +83,9 @@ class Query {
         );
       }
 
-      const lexer = sentence.getLexerInstance();
-      const featurePosition = featurePositions[0].position;
-      lexer.setHeadPosition(featurePosition);
+      const lexer = sentence.getLexer();
+      const { feature, position } = featurePositions[0];
+      lexer.setHeadPosition(position);
 
       const ast = (feature) => {
         if (feature in this.features.weather) {
@@ -102,28 +102,45 @@ class Query {
           // meaning task
 
           let entity;
+          let twoWayParsing = false;
           while (true) {
+            // The lexing starts with first parsing all the words
+            // to the right (since meaning has mmore weight to the right
+            // of the feature mostly) of the feature word (or node).
+            // Break and reset after all right words are parsed. To do this,
+            // the HEAD to initial position using cache and begin parsing
+            // the left nodes. Once the left end is reached
+            // stop the parsing since all words are parsed.
             const { status, value } = lexer.next();
             if (!status) {
+              if (twoWayParsing) {
+                // stop after entire query is parsed to
+                // avoid endless loop and false cpu cycles.
+                break;
+              }
+
+              twoWayParsing = true;
               lexer.initReverseHEAD();
               continue;
             }
 
-            if (value in stopwords) {
-              continue;
-            }
-
-            // first count
-            if (value in exceptionsAST.meaning.continueFirstCount) {
-              if (lexer.getIterValue() === 1) {
+            {
+              if (value in stopwords) {
                 continue;
               }
 
-              // since first skip is already done,
-              // the user wants to know the meaning
-              // of the word in exception.
-              entity = value;
-              break;
+              // first count
+              if (value in exceptionsAST.meaning.continueFirstCount) {
+                if (lexer.getIterValue() === 1) {
+                  continue;
+                }
+
+                // since first skip is already done,
+                // the user wants to know the meaning
+                // of the word in exception.
+                entity = value;
+                break;
+              }
             }
 
             entity = value;
@@ -134,9 +151,10 @@ class Query {
         }
       };
 
-      return new Promise((resolve, reject) => {
-        resolve(1);
-        reject(new Error('a temporary rejection'));
+      return new Promise(async (resolve) => {
+        const task = ast(feature);
+        const result = await this.taskInstance.run(task);
+        resolve(result);
       });
     });
   }

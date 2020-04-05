@@ -60,7 +60,7 @@ class Lexer {
    * @return {{Boolean, String}} status, value
    */
   next() {
-    if (!this.forwardDirection) this.previous;
+    if (!this.forwardDirection) return this.previous();
     if (this.headPosition + 1 > this.length) {
       // false signifies that the position of the lexer cannot be incremented.
       // This denotes that the current position is already on the last
@@ -88,7 +88,7 @@ class Lexer {
 
     this.iterCount -= 1;
     this.headPosition -= 1;
-    return { status: true, word: this.sentenceTokenized[this.headPosition] };
+    return { status: true, value: this.sentenceTokenized[this.headPosition] };
   }
 
   reset() {

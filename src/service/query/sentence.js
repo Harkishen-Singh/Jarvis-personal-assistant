@@ -48,7 +48,7 @@ class Sentence {
     return words;
   }
 
-  getLexerInstance() {
+  getLexer() {
     return this.lexer;
   }
 }
