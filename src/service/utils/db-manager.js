@@ -91,6 +91,6 @@ class DBManager {
   }
 }
 
-const DBManagerService = new DBManager('db', true);
+const DBService = new DBManager('db', true);
 
-module.exports = {DBManagerService};
+module.exports = { DBService };

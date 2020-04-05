@@ -36,4 +36,4 @@ class WebManager {
   }
 }
 
-module.exports = {WebManager};
+module.exports = { WebManager };

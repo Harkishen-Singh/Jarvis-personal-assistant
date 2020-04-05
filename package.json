@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "serve": "node src/service/main.js",
-    "lint": "eslint src/service/**/*.js src/view/web/*.js --fix",
-    "ci-lint": "eslint src/service/**/*.js"
+    "ci-lint": "eslint src/service/**/*.js",
+    "ci-pretty": "prettier src/service/**/*.js -c",
+    "lint": "eslint src/service/*.js src/service/**/*.js src/view/web/*.js --fix",
+    "pretty": "prettier src/service/**/*.js --write --single-quote --arrow-parens always",
+    "serve": "node src/service/main.js"
   },
   "license": "MIT",
   "dependencies": {
