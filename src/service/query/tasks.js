@@ -1,3 +1,5 @@
+const Weather = require('../services/weather').Weather;
+
 class Task {
   constructor(name) {
     this.task = name;
@@ -8,9 +10,14 @@ class Task {
   }
 
   run(task, ...args) {
+    console.warn(`task-runner: args: ${args.toString()}`);
     switch (task) {
       case 'weather':
-        return this.weather(args[0]);
+        if (args.length < 3) {
+          throw new Error(`task: invalid number fo args: ${args.toString()}`);
+        }
+
+        return this.weather(args[0], args[1], args[2]);
         break;
 
       case 'meaning':
@@ -18,8 +25,9 @@ class Task {
     }
   }
 
-  weather(location) {
-    // Do weather operation
+  weather(city, state, country) {
+    const weather = new Weather(city, state, country);
+    return weather.fetch();
   }
 
   meaning(entity) {

@@ -30,6 +30,8 @@ class Weather {
       humidity: 0,
       pressure: 0,
       dewPoint: 0,
+      visibility: '',
+      wind: '',
       condition: '',
       set: []
     };
@@ -39,7 +41,50 @@ class Weather {
     const $ = cherrio.load(stream);
     const response = this.skeleton();
     response.temperature = $('span[class=current]').text();
-    console.warn('tmpr: ', response.temperature);
+
+    const filters = {
+      filter: (state, txt, re=null) => {
+        if (re !== null) return state.replace(txt, re);
+        return state.replace(txt, '');
+      },
+      feelsLike: (txt) => {
+        txt = txt.replace('Feels Like ', '');
+        const garbagePosition = txt.indexOf('&');
+        return txt.substring(0, garbagePosition);
+      },
+      dewPoint: (txt) => {
+        txt = filters.filter(txt, 'Dew Point ');
+        const position = txt.indexOf('&');
+        return txt.substring(0, position);
+      },
+      skipFirstSpace: (txt) => {
+        const position = txt.indexOf(' ');
+        return txt.substring(position + 1);
+      }
+    };
+
+    const details = $('.weather-info').html();
+    const arr = details.split('</li>');
+    arr.forEach((ele, i) => {
+      ele = filters.filter(ele, '<span>');
+      ele = filters.filter(ele, '</span>');
+      ele = filters.filter(ele, '<span>');
+      ele = filters.filter(ele, '</span>');
+      ele = filters.filter(ele, '\n<ul>\n\n', '.');
+      ele = filters.filter(ele, '<li>');
+      arr[i] = filters.filter(ele, '\n');
+    });
+
+    const firstSet = arr[0].split('.');
+    response.condition = firstSet[0];
+    response.feelsLike = filters.feelsLike(firstSet[1]);
+
+    response.wind = filters.skipFirstSpace(arr[1]);
+    response.pressure = filters.skipFirstSpace(arr[2]);
+    response.visibility = filters.skipFirstSpace(arr[3]);
+    response.humidity = filters.skipFirstSpace(arr[4]);
+    response.dewPoint = filters.dewPoint(arr[5]);
+
     return response;
   }
 
@@ -63,9 +108,9 @@ class Weather {
   }
 }
 
-// module.exports = { Weather };
-const obj = new Weather('bhubaneswar', 'orissa', 'india');
-obj.fetch().then((result) => {
-  console.warn('the result is ');
-  console.warn(result);
-});
+module.exports = { Weather };
+// const obj = new Weather('bhubaneswar', 'orissa', 'india');
+// obj.fetch().then((result) => {
+//   console.warn('the result is ');
+//   console.warn(result);
+// });

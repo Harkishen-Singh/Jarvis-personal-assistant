@@ -1,9 +1,12 @@
 const restify = require('restify');
 const Default = require('./handlers/default').Handler;
 const Message = require('./handlers/messages').Message;
+const Query = require('./handlers/query').Handler;
+
 const Handlers = {
   default: new Default(),
-  messages: new Message()
+  messages: new Message(),
+  query: new Query()
 };
 
 class WebManager {
@@ -24,12 +27,20 @@ class WebManager {
     this.server.use(restify.plugins.acceptParser(this.server.acceptable));
     this.server.use(restify.plugins.queryParser());
     this.server.use(restify.plugins.bodyParser());
+    this.server.use(
+        function crossOrigin(req, res, next) {
+          res.header('Access-Control-Allow-Origin', '*');
+          res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+          return next();
+        }
+    );
   }
 
   applyRoutes() {
     this.server.get('/', Handlers.default.default);
     this.server.get('/echo/:name', Handlers.default.echo);
-    this.server.get('/messages', Handlers.messages.recMessage );
+    this.server.get('/messages', Handlers.messages.recMessage);
+    this.server.get('/query', Handlers.query.execute);
   }
 
   listen() {

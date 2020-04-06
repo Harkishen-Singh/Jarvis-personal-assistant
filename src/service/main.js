@@ -3,7 +3,7 @@ const bunyan = require('bunyan');
 const PORT = process.env.PORT || 5000;
 const bunyanLogger = bunyan.createLogger({ name: 'Jarvis' });
 const initData = require('./utils/configurations').data;
-const WebManager = require('./routes').WebManager;
+const WebManager = require('./web').WebManager;
 const db = require('./utils/db-manager').DBService;
 
 // Initialize database.

@@ -3,12 +3,13 @@ const Lexer = require('./lexer').Lexer;
 let stopwords = [];
 
 (() => {
-  const raw = fs.readFileSync('data/stopwords.json');
+  const raw = fs.readFileSync(`${__dirname}/data/stopwords.json`);
   stopwords = JSON.parse(raw);
 })();
 
 class Sentence {
   constructor(sentence) {
+    console.warn('sentence is ', sentence);
     this.sentence = sentence;
     this.sentenceTokenized = [];
     this.stopwordsValue = [];
@@ -20,6 +21,10 @@ class Sentence {
     // lexer
     this.tokenize();
     this.lexer = new Lexer(this.sentenceTokenized);
+  }
+
+  getOriginalSentece() {
+    return this.sentence;
   }
 
   tokenize() {
