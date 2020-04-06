@@ -5,7 +5,10 @@ os:
 sudo: required
 
 language:
-  - node
+  - node_js
+
+node_js:
+  - 12
 
 cache:
   - tests/node_modules/
