@@ -17,26 +17,26 @@ class Message {
         case 'google':
           const SCRAPING_URL = 'https://www.google.com/search?q=' + queryParam;
           axios
-            .get(SCRAPING_URL)
-            .then((resd) => {
-              resd = resd.data;
-              if (resd) {
-                const $ = cheerio.load(resd);
-                $('.BNeawe.vvjwJb.AP7Wnd').each(function () {
-                  const details = new Object();
-                  details.Head = $(this).text();
-                  console.log('details:: ', details);
-                  results.push(details);
-                });
-              }
-              response = {
-                Status: true,
-                Message: 'here are the top search results',
-                Result: results,
-              };
-              res.send(response);
-            })
-            .catch((err) => console.log(err));
+              .get(SCRAPING_URL)
+              .then((resd) => {
+                resd = resd.data;
+                if (resd) {
+                  const $ = cheerio.load(resd);
+                  $('.BNeawe.vvjwJb.AP7Wnd').each(function() {
+                    const details = new Object();
+                    details.Head = $(this).text();
+                    console.log('details:: ', details);
+                    results.push(details);
+                  });
+                }
+                response = {
+                  Status: true,
+                  Message: 'here are the top search results',
+                  Result: results
+                };
+                res.send(response);
+              })
+              .catch((err) => console.log(err));
       }
     }
 
