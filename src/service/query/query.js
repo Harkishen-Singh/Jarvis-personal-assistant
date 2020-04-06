@@ -30,7 +30,7 @@ class Query {
   bindFeaturePosition(feature, position) {
     return {
       feature,
-      position,
+      position
     };
   }
 
@@ -58,7 +58,7 @@ class Query {
   taskFormat(task, ...args) {
     return {
       task,
-      ...args,
+      ...args
     };
   }
 
@@ -71,13 +71,13 @@ class Query {
       const stopwords = sentence.stopwords();
 
       const featurePositions = this.getFeaturesAlongWithPositions(
-        this.featuresList,
-        sentence.sentenceTokenized
+          this.featuresList,
+          sentence.sentenceTokenized
       );
       if (featurePositions > 1) {
         // TODO
         throw new Error(
-          'eq: multi-features not supported at the moment.' +
+            'eq: multi-features not supported at the moment.' +
             'Support would be provided in the following versions.'
         );
       }

@@ -12,13 +12,15 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "bunyan": "^1.8.12",
     "cheerio": "^1.0.0-rc.3",
-    "node-fetch": "^2.6.0",
     "lock": "^1.1.0",
+    "node-fetch": "^2.6.0",
     "node-json-db": "^1.0.3",
     "request": "^2.88.2",
-    "restify": "^8.5.1"
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

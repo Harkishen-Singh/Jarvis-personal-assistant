@@ -1,7 +1,7 @@
 const exceptionsAST = {
   meaning: {
-    continueFirstCount: ['word'],
-  },
+    continueFirstCount: ['word']
+  }
 };
 
 Object.freeze(exceptionsAST);

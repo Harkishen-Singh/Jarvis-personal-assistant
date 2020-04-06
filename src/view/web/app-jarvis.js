@@ -4,7 +4,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 const app = angular.module('jarvis', ['ngRoute']);
-const URL = 'http://127.0.0.1:3000';
+const URL = 'http://127.0.0.1:5000';
 const USER = 'default';
 console.log('From app-jarvis.js');
 app.config(function($routeProvider) {

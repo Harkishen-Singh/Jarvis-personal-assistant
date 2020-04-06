@@ -3,14 +3,14 @@ const data = {
   onFirstStart: {
     date: date.getDate(),
     month: date.getMonth(),
-    year: date.getFullYear(),
+    year: date.getFullYear()
   },
   store: {
-    gc: {},
+    gc: {}
   },
   personal: {
-    location: 'delhi',
-  },
+    location: 'delhi'
+  }
 };
 
 module.exports = { data };

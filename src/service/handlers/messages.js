@@ -7,6 +7,7 @@ const results = [];
 class Message {
   async recMessage(req, res, next) {
     // const username = req.query.username;
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const message = req.query.message;
 
     if (message.length >= 2) {

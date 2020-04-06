@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable new-cap */
 const restify = require('restify');
 const Default = require('./handlers/default').Handler;
 const Message = require('./handlers/messages').Message;
@@ -5,6 +7,10 @@ const Handlers = {
   default: new Default(),
   messages: new Message()
 };
+const corsMiddleware = require('restify-cors-middleware');
+const cors = corsMiddleware({
+  origins: ['*']
+});
 
 class WebManager {
   constructor(port, logger) {
@@ -15,7 +21,8 @@ class WebManager {
     });
     this.PORT = port;
     this.log = logger;
-
+    this.server.pre(cors.preflight);
+    this.server.use(cors.actual);
     this.applyMiddleWares();
     this.applyRoutes();
   }
@@ -24,6 +31,13 @@ class WebManager {
     this.server.use(restify.plugins.acceptParser(this.server.acceptable));
     this.server.use(restify.plugins.queryParser());
     this.server.use(restify.plugins.bodyParser());
+    // this.server.use(
+    //     function crossOrigin(req, res, next) {
+    //       res.header('Access-Control-Allow-Origin', '*');
+    //       res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    //       return next();
+    //     }
+    // );
   }
 
   applyRoutes() {

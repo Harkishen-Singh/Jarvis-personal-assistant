@@ -24,7 +24,7 @@ class DBManager {
     return {
       path,
       operation,
-      data,
+      data
     };
   }
 
