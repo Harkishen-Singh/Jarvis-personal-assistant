@@ -1,0 +1,13 @@
+{
+    "init": {
+        "date": 6,
+        "month": 3,
+        "year": 2020
+    },
+    "store": {
+        "gc": {}
+    },
+    "personal": {
+        "location": "delhi"
+    }
+}
