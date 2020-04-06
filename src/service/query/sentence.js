@@ -9,7 +9,6 @@ let stopwords = [];
 
 class Sentence {
   constructor(sentence) {
-    console.warn('sentence is ', sentence);
     this.sentence = sentence;
     this.sentenceTokenized = [];
     this.stopwordsValue = [];

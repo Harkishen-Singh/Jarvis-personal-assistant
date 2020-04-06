@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable new-cap */
 const restify = require('restify');
 const Default = require('./handlers/default').Handler;
 const Message = require('./handlers/messages').Message;
@@ -8,6 +10,10 @@ const Handlers = {
   messages: new Message(),
   query: new Query()
 };
+// const corsMiddleware = require('restify-cors-middleware');
+// const cors = corsMiddleware({
+//   origins: ['*']
+// });
 
 class WebManager {
   constructor(port, logger) {
@@ -18,7 +24,8 @@ class WebManager {
     });
     this.PORT = port;
     this.log = logger;
-
+    // this.server.pre(cors.preflight);
+    // this.server.use(cors.actual);
     this.applyMiddleWares();
     this.applyRoutes();
   }
@@ -39,8 +46,8 @@ class WebManager {
   applyRoutes() {
     this.server.get('/', Handlers.default.default);
     this.server.get('/echo/:name', Handlers.default.echo);
-    this.server.get('/messages', Handlers.messages.recMessage);
     this.server.get('/query', Handlers.query.execute);
+    this.server.get('/message', Handlers.messages.recMessage);
   }
 
   listen() {

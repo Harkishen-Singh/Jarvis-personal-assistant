@@ -9,15 +9,15 @@ class Task {
     console.log(`running service with task: ${this.task} ...`);
   }
 
-  run(task, ...args) {
-    console.warn(`task-runner: args: ${args.toString()}`);
+  run(task, object) {
+    console.warn(`task-runner: args: ${JSON.stringify(object)}`);
     switch (task) {
       case 'weather':
-        if (args.length < 3) {
+        if (Object.keys(object).length < 3) {
           throw new Error(`task: invalid number fo args: ${args.toString()}`);
         }
-
-        return this.weather(args[0], args[1], args[2]);
+        const { city, state, country } = object;
+        return this.weather(city, state, country);
         break;
 
       case 'meaning':

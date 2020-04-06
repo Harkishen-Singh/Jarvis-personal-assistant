@@ -2,11 +2,11 @@
 const queryController = require('./queryController').QueryController;
 
 class AST {
-  serialize(firstParam, secondParam) {
+  async serialize(firstParam, secondParam) {
     console.log('first param: ', firstParam);
     const queryCont = new queryController();
     if (firstParam == 'google') {
-      const response = queryCont.HandleGoogleQuery(secondParam);
+      const response = await queryCont.HandleGoogleQuery(secondParam);
       console.log('response:: ', response);
       return response;
     }

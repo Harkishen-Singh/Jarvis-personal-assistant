@@ -1,8 +1,6 @@
 const exceptionsAST = {
   meaning: {
-    continueFirstCount: [
-      'word'
-    ]
+    continueFirstCount: ['word']
   }
 };
 

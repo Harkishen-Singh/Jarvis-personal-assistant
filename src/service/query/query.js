@@ -16,8 +16,10 @@ class Query {
     this.featuresList = [];
     this.taskInstance = new Task('qe-main');
 
-    for (const value of Object.values(this.features)) {
-      this.featuresList.push(value);
+    for (const [, values] of Object.entries(this.features)) {
+      for (const value of values) {
+        this.featuresList.push(value);
+      }
     }
 
     // this.process(sentence, sentence.sentenceTokenized);
@@ -26,7 +28,7 @@ class Query {
   bindFeaturePosition(feature, position) {
     return {
       feature,
-      position
+      position: parseInt(position)
     };
   }
 
@@ -35,31 +37,23 @@ class Query {
     for (const i in queryTokenized) {
       if (queryTokenized[i]) {
         const word = queryTokenized[i];
-        if (word in fList) {
+        if (fList.includes(word)) {
           features.push(this.bindFeaturePosition(word, i));
         }
       }
     }
 
     return features;
-  };
+  }
 
-  /**
-   * Formats the input into an acceptable form for
-   * the task service.
-   * @param {string} task
-   * @param  {...any} args
-   * @return {Promise}
-   */
-  taskFormat(task, ...args) {
+  taskFormat(task, object) {
     return {
       task,
-      ...args
+      object
     };
   }
 
   run(query=this.query) {
-    console.warn('runn query is ', query);
     const sentence = new Sentence(query);
     sentence.tokenize();
     const stopwords = sentence.stopwords();
@@ -83,12 +77,16 @@ class Query {
     const filters = {
       weather: (txt) => {
         txt = txt.replace('weather ', '');
-        return txt.split(',');
+        const arr = txt.split(',');
+        const city = arr[0];
+        const state = arr[1];
+        const country = arr[2];
+        return { city, state, country };
       }
     };
 
     const ast = (feature) => {
-      if (feature in this.features.weather) {
+      if (this.features.weather.includes(feature)) {
         // weather task
         // format: weather city,state,country
         // example: weather bhubaneswar,odisha,india
@@ -96,7 +94,7 @@ class Query {
         const taskInput = filters.weather(sentence.getOriginalSentece());
 
         return this.taskFormat('weather', taskInput);
-      } else if (feature in this.features.meaning) {
+      } else if (this.features.meaning.includes(feature)) {
         // meaning task
 
         let entity;
@@ -123,12 +121,12 @@ class Query {
           }
 
           {
-            if (value in stopwords) {
+            if (stopwords.includes(valiue)) {
               continue;
             }
 
             // first count
-            if (value in exceptionsAST.meaning.continueFirstCount) {
+            if (exceptionsAST.meaning.continueFirstCount.includes(value)) {
               if (lexer.getIterValue() === 1) {
                 continue;
               }
@@ -151,9 +149,8 @@ class Query {
 
     return new Promise(async (resolve) => {
       const task = ast(feature);
-      const result = await this.taskInstance.run(task);
+      const result = await this.taskInstance.run(task.task, task.object);
       resolve(result);
-      release();
     });
   }
 }
