@@ -8,6 +8,9 @@
 
 The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands. Users can interact with the assistant either through ***voice commands or using a keyboard input***.
 
+## Update with the project
+The project service has been revamped using NodeJS. To have a look on the project and start contributing visit the branch `node-master` branch in the same repository or [click here](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/tree/node-master).
+
 ## Getting Started
 
 To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
