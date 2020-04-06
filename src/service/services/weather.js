@@ -19,7 +19,7 @@ class Weather {
       min: 0,
       max: 0,
       day: 0,
-      date: 0
+      date: 0,
     };
   }
 
@@ -31,7 +31,7 @@ class Weather {
       pressure: 0,
       dewPoint: 0,
       condition: '',
-      set: []
+      set: [],
     };
   }
 
@@ -45,20 +45,22 @@ class Weather {
 
   fetch() {
     return new Promise((resolve, reject) => {
-      https.get(this._base + this.formatInputs() + this.postfix, (response) => {
-        let chunks = '';
+      https
+        .get(this._base + this.formatInputs() + this.postfix, (response) => {
+          let chunks = '';
 
-        response.on('data', (chunk) => {
-          console.log('receiving packets...');
-          chunks += chunk; // sequence of byte streams being added each time.
-        });
+          response.on('data', (chunk) => {
+            console.log('receiving packets...');
+            chunks += chunk; // sequence of byte streams being added each time.
+          });
 
-        response.on('end', () => {
-          resolve(this.scrape(chunks));
+          response.on('end', () => {
+            resolve(this.scrape(chunks));
+          });
+        })
+        .on('error', (err) => {
+          reject(err);
         });
-      }).on('error', (err) => {
-        reject(err);
-      });
     });
   }
 }

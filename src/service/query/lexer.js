@@ -20,7 +20,7 @@ class Lexer {
 
     if (position >= this.sentenceTokenized.length) {
       throw new Error(
-          'qe: lexer: invalid position:' +
+        'qe: lexer: invalid position:' +
           'position cannot be greater than the tokenized sentence size'
       );
     }
@@ -36,7 +36,7 @@ class Lexer {
   currentHead() {
     return {
       position: this.headPosition,
-      value: this.sentenceTokenized[this.headPosition]
+      value: this.sentenceTokenized[this.headPosition],
     };
   }
 
