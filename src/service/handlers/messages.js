@@ -29,7 +29,7 @@ class Message {
                     results.push(details);
                   });
                 }
-                response = {
+                const response = {
                   Status: true,
                   Message: 'here are the top search results',
                   Result: results

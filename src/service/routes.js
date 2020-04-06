@@ -29,7 +29,7 @@ class WebManager {
   applyRoutes() {
     this.server.get('/', Handlers.default.default);
     this.server.get('/echo/:name', Handlers.default.echo);
-    this.server.get('/messages', Handlers.messages.recMessage );
+    this.server.get('/message', Handlers.messages.recMessage );
   }
 
   listen() {
