@@ -14,9 +14,8 @@ cache:
   - tests/node_modules/
 
 before-install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
+  - node --version
+  - npm --version
   - npm install -g yarn eslint eslint-config-google
   - yarn install
 
