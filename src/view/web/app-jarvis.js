@@ -70,7 +70,7 @@ app.controller('MainController', function(
     );
     $http({
       url: `${URL}/message`,
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
