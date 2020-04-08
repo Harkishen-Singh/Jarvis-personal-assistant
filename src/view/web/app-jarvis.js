@@ -65,14 +65,15 @@ app.controller('MainController', function(
   $scope.getResponse = (messageObj) => {
     const data = {
       params: {
-        query: messageObj.message
+        username: USER,
+        message: messageObj.message
       }
     };
     const index = $scope.messageStack.findIndex(
       (obj) =>
         messageObj.fullDate === obj.fullDate && messageObj.text === obj.text
     );
-    $http.get(`${URL}/query`, data)
+    $http.get(`${URL}/messages`, data)
       .then((resp) => {
         const res = resp.data;
         const message = res['message'];
