@@ -26,15 +26,15 @@ class Message {
                   const $ = cheerio.load(resd);
                   $('.BNeawe.vvjwJb.AP7Wnd').each(function() {
                     const details = new Object();
-                    details.Head = $(this).text();
+                    details.head = $(this).text();
                     console.log('details:: ', details);
                     results.push(details);
                   });
                 }
                 const response = {
-                  Status: true,
-                  Message: 'here are the top search results',
-                  Result: results
+                  status: true,
+                  message: 'here are the top search results',
+                  result: results
                 };
                 res.send(response);
               })
@@ -69,16 +69,16 @@ class Message {
 
                     if (def) {
                       const details = new Object();
-                      details.Meaning = def;
-                      details.Example = example;
+                      details.meaning = def;
+                      details.example = example;
                       results.push(details);
                     }
                   });
                 }
                 const response = {
-                  Status: true,
-                  Message: 'here are the top search results',
-                  Result: results
+                  status: true,
+                  message: 'here are the top search results',
+                  result: results
                 };
                 res.send(response);
               })
