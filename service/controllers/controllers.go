@@ -354,3 +354,54 @@ func scrapeImage(query string) []messageQueryBody {
 	}
 	return resultObj
 }
+
+func scrapeYahoo(query string) []messageQueryBody {
+	url := "https://in.search.yahoo.com/search?p=" + query
+	res, err := scrapper.ScrapeClientRequest(url, nil)
+	if err != nil {
+		logger.Error(err)
+	}
+	doc, err := goquery.NewDocumentFromResponse(res)
+	if err != nil {
+		logger.Error(err)
+	}
+	var resultObj []messageQueryBody
+	listArray := doc.Find("div#web > ol")
+	if len(listArray.Nodes) <= 0{
+		logger.Error(errors.New("Unable to find <ol>."))
+	}
+	list := listArray.Eq(0)
+	elemArray := list.Find("li")
+	for elemIndex := range elemArray.Nodes {
+		elem := elemArray.Eq(elemIndex)
+		titleContainerArray := elem.Find("div.compTitle")
+		if len(titleContainerArray.Nodes) <= 0 {
+			continue
+		}
+		titleContainer := titleContainerArray.Eq(0)
+		titleArray := titleContainer.Find("h3")
+		if len(titleArray.Nodes) <= 0 {
+			continue
+		}
+		title := strings.TrimSpace(titleArray.Eq(0).Text())
+
+		linkArray := titleContainer.Find("div")
+		if len(linkArray.Nodes) <= 0 {
+			continue
+		}
+		link := "https://" + strings.TrimSpace(linkArray.Eq(0).Text())
+
+		descArray := elem.Find("div.compText")
+		desc := ""
+		if len(descArray.Nodes) > 0 {
+			desc = strings.TrimSpace(descArray.Eq(0).Text())
+		}
+		var resultElement messageQueryBody
+		resultElement.Link = link
+		resultElement.Head = title
+		resultElement.Desc = desc
+		resultElement.DescLink = link
+		resultObj = append(resultObj, resultElement)
+	}
+	return resultObj
+}
