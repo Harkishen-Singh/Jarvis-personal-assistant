@@ -93,31 +93,70 @@ class Message {
                 resd = resd.data;
                 if (resd) {
                   const $ = cheerio.load(resd);
-                  $('ol > li > div > div.compTitle').each(
-                      function() {
-                        const currentNode = $(this);
-                        console.log(currentNode.text());
-                        const titleNode = currentNode.children('h3');
-                        let link;
-                        let title;
+                  $('ol > li > div > div.compTitle').each(function() {
+                    const currentNode = $(this);
+                    const titleNode = currentNode.children('h3');
+                    let link;
+                    let title;
 
-                        if (titleNode) {
-                          title = titleNode.text();
-                        }
+                    if (titleNode) {
+                      title = titleNode.text();
+                    }
 
-                        const linkNode = currentNode.children('div');
-                        if (linkNode) {
-                          link = linkNode.text();
-                        }
+                    const linkNode = currentNode.children('div');
+                    if (linkNode) {
+                      link = linkNode.text();
+                    }
 
-                        if (link) {
-                          const details = new Object();
-                          details.head = title;
-                          details.link = link;
-                          results.push(details);
-                        }
-                      }
-                  );
+                    if (link) {
+                      const details = new Object();
+                      details.head = title;
+                      details.link = link;
+                      results.push(details);
+                    }
+                  });
+                }
+                const response = {
+                  status: true,
+                  message: 'here are the top search results',
+                  result: results
+                };
+                res.send(response);
+              })
+              .catch((err) => console.log(err));
+          break;
+        case 'bing':
+          SCRAPING_URL =
+            'https://www.bing.com/search?q=' + queryParam;
+          axios
+              .get(SCRAPING_URL)
+              .then((resd) => {
+                resd = resd.data;
+                if (resd) {
+                  const $ = cheerio.load(resd);
+                  $('ol#b_results > li.b_algo').each(function() {
+                    const currentNode = $(this);
+                    const titleNode = currentNode.children('h2');
+                    let link;
+                    let title;
+
+
+                    if (titleNode) {
+                      title = titleNode.text();
+                    }
+
+                    const linkNode = currentNode.find('cite');
+                    if (linkNode) {
+                      link = linkNode.text();
+                    }
+
+                    if (link) {
+                      const details = new Object();
+                      details.head = title;
+                      details.link = link;
+                      results.push(details);
+                    }
+                  });
                 }
                 const response = {
                   status: true,
