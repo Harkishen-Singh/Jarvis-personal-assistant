@@ -83,6 +83,51 @@ class Message {
                 res.send(response);
               })
               .catch((err) => console.log(err));
+          break;
+        case 'yahoo':
+          SCRAPING_URL =
+            'https://search.yahoo.com/search?nojs=1&p=' + queryParam;
+          axios
+              .get(SCRAPING_URL)
+              .then((resd) => {
+                resd = resd.data;
+                if (resd) {
+                  const $ = cheerio.load(resd);
+                  $('ol > li > div > div.compTitle').each(
+                      function() {
+                        const currentNode = $(this);
+                        console.log(currentNode.text());
+                        const titleNode = currentNode.children('h3');
+                        let link;
+                        let title;
+
+                        if (titleNode) {
+                          title = titleNode.text();
+                        }
+
+                        const linkNode = currentNode.children('div');
+                        if (linkNode) {
+                          link = linkNode.text();
+                        }
+
+                        if (link) {
+                          const details = new Object();
+                          details.head = title;
+                          details.link = link;
+                          results.push(details);
+                        }
+                      }
+                  );
+                }
+                const response = {
+                  status: true,
+                  message: 'here are the top search results',
+                  result: results
+                };
+                res.send(response);
+              })
+              .catch((err) => console.log(err));
+          break;
       }
     }
 
