@@ -36,7 +36,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func filterForSpeech(s string) string {
 
-	s = strings.Replace(s, "?", " ", -1)
+	s =   strings.Replace(s, "?", " ", -1)
 	s = strings.Replace(s, "%", " ", -1)
 	s = strings.Replace(s, "#", " ", -1)
 	s = strings.Replace(s, "$", " ", -1)
