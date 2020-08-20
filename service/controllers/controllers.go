@@ -36,7 +36,7 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 func filterForSpeech(s string) string {
 
-	s = strings.Replace(s, "?", " ", -1)
+	s =   strings.Replace(s, "?", " ", -1)
 	s = strings.Replace(s, "%", " ", -1)
 	s = strings.Replace(s, "#", " ", -1)
 	s = strings.Replace(s, "$", " ", -1)
@@ -367,7 +367,7 @@ func scrapeYahoo(query string) []messageQueryBody {
 	}
 	var resultObj []messageQueryBody
 	listArray := doc.Find("div#web > ol")
-	if len(listArray.Nodes) <= 0{
+	if len(listArray.Nodes) <= 0 {
 		logger.Error(errors.New("Unable to find <ol>."))
 	}
 	list := listArray.Eq(0)
