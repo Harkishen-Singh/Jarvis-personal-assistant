@@ -1,0 +1,50 @@
+/* Utilities Hub */
+
+#para1 {
+
+ position: absolute;
+ left: 89px;
+ top: 42px;
+
+ font-family: Sofia Pro;
+ font-style: normal;
+ font-weight: 300;
+ font-size: 22px;
+ line-height: 22px;
+
+ color: #0F6FE0;
+
+}
+
+
+/* Get Help on Pre-Defined Statements */
+
+#para2 {
+
+ position: absolute;
+ left: 22px;
+ top: 117px;
+ padding: 12px;
+
+ font-family: Sofia Pro;
+ font-style: normal;
+ font-weight: 300;
+ font-size: 13px;
+ line-height: 13px;
+
+ color: #0F6FE0;
+ 
+ border: 1px solid #0F6FE0;
+ border-radius: 20px;
+
+}
+
+/* Bottom Graphic */
+
+#graphic {
+
+ position: absolute;
+ left: 0px;
+ bottom: 0px
+
+}
