@@ -11,6 +11,18 @@ The project aims to develop a personal-assistant for Linux-based systems. Jarvis
 ## Update with the project
 The project service has been revamped using NodeJS. To have a look on the project and start contributing visit the branch `node-master` branch in the same repository or [click here](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/tree/node-master).
 
+## Deployment
+The backend has been deployed in Heroku. 
+
+The link to the API for GoLang based service is:
+```
+https://assistant-jarvis.herokuapp.com/
+```
+The link to the API for Node based service:
+```
+https://assistant-jarvis-node.herokuapp.com/
+```
+
 ## Getting Started
 
 To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
