@@ -201,15 +201,6 @@ var googleDomains = map[string]string{
 	"zw":  "https://www.google.co.zw/search?q=",
 }
 
-var yandexDomains = map[string]string{
-	"com": "https://yandex.com/search/?text=",
-	"ru":  "https://yandex.ru/search/?text=",
-	"ua":  "https://yandex.ua/search/?text=",
-	"kz":  "https://yandex.kz/search/?text=",
-	"by":  "https://yandex.by/search/?text=",
-	"tr":  "https://yandex.tr/search/?text=",
-}
-
 var bingDomains = map[string]string{
 	"com": "",
 	"uk":  "&cc=GB",

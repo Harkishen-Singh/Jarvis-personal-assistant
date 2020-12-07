@@ -21,7 +21,9 @@ type reminder struct {
 func ReminderController(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-	r.ParseForm()
+	if err := r.ParseForm(); err != nil {
+		panic(err)
+	}
 
 	request := reminder{
 		Title:       r.FormValue("title"),
@@ -57,9 +59,13 @@ func addReminder(reminderObject reminder, w http.ResponseWriter) {
 
 	_, err = stmt.Exec(reminderObject.Title, reminderObject.Description, reminderObject.Time, reminderObject.Cookie)
 	checkErr(err)
-	tx.Commit()
+	if err = tx.Commit(); err != nil {
+		panic(err)
+	}
 
-	w.Write([]byte(`{"status": "success", "message": "Reminder has been set !"}`))
+	if _, err := w.Write([]byte(`{"status": "success", "message": "Reminder has been set !"}`)); err != nil {
+		panic(err)
+	}
 }
 
 func ShowReminder() []reminder {

@@ -26,9 +26,7 @@ func processGoogleResponses(searchTerm, countryCode, languageCode string, proxyS
 			return nil, err
 		}
 		resultCounter += len(data)
-		for _, result := range data {
-			results = append(results, result)
-		}
+		results = append(results, data...)
 		time.Sleep(time.Duration(backoff) * time.Second)
 	}
 	return results, nil
@@ -214,9 +212,7 @@ func processBingResponses(searchTerm, country string, proxyString interface{}, p
 		if err != nil {
 			return nil, err
 		}
-		for _, result := range data {
-			results = append(results, result)
-		}
+		results = append(results, data...)
 		time.Sleep(time.Duration(backoff) * time.Second)
 	}
 	return results, nil

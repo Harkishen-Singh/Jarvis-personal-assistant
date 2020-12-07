@@ -24,7 +24,9 @@ func MessagesController(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-	r.ParseForm()
+	if err := r.ParseForm(); err != nil {
+		panic(err)
+	}
 
 	request := response{
 		username: r.FormValue("username"),
@@ -49,39 +51,11 @@ func filterForSpeech(s string) string {
 
 }
 
-// gives the difference of two string arrays as an array of the differed element
-func stringDifference(slice1 []string, slice2 []string) []string {
-	var diff []string
-
-	// Loop two times, first to find slice1 strings not in slice2,
-	// second loop to find slice2 strings not in slice1
-	for i := 0; i < 2; i++ {
-		for _, s1 := range slice1 {
-			found := false
-			for _, s2 := range slice2 {
-				if s1 == s2 {
-					found = true
-					break
-				}
-			}
-			// String not found. We add it to return slice
-			if !found {
-				diff = append(diff, s1)
-			}
-		}
-		// Swap the slices, only if it was the first loop
-		if i == 0 {
-			slice1, slice2 = slice2, slice1
-		}
-	}
-
-	return diff
-}
-
 func buildGoogleUrls(searchTerm, countryCode, languageCode string, pages, count int) ([]string, error) {
 	toScrape := []string{}
 	searchTerm = strings.Trim(searchTerm, " ")
 	searchTerm = strings.Replace(searchTerm, " ", "+", -1)
+
 	if googleBase, found := googleDomains[countryCode]; found {
 		for i := 0; i < pages; i++ {
 			start := i * count
@@ -92,17 +66,20 @@ func buildGoogleUrls(searchTerm, countryCode, languageCode string, pages, count 
 		err := fmt.Errorf("country (%s) is currently not supported", countryCode)
 		return nil, err
 	}
+
 	return toScrape, nil
 }
 
 func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody, error) {
-	doc, err := goquery.NewDocumentFromResponse(response)
+	doc, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
 		return nil, err
 	}
+
 	results := []messageQueryBody{}
 	sel := doc.Find("div.g")
 	rank++
+
 	for i := range sel.Nodes {
 		item := sel.Eq(i)
 		linkTag := item.Find("a")
@@ -110,9 +87,11 @@ func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody,
 		descTag := item.Find("span.st")
 		desc := descTag.Text()
 		link = strings.Trim(link, " ")
+
 		if desc == "" {
 			desc = link
 		}
+
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
 				Head: desc,
@@ -122,6 +101,7 @@ func googleResultParsing(response *http.Response, rank int) ([]messageQueryBody,
 			rank++
 		}
 	}
+
 	return results, err
 }
 
@@ -129,6 +109,7 @@ func buildBingUrls(searchTerm, country string, pages, count int) ([]string, erro
 	toScrape := []string{}
 	searchTerm = strings.Trim(searchTerm, " ")
 	searchTerm = strings.Replace(searchTerm, " ", "+", -1)
+
 	if countryCode, found := bingDomains[country]; found {
 		for i := 0; i < pages; i++ {
 			first := firstParameter(i, count)
@@ -139,6 +120,7 @@ func buildBingUrls(searchTerm, country string, pages, count int) ([]string, erro
 		err := fmt.Errorf("country (%s) is currently not supported", country)
 		return nil, err
 	}
+
 	return toScrape, nil
 }
 
@@ -150,13 +132,15 @@ func firstParameter(number, count int) int {
 }
 
 func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, error) {
-	doc, err := goquery.NewDocumentFromResponse(response)
+	doc, err := goquery.NewDocumentFromReader(response.Body)
 	if err != nil {
 		return nil, err
 	}
+
 	results := []messageQueryBody{}
 	sel := doc.Find("li.b_algo")
 	rank++
+
 	for i := range sel.Nodes {
 		item := sel.Eq(i)
 		linkTag := item.Find("a")
@@ -164,9 +148,11 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 		descTag := item.Find("div.b_caption p")
 		desc := descTag.Text()
 		link = strings.Trim(link, " ")
+
 		if desc == "" {
 			desc = link
 		}
+
 		if link != "" && link != "#" && !strings.HasPrefix(link, "/") {
 			result := messageQueryBody{
 				Head: desc,
@@ -181,28 +167,35 @@ func bingResultParser(response *http.Response, rank int) ([]messageQueryBody, er
 
 func meanings(word string) []meaningStr {
 	url := "https://en.oxforddictionaries.com/definition/" + word
+
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		logger.Error(err)
 	}
-	doc, err := goquery.NewDocumentFromResponse(res)
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		logger.Error(err)
 	}
+
 	var resultObj []meaningStr
 	sel := doc.Find("section.gramb")
+
 	for sectionIndex := range sel.Nodes {
-		fmt.Println(sectionIndex)
 		section := sel.Eq(sectionIndex)
 		typArray := section.Find("span.pos")
+
 		for typIndex := range typArray.Nodes {
 			fmt.Println(typArray.Eq(typIndex).Text())
 		}
+
 		trgArray := section.Find("div.trg")
+
 		for trgIndex := range trgArray.Nodes {
 			var meaning meaningStr
 			trg := trgArray.Eq(trgIndex)
 			paraArray := trg.Find("p")
+
 			for paraIndex := range paraArray.Nodes {
 				para := paraArray.Eq(paraIndex)
 				meaningArray := para.Find("span.ind")
@@ -212,6 +205,7 @@ func meanings(word string) []meaningStr {
 			}
 
 			exampleArray := trg.Find("li.ex")
+
 			if len(exampleArray.Nodes) > 0 {
 				meaning.Example = exampleArray.Eq(0).Text()
 			} else {
@@ -223,10 +217,12 @@ func meanings(word string) []meaningStr {
 
 			subMeaningArray := trg.Find("li.subSense")
 			var extractedSubMean []submeanStr
+
 			for subMeaningIndex := range subMeaningArray.Nodes {
 				var subMeaningObj submeanStr
 				subMeaningBlock := subMeaningArray.Eq(subMeaningIndex)
 				meaningArray := subMeaningBlock.Find("span.ind")
+
 				if len(meaningArray.Nodes) > 0 {
 					subMeaningObj.Smean = meaningArray.Eq(0).Text()
 				}
@@ -259,23 +255,28 @@ func weather(city string, state string) weatherStr {
 
 	country := "india"
 	url := "https://www.msn.com/en-in/weather/today/" + city + "," + state + "," + country + "/we-city?weadegreetype=C"
+
 	res, err := scrapper.ScrapeClientRequest(url, nil)
 	if err != nil {
 		logger.Error(err)
 	}
-	doc, err := goquery.NewDocumentFromResponse(res)
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		logger.Error(err)
 	}
+
 	currentSectionArray := doc.Find("section.curcond")
 	if len(currentSectionArray.Nodes) <= 0 {
 		logger.Error(err)
 	}
+
 	currentSection := currentSectionArray.Eq(0)
 	tempSpanArray := currentSection.Find("span.current")
 	if len(tempSpanArray.Nodes) <= 0 {
 		logger.Error(err)
 	}
+
 	tempSpan := tempSpanArray.Eq(0)
 	resultObj.Temperature = tempSpan.Text() + "°C"
 
@@ -285,14 +286,17 @@ func weather(city string, state string) weatherStr {
 	}
 
 	conditionsArray := currentSection.Find("div.weather-info>ul>li")
+
 	for conditionIndex := range conditionsArray.Nodes {
 		conditionSection := conditionsArray.Eq(conditionIndex)
 		conditionChildrens := conditionSection.Contents()
+
 		if len(conditionChildrens.Nodes) <= 0 {
 			continue
 		}
 		conditionName := strings.TrimSpace(conditionChildrens.First().Text())
 		conditionVal := strings.TrimSpace(conditionChildrens.Last().Text())
+
 		switch strings.ToLower(conditionName) {
 		case "feels like":
 			resultObj.FeelsLike = conditionVal + "C"
@@ -310,36 +314,43 @@ func weather(city string, state string) weatherStr {
 func scrapeImage(query string) []messageQueryBody {
 	url := "https://www.google.co.in/search?q=" + query + "&source=lnms&tbm=isch&gbv=1"
 	res, err := scrapper.ScrapeClientRequest(url, nil)
+
 	if err != nil {
 		logger.Error(err)
 	}
-	doc, err := goquery.NewDocumentFromResponse(res)
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
 	if err != nil {
 		logger.Error(err)
 	}
+
 	var resultObj []messageQueryBody
 	tableArray := doc.Find("table")
 	if len(tableArray.Nodes) <= 5 {
 		logger.Error(errors.New("Unable to find image Table."))
 	}
+
 	table := tableArray.Eq(4)
 	rowsArray := table.Find("td")
 	count := 0
+
 	for rowIndex := range rowsArray.Nodes {
 		var resultElement messageQueryBody
 		row := rowsArray.Eq(rowIndex)
 		textArray := row.Find("font")
 		text := ""
+
 		if len(textArray.Nodes) > 0 {
 			text = textArray.Eq(0).Text()
 		}
+
 		imgArray := row.Find("img")
 		if len(imgArray.Nodes) <= 0 {
 			continue
 		}
+
 		imgTag := imgArray.Eq(0)
 		imgLink, doLinkExist := imgTag.Attr("src")
-
 		if !doLinkExist {
 			continue
 		}
@@ -347,6 +358,7 @@ func scrapeImage(query string) []messageQueryBody {
 		resultElement.Link = imgLink
 		resultElement.Head = text
 		resultObj = append(resultObj, resultElement)
+
 		count = count + 1
 		if count >= 10 {
 			break

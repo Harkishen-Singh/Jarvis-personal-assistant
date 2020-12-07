@@ -75,7 +75,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if matchPars == "yahoo" {
@@ -97,7 +100,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if matchPars == "bing" {
@@ -119,7 +125,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if matchPars == "youtube" || matchPars == "videos" || matchPars == "watch" {
@@ -140,7 +149,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if matchPars == "images" || matchPars == "image" {
@@ -160,13 +172,18 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech(responseJSON.Message, 0)
 
 		} else if matchPars == "weather" {
 
 			if len(messageArr) < 3 {
-				w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`))
+				if _, err := w.Write([]byte(`{"status": "success", "message": "ENTER: weather <city> <state>", "result": ""}`)); err != nil {
+					panic(err)
+				}
 			} else {
 				city, state := messageArr[len(messageArr)-2], messageArr[len(messageArr)-1]
 
@@ -177,13 +194,18 @@ func AST(routeObject response, w http.ResponseWriter) {
 				}
 
 				jData, _ := json.Marshal(response)
-				w.Write(jData)
+				if _, err := w.Write(jData); err != nil {
+					panic(err)
+				}
+
 				TextToSpeech(response.Message+city+" "+state, 0)
 			}
 		} else if matchPars == "meaning" {
 
 			if len(messageArr) == 1 {
-				w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`))
+				if _, err := w.Write([]byte(`{"status": "success", "message": "ENTER: meaning <word>", "result": ""}`)); err != nil {
+					panic(err)
+				}
 			} else {
 
 				wordStr := remainingString
@@ -198,7 +220,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 					}
 
 					jData, _ := json.Marshal(responseJSON)
-					w.Write(jData)
+					if _, err := w.Write(jData); err != nil {
+						panic(err)
+					}
+
 					TextToSpeech(responseJSON.Message+" "+filterForSpeech(wordStr), 0)
 
 				} else {
@@ -213,13 +238,18 @@ func AST(routeObject response, w http.ResponseWriter) {
 					}
 
 					jData, _ := json.Marshal(responseJSON)
-					w.Write(jData)
+					if _, err := w.Write(jData); err != nil {
+						panic(err)
+					}
+
 					TextToSpeech(responseJSON.Message+" "+filterForSpeech(wordStr), 0)
 				}
 			}
 		} else if matchPars == "medicine" {
 			if len(messageArr) <= 1 {
-				w.Write([]byte(`{"status": "success", "message": "ENTER: medicine <generic / common name>", "result": ""}`))
+				if _, err := w.Write([]byte(`{"status": "success", "message": "ENTER: medicine <generic / common name>", "result": ""}`)); err != nil {
+					panic(err)
+				}
 			} else {
 				med := messageArr[len(messageArr)-1]
 				result := messages.HealthMedController(med, w)
@@ -229,16 +259,20 @@ func AST(routeObject response, w http.ResponseWriter) {
 			// add support for multiple symptoms at once and use ML to determine the best medicine suited
 
 			if len(messageArr) < 2 {
-				w.Write([]byte(`{"status": "success", "message": "ENTER: symptoms <symptom / condition>", "result": ""}`))
+				if _, err := w.Write([]byte(`{"status": "success", "message": "ENTER: symptoms <symptom / condition>", "result": ""}`)); err != nil {
+					panic(err)
+				}
+
 			} else {
-				fmt.Println("inside")
-				symp := strings.Join(messageArr[1:len(messageArr)], " ")
+				symp := strings.Join(messageArr[1:], " ")
 				result := messages.HealthSympController(symp, w)
 				TextToSpeech(result, 0)
 			}
 		} else if strings.HasPrefix(strings.ToLower(message), "set reminder") {
 
-			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
+			if _, err := w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`)); err != nil {
+				panic(err)
+			}
 
 		} else if strings.HasPrefix(strings.ToLower(message), "show reminder") {
 
@@ -249,7 +283,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech("Here are your reminders.", 0)
 
 		} else if strings.HasPrefix(strings.ToLower(message), "deploy") {
@@ -260,7 +297,9 @@ func AST(routeObject response, w http.ResponseWriter) {
 
 		} else if strings.HasPrefix(strings.ToLower(message), "send mail") {
 
-			w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`))
+			if _, err := w.Write([]byte(`{"status": "success", "message": "Enter Mail details : ", "result": ""}`)); err != nil {
+				panic(err)
+			}
 
 		} else {
 			// general conversation
@@ -276,12 +315,16 @@ func AST(routeObject response, w http.ResponseWriter) {
 			matchPars == "image" || matchPars == "weather" || matchPars == "medicine" || matchPars == "symptoms" ||
 			strings.HasPrefix(message, "send mail") {
 
-			w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`))
+			if _, err := w.Write([]byte(`{"status": "success", "message": "Services unavailable at the moment ! Check your Internet Connection and try again.", "result": ""}`)); err != nil {
+				panic(err)
+			}
 			TextToSpeech("Services unavailable at the moment!", 0)
 
 		} else if strings.HasPrefix(message, "set reminder") {
 
-			w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`))
+			if _, err := w.Write([]byte(`{"status": "success", "message": "Enter Reminder details : ", "result": ""}`)); err != nil {
+				panic(err)
+			}
 
 		} else if strings.HasPrefix(message, "show reminder") {
 
@@ -292,7 +335,10 @@ func AST(routeObject response, w http.ResponseWriter) {
 			}
 
 			jData, _ := json.Marshal(responseJSON)
-			w.Write(jData)
+			if _, err := w.Write(jData); err != nil {
+				panic(err)
+			}
+
 			TextToSpeech("Here are your reminders.", 0)
 		} else {
 			// Conversation.

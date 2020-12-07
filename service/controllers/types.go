@@ -5,10 +5,6 @@ type response struct {
 	message  string
 }
 
-type statusCode struct {
-	status string
-}
-
 type messageQueryBody struct {
 	Head     string `json:"head"`
 	Link     string `json:"link"`
