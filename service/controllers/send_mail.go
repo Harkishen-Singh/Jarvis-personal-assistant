@@ -35,7 +35,9 @@ func (s *SMTPServer) ServerName() string {
 func EmailController(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-	r.ParseForm()
+	if err := r.ParseForm(); err != nil {
+		panic(err)
+	}
 
 	to := r.FormValue("to")
 	toArr := strings.Split(to, ";")
@@ -136,9 +138,13 @@ func send(mailObject Mail, w http.ResponseWriter) {
 		logger.Error(err)
 	}
 
-	client.Quit()
+	if err = client.Quit(); err != nil {
+		panic(err)
+	}
 
 	logger.Info("Mail sent successfully")
-	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`))
+	if _, err := w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`)); err != nil {
+		panic(err)
+	}
 
 }

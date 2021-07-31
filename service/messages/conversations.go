@@ -12,11 +12,6 @@ import (
 	"time"
 )
 
-type response struct {
-	username string
-	message  string
-}
-
 type jsonResponse struct {
 	Status  bool     `json:"status"`
 	Message string   `json:"message"`
@@ -49,13 +44,12 @@ var (
 	messagesRepliesParser Messagesreplies
 	resp                  jsonResponse
 	username, speak       string
-	countMessage          int16
 )
 
 func init() {
 	prefix := ""
 	if os.Getenv("ENV") == "test" {
-		prefix = "../"
+		prefix = "../../"
 	}
 
 	fmt.Println("Loading messages JSON parsers....")
@@ -120,7 +114,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 
@@ -141,7 +137,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 
@@ -161,7 +159,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 
@@ -181,7 +181,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 
@@ -203,7 +205,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 
@@ -223,7 +227,9 @@ func GeneralConvHandler(req, name string, res http.ResponseWriter) string {
 			resp = jsonResponse{true, temp, true, nil}
 			speak = temp
 			marshalled, _ := json.Marshal(resp)
-			res.Write(marshalled)
+			if _, err := res.Write(marshalled); err != nil {
+				panic(err)
+			}
 		}
 	}
 

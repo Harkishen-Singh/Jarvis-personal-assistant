@@ -20,10 +20,9 @@ var config Configuration
 // init reads and stores data from config.json
 func init() {
 	ENV := os.Getenv("ENV")
-	fmt.Println("env is ", ENV)
 	prefix := ""
 	if ENV == "test" {
-		prefix = "../"
+		prefix = "../../"
 	}
 
 	jsonFile, err := os.Open(fmt.Sprintf("%sstatic/config.json", prefix))
@@ -35,7 +34,10 @@ func init() {
 	if ioError != nil {
 		logger.Error(ioError)
 	}
-	json.Unmarshal(byteValue, &config)
+	if err := json.Unmarshal(byteValue, &config); err != nil {
+		panic(err)
+	}
+
 	fmt.Println("loaded configuration")
 	defer jsonFile.Close()
 }
