@@ -5,26 +5,18 @@ sudo: required
 
 services:
   - xvfb
-  - docker
 
 language:
   - go
-  - python
 
 go:
   - 1.11.x
-
-python:
-  - "2.7"
 
 addons:
   chrome: stable
   apt:
     packages:
       - chromium-chromedriver
-
-notifications:
-  email: truemac
 
 cache:
   - tests/node_modules/
@@ -33,24 +25,21 @@ before-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install stable
   - nvm use stable
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/controllers
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/utils
-  - go get -u github.com/hegedustibor/htgo-tts
-  - go get -u github.com/mattn/go-sqlite3
-  - go get -u github.com/op/go-logging
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
-  - go get -u github.com/Harkishen-Singh/Jarvis-personal-assistant/service/messages
+  - cd service/ && go get -u -v -d && cd ..
   - cd tests/ && npm install && npm install chromedriver geckodriver && cd ..
-  - npm install chromedriver
+  - gofmt -l .
 
 
 script:
-  - cd service && go run maintut.go &
-  - npm install -g http-server selenium-webdriver mocha mochawesome chromedriver geckodriver eslint
+  - make build
+  - ./bin/service &
+  - export ENV=test
+  - npm install -g http-server mocha eslint
   - eslint view/web/app-jarvis.js
+  - echo "checking go format ..."
+  - build/scripts/gofmt.sh
   - cd view/web/ && npm start && cd ../..
-  - go test service/controllers/messages_test.go
-  - go test service/utils/service_test.go
+  - go test service/controllers/controllers_test.go
   - cd tests/
   - npm install
   - xvfb-run -s "-screen 0 1920x1080x16" -a mocha test.js

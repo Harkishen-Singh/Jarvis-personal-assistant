@@ -6,6 +6,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+::placeholder {
+    color: black;
+}
+
 ::selection {
     background: black;
     color: white;
@@ -126,6 +130,7 @@ body {
     padding-top: 1rem;
     overflow-y: auto;
     overflow-x: hidden;
+    overflow: scroll;
 }
 
 .conversation-wrapper::-webkit-scrollbar { width: 0 !important; }

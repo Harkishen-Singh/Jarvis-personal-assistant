@@ -1,15 +1,15 @@
 package controllers
 
 import (
-	"net/http"
 	"crypto/tls"
 	"fmt"
-	"log"
+	"github.com/Harkishen-Singh/Jarvis-personal-assistant/service/logger"
+	"net/http"
 	"net/smtp"
 	"strings"
 )
 
-// Mail ....
+// Mail sets the mailing options.
 type Mail struct {
 	Sender  string
 	To      []string
@@ -19,19 +19,19 @@ type Mail struct {
 	Body    string
 }
 
-// SMTPServer ...
+// SMTPServer sets SMTP server options.
 type SMTPServer struct {
 	Host      string
 	Port      string
 	TLSConfig *tls.Config
 }
 
-// ServerName ...
+// ServerName returns the name of the server.
 func (s *SMTPServer) ServerName() string {
 	return s.Host + ":" + s.Port
 }
 
-// EmailController controls reminder operations
+// EmailController controls reminder operations.
 func EmailController(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -45,20 +45,19 @@ func EmailController(w http.ResponseWriter, r *http.Request) {
 	bccArr := strings.Split(bcc, ";")
 
 	request := Mail{
-		Sender: r.FormValue("sender"),
-		To: toArr,
-		Cc: ccArr,
-		Bcc: bccArr,
+		Sender:  r.FormValue("sender"),
+		To:      toArr,
+		Cc:      ccArr,
+		Bcc:     bccArr,
 		Subject: r.FormValue("subject"),
-		Body: r.FormValue("body"),
+		Body:    r.FormValue("body"),
 	}
-	fmt.Println("request: ", request)
 
 	send(request, w)
 
 }
 
-// BuildMessage ...
+// BuildMessage returns the resultant message built.
 func (mail *Mail) BuildMessage() string {
 	header := ""
 	header += fmt.Sprintf("From: %s\r\n", mail.Sender)
@@ -95,51 +94,51 @@ func send(mailObject Mail, w http.ResponseWriter) {
 
 	conn, err := tls.Dial("tcp", smtpServer.ServerName(), smtpServer.TLSConfig)
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	client, err := smtp.NewClient(conn, smtpServer.Host)
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	// step 1: Use Auth
 	if err = client.Auth(auth); err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	// step 2: add all from and to
 	if err = client.Mail(mail.Sender); err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 	receivers := append(mail.To, mail.Cc...)
 	receivers = append(receivers, mail.Bcc...)
 	for _, k := range receivers {
-		log.Println("sending to: ", k)
+		logger.Info("sending to: " + k)
 		if err = client.Rcpt(k); err != nil {
-			log.Panic(err)
+			logger.Error(err)
 		}
 	}
 
 	// Data
 	wr, err := client.Data()
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	_, err = wr.Write([]byte(messageBody))
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	err = wr.Close()
 	if err != nil {
-		log.Panic(err)
+		logger.Error(err)
 	}
 
 	client.Quit()
 
-	log.Println("Mail sent successfully")
+	logger.Info("Mail sent successfully")
 	w.Write([]byte(`{"status":"success", "message": "Mail sent Successfully"}`))
 
 }

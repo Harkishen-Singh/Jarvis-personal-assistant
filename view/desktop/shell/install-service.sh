@@ -13,6 +13,6 @@ echo "installing go dependencies"
 go get -u -v -d ./...
 
 echo "preparing to execute service .."
-go run maintut.go &
+go run main.go &
 echo "successfully executed the service"
 

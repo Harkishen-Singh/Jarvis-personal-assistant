@@ -8,9 +8,37 @@
 
 The project aims to develop a personal-assistant for Linux-based systems. Jarvis draws its inspiration from virtual assistants like Cortana for Windows, and Siri for iOS. It has been designed to provide a user-friendly interface for carrying out a variety of tasks by employing certain well-defined commands. Users can interact with the assistant either through ***voice commands or using a keyboard input***.
 
+## Update with the project
+The project service has been revamped using NodeJS. To have a look on the project and start contributing visit the branch `node-master` branch in the same repository or [click here](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/tree/node-master).
+
+## Deployment
+The backend has been deployed in Heroku. 
+
+The link to the API for GoLang based service is:
+```
+https://assistant-jarvis.herokuapp.com/
+```
+The link to the API for Node based service:
+```
+https://assistant-jarvis-node.herokuapp.com/
+```
+
 ## Getting Started
 
 To know the steps to install and run the project see [INSTALL.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/INSTALL.md)
+
+**Starting Jarvis in development mode**
+
+Installation:
+
+1. Install all dependencies: `make install-all`
+
+Update dependencies: `make update`
+
+Run Jarvis:
+
+1. Run service: `make run`
+2. Run the desktop app: `make views`
 
 To get started with your contributions for Jarvis-personal-assistant see [CONTRBUTING.md](https://github.com/Harkishen-Singh/Jarvis-personal-assistant/blob/master/CONTRIBUTING.md)
 
@@ -111,23 +139,20 @@ List your noticed symptoms and get immediate help on the medicines that could be
 
 * **Front-end:**  Web: AngularJS, Desktop App: Electron + AngularJS
 * **Back-end:** GoLang
+## :computer: Postman Documentation
+Postman is a powerful HTTP client for testing web services. Postman makes it easy to test, develop and document APIs by allowing users to quickly put together both simple and complex HTTP requests. <br/>
+Test the current APIs of Jarvis mentioned here on Postman - [Postman Link](https://documenter.getpostman.com/view/6521254/SzKZrvTu?version=latest)
 
 #  :trophy: Achievements
-  ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
+ ### Jarvis-personal-assistant has been selected many times in various coding programmes like 
   
- ## KWoC-2019 (Kharagpur Winter of Code)
- 
- [![Kharagpur Winter of Code](https://miro.medium.com/max/585/1*IyO7IeMmLgTe0sgwR0Koeg.jpeg)](https://wiki.metakgp.org/w/Kharagpur_Winter_of_Code)
+ #### KWoC-2019 (Kharagpur Winter of Code)
+[<img src="https://miro.medium.com/max/585/1*IyO7IeMmLgTe0sgwR0Koeg.jpeg" width="100" height="100" />](https://wiki.metakgp.org/w/Kharagpur_Winter_of_Code)
 
 
-## JMoC-2019 (JIIT Month of Code)
-[![JIIT Month of Code](https://jmoc.jodc.tech/logo.png)](https://jmoc.jodc.tech/)
+#### JMoC-2019 (JIIT Month of Code)
+[<img src="https://jmoc.jodc.tech/logo.png"/>](https://jmoc.jodc.tech/)
 
 
-## GSSoC-2020 (GirlScript Summer of Code)
-[![GirlScript Summer of Code](https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png)](https://www.gssoc.tech/index.html)
-
-
-
-
-
+#### GSSoC-2020 (GirlScript Summer of Code)
+[<img src="https://raw.githubusercontent.com/GirlScriptSummerOfCode/MentorshipProgram/master/GSsoc%20Type%20Logo%20Black.png" width="400" height="100" />](https://www.gssoc.tech/index.html)
